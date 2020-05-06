@@ -1,9 +1,16 @@
 <template>
-  <div class="header">
-    <h1>#раклечится</h1>
-  </div>
+  <section>
+    <statistics />
+  </section>
 </template>
 
-<script></script>
+<script>
+import Statistics from '@/components/Statistics';
+export default {
+  components: {
+    statistics: Statistics,
+  },
+};
+</script>
 
 <style></style>
