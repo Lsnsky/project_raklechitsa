@@ -1,9 +1,11 @@
 <template>
-  <div class="header">
-    <h1>#раклечится</h1>
-  </div>
+
 </template>
 
-<script></script>
+<script>
 
-<style></style>
+</script>
+
+<style scoped>
+
+</style>
