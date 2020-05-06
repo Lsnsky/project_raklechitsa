@@ -2,6 +2,10 @@
 
 </template>
 
-<script></script>
+<script>
 
-<style></style>
+</script>
+
+<style scoped>
+
+</style>

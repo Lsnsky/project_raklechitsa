@@ -29,6 +29,10 @@ html {
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+}
 </style>
 
 // /* Основной код для разрешения 1024px */ // @media (min-width : 2560px) { //
