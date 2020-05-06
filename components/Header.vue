@@ -23,7 +23,7 @@
 <style scoped>
 .header {
   max-width: 1320px;
-  margin: 0 auto;
+  margin: 18px auto;
   display: flex;
   justify-content: space-between;
 
@@ -39,12 +39,16 @@
 
 .header__wrapper {
   display: flex;
+  margin: 8px 0 0;
 }
 
 .header__navigation-link {
   text-decoration: none;
   color: #000;
   margin: 0 0 0 40px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .header__navigation-link:first-child {
@@ -52,7 +56,7 @@
 }
 
 .header__navigation-link_type_active {
-  text-decoration: underline;
+  border-bottom: solid #000 1px;
 }
 
 </style>
