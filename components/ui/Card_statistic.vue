@@ -1,12 +1,9 @@
 <template>
   <div class="card">
-    <div class="card__title">
-      Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000
-      человек.
-    </div>
-    <img class="card__image" src="../../static/images/__item-6.jpg" />
-    <div class="card__content">1 из 3</div>
-    <div class="card__source">Левада-Центр 2018</div>
+    <div class="card__title"></div>
+    <img class="card__image" />
+    <div class="card__content"></div>
+    <div class="card__source"></div>
   </div>
 </template>
 
