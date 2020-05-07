@@ -24,12 +24,12 @@
   }
 </script>
 
-<style  scoped>
+<style scoped>
 .footer {
   max-width: 1320px;
   margin: 60px auto;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   height: 236px;
 }
 
