@@ -1,4 +1,5 @@
 <template>
+
   <section>
     <statistics />
   </section>
@@ -13,4 +14,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+</style>

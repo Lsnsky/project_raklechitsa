@@ -1,8 +1,22 @@
 <template>
   <div>
+    <main-header />
     <nuxt />
+    <main-footer />
   </div>
 </template>
+
+<script>
+  import Header from '@/components/Header'
+  import Footer from '@/components/Footer'
+  export default {
+    components: {
+      'main-header': Header,
+      'main-footer': Footer,
+    }
+
+  }
+</script>
 
 <style>
 html {
@@ -16,6 +30,10 @@ html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
 }
 </style>
 
