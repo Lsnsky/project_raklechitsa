@@ -41,22 +41,22 @@ export default {
 
 <style scoped>
 .photos {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 1320px;
-  margin: auto;
+  margin: 100px auto;
 }
 .photos__info {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-self: flex-start;
 }
 .photos__title {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -70,7 +70,7 @@ export default {
   margin: 0px;
 }
 .photos__text {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -84,21 +84,21 @@ export default {
   margin-bottom: 0px;
 }
 .photos__content {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
   margin: 100px 0px 0px;
 }
 
 .photos__cards {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: grid;
   grid-template-rows: repeat(2, 195px);
   grid-template-columns: repeat(4, 195px);
   gap: 30px;
 }
 .panel__container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 1320px;
   height: 129px;
   display: flex;
@@ -107,7 +107,7 @@ export default {
 }
 
 .panel__text {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -119,7 +119,7 @@ export default {
 }
 
 .panel__text_hashtag {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: bold;

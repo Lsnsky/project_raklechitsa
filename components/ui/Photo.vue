@@ -10,7 +10,7 @@ export default {};
 
 <style scoped>
 .photo {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 195px;
   height: 195px;
   background: #ededed;
