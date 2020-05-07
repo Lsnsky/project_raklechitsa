@@ -7,15 +7,14 @@
 </template>
 
 <script>
-  import Header from '@/components/Header';
-  import Footer from '@/components/Footer';
-  export default {
-    components: {
-      'main-header': Header,
-      'main-footer': Footer,
-    }
-
-  }
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+export default {
+  components: {
+    'main-header': Header,
+    'main-footer': Footer,
+  },
+};
 </script>
 
 <style>

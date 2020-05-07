@@ -1,5 +1,5 @@
 <template>
-  <div class="cards">
+  <section class="cards">
     <div class="cards__title">Статистика по онкозаболеваниям</div>
     <div class="cards__container">
       <card
@@ -27,7 +27,7 @@
         :source="cards[3].source"
       />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

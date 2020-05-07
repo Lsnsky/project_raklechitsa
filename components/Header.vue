@@ -1,22 +1,25 @@
 <template>
   <header class="header">
-    <h3 class="header__title">Проект Благотворительного Фонда Константина Хабенского</h3>
+    <h3 class="header__title">
+      Проект Благотворительного Фонда Константина Хабенского
+    </h3>
     <div class="header__wrapper">
       <main-menu />
-      <nuxt-link to="/" class="header__navigation-link">Рассказать историю</nuxt-link> <!--Пока так, когда будет понятно что оно должно делать, поменяю-->
+      <nuxt-link to="/" class="header__navigation-link"
+        >Рассказать историю</nuxt-link
+      >
+      <!--Пока так, когда будет понятно что оно должно делать, поменяю-->
     </div>
-
   </header>
 </template>
 
 <script>
-  import Menu from '@/components/ui/Menu'
-  export default {
-    components: {
-      'main-menu': Menu,
-    }
-
-  }
+import Menu from '@/components/ui/Menu';
+export default {
+  components: {
+    'main-menu': Menu,
+  },
+};
 </script>
 
 <style scoped>
@@ -25,7 +28,6 @@
   margin: 18px auto;
   display: flex;
   justify-content: space-between;
-
 }
 
 .header__title {
@@ -49,5 +51,4 @@
   font-size: 18px;
   line-height: 24px;
 }
-
 </style>

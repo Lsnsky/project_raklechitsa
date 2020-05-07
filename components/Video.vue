@@ -1,22 +1,29 @@
 <template>
   <section class="video">
     <div class="video__wrapper">
-      <h2 class="video__title">Истории людей, победивших рак, но не свои привычки</h2>
-      <p class="video__subtitle">Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я», фобии, страхи. Но это точно не рак. Рак лечится. Лучшее доказательство — люди с их историями.</p>
+      <h2 class="video__title">
+        Истории людей, победивших рак, но не свои привычки
+      </h2>
+      <p class="video__subtitle">
+        Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я», фобии,
+        страхи. Но это точно не рак. Рак лечится. Лучшее доказательство — люди с
+        их историями.
+      </p>
       <div class="video__buttons">
-        <button-switch
-          :position = "'left'"
-          :type = "'unactive'"
-        />
-        <button-switch
-          :position = "'right'"
-          :type = "'active'"
-        />
+        <button-switch :position="'left'" :type="'unactive'" />
+        <button-switch :position="'right'" :type="'active'" />
       </div>
     </div>
     <div class="video__wrapper">
-    <video-frame class="video__frame" />
-    <p class="video__more">Все видео вы можете найте на нашем <a href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ" class="video__link">YouTube канале.</a></p>
+      <video-frame class="video__frame" />
+      <p class="video__more">
+        Все видео вы можете найте на нашем
+        <a
+          href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
+          class="video__link"
+          >YouTube канале.</a
+        >
+      </p>
     </div>
   </section>
 </template>
@@ -24,13 +31,12 @@
 <script>
 import Button_switch from '@/components/ui/Button_switch';
 import Video_frame from '@/components/ui/Video_frame';
-  export default {
-    components: {
-      'button-switch': Button_switch,
-      'video-frame': Video_frame
-    }
-    
-  }
+export default {
+  components: {
+    'button-switch': Button_switch,
+    'video-frame': Video_frame,
+  },
+};
 </script>
 
 <style scoped>
@@ -82,10 +88,8 @@ import Video_frame from '@/components/ui/Video_frame';
 
 .video__buttons {
   margin: auto 0 26px;
-  background: #FBFBFB;
+  background: #fbfbfb;
   max-width: 80px;
   display: flex;
 }
-
-
 </style>
