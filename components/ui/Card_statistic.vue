@@ -1,27 +1,32 @@
 <template>
   <div class="card">
-    <div class="card__title"></div>
-    <img class="card__image" />
-    <div class="card__content"></div>
-    <div class="card__source"></div>
+    <div class="card__title">{{ title }}</div>
+    <img class="card__image" :src="url" />
+    <div class="card__content">{{ content }}</div>
+    <div class="card__source">{{ source }}</div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['title', 'url', 'content', 'source'],
+};
 </script>
 
 <style scoped>
 .card {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   width: 300px;
   height: 300px;
+  background: #ffffff;
+  border: 1px solid #efefef;
+  box-sizing: border-box;
 }
 .card__title {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -31,13 +36,14 @@ export default {};
   margin: 20px 20px 0px;
 }
 .card__image {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 260px;
   height: 40px;
-  margin: 76px 20px 0px;
+  margin: auto;
+  margin-bottom: 20px;
 }
 .card__content {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -45,10 +51,10 @@ export default {};
   line-height: 40px;
   /* identical to box height, or 105% */
   text-align: right;
-  margin: 20px 20px 0px;
+  margin: 0px 20px 20px;
 }
 .card__source {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -57,6 +63,6 @@ export default {};
   /* identical to box height, or 133% */
   text-align: right;
   color: #666666;
-  margin: 20px 20px;
+  margin: 0px 20px 20px;
 }
 </style>
