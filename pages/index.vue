@@ -1,18 +1,19 @@
 <template>
-
-  <section>
+  <div>
+    <photos />
     <statistics />
-  </section>
+  </div>
 </template>
 
 <script>
 import Statistics from '@/components/Statistics';
+import Photos from '@/components/Photos';
 export default {
   components: {
     statistics: Statistics,
+    photos: Photos,
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
