@@ -1,0 +1,46 @@
+<template>
+  <div class="card-history">
+    <img class="card-history__photo" :src="url" />
+    <div class="card-history__title">{{ history_title }}</div>
+    <div class="card-history__text">{{ history_text }}</div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ['url', 'history_title', 'history_text'],
+};
+</script>
+
+<style scoped>
+.card-history {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-history__photo {
+  min-width: 300px;
+  min-height: 300px;
+}
+
+.card-history__title {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 22px;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.card-history__text {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  width: 250px;
+  margin: 14px 0 70px;
+  color: #666666;
+}
+</style>
