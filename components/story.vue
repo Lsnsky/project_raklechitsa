@@ -8,8 +8,8 @@
       />
       <div class="story__block-title">
         <h2 class="story__title">
-          <span>Александр Тарханов:</span> &laquo;Я не могу победить свою
-          пунктуальность в отличии от рака&raquo;
+          <span class="story__span-accent">Александр Тарханов:</span> &laquo;Я
+          не могу победить свою пунктуальность в отличии от рака&raquo;
         </h2>
         <div class="story__data">
           <a href="" class="link story__header-link">Поделитесь&#10138;</a>
@@ -30,8 +30,10 @@
         армии, за 45 секунд.
       </p>
       <p class="story__text story__text_font-weight_bold">
-        «В футболе если команда опоздала на 15 минут, ей засчитывается
-        поражение».
+        <span class="story__span-accent">
+          «В футболе если команда опоздала на 15 минут, ей засчитывается
+          поражение».
+        </span>
       </p>
       <p class="story__text">
         Опаздывать я тоже не люблю, на все встречи прихожу заранее. Если знаю,
@@ -102,6 +104,10 @@ export default {};
   font-size: 38px;
   line-height: 48px;
   margin: 0;
+}
+
+.story__span-accetn {
+  font-weight: bold;
 }
 
 .story__data {
