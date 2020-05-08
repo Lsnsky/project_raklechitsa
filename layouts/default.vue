@@ -1,6 +1,7 @@
 <template>
   <div>
-    <main-header />
+    <main-header @shareClick="popupClose()" />
+    <main-popup :popDisplay="popupDisplay" @closeClick="popupOpen()" />
     <nuxt />
     <main-footer />
   </div>
@@ -9,10 +10,25 @@
 <script>
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Popup from '@/components/Popup';
 export default {
   components: {
     'main-header': Header,
     'main-footer': Footer,
+    'main-popup': Popup,
+  },
+  methods: {
+    popupOpen() {
+      this.popupDisplay = 'invisible';
+    },
+    popupClose() {
+      this.popupDisplay = 'visible';
+    },
+  },
+  data() {
+    return {
+      popupDisplay: 'invisible',
+    };
   },
 };
 </script>
