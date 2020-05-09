@@ -7,13 +7,14 @@
         >{{ questions[id].qest }}
       </p>
       <textarea
+        autofocus
         class="popup__input"
         placeholder="Напишите тут"
         v-model="answers[id]"
         required
       >
       </textarea>
-      <button type="button" class="popup__back" @click="id--">Назад</button>
+      <button type="button" class="popup__back" @click="before()">Назад</button>
       <button v-if="this.id < 11" type="submit" class="popup__further">
         Далее
       </button>
@@ -45,7 +46,10 @@
 export default {
   props: ['popDisplay'],
   methods: {
-    submit() {},
+    before() {
+      this.id = this.id === 0 ? 0 : this.id--;
+    },
+
     nextScreen() {
       if (this.id === 11) {
         console.log(this.answers);
@@ -169,6 +173,10 @@ export default {
   color: inherit;
 }
 
+.popup__link:hover {
+  opacity: 0.8;
+}
+
 .popup_display_visible {
   visibility: visible;
   opacity: 1;
@@ -189,6 +197,11 @@ export default {
   width: 226px;
   height: 52px;
   color: #fff;
+  cursor: pointer;
+}
+
+.popup__further:hover {
+  opacity: 0.9;
 }
 
 .popup__back {
@@ -205,6 +218,11 @@ export default {
   text-align: center;
   width: 48px;
   height: 20px;
+  cursor: pointer;
+}
+
+.popup__back:hover {
+  opacity: 0.8;
 }
 
 .popup__input {

@@ -33,6 +33,10 @@ export default {};
   line-height: 24px;
 }
 
+.menu__navigation-link:hover {
+  opacity: 0.8;
+}
+
 .menu__navigation-link:first-child {
   margin: 0;
 }

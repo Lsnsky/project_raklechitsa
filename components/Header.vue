@@ -43,15 +43,6 @@ export default {
   margin: 8px 0 0;
 }
 
-.header__navigation-link {
-  text-decoration: none;
-  color: #000;
-  margin: 0 0 0 40px;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 24px;
-}
-
 .header__share-story {
   border: none;
   background-color: #fff;
@@ -61,5 +52,10 @@ export default {
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
+  cursor: pointer;
+}
+
+.header__share-story:hover {
+  opacity: 0.8;
 }
 </style>
