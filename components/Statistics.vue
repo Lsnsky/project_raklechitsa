@@ -2,39 +2,57 @@
   <section class="cards">
     <div class="cards__title">Статистика по онкозаболеваниям</div>
     <div class="cards__container">
-      <card
-        :title="cards[0].title"
-        :url="cards[0].image"
-        :content="cards[0].content"
-        :source="cards[0].source"
-      />
-      <card
-        :title="cards[1].title"
-        :url="cards[1].image"
-        :content="cards[1].content"
-        :source="cards[1].source"
-      />
-      <card
-        :title="cards[2].title"
-        :url="cards[2].image"
-        :content="cards[2].content"
-        :source="cards[2].source"
-      />
-      <card
-        :title="cards[3].title"
-        :url="cards[3].image"
-        :content="cards[3].content"
-        :source="cards[3].source"
-      />
+      <div class="card">
+        <card-title :title="cards[0].title" />
+        <progressbar :value="cards[0].value" :maxValue="cards[0].maxValue" />
+        <card-content :content="cards[0].content" />
+        <card-source :source="cards[0].source" />
+      </div>
+      <div class="card">
+        <card-title :title="cards[1].title" />
+        <progressbar :value="cards[1].value" :maxValue="cards[1].maxValue" />
+        <card-content :content="cards[1].content" />
+        <card-source :source="cards[1].source" />
+      </div>
+      <div class="card">
+        <card-title :title="cards[2].title" />
+        <card-diagram
+          :valueEmpty="cards[2].valueEmpty"
+          :maxValueEmpty="cards[2].maxValueEmpty"
+          :valueFill="cards[2].valueFill"
+          :maxValueFill="cards[2].maxValueFill"
+        />
+        <card-content :content="cards[2].content" />
+        <card-source :source="cards[2].source" />
+      </div>
+      <div class="card">
+        <card-title :title="cards[3].title" />
+        <card-diagram
+          :valueEmpty="cards[3].valueEmpty"
+          :maxValueEmpty="cards[3].maxValueEmpty"
+          :valueFill="cards[3].valueFill"
+          :maxValueFill="cards[3].maxValueFill"
+        />
+        <card-content :content="cards[3].content" />
+        <card-source :source="cards[3].source" />
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-import Card_statistic from '@/components/ui/Card_statistic';
+import CardStatTitle from '@/components/ui/CardStatTitle';
+import ProgressBar from '@/components/ui/ProgressBar';
+import CardStatContent from '@/components/ui/CardStatContent';
+import CardStatSource from '@/components/ui/CardStatSource';
+import Diagram from '@/components/ui/Diagram';
 export default {
   components: {
-    card: Card_statistic,
+    'card-title': CardStatTitle,
+    progressbar: ProgressBar,
+    'card-content': CardStatContent,
+    'card-source': CardStatSource,
+    'card-diagram': Diagram,
   },
   data() {
     return {
@@ -46,6 +64,8 @@ export default {
           image: '/images/__item-6.jpg',
           content: '1 из 3',
           source: 'Левада-Центр 2018',
+          value: 1,
+          maxValue: 3,
         },
         {
           id: '2',
@@ -53,6 +73,8 @@ export default {
           image: '/images/__item-6.jpg',
           content: '3 700 000',
           source: 'Росстат 2018',
+          value: 2.6,
+          maxValue: 100,
         },
         {
           id: '3',
@@ -61,6 +83,10 @@ export default {
           image: '/images/__item-6.jpg',
           content: '↑28%',
           source: 'МНИОИ Герцена 2018',
+          valueEmpty: 160,
+          maxValueEmpty: 260,
+          valueFill: 208,
+          maxValueFill: 260,
         },
         {
           id: '4',
@@ -69,6 +95,10 @@ export default {
           image: '/images/__item-6.jpg',
           content: '↓25%',
           source: 'МНИОИ Герцена 2018',
+          valueEmpty: 190,
+          maxValueEmpty: 260,
+          valueFill: 142,
+          maxValueFill: 260,
         },
       ],
     };
@@ -101,5 +131,16 @@ export default {
   /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
+}
+.card {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  height: 300px;
+  background: #ffffff;
+  border: 1px solid #efefef;
+  box-sizing: border-box;
 }
 </style>
