@@ -4,6 +4,7 @@
     <main-video />
     <histories />
     <photos />
+    <story-input />
     <statistics />
     <cover-about />
   </main>
@@ -16,6 +17,8 @@ import Statistics from '@/components/Statistics';
 import Photos from '@/components/Photos';
 import Cover from '@/components/Cover';
 import Cover_about from '@/components/Cover_about';
+import Story_input from '../components/story_input.vue';
+
 export default {
   components: {
     statistics: Statistics,
@@ -24,6 +27,7 @@ export default {
     histories: Histories,
     cover: Cover,
     'cover-about': Cover_about,
+    'story-input': Story_input,
   },
 };
 </script>
