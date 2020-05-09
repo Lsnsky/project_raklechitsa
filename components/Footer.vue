@@ -9,8 +9,16 @@
     <main-menu class="footer__menu" />
     <div class="footer__wrapper">
       <p class="footer__we-in">
-        Мы в <a href="" class="footer__link">Инстаграме</a> и
-        <a href="" class="footer__link">Youtube</a>
+        Мы в
+        <a href="https://www.instagram.com/raklechitsa/" class="footer__link"
+          >Инстаграме</a
+        >
+        и
+        <a
+          href="https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F"
+          class="footer__link"
+          >Youtube</a
+        >
       </p>
       <a href="" class="footer__share">Поделитесь ↗</a>
       <p class="footer__copyright">Сделано студентами Яндекс Практикум</p>
@@ -81,6 +89,10 @@ export default {
   color: #000;
 }
 
+.footer__link:hover {
+  opacity: 0.8;
+}
+
 .footer__share {
   text-decoration: none;
   font-weight: normal;
@@ -88,5 +100,9 @@ export default {
   line-height: 24px;
   color: #121212;
   margin: 44px 0 0 59px;
+}
+
+.footer__share:hover {
+  opacity: 0.8;
 }
 </style>
