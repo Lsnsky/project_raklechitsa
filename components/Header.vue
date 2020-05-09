@@ -5,9 +5,9 @@
     </h3>
     <div class="header__wrapper">
       <main-menu />
-      <nuxt-link to="/" class="header__navigation-link"
-        >Рассказать историю</nuxt-link
-      >
+      <button class="header__share-story" @click="$emit('shareClick')">
+        Рассказать историю
+      </button>
       <!--Пока так, когда будет понятно что оно должно делать, поменяю-->
     </div>
   </header>
@@ -47,6 +47,17 @@ export default {
   text-decoration: none;
   color: #000;
   margin: 0 0 0 40px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.header__share-story {
+  border: none;
+  background-color: #fff;
+  outline: none;
+  padding: 0 0 0;
+  margin: -10px 0 0 40px;
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
