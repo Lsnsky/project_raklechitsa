@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button class="button_search">Заполнить форму</button>
+    <button @click="$emit('shareClick')" class="button_search">
+      Заполнить форму
+    </button>
   </div>
 </template>
 

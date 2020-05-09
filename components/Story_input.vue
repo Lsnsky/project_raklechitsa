@@ -20,7 +20,7 @@
             историю после проверки. Пожалуйста, заполняйте все пункты корректно,
             если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
           </p>
-          <story-button class="button-search" />
+          <story-button @shareClick="$emit('shClick')" class="button-search" />
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <main-header @shareClick="popupClose()" />
-    <main-popup :popDisplay="popupDisplay" @closeClick="popupOpen()" />
-    <nuxt />
+    <main-header @shareClick="popupOpen()" />
+    <main-popup :popDisplay="popupDisplay" @closeClick="popupClose()" />
+    <nuxt @shareClick="popupOpen()" />
     <main-footer />
   </div>
 </template>
@@ -18,10 +18,10 @@ export default {
     'main-popup': Popup,
   },
   methods: {
-    popupOpen() {
+    popupClose() {
       this.popupDisplay = 'invisible';
     },
-    popupClose() {
+    popupOpen() {
       this.popupDisplay = 'visible';
     },
   },
