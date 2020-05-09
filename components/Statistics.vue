@@ -4,27 +4,31 @@
     <div class="cards__container">
       <card
         :title="cards[0].title"
-        :url="cards[0].image"
         :content="cards[0].content"
         :source="cards[0].source"
+        :value="cards[0].v"
+        :maxValue="cards[0].m"
       />
       <card
         :title="cards[1].title"
-        :url="cards[1].image"
         :content="cards[1].content"
         :source="cards[1].source"
+        :value="cards[1].v"
+        :maxValue="cards[1].m"
       />
       <card
         :title="cards[2].title"
-        :url="cards[2].image"
         :content="cards[2].content"
         :source="cards[2].source"
+        :value="cards[2].v"
+        :maxValue="cards[2].m"
       />
       <card
         :title="cards[3].title"
-        :url="cards[3].image"
         :content="cards[3].content"
         :source="cards[3].source"
+        :value="cards[3].v"
+        :maxValue="cards[3].m"
       />
     </div>
   </section>
@@ -46,6 +50,8 @@ export default {
           image: '/images/__item-6.jpg',
           content: '1 из 3',
           source: 'Левада-Центр 2018',
+          v: 1,
+          m: 3,
         },
         {
           id: '2',
@@ -53,6 +59,8 @@ export default {
           image: '/images/__item-6.jpg',
           content: '3 700 000',
           source: 'Росстат 2018',
+          v: 2.6,
+          m: 100,
         },
         {
           id: '3',
@@ -61,6 +69,8 @@ export default {
           image: '/images/__item-6.jpg',
           content: '↑28%',
           source: 'МНИОИ Герцена 2018',
+          v: 1,
+          m: 3,
         },
         {
           id: '4',
@@ -69,6 +79,8 @@ export default {
           image: '/images/__item-6.jpg',
           content: '↓25%',
           source: 'МНИОИ Герцена 2018',
+          v: 1,
+          m: 3,
         },
       ],
     };

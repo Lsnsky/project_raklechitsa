@@ -1,7 +1,9 @@
 <template>
   <div class="card">
     <div class="card__title">{{ title }}</div>
-    <img class="card__image" :src="url" />
+    <div class="progress-bar">
+      <div class="progress-bar__fill" :style="style"></div>
+    </div>
     <div class="card__content">{{ content }}</div>
     <div class="card__source">{{ source }}</div>
   </div>
@@ -9,13 +11,36 @@
 
 <script>
 export default {
-  props: ['title', 'url', 'content', 'source'],
+  props: ['title', 'content', 'source', 'value', 'maxValue'],
+  computed: {
+    style() {
+      return `width: ${(this.value / this.maxValue) * 100}%;`;
+    },
+  },
 };
 </script>
 
 <style scoped>
-.card {
+.progress-bar {
   /* border: 1px solid red; */
+  position: relative;
+  width: 260px;
+  height: 40px;
+  background: #f4f4f4;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.progress-bar__fill {
+  /* border: 1px solid red; */
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #613a93;
+}
+
+.card {
+  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,7 +51,7 @@ export default {
   box-sizing: border-box;
 }
 .card__title {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -35,15 +60,15 @@ export default {
   color: #000000;
   margin: 20px 20px 0px;
 }
-.card__image {
-  /* border: 1px solid red; */
+/* .card__image {
+  border: 1px solid red;
   width: 260px;
   height: 40px;
   margin: auto;
   margin-bottom: 20px;
-}
+} */
 .card__content {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -54,7 +79,7 @@ export default {
   margin: 0px 20px 20px;
 }
 .card__source {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
