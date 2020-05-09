@@ -52,6 +52,7 @@ export default {
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .header__share-story:hover {

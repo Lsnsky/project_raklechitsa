@@ -197,6 +197,7 @@ export default {
   width: 226px;
   height: 52px;
   color: #fff;
+  cursor: pointer;
 }
 
 .popup__further:hover {
@@ -217,6 +218,7 @@ export default {
   text-align: center;
   width: 48px;
   height: 20px;
+  cursor: pointer;
 }
 
 .popup__back:hover {
