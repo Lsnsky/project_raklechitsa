@@ -27,7 +27,7 @@ export default {};
 .menu__navigation-link {
   text-decoration: none;
   color: #000;
-  margin: 0 0 0 40px;
+  margin: 0 0 0 34px;
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
@@ -44,5 +44,18 @@ export default {};
 
 .menu__navigation-link_type_active {
   border-bottom: solid #000 1px;
+}
+
+@media screen and (max-width: 1280px) {
+  .menu__navigation-link {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .menu__navigation-link {
+    margin: 0 0 0 24.6px;
+  }
 }
 </style>

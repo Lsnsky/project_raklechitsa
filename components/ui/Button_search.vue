@@ -29,9 +29,6 @@ export default {
   border: none;
   cursor: pointer;
   transition: all linear 0.1s;
-}
-
-.button_search:hover {
-  opacity: 0.9;
+  outline: none;
 }
 </style>

@@ -4,7 +4,7 @@
     <main-video />
     <histories />
     <photos />
-    <story-input @shClick="$emit('shareClick')" />
+    <story-input />
     <statistics />
     <cover-about />
   </main>
