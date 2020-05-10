@@ -37,7 +37,8 @@ export default {
 
 <style scoped>
 .footer {
-  max-width: 1320px;
+  max-width: 1440px;
+  padding: 0 60px;
   margin: 60px auto;
   display: flex;
   justify-content: flex-start;
@@ -104,5 +105,96 @@ export default {
 
 .footer__share:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 1280px) {
+  .footer {
+    padding: 0;
+    margin: 50px;
+    height: 216px;
+  }
+
+  .footer__title {
+    font-size: 28px;
+    line-height: 32px;
+    max-width: 305px;
+  }
+
+  .footer__copyright {
+    font-size: 16px;
+    line-height: 18px;
+    margin: auto 0 -1px;
+  }
+
+  .footer__we-in {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .footer__share {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .footer__menu {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    height: 192px;
+  }
+
+  .footer__title {
+    font-size: 24px;
+    line-height: 28px;
+    max-width: 288px;
+  }
+
+  .footer__we-in {
+    text-align: right;
+  }
+
+  .footer__share {
+    margin: 31px 0 0 98px;
+  }
+
+  .footer__menu {
+    margin-left: 30px;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .menu /deep/ {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer__menu /deep/ .menu__navigation-link {
+    margin: 0;
+  }
+
+  .footer__menu /deep/ .menu__navigation-link:last-child {
+    margin-top: 14px;
+  }
+}
+
+@media screen and (max-width: 805px) {
+  .footer__title {
+    max-width: 268px;
+  }
+
+  .footer__we-in {
+    margin: 0 -2px 0 59px;
+  }
+
+  .footer__share {
+    margin: 17px 0 0 98px;
+  }
+
+  .footer__menu {
+    margin-right: -30px;
+  }
 }
 </style>

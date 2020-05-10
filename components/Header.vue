@@ -68,7 +68,8 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .header {
-    padding: 0 50px;
+    padding: 0;
+    margin: 18px 50px;
   }
 
   .header__title {
@@ -94,7 +95,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 795px) {
   .header__wrapper {
     display: none;
   }
