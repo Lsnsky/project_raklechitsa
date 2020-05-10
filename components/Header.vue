@@ -1,8 +1,9 @@
 <template>
-  <header class="header">
+  <header @ class="header">
     <h3 class="header__title">
       Проект Благотворительного Фонда Константина Хабенского
     </h3>
+    <button class="header__hider"></button>
     <div class="header__wrapper">
       <main-menu />
       <button class="header__share-story" @click="$emit('shareClick')">
@@ -24,12 +25,15 @@ export default {
 
 <style scoped>
 .header {
-  max-width: 1320px;
+  max-width: 1440px;
+  padding: 0 4.2%;
   margin: 18px auto;
   display: flex;
   justify-content: space-between;
 }
-
+.header__hider {
+  display: none;
+}
 .header__title {
   font-weight: 600;
   font-size: 16px;
@@ -40,7 +44,7 @@ export default {
 
 .header__wrapper {
   display: flex;
-  margin: 8px 0 0;
+  margin: 9px 13px 0 0;
 }
 
 .header__share-story {
@@ -48,15 +52,66 @@ export default {
   background-color: #fff;
   outline: none;
   padding: 0 0 0;
-  margin: -10px 0 0 40px;
+  margin: -8px 0 0 40px;
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
+  text-align: right;
+  color: #121212;
   cursor: pointer;
   transition: all linear 0.1s;
 }
 
 .header__share-story:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 1280px) {
+  .header {
+    padding: 0 50px;
+  }
+
+  .header__title {
+    line-height: 18px;
+  }
+  .header__wrapper {
+    margin: 6px 11px 0 0;
+  }
+  .header__share-story {
+    margin: -5px 0 0 42px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .header__wrapper {
+    margin: 6px 11px 0 0;
+  }
+
+  .header__share-story {
+    margin: -5px 0 0 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header__wrapper {
+    display: none;
+  }
+
+  .header__hider {
+    margin: 4.5px 1px 0 0;
+    padding: 0;
+    height: 27px;
+    width: 32px;
+    display: block;
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='27' viewBox='0 0 32 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline y1='25.5' x2='32' y2='25.5' stroke='black' stroke-width='3'/%3E%3Cline y1='13.5' x2='32' y2='13.5' stroke='black' stroke-width='3'/%3E%3Cline y1='1.5' x2='32' y2='1.5' stroke='black' stroke-width='3'/%3E%3C/svg%3E ");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: #fff;
+    outline: none;
+  }
 }
 </style>

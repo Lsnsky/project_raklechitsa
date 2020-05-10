@@ -1,12 +1,12 @@
 <template>
   <main>
-    <cover />
+    <!-- <cover />
     <main-video />
     <histories />
     <photos />
-    <story-input @shClick="$emit('shareClick')" />
+    <story-input />
     <statistics />
-    <cover-about />
+    <cover-about />-->
   </main>
 </template>
 

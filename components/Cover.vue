@@ -21,7 +21,7 @@ export default {
   max-width: 1440px;
   height: 689px;
   background-color: #613a93;
-  margin: 60px auto;
+  margin: 0 auto 60px;
   display: flex;
   flex-direction: column;
 }
