@@ -15,7 +15,19 @@
       </div>
     </div>
     <div class="video__wrapper">
-      <video-frame class="video__frame" />
+      <button-switch
+        class="video__small-button video__small-button_position_left"
+        :position="'left'"
+        :type="'unactive'"
+      />
+      <button-switch
+        class="video__small-button video__small-button_position_right"
+        :position="'right'"
+        :type="'active'"
+      />
+      <div class="video__frame">
+        <video-frame />
+      </div>
       <p class="video__more">
         Все видео вы можете найте на нашем
         <a
@@ -41,10 +53,15 @@ export default {
 
 <style scoped>
 .video {
-  max-width: 1320px;
+  max-width: 1440px;
   margin: 0 auto 74px;
+  padding: 0 60px;
   display: flex;
   justify-content: space-between;
+}
+
+.video__small-button {
+  display: none;
 }
 
 .video__title {
@@ -64,10 +81,14 @@ export default {
   margin: 0;
 }
 
-.video__iframe {
+.video__frame {
+  position: relative;
   border: none;
-  width: 867px;
-  height: 450px;
+  width: 100%;
+  padding-top: 51.9%;
+
+  /*width: 867px;
+  height: 450px;*/
 }
 
 .video__more {
@@ -82,6 +103,10 @@ export default {
   flex-direction: column;
 }
 
+.video__wrapper:last-child {
+  width: 65.683%;
+}
+
 .video__link {
   color: inherit;
 }
@@ -91,5 +116,97 @@ export default {
   background: #fbfbfb;
   max-width: 80px;
   display: flex;
+}
+
+@media screen and (max-width: 1280px) {
+  .video {
+    padding: 0 50px;
+  }
+
+  .video__title {
+    font-size: 28px;
+    line-height: 32px;
+    max-width: 367px;
+    margin: 10px 0 30px;
+  }
+  .video__subtitle {
+    font-size: 16px;
+    line-height: 20px;
+    max-width: 305px;
+  }
+  .video__wrapper:last-child {
+    width: 65.483%;
+  }
+  .video__frame {
+    padding-top: 51.75%;
+  }
+  .video__more {
+    margin: 11px 0 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .video__title {
+    font-size: 24px;
+    line-height: 28px;
+    max-width: 288px;
+    margin: 10px 0 20px;
+  }
+  .video__subtitle {
+    font-size: 13px;
+    line-height: 16px;
+    max-width: 260px;
+  }
+  .video__wrapper:last-child {
+    width: 65.583%;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .video {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video__title {
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    max-width: 380px;
+    margin: 10px 0 26px;
+  }
+
+  .video__subtitle {
+    max-width: 385px;
+    margin: 0 0 60px;
+  }
+
+  .video__buttons {
+    display: none;
+  }
+
+  .video__small-button {
+    display: block;
+    position: absolute;
+    background-color: #fbfbfb;
+  }
+
+  .video__small-button_position_left {
+    left: -54px;
+    top: 130px;
+  }
+
+  .video__small-button_position_right {
+    right: -54px;
+    top: 130px;
+  }
+
+  .video__wrapper:last-child {
+    position: relative;
+    width: 86.8%;
+  }
+  .video__more {
+    margin: 18px 0 0;
+  }
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <main>
-    <!-- <cover />
+    <cover />
     <main-video />
     <histories />
     <photos />
     <story-input />
     <statistics />
-    <cover-about />-->
+    <cover-about />
   </main>
 </template>
 
