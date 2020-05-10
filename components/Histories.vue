@@ -5,45 +5,12 @@
     </h2>
     <div class="cards-history__container">
       <cardhistory
-        :url="cards_histories[0].history_photo"
-        :history_title="cards_histories[0].history_title"
-        :history_text="cards_histories[0].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[1].history_photo"
-        :history_title="cards_histories[1].history_title"
-        :history_text="cards_histories[1].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[2].history_photo"
-        :history_title="cards_histories[2].history_title"
-        :history_text="cards_histories[2].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[3].history_photo"
-        :history_title="cards_histories[3].history_title"
-        :history_text="cards_histories[3].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[4].history_photo"
-        :history_title="cards_histories[4].history_title"
-        :history_text="cards_histories[4].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[5].history_photo"
-        :history_title="cards_histories[5].history_title"
-        :history_text="cards_histories[5].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[6].history_photo"
-        :history_title="cards_histories[6].history_title"
-        :history_text="cards_histories[6].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[7].history_photo"
-        :history_title="cards_histories[7].history_title"
-        :history_text="cards_histories[7].history_text"
-      />
+        v-for="card in cards_histories"
+        :key="card.id"
+        :url="card.history_photo"
+        :history_title="card.history_title"
+        :history_text="card.history_text"
+      ></cardhistory>
     </div>
     <btnhistory />
   </section>
@@ -125,6 +92,7 @@ export default {
 
 <style scoped>
 .cards-history__container {
+  /* border: 1px solid red; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(265px, 300px));
   grid-template-rows: repeat(2, 1fr);
@@ -134,11 +102,13 @@ export default {
   margin: 0 auto;
 }
 .cards-history {
+  /* border: 1px solid red; */
   padding-bottom: 30px;
   width: 1320px;
   margin: 0 auto;
 }
 .section-title {
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -146,7 +116,49 @@ export default {
   line-height: 36px;
 }
 .cards-history__section-title {
+  /* border: 1px solid red; */
   width: 413px;
   margin-bottom: 70px;
 }
 </style>
+
+<!-- <cardhistory
+        :url="cards_histories[0].history_photo"
+        :history_title="cards_histories[0].history_title"
+        :history_text="cards_histories[0].history_text"
+      />
+      <cardhistory
+        :url="cards_histories[1].history_photo"
+        :history_title="cards_histories[1].history_title"
+        :history_text="cards_histories[1].history_text"
+      />
+      <cardhistory
+        :url="cards_histories[2].history_photo"
+        :history_title="cards_histories[2].history_title"
+        :history_text="cards_histories[2].history_text"
+      />
+      <cardhistory
+        :url="cards_histories[3].history_photo"
+        :history_title="cards_histories[3].history_title"
+        :history_text="cards_histories[3].history_text"
+      />
+      <cardhistory
+        :url="cards_histories[4].history_photo"
+        :history_title="cards_histories[4].history_title"
+        :history_text="cards_histories[4].history_text"
+      />
+      <cardhistory
+        :url="cards_histories[5].history_photo"
+        :history_title="cards_histories[5].history_title"
+        :history_text="cards_histories[5].history_text"
+      />
+      <cardhistory
+        :url="cards_histories[6].history_photo"
+        :history_title="cards_histories[6].history_title"
+        :history_text="cards_histories[6].history_text"
+      />
+      <cardhistory
+        :url="cards_histories[7].history_photo"
+        :history_title="cards_histories[7].history_title"
+        :history_text="cards_histories[7].history_text"
+      /> -->

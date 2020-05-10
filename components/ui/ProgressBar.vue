@@ -18,7 +18,7 @@ export default {
 <style scoped>
 .progress-bar {
   /* border: 1px solid red; */
-  position: relative;
+  /* position: relative; */
   width: 260px;
   height: 40px;
   background: #f4f4f4;
@@ -27,9 +27,9 @@ export default {
 }
 .progress-bar__fill {
   /* border: 1px solid red; */
-  position: absolute;
-  left: 0;
-  top: 0;
+  /* position: absolute; */
+  /* left: 0;
+  top: 0; */
   height: 100%;
   background: #613a93;
 }
