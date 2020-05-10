@@ -31,6 +31,7 @@ export default {};
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
+  transition: all linear 0.1s;
 }
 
 .menu__navigation-link:hover {

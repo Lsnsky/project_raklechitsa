@@ -1,7 +1,7 @@
 <template>
   <div>
-    <main-header @shareClick="popupClose()" />
-    <main-popup :popDisplay="popupDisplay" @closeClick="popupOpen()" />
+    <main-header @shareClick="popupOpen()" />
+    <main-popup :popDisplay="popupDisplay" @closeClick="popupClose()" />
     <nuxt />
     <main-footer />
   </div>
@@ -18,12 +18,20 @@ export default {
     'main-popup': Popup,
   },
   methods: {
-    popupOpen() {
+    popupClose() {
       this.popupDisplay = 'invisible';
     },
-    popupClose() {
+    popupOpen() {
       this.popupDisplay = 'visible';
     },
+  },
+  created() {
+    this.$root.$on(
+      'shClick',
+      function() {
+        this.popupOpen();
+      }.bind(this)
+    ); // не забыть про .bind(this), иначе произойдет потеря контекста
   },
   data() {
     return {

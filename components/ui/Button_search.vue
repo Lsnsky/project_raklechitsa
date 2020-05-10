@@ -1,11 +1,19 @@
 <template>
   <div>
-    <button class="button_search">Заполнить форму</button>
+    <button @click="some()" class="button_search">
+      Заполнить форму
+    </button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    some() {
+      this.$root.$emit('shClick');
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -19,5 +27,11 @@ export default {};
   font-size: 16px;
   line-height: 19px;
   border: none;
+  cursor: pointer;
+  transition: all linear 0.1s;
+}
+
+.button_search:hover {
+  opacity: 0.9;
 }
 </style>

@@ -198,6 +198,7 @@ export default {
   height: 52px;
   color: #fff;
   cursor: pointer;
+  transition: all linear 0.1s;
 }
 
 .popup__further:hover {
@@ -219,6 +220,7 @@ export default {
   width: 48px;
   height: 20px;
   cursor: pointer;
+  transition: all linear 0.1s;
 }
 
 .popup__back:hover {
@@ -244,6 +246,7 @@ export default {
   left: 0;
   border-bottom: 1px solid #eee;
   max-height: 200px;
+  max-width: 840px;
 }
 
 .popup__mainquestion {
@@ -290,6 +293,7 @@ export default {
   position: absolute;
   top: 36px;
   right: 36px;
+  cursor: pointer;
 }
 
 .popup__title {
