@@ -1,6 +1,8 @@
 <template>
   <div>
-    <a class="cards-history-link" href="#">Больше статей</a>
+    <nuxt-link to="/stories" class="cards-history-link" href="#"
+      >Больше статей</nuxt-link
+    >
   </div>
 </template>
 

@@ -14,16 +14,19 @@ export default {
 
 <style scoped>
 .card-history {
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
 }
 
 .card-history__photo {
+  /* border: 1px solid red; */
   min-width: 300px;
   min-height: 300px;
 }
 
 .card-history__title {
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -34,6 +37,7 @@ export default {
 }
 
 .card-history__text {
+  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
