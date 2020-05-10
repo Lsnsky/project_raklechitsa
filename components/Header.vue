@@ -53,6 +53,7 @@ export default {
   font-size: 18px;
   line-height: 24px;
   cursor: pointer;
+  transition: all linear 0.1s;
 }
 
 .header__share-story:hover {

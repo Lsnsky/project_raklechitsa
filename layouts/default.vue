@@ -2,7 +2,7 @@
   <div>
     <main-header @shareClick="popupOpen()" />
     <main-popup :popDisplay="popupDisplay" @closeClick="popupClose()" />
-    <nuxt @shareClick="popupOpen()" />
+    <nuxt />
     <main-footer />
   </div>
 </template>
@@ -24,6 +24,14 @@ export default {
     popupOpen() {
       this.popupDisplay = 'visible';
     },
+  },
+  created() {
+    this.$root.$on(
+      'shClick',
+      function() {
+        this.popupOpen();
+      }.bind(this)
+    ); // не забыть про .bind(this), иначе произойдет потеря контекста
   },
   data() {
     return {
