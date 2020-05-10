@@ -10,7 +10,7 @@
         :url="card.history_photo"
         :history_title="card.history_title"
         :history_text="card.history_text"
-      />
+      ></cardhistory>
     </div>
     <btnhistory />
   </section>
