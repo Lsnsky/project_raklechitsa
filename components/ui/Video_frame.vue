@@ -1,7 +1,7 @@
 <template>
   <iframe
     class="video__iframe"
-    src="https://www.youtube.com/embed/coOppM34GtI"
+    :src="url"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen
   >
@@ -9,7 +9,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['url'],
+};
 </script>
 
 <style scoped>
