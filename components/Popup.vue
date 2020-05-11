@@ -78,7 +78,7 @@ export default {
     close() {
       this.$emit('closeClick');
       setTimeout(() => {
-        ithis.id = 0;
+        this.id = 0;
       }, 100);
     },
   },
