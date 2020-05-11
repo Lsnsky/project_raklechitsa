@@ -28,7 +28,7 @@
       </button>
       <p v-if="this.id === 11" class="popup__politica">
         Нажимая на кнопку «отправить», вы даете согласие на
-        <nuxt-link to="/politics" class="popup__link" target="_blank"
+        <nuxt-link to="/policy" class="popup__link" target="_blank"
           >обработку персональных данных</nuxt-link
         >
       </p>
