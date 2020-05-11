@@ -38,11 +38,12 @@ export default {
 <style scoped>
 .footer {
   max-width: 1440px;
-  padding: 0 60px;
-  margin: 60px auto;
+  padding: 60px 60px;
+  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
   height: 236px;
+  background: #fbfbfb;
 }
 
 .footer__title {

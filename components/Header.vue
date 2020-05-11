@@ -26,10 +26,11 @@ export default {
 <style scoped>
 .header {
   max-width: 1440px;
-  padding: 0 4.2%;
-  margin: 18px auto;
+  padding: 18px 4.2%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #e8e8e8;
 }
 .header__hider {
   display: none;
