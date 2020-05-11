@@ -2,7 +2,7 @@
   <main>
     <cover />
     <main-video />
-    <histories />
+    <stories />
     <photos />
     <story-input />
     <statistics />
@@ -12,7 +12,7 @@
 
 <script>
 import Video from '@/components/Video';
-import Histories from '@/components/Histories';
+import Stories from '@/components/Stories';
 import Statistics from '@/components/Statistics';
 import Photos from '@/components/Photos';
 import Cover from '@/components/Cover';
@@ -24,7 +24,7 @@ export default {
     statistics: Statistics,
     photos: Photos,
     'main-video': Video,
-    histories: Histories,
+    stories: Stories,
     cover: Cover,
     'cover-about': Cover_about,
     'story-input': Story_input,

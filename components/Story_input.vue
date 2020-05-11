@@ -11,14 +11,20 @@
       </div>
       <div class="content__columns">
         <div class="content__columns_descriotion">
-          <p class="content__columns_brief">1-й вариант</p>
-          <p class="content__columns_paragraph">2-й вариант</p>
+          <p @click="clickOn" class="content__columns_brief">1-й вариант</p>
+          <p @click="clickOff" class="content__columns_paragraph">
+            2-й вариант
+          </p>
         </div>
         <div class="content__columns_main-text">
-          <p class="content__columns_text">
+          <p v-if="defaultStatus" class="content__columns_text">
             Заполнить подробную форму прямо на сайте и мы опубликуем вашу
             историю после проверки. Пожалуйста, заполняйте все пункты корректно,
             если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
+          </p>
+          <p v-else-if="toogle" class="content__columns_text-2">
+            Оставить контакт (почту или номер телефона) и мы свяжемся с вами,
+            зададим вопросы, уточним детали вашей истории.
           </p>
           <story-button class="button-search" />
         </div>
@@ -33,6 +39,22 @@ import Button_search from '@/components/ui/Button_search';
 export default {
   components: {
     'story-button': Button_search,
+  },
+  methods: {
+    clickOn() {
+      this.defaultStatus = true;
+      this.toogle = false;
+    },
+    clickOff() {
+      this.defaultStatus = false;
+      this.toogle = true;
+    },
+  },
+  data() {
+    return {
+      defaultStatus: true,
+      toogle: false,
+    };
   },
 };
 </script>
@@ -96,7 +118,9 @@ export default {
   color: #000000;
   margin-top: 0;
   margin-bottom: 10px;
+  cursor: pointer;
 }
+
 .content__columns_paragraph {
   width: 108px;
   font-style: normal;
@@ -105,6 +129,7 @@ export default {
   line-height: 22px;
   margin-top: 0;
   color: #a2a2a2;
+  cursor: pointer;
 }
 .content__columns_main-text {
   max-width: 655px;
@@ -117,6 +142,9 @@ export default {
   margin-left: 40px;
 }
 .content__columns_text {
+  margin-top: 0;
+}
+.content__columns_text-2 {
   margin-top: 0;
 }
 .button-search {
