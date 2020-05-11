@@ -21,7 +21,7 @@ export default {
   max-width: 1440px;
   height: 689px;
   background-color: #613a93;
-  margin: 0 auto 60px;
+  margin: 60px auto;
   display: flex;
   flex-direction: column;
 }
@@ -40,5 +40,32 @@ export default {
   margin-bottom: 40px;
   margin-right: auto;
   margin-left: auto;
+}
+@media screen and (max-width: 1280px) {
+  .cover {
+    max-width: 100%;
+    height: 620px;
+  }
+  .cover__title {
+    font-size: 78px;
+    line-height: 94px;
+    margin-top: 263px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .cover {
+    height: 540px;
+  }
+  .cover__title {
+    margin-top: 223px;
+  }
+}
+@media screen and (max-width: 899px) {
+  .cover {
+    height: 780px;
+  }
+  .cover__title {
+    margin-top: 351px;
+  }
 }
 </style>
