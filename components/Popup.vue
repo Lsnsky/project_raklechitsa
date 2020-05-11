@@ -1,12 +1,17 @@
 <template>
   <div :class="`popup popup_display_${popDisplay}`">
     <form class="popoup__container" @submit.prevent="nextScreen()">
-      <h2 class="popup__title">Шаг {{ id + 1 }} из 12</h2>
-      <p class="popup__question">
-        <span class="popup__mainquestion">{{ questions[id].mainQest }} </span
+      <h2 v-if="this.id <= 11" class="popup__title">Шаг {{ id + 1 }} из 12</h2>
+      <h2 v-if="this.id === 12" class="popup__title popup__title_step_last">
+        Спасибо что приняли участие!
+      </h2>
+      <p v-if="this.id <= 11" class="popup__question">
+        <span v-if="this.id <= 11" class="popup__mainquestion"
+          >{{ questions[id].mainQest }} </span
         >{{ questions[id].qest }}
       </p>
       <textarea
+        v-if="this.id <= 11"
         autofocus
         class="popup__input"
         placeholder="Напишите тут"
@@ -14,17 +19,27 @@
         required
       >
       </textarea>
-      <button type="button" class="popup__back" @click="before()">Назад</button>
+      <button
+        v-if="this.id <= 11"
+        type="button"
+        class="popup__back"
+        @click="before()"
+      >
+        Назад
+      </button>
       <button v-if="this.id < 11" type="submit" class="popup__further">
         Далее
       </button>
-      <button
-        v-if="this.id === 11"
-        type="submit"
-        class="popup__further"
-        @click="$emit('closeClick')"
-      >
+      <button v-if="this.id === 11" type="submit" class="popup__further">
         Отправить
+      </button>
+      <button
+        v-if="this.id === 12"
+        type="submit"
+        class="popup__further popup__further_step_last"
+        @click="close"
+      >
+        Закрыть
       </button>
       <p v-if="this.id === 11" class="popup__politica">
         Нажимая на кнопку «отправить», вы даете согласие на
@@ -33,6 +48,7 @@
         >
       </p>
       <button
+        v-if="this.id <= 11"
         type="button"
         class="popup__close"
         @click="$emit('closeClick')"
@@ -54,10 +70,16 @@ export default {
       if (this.id === 11) {
         console.log(this.answers);
         //Впоследствии тут произойдет отправка данных на сервер
-        this.id = 0;
+        this.id++;
       } else {
         this.id++;
       }
+    },
+    close() {
+      this.$emit('closeClick');
+      setTimeout(() => {
+        ithis.id = 0;
+      }, 100);
     },
   },
   data() {
@@ -205,6 +227,10 @@ export default {
   opacity: 0.9;
 }
 
+.popup__further_step_last {
+  left: 347px;
+}
+
 .popup__back {
   border: none;
   background-color: #fff;
@@ -301,5 +327,9 @@ export default {
   font-size: 32px;
   line-height: 36px;
   margin: 40px 0 0 40px;
+}
+
+.popup__title_step_last {
+  text-align: center;
 }
 </style>
