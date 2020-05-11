@@ -22,12 +22,14 @@
       <button-switch
         class="video__small-button video__small-button_position_left"
         :position="'left'"
-        :type="'unactive'"
+        :type="lActive"
+        @buttonClick="back"
       />
       <button-switch
         class="video__small-button video__small-button_position_right"
         :position="'right'"
-        :type="'active'"
+        :type="rActive"
+        @buttonClick="further"
       />
       <div class="video__frame">
         <video-frame :url="links[id].url" />

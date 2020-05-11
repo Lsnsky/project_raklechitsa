@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @keydown.esc="popupClose()">
     <main-header @shareClick="popupOpen()" />
     <main-popup :popDisplay="popupDisplay" @closeClick="popupClose()" />
     <nuxt />
@@ -31,7 +31,7 @@ export default {
       function() {
         this.popupOpen();
       }.bind(this)
-    ); // не забыть про .bind(this), иначе произойдет потеря контекста
+    );
   },
   data() {
     return {
