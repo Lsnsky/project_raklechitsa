@@ -4,25 +4,25 @@
       Истории неизлечимых привычек
     </h2>
     <div class="cards-history__container">
-      <cardhistory
+      <card-story
         v-for="card in cards_histories"
         :key="card.id"
         :url="card.history_photo"
         :history_title="card.history_title"
         :history_text="card.history_text"
-      ></cardhistory>
+      ></card-story>
     </div>
     <btnhistory />
   </section>
 </template>
 
 <script>
-import Card_history from '@/components/ui/Card_history';
+import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
 
 export default {
   components: {
-    cardhistory: Card_history,
+    'card-story': CardStory,
     btnhistory: Button_history,
   },
   data() {

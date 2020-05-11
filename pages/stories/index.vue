@@ -1,9 +1,16 @@
 <template>
-  <div></div>
+  <section>
+    <stories-all />
+  </section>
 </template>
 
 <script>
-export default {};
+import StoriesAll from '@/components/StoriesAll';
+export default {
+  components: {
+    'stories-all': StoriesAll,
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>
