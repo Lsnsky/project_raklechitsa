@@ -177,6 +177,115 @@ export default {
 .button-search {
   margin-top: 78px;
 }
+
+@media screen and (max-width: 1280px) {
+  .story-input {
+    max-width: 100%;
+    height: 626px;
+  }
+  .content {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .content__about_title {
+    width: 367px;
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 30px;
+    margin-right: 49px;
+  }
+  .content__about_paragraph {
+    margin-top: 0;
+    max-width: 305px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .content__columns_main-text {
+    max-width: 570px;
+  }
+}
+@media screen and (max-width: 1184px) {
+  .story-input {
+    height: 571px;
+  }
+  .content__about_title {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 30px;
+    margin-right: 49px;
+    width: 288px;
+  }
+  .content__about_paragraph {
+    max-width: 260px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+  .content__columns_main-text {
+    max-width: 447px;
+    font-size: 15px;
+    line-height: 19px;
+    margin-left: 30px;
+  }
+  .content__columns_brief {
+    font-size: 15px;
+    line-height: 19px;
+    width: 89px;
+  }
+  .content__columns_paragraph {
+    font-size: 15px;
+    line-height: 19px;
+    width: 90px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .story-input {
+    width: 100%;
+    height: 660px;
+  }
+  .content__columns {
+    flex-direction: column;
+    margin: 0 auto 0;
+  }
+  .content {
+    flex-direction: column;
+  }
+  .content__columns_brief {
+    margin: 0 0 30px;
+    margin-right: 30px;
+  }
+  .content__columns_paragraph {
+    margin: 0 0 33px;
+  }
+  .content__about_title {
+    width: 380px;
+
+    margin: 0 auto 26px;
+    text-align: center;
+  }
+  .content__about {
+    margin: 80px auto 80px;
+  }
+  .content__columns_descriotion {
+    flex-direction: row;
+  }
+  .content__columns_main-text {
+    max-width: 380px;
+    margin: 0 auto 0;
+  }
+  .content__about_paragraph {
+    max-width: 380px;
+    margin-bottom: 0;
+  }
+  .content__columns_text {
+    margin-bottom: 93px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .story-input {
+    width: 768px;
+  }
+
 .active {
   color: #000000;
 }
@@ -185,5 +294,6 @@ export default {
 }
 .buttonPosition {
   margin-top: 122px;
+
 }
 </style>
