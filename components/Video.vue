@@ -10,8 +10,12 @@
         их историями.
       </p>
       <div class="video__buttons">
-        <button-switch :position="'left'" :type="'unactive'" />
-        <button-switch :position="'right'" :type="'active'" />
+        <button-switch :position="'left'" :type="lActive" @buttonClick="back" />
+        <button-switch
+          :position="'right'"
+          :type="rActive"
+          @buttonClick="further"
+        />
       </div>
     </div>
     <div class="video__wrapper">
@@ -26,7 +30,7 @@
         :type="'active'"
       />
       <div class="video__frame">
-        <video-frame />
+        <video-frame :url="links[id].url" />
       </div>
       <p class="video__more">
         Все видео вы можете найте на нашем
@@ -44,9 +48,48 @@
 import Button_switch from '@/components/ui/Button_switch';
 import Video_frame from '@/components/ui/Video_frame';
 export default {
+  methods: {
+    back() {
+      if (this.id !== 0) {
+        this.id -= 1;
+        this.lActive = this.id === 0 ? 'unactive' : 'active';
+        this.rActive =
+          this.id === this.links.length - 1 ? 'unactive' : 'active';
+      }
+    },
+    further() {
+      if (this.id < this.links.length - 1) {
+        this.id += 1;
+        this.rActive =
+          this.id === this.links.length - 1 ? 'unactive' : 'active';
+        this.lActive = this.id === 0 ? 'unactive' : 'active';
+      }
+    },
+  },
   components: {
     'button-switch': Button_switch,
     'video-frame': Video_frame,
+  },
+  data() {
+    return {
+      lActive: 'unactive',
+      rActive: 'active',
+      id: 0,
+      links: [
+        {
+          id: 1,
+          url: 'https://www.youtube.com/embed/coOppM34GtI',
+        },
+        {
+          id: 2,
+          url: 'https://www.youtube.com/embed/FFrioIZ65q0',
+        },
+        {
+          id: 3,
+          url: 'https://www.youtube.com/embed/ZKWilQnPovg',
+        },
+      ],
+    };
   },
 };
 </script>
