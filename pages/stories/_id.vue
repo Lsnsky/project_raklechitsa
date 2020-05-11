@@ -1,9 +1,15 @@
 <template>
-  <div></div>
+  <story />
 </template>
 
 <script>
-export default {};
+import Story from '@/components/Story';
+
+export default {
+  components: {
+    story: Story,
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>
