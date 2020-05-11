@@ -106,7 +106,7 @@ export default {};
   margin: 0;
 }
 
-.story__span-accetn {
+.story__span-accent {
   font-weight: bold;
 }
 

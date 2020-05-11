@@ -10,9 +10,19 @@
         </p>
       </div>
       <div class="content__columns">
-        <div class="content__columns_descriotion">
-          <p @click="clickOn" class="content__columns_brief">1-й вариант</p>
-          <p @click="clickOff" class="content__columns_paragraph">
+        <div id="app" class="content__columns_descriotion">
+          <p
+            @click="clickOn"
+            class="content__columns_link-1"
+            :class="{ noActive: isNoActive }"
+          >
+            1-й вариант
+          </p>
+          <p
+            @click="clickOff"
+            class="content__columns_link-2"
+            :class="{ active: isActive }"
+          >
             2-й вариант
           </p>
         </div>
@@ -26,7 +36,10 @@
             Оставить контакт (почту или номер телефона) и мы свяжемся с вами,
             зададим вопросы, уточним детали вашей истории.
           </p>
-          <story-button class="button-search" />
+          <story-button
+            class="button-search"
+            :class="{ buttonPosition: isActive }"
+          />
         </div>
       </div>
     </div>
@@ -40,21 +53,27 @@ export default {
   components: {
     'story-button': Button_search,
   },
-  methods: {
-    clickOn() {
-      this.defaultStatus = true;
-      this.toogle = false;
-    },
-    clickOff() {
-      this.defaultStatus = false;
-      this.toogle = true;
-    },
-  },
   data() {
     return {
       defaultStatus: true,
       toogle: false,
+      isActive: false,
+      isNoActive: false,
     };
+  },
+  methods: {
+    clickOn() {
+      this.defaultStatus = true;
+      this.toogle = false;
+      this.isNoActive = false;
+      this.isActive = false;
+    },
+    clickOff() {
+      this.defaultStatus = false;
+      this.toogle = true;
+      this.isNoActive = true;
+      this.isActive = true;
+    },
   },
 };
 </script>
@@ -108,7 +127,7 @@ export default {
   margin-top: 204px;
   margin-left: 0;
 }
-.content__columns_brief {
+.content__columns_link-1 {
   width: 106px;
   height: 22px;
   font-style: normal;
@@ -119,9 +138,13 @@ export default {
   margin-top: 0;
   margin-bottom: 10px;
   cursor: pointer;
+  display: block;
+}
+.content__columns_link-1:hover {
+  opacity: 0.7;
 }
 
-.content__columns_paragraph {
+.content__columns_link-2 {
   width: 108px;
   font-style: normal;
   font-weight: normal;
@@ -131,6 +154,10 @@ export default {
   color: #a2a2a2;
   cursor: pointer;
 }
+.content__columns_link-2:hover {
+  opacity: 0.7;
+}
+
 .content__columns_main-text {
   max-width: 655px;
   height: 242px;
@@ -142,14 +169,15 @@ export default {
   margin-left: 40px;
 }
 .content__columns_text {
-  margin-top: 0;
+  margin: 0;
 }
 .content__columns_text-2 {
-  margin-top: 0;
+  margin: 0;
 }
 .button-search {
   margin-top: 78px;
 }
+
 @media screen and (max-width: 1280px) {
   .story-input {
     max-width: 100%;
@@ -257,5 +285,15 @@ export default {
   .story-input {
     width: 768px;
   }
+
+.active {
+  color: #000000;
+}
+.noActive {
+  color: #a2a2a2;
+}
+.buttonPosition {
+  margin-top: 122px;
+
 }
 </style>
