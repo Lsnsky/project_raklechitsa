@@ -20,29 +20,76 @@ export default {
 </script>
 
 <style scoped>
-.diagram {
-  /* border: 1px solid red; */
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
-  width: 260px;
-  height: 40px;
-  margin: auto;
-  margin-bottom: 20px;
+@media (min-width: 1281px) {
+  .diagram {
+    /* border: 1px solid red; */
+    width: 260px;
+    height: 40px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  .diagram__empty {
+    /* border: 1px solid red; */
+    width: 260px;
+    height: 20px;
+    background: #f4f4f4;
+    margin: auto;
+    margin-left: 0px;
+  }
+  .diagram__fill {
+    /* border: 1px solid red; */
+    width: 260px;
+    height: 20px;
+    background: #613a93;
+    margin-left: 0px;
+  }
 }
-.diagram__empty {
-  /* border: 1px solid red; */
-  width: 260px;
-  height: 20px;
-  background: #f4f4f4;
-  margin: auto;
-  margin-left: 0px;
+@media (max-width: 1280px) {
+  .diagram {
+    /* border: 1px solid red; */
+    width: 229px;
+    height: 36px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  .diagram__empty {
+    /* border: 1px solid red; */
+    width: 229px;
+    height: 18px;
+    background: #f4f4f4;
+    margin: auto;
+    margin-left: 0px;
+  }
+  .diagram__fill {
+    /* border: 1px solid red; */
+    width: 229px;
+    height: 18px;
+    background: #613a93;
+    margin-left: 0px;
+  }
 }
-.diagram__fill {
-  /* border: 1px solid red; */
-  width: 260px;
-  height: 20px;
-  background: #613a93;
-  margin-left: 0px;
+@media (max-width: 1024px) {
+  .diagram {
+    /* border: 1px solid red; */
+    width: 188px;
+    height: 28px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  .diagram__empty {
+    /* border: 1px solid red; */
+    width: 188px;
+    height: 14px;
+    background: #f4f4f4;
+    margin: auto;
+    margin-left: 0px;
+  }
+  .diagram__fill {
+    /* border: 1px solid red; */
+    width: 188px;
+    height: 14px;
+    background: #613a93;
+    margin-left: 0px;
+  }
 }
 </style>

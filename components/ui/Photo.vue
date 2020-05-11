@@ -11,8 +11,8 @@ export default {};
 <style scoped>
 .photo {
   /* border: 1px solid red; */
-  width: 195px;
-  height: 195px;
+  width: 100%;
+  height: 100%;
   background: #ededed;
   object-fit: cover;
 }

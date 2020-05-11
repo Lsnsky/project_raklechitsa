@@ -83,10 +83,10 @@ export default {
           image: '/images/__item-6.jpg',
           content: '↑28%',
           source: 'МНИОИ Герцена 2018',
-          valueEmpty: 160,
-          maxValueEmpty: 260,
-          valueFill: 208,
-          maxValueFill: 260,
+          valueEmpty: 61.5,
+          maxValueEmpty: 100,
+          valueFill: 80,
+          maxValueFill: 100,
         },
         {
           id: '4',
@@ -95,10 +95,10 @@ export default {
           image: '/images/__item-6.jpg',
           content: '↓25%',
           source: 'МНИОИ Герцена 2018',
-          valueEmpty: 190,
-          maxValueEmpty: 260,
-          valueFill: 142,
-          maxValueFill: 260,
+          valueEmpty: 73,
+          maxValueEmpty: 100,
+          valueFill: 54.6,
+          maxValueFill: 100,
         },
       ],
     };
@@ -107,40 +107,119 @@ export default {
 </script>
 
 <style scoped>
-.cards {
-  /* border: 1px solid red; */
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  max-width: 1320px;
-  margin: 0 auto 100px;
+@media (min-width: 1281px) {
+  .cards {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 1320px;
+    margin: 0 auto 100px;
+  }
+  .cards__title {
+    /* border: 1px solid red; */
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 36px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 70px;
+    max-width: 413px;
+  }
+  .cards__container {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .card {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 300px;
+    height: 300px;
+    background: #ffffff;
+    border: 1px solid #efefef;
+    box-sizing: border-box;
+  }
 }
-.cards__title {
-  /* border: 1px solid red; */
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
-  margin-left: 0px;
-  margin-top: 0px;
-  margin-bottom: 70px;
-  max-width: 413px;
+
+@media (max-width: 1280px) {
+  .cards {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 1180px;
+    margin: 0 auto 100px;
+  }
+  .cards__title {
+    /* border: 1px solid red; */
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 32px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 70px;
+    max-width: 367px;
+  }
+  .cards__container {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .card {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 265px;
+    height: 265px;
+    background: #ffffff;
+    border: 1px solid #efefef;
+    box-sizing: border-box;
+  }
 }
-.cards__container {
-  /* border: 1px solid red; */
-  display: flex;
-  justify-content: space-between;
-}
-.card {
-  /* border: 1px solid red; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 300px;
-  height: 300px;
-  background: #ffffff;
-  border: 1px solid #efefef;
-  box-sizing: border-box;
+@media (max-width: 1024px) {
+  .cards {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 922px;
+    margin: 0 auto 100px;
+  }
+  .cards__title {
+    /* border: 1px solid red; */
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 36px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 70px;
+    max-width: 367px;
+  }
+  .cards__container {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .card {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 265px;
+    height: 265px;
+    background: #ffffff;
+    border: 1px solid #efefef;
+    box-sizing: border-box;
+  }
 }
 </style>
