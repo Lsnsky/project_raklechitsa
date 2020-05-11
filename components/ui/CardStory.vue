@@ -29,8 +29,9 @@ export default {
 
 .card-history__photo {
   /* border: 1px solid red; */
-  min-width: 300px;
-  min-height: 300px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card-history__title {
