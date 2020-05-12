@@ -98,7 +98,7 @@ export default {
 
 <style scoped>
 .video {
-  max-width: 1440px;
+  max-width: 1320px;
   margin: 0 auto 74px;
   padding: 0 60px;
   display: flex;
