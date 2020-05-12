@@ -4,7 +4,7 @@
       <div class="card-story__panel_text">И В ОТЛИЧИЕ ОТ РАКА,</div>
       <div class="card-story__panel_hashtag">#ЭТОНЕЛЕЧИТСЯ</div>
     </panel>
-    <h2 class="section-title cards-story__section-title">
+    <h2 class="cards-story__title">
       Истории неизлечимых привычек
     </h2>
     <div class="cards-story__container">
@@ -97,36 +97,13 @@ export default {
 
 <style scoped>
 @media (min-width: 1281px) {
-  .cards-story__container {
-    /* border: 1px solid red; */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(265px, 300px));
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 40px;
-    justify-content: center;
-    grid-auto-flow: dense;
-    margin: 0 auto;
-  }
   .cards-story {
     /* border: 1px solid red; */
     padding-bottom: 30px;
     max-width: 1320px;
     margin: 0 auto;
   }
-  .section-title {
-    /* border: 1px solid red; */
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 36px;
-    margin-top: 100px;
-  }
-  .cards-story__section-title {
-    /* border: 1px solid red; */
-    width: 413px;
-    margin-bottom: 70px;
-  }
+
   .card-story__panel {
     /* border: 1px solid red; */
     max-width: 1320px;
@@ -159,6 +136,29 @@ export default {
     text-align: center;
     color: #ffffff;
   }
+}
+.cards-story__title {
+  /* border: 1px solid red; */
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+  margin-top: 100px;
+  max-width: 413px;
+  margin-bottom: 70px;
+}
+
+.cards-story__container {
+  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 300px));
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 70px;
+  justify-content: center;
+  grid-auto-flow: dense;
+  margin: 0 auto;
 }
 @media (max-width: 1280px) {
   .cards-story__container {
