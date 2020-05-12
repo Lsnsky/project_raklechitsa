@@ -286,14 +286,14 @@ export default {
     width: 768px;
   }
 
-.active {
-  color: #000000;
-}
-.noActive {
-  color: #a2a2a2;
-}
-.buttonPosition {
-  margin-top: 122px;
-
+  .active {
+    color: #000000;
+  }
+  .noActive {
+    color: #a2a2a2;
+  }
+  .buttonPosition {
+    margin-top: 122px;
+  }
 }
 </style>
