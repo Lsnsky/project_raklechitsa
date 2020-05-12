@@ -1,13 +1,13 @@
 <template>
-  <section class="cards-history">
-    <panel class="card-history__panel">
-      <div class="card-history__panel_text">И В ОТЛИЧИЕ ОТ РАКА,</div>
-      <div class="card-history__panel_hashtag">#ЭТОНЕЛЕЧИТСЯ</div>
+  <section class="cards-story">
+    <panel class="card-story__panel">
+      <div class="card-story__panel_text">И В ОТЛИЧИЕ ОТ РАКА,</div>
+      <div class="card-story__panel_hashtag">#ЭТОНЕЛЕЧИТСЯ</div>
     </panel>
-    <h2 class="section-title cards-history__section-title">
+    <h2 class="section-title cards-story__section-title">
       Истории неизлечимых привычек
     </h2>
-    <div class="cards-history__container">
+    <div class="cards-story__container">
       <card-story
         v-for="card in cards_histories"
         :key="card.id"
@@ -97,7 +97,7 @@ export default {
 
 <style scoped>
 @media (min-width: 1281px) {
-  .cards-history__container {
+  .cards-story__container {
     /* border: 1px solid red; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(265px, 300px));
@@ -107,7 +107,7 @@ export default {
     grid-auto-flow: dense;
     margin: 0 auto;
   }
-  .cards-history {
+  .cards-story {
     /* border: 1px solid red; */
     padding-bottom: 30px;
     max-width: 1320px;
@@ -122,12 +122,12 @@ export default {
     line-height: 36px;
     margin-top: 100px;
   }
-  .cards-history__section-title {
+  .cards-story__section-title {
     /* border: 1px solid red; */
     width: 413px;
     margin-bottom: 70px;
   }
-  .card-history__panel {
+  .card-story__panel {
     /* border: 1px solid red; */
     max-width: 1320px;
     height: 129px;
@@ -135,7 +135,7 @@ export default {
     /* flex-direction: column; */
     justify-content: center;
   }
-  .card-history__panel_text {
+  .card-story__panel_text {
     /* border: 1px solid red; */
     font-family: Inter;
     font-style: normal;
@@ -148,7 +148,7 @@ export default {
     margin-right: 10px;
   }
 
-  .card-history__panel_hashtag {
+  .card-story__panel_hashtag {
     /* border: 1px solid red; */
     font-family: Inter;
     font-style: normal;
@@ -161,7 +161,7 @@ export default {
   }
 }
 @media (max-width: 1280px) {
-  .cards-history__container {
+  .cards-story__container {
     /* border: 1px solid red; */
     display: grid;
     grid-template-columns: repeat(4, minmax(265px, 1fr));
@@ -171,7 +171,7 @@ export default {
     grid-auto-flow: dense;
     margin: 0 auto;
   }
-  .cards-history {
+  .cards-story {
     /* border: 1px solid red; */
     padding-bottom: 30px;
     max-width: 1180px;
@@ -185,12 +185,12 @@ export default {
     font-size: 28px;
     line-height: 32px;
   }
-  .cards-history__section-title {
+  .cards-story__section-title {
     /* border: 1px solid red; */
     width: 413px;
     margin-bottom: 70px;
   }
-  .card-history__panel {
+  .card-story__panel {
     /* border: 1px solid red; */
     max-width: 1320px;
     height: 129px;
@@ -198,7 +198,7 @@ export default {
     /* flex-direction: column; */
     justify-content: center;
   }
-  .card-history__panel_text {
+  .card-story__panel_text {
     /* border: 1px solid red; */
     font-family: Inter;
     font-style: normal;
@@ -211,7 +211,7 @@ export default {
     margin-right: 10px;
   }
 
-  .card-history__panel_hashtag {
+  .card-story__panel_hashtag {
     /* border: 1px solid red; */
     font-family: Inter;
     font-style: normal;
@@ -224,7 +224,7 @@ export default {
   }
 }
 @media (max-width: 1024px) {
-  .cards-history__container {
+  .cards-story__container {
     /* border: 1px solid red; */
     display: grid;
     grid-template-columns: repeat(4, minmax(208px, 1fr));
@@ -234,7 +234,7 @@ export default {
     grid-auto-flow: dense;
     margin: 0 auto;
   }
-  .cards-history {
+  .cards-story {
     /* border: 1px solid red; */
     padding-bottom: 30px;
     max-width: 924px;
@@ -248,12 +248,12 @@ export default {
     font-size: 28px;
     line-height: 32px;
   }
-  .cards-history__section-title {
+  .cards-story__section-title {
     /* border: 1px solid red; */
     width: 413px;
     margin-bottom: 70px;
   }
-  .card-history__panel {
+  .card-story__panel {
     /* border: 1px solid red; */
     max-width: 1320px;
     height: 129px;
@@ -261,7 +261,7 @@ export default {
     /* flex-direction: column; */
     justify-content: center;
   }
-  .card-history__panel_text {
+  .card-story__panel_text {
     /* border: 1px solid red; */
     font-family: Inter;
     font-style: normal;
@@ -274,7 +274,7 @@ export default {
     margin-right: 10px;
   }
 
-  .card-history__panel_hashtag {
+  .card-story__panel_hashtag {
     /* border: 1px solid red; */
     font-family: Inter;
     font-style: normal;
@@ -287,44 +287,3 @@ export default {
   }
 }
 </style>
-
-<!-- <cardhistory
-        :url="cards_histories[0].history_photo"
-        :history_title="cards_histories[0].history_title"
-        :history_text="cards_histories[0].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[1].history_photo"
-        :history_title="cards_histories[1].history_title"
-        :history_text="cards_histories[1].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[2].history_photo"
-        :history_title="cards_histories[2].history_title"
-        :history_text="cards_histories[2].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[3].history_photo"
-        :history_title="cards_histories[3].history_title"
-        :history_text="cards_histories[3].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[4].history_photo"
-        :history_title="cards_histories[4].history_title"
-        :history_text="cards_histories[4].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[5].history_photo"
-        :history_title="cards_histories[5].history_title"
-        :history_text="cards_histories[5].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[6].history_photo"
-        :history_title="cards_histories[6].history_title"
-        :history_text="cards_histories[6].history_text"
-      />
-      <cardhistory
-        :url="cards_histories[7].history_photo"
-        :history_title="cards_histories[7].history_title"
-        :history_text="cards_histories[7].history_text"
-      /> -->
