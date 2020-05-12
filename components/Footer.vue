@@ -37,7 +37,7 @@ export default {
 
 <style scoped>
 .footer {
-  max-width: 1440px;
+  max-width: 1320px;
   padding: 60px 60px;
   margin: 0 auto;
   display: flex;

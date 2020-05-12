@@ -25,8 +25,8 @@ export default {
 
 <style scoped>
 .header {
-  max-width: 1440px;
-  padding: 18px 4.2%;
+  max-width: 1320px;
+  padding: 18px 60px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -69,8 +69,8 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .header {
-    padding: 0;
-    margin: 18px 50px;
+    padding: 18px 50px;
+    margin: 0;
   }
 
   .header__title {
