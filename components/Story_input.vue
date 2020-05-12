@@ -296,4 +296,5 @@ export default {
     margin-top: 122px;
   }
 }
+}
 </style>
