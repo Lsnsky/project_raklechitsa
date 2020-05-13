@@ -1,5 +1,5 @@
 <template>
-  <section class="video">
+  <section id="video" class="video">
     <div class="video__wrapper">
       <h2 class="video__title">
         Истории людей, победивших рак, но не свои привычки
@@ -100,7 +100,7 @@ export default {
 .video {
   max-width: 1320px;
   margin: 0 auto 74px;
-  padding: 0 60px;
+  padding: 100px 60px 0;
   display: flex;
   justify-content: space-between;
 }
@@ -165,7 +165,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .video {
-    padding: 0 50px;
+    padding: 90px 50px 0;
   }
 
   .video__title {
@@ -191,6 +191,9 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
+  .video {
+    padding: 80px 50px 0;
+  }
   .video__title {
     font-size: 24px;
     line-height: 28px;
