@@ -4,9 +4,7 @@
       <div class="card-story__panel_text">И В ОТЛИЧИЕ ОТ РАКА,</div>
       <div class="card-story__panel_hashtag">#ЭТОНЕЛЕЧИТСЯ</div>
     </panel>
-    <h2 class="cards-story__title">
-      Истории неизлечимых привычек
-    </h2>
+    <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
     <div class="cards-story__container">
       <card-story
         v-for="card in cards_histories"
@@ -14,6 +12,7 @@
         :url="card.history_photo"
         :history_title="card.history_title"
         :history_text="card.history_text"
+        @cardClick="goToDetail(card.id)"
       ></card-story>
     </div>
     <btnhistory />
@@ -29,6 +28,11 @@ export default {
     'card-story': CardStory,
     btnhistory: Button_history,
     panel: Panel,
+  },
+  methods: {
+    goToDetail(id) {
+      this.$router.push(`/stories/${id}`);
+    },
   },
   data() {
     return {
