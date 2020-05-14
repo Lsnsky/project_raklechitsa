@@ -2,7 +2,7 @@
   <section class="cover">
     <h2 class="cover__title">#РАКЛЕЧИТСЯ</h2>
     <div class="cover__button">
-      <button-down />
+      <a href="#video"> <button-down /></a>
     </div>
   </section>
 </template>
@@ -22,7 +22,7 @@ export default {
   height: 689px;
   background-color: #613a93;
   margin: auto;
-  margin-bottom: 60px;
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
 }
