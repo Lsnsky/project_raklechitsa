@@ -4,6 +4,7 @@
     <questionnaire />
     <nuxt />
     <main-footer />
+    <share />
   </div>
 </template>
 
@@ -11,11 +12,13 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Questionnaire from '@/components/Questionnaire';
+import Share_popup from '@/components/Share_popup';
 export default {
   components: {
     'main-header': Header,
     'main-footer': Footer,
     questionnaire: Questionnaire,
+    share: Share_popup,
   },
   methods: {
     closeQuestionnaire() {

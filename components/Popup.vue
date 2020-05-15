@@ -47,8 +47,6 @@ export default {
 .popup__container {
   position: relative;
   display: block;
-  width: 920px;
-  height: 600px;
   background: #fff;
   z-index: 1;
 }

@@ -1,5 +1,5 @@
 <template>
-  <popup :popDisplay="isQuestionnaireActive()">
+  <popup :popDisplay="isQuestionnaireActive()" class="questionnaire">
     <h2 v-if="id < 12" class="questionnaire__title">
       Шаг {{ question.id }} из 12
     </h2>
@@ -110,6 +110,11 @@ export default {
 </script>
 
 <style scoped>
+.questionnaire /deep/ .popup__container {
+  width: 920px;
+  height: 600px;
+}
+
 .questionnaire__politica {
   display: block;
   position: absolute;
