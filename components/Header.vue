@@ -10,7 +10,7 @@
           @click="menuToggle"
         ></button>
       </div>
-      <div v-if="isMobileMenuOpened" class="header__wrapper">
+      <div :class="`header__wrapper header__wrapper_${isMenuActive()}`">
         <main-menu class="header__menu" />
         <button class="header__share-story" @click="$emit('shareClick')">
           Рассказать историю
@@ -115,7 +115,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 795px) {
+@media screen and (max-width: 805px) {
   .header__container {
     display: flex;
     flex-direction: column-reverse;
@@ -126,6 +126,14 @@ export default {
     margin: 0 11px 18px 0;
     border-bottom: 1px solid #efefef;
     padding: 0 0 18px;
+  }
+
+  .header__wrapper_active {
+    display: flex;
+  }
+
+  .header__wrapper_inactive {
+    display: none;
   }
 
   .header__share-story {
