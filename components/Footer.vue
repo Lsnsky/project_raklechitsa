@@ -104,7 +104,7 @@ export default {
   flex-direction: row;
 }
 
-.footer__menu /deep/ .menu__navigation-link_type_active {
+.footer__menu /deep/ .nuxt-link-exact-active {
   border: none;
 }
 
@@ -188,7 +188,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 899px) {
+@media screen and (max-width: 905px) {
   .menu /deep/ {
     display: flex;
     flex-direction: column;

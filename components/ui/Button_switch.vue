@@ -19,11 +19,10 @@ export default {
   border: none;
   outline: none;
   cursor: pointer;
-  background: center no-repeat
-    url("data:image/svg+xml,%3Csvg width='10' height='18' viewBox='0 0 10 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 17L9 9L1 1' stroke='black'/%3E%3C/svg%3E%0A");
+  background: center no-repeat url('../../static/images/button-switch.svg');
 }
 
-.button_type_unactive {
+.button_type_inactive {
   opacity: 0.5;
 }
 
