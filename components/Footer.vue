@@ -12,12 +12,14 @@
             <a
               href="https://www.instagram.com/raklechitsa/"
               class="footer__link"
+              target="_blank"
               >Инстаграме</a
             >
             и
             <a
               href="https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F"
               class="footer__link"
+              target="_blank"
               >Youtube</a
             >
           </p>
@@ -26,7 +28,16 @@
       </div>
       <div class="footer__wrapper">
         <p class="footer__copyright">Рак Лечится 2020</p>
-        <p class="footer__copyright">Сделано студентами Яндекс Практикум</p>
+        <p class="footer__copyright">
+          Сделано студентами
+          <a
+            href="https://praktikum.yandex.ru/"
+            target="_blank"
+            class="footer__copyryght-link"
+          >
+            Яндекс Практикум</a
+          >
+        </p>
       </div>
     </container>
   </footer>
@@ -80,6 +91,12 @@ export default {
 
 .footer__copyright:last-child {
   margin: 0 0 0 auto;
+}
+
+.footer__copyryght-link {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid #898989;
 }
 
 .footer__wrapper {
