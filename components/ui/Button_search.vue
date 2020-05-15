@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="some()" class="button_search">
+    <button @click="$emit('QuestionnaireOpen')" class="button_search">
       Заполнить форму
     </button>
   </div>
@@ -8,11 +8,7 @@
 
 <script>
 export default {
-  methods: {
-    some() {
-      this.$root.$emit('shClick');
-    },
-  },
+  methods: {},
 };
 </script>
 
