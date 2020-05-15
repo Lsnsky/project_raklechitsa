@@ -1,21 +1,7 @@
 <template>
   <nav class="menu">
-    <nuxt-link
-      v-if="$route.path === '/'"
-      to="/"
-      class="menu__navigation-link menu__navigation-link_type_active"
-      >Главная</nuxt-link
-    >
-    <nuxt-link v-else to="/" class="menu__navigation-link">Главная</nuxt-link>
-    <nuxt-link
-      v-if="$route.path === '/stories'"
-      to="/stories"
-      class="menu__navigation-link menu__navigation-link_type_active"
-      >Истории</nuxt-link
-    >
-    <nuxt-link v-else to="/stories" class="menu__navigation-link"
-      >Истории</nuxt-link
-    >
+    <nuxt-link to="/" class="menu__navigation-link">Главная</nuxt-link>
+    <nuxt-link to="/stories" class="menu__navigation-link">Истории</nuxt-link>
   </nav>
 </template>
 
@@ -42,7 +28,7 @@ export default {};
   margin: 0;
 }
 
-.menu__navigation-link_type_active {
+.nuxt-link-exact-active {
   border-bottom: solid #000 1px;
 }
 
