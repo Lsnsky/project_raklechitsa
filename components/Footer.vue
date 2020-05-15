@@ -188,7 +188,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 899px) {
+@media screen and (max-width: 905px) {
   .menu /deep/ {
     display: flex;
     flex-direction: column;
