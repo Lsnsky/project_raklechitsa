@@ -3,19 +3,19 @@
     <h2 class="cover-about__title">#РАКЛЕЧИТСЯ</h2>
     <div class="content">
       <div class="content__about">
-        <h3 class="content__about_title">О проекте</h3>
-        <p class="content__about_paragraph">
+        <h3 class="content__about-title">О проекте</h3>
+        <p class="content__about-paragraph">
           Этот проект был создан благотворительным фондом Константина
           Хабенского.
         </p>
       </div>
       <div class="content__columns">
-        <div class="content__columns_descriotion">
-          <p class="content__columns_brief">Рак Лечится</p>
-          <p class="content__columns_paragraph">Фонд Хабенского</p>
+        <div class="content__columns-descriotion">
+          <p class="content__columns-brief">Рак Лечится</p>
+          <p class="content__columns-paragraph">Фонд Хабенского</p>
         </div>
-        <div class="content__columns_main-text">
-          <p class="content__columns_text">
+        <div class="content__columns-main-text">
+          <p class="content__columns-text">
             Есть вещи, которые не лечатся. Особенности характера, страстные
             увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
             приобрели в детстве. Список можно продолжать до бесконечности, но
@@ -23,7 +23,7 @@
             и лучшее доказательство — люди с их неизлечимыми особенностями,
             которые сумели победить рак.
           </p>
-          <p class="content__columns_text">
+          <p class="content__columns-text">
             Рак лечится — проект Благотворительного Фонда Константина Хабенского
             и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение
             людей к раку и заставить каждого поверить: онкологическое
@@ -66,7 +66,7 @@ export default {};
   display: flex;
   flex-direction: column;
 }
-.content__about_title {
+.content__about-title {
   width: 413px;
   font-style: normal;
   font-weight: 600;
@@ -77,7 +77,7 @@ export default {};
   margin-bottom: 32px;
   margin-right: 73px;
 }
-.content__about_paragraph {
+.content__about-paragraph {
   width: 340px;
   font-style: normal;
   font-weight: normal;
@@ -85,7 +85,7 @@ export default {};
   line-height: 22px;
   color: #dedede;
 }
-.content__columns_descriotion {
+.content__columns-descriotion {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -94,7 +94,7 @@ export default {};
   display: flex;
   margin-top: 68px;
 }
-.content__columns_brief {
+.content__columns-brief {
   width: 112px;
   height: 22px;
   font-style: normal;
@@ -105,7 +105,7 @@ export default {};
   margin-top: 0;
   margin-bottom: 10px;
 }
-.content__columns_paragraph {
+.content__columns-paragraph {
   width: 155px;
   height: 22px;
   font-style: normal;
@@ -115,7 +115,7 @@ export default {};
   margin-top: 0;
   color: #c9c9c9;
 }
-.content__columns_main-text {
+.content__columns-main-text {
   max-width: 655px;
   height: 242px;
   color: #dedede;
@@ -125,7 +125,7 @@ export default {};
   line-height: 22px;
   margin-left: 40px;
 }
-.content__columns_text {
+.content__columns-text {
   margin-top: 0;
 }
 @media screen and (max-width: 1280px) {
@@ -142,20 +142,20 @@ export default {};
     line-height: 70px;
     margin: 80px auto 60px;
   }
-  .content__about_title {
+  .content__about-title {
     width: 367px;
     font-size: 28px;
     line-height: 32px;
     margin-bottom: 30px;
     margin-right: 49px;
   }
-  .content__about_paragraph {
+  .content__about-paragraph {
     margin-top: 0;
     max-width: 305px;
     font-size: 16px;
     line-height: 20px;
   }
-  .content__columns_main-text {
+  .content__columns-main-text {
     max-width: 570px;
   }
 }
@@ -168,30 +168,30 @@ export default {};
     line-height: 63px;
     margin-bottom: 46px;
   }
-  .content__about_title {
+  .content__about-title {
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 30px;
     margin-right: 49px;
     width: 288px;
   }
-  .content__about_paragraph {
+  .content__about-paragraph {
     max-width: 260px;
     font-size: 13px;
     line-height: 16px;
   }
-  .content__columns_main-text {
+  .content__columns-main-text {
     max-width: 447px;
     font-size: 15px;
     line-height: 19px;
     margin-left: 30px;
   }
-  .content__columns_brief {
+  .content__columns-brief {
     font-size: 15px;
     line-height: 19px;
     width: 93px;
   }
-  .content__columns_paragraph {
+  .content__columns-paragraph {
     font-size: 15px;
     line-height: 19px;
     width: 129px;
@@ -212,14 +212,14 @@ export default {};
   .content {
     flex-direction: column;
   }
-  .content__columns_brief {
+  .content__columns-brief {
     margin: 0 0 30px;
     margin-right: 30px;
   }
-  .content__columns_paragraph {
+  .content__columns-paragraph {
     margin: 0 0 30px;
   }
-  .content__about_title {
+  .content__about-title {
     width: 380px;
 
     margin: 0 auto 26px;
@@ -228,14 +228,14 @@ export default {};
   .content__about {
     margin: 80px auto 80px;
   }
-  .content__columns_descriotion {
+  .content__columns-descriotion {
     flex-direction: row;
   }
-  .content__columns_main-text {
+  .content__columns-main-text {
     max-width: 380px;
     margin: 0 auto 0;
   }
-  .content__about_paragraph {
+  .content__about-paragraph {
     max-width: 380px;
     margin-bottom: 0;
   }
