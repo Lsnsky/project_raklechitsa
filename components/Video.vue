@@ -12,7 +12,7 @@
       <div class="video__buttons">
         <button-switch position="left" :type="lActive" @buttonClick="back" />
         <button-switch
-          :position="right"
+          position="right"
           :type="rActive"
           @buttonClick="further"
         />
