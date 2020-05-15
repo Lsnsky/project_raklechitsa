@@ -44,7 +44,7 @@ export default {};
   max-width: 1440px;
   height: 689px;
   background-color: #613a93;
-  margin: 60px auto;
+  margin: 60px auto 0;
   display: flex;
   flex-direction: column;
 }
