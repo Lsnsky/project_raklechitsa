@@ -104,7 +104,7 @@ export default {
   flex-direction: row;
 }
 
-.footer__menu /deep/ .menu__navigation-link_type_active {
+.footer__menu /deep/ .nuxt-link-exact-active {
   border: none;
 }
 
