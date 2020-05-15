@@ -10,9 +10,9 @@
         их историями.
       </p>
       <div class="video__buttons">
-        <button-switch :position="'left'" :type="lActive" @buttonClick="back" />
+        <button-switch position="left" :type="lActive" @buttonClick="back" />
         <button-switch
-          :position="'right'"
+          :position="right"
           :type="rActive"
           @buttonClick="further"
         />
@@ -21,13 +21,13 @@
     <div class="video__wrapper">
       <button-switch
         class="video__small-button video__small-button_position_left"
-        :position="'left'"
+        position="left"
         :type="lActive"
         @buttonClick="back"
       />
       <button-switch
         class="video__small-button video__small-button_position_right"
-        :position="'right'"
+        position="right"
         :type="rActive"
         @buttonClick="further"
       />
@@ -54,17 +54,17 @@ export default {
     back() {
       if (this.id !== 0) {
         this.id -= 1;
-        this.lActive = this.id === 0 ? 'unactive' : 'active';
+        this.lActive = this.id === 0 ? 'inactive' : 'active';
         this.rActive =
-          this.id === this.links.length - 1 ? 'unactive' : 'active';
+          this.id === this.links.length - 1 ? 'inactive' : 'active';
       }
     },
     further() {
       if (this.id < this.links.length - 1) {
         this.id += 1;
         this.rActive =
-          this.id === this.links.length - 1 ? 'unactive' : 'active';
-        this.lActive = this.id === 0 ? 'unactive' : 'active';
+          this.id === this.links.length - 1 ? 'inactive' : 'active';
+        this.lActive = this.id === 0 ? 'inactive' : 'active';
       }
     },
   },
@@ -74,7 +74,7 @@ export default {
   },
   data() {
     return {
-      lActive: 'unactive',
+      lActive: 'inactive',
       rActive: 'active',
       id: 0,
       links: [
@@ -102,7 +102,6 @@ export default {
   margin: 0 auto 74px;
   padding: 100px 60px 0;
   display: flex;
-  justify-content: space-between;
 }
 
 .video__small-button {
@@ -130,10 +129,7 @@ export default {
   position: relative;
   border: none;
   width: 100%;
-  padding-top: 51.9%;
-
-  /*width: 867px;
-  height: 450px;*/
+  padding-top: calc((100% + 33px) / 2);
 }
 
 .video__more {
@@ -149,7 +145,8 @@ export default {
 }
 
 .video__wrapper:last-child {
-  width: 65.683%;
+  margin-left: auto;
+  width: calc(100% / 3 * 2 - 13px);
 }
 
 .video__link {
@@ -166,6 +163,7 @@ export default {
 @media screen and (max-width: 1280px) {
   .video {
     padding: 90px 50px 0;
+    margin: 0 auto 64px;
   }
 
   .video__title {
@@ -174,25 +172,30 @@ export default {
     max-width: 367px;
     margin: 10px 0 30px;
   }
+
   .video__subtitle {
     font-size: 16px;
     line-height: 20px;
     max-width: 305px;
   }
-  .video__wrapper:last-child {
-    width: 65.483%;
-  }
-  .video__frame {
-    padding-top: 51.75%;
-  }
+
   .video__more {
     margin: 11px 0 0;
+  }
+
+  .video__wrapper:last-child {
+    width: calc(100% / 3 * 2 - 14px);
+  }
+
+  .video__frame {
+    padding-top: calc((100% + 27px) / 2);
   }
 }
 
 @media screen and (max-width: 1024px) {
   .video {
     padding: 80px 50px 0;
+    margin: 0 auto 54px;
   }
   .video__title {
     font-size: 24px;
@@ -205,8 +208,13 @@ export default {
     line-height: 16px;
     max-width: 260px;
   }
+
   .video__wrapper:last-child {
-    width: 65.583%;
+    width: calc(100% / 3 * 2 - 10px);
+  }
+
+  .video__frame {
+    padding-top: calc((100% + 23px) / 2);
   }
 }
 
@@ -214,11 +222,11 @@ export default {
   .video {
     flex-direction: column;
     align-items: center;
+    padding: 72px 15px 0;
+    margin: 0 auto 44px;
   }
 
   .video__title {
-    font-size: 24px;
-    line-height: 28px;
     text-align: center;
     max-width: 380px;
     margin: 10px 0 26px;
@@ -241,20 +249,69 @@ export default {
 
   .video__small-button_position_left {
     left: -54px;
-    top: 130px;
+    top: calc(100% / 3 + 18px);
   }
 
   .video__small-button_position_right {
     right: -54px;
-    top: 130px;
+    top: calc(100% / 3 + 18px);
   }
 
   .video__wrapper:last-child {
     position: relative;
-    width: 86.8%;
+    width: calc(100% - 158px);
+    margin: 0;
   }
   .video__more {
     margin: 18px 0 0;
+  }
+  .video__frame {
+    padding-top: calc((100% + 19px) / 2);
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .video {
+    padding: 50px 15px 0;
+    margin: 0 auto 50px;
+  }
+
+  .video__title {
+    font-size: 18px;
+    line-height: 21px;
+    text-align: left;
+    max-width: 290px;
+    margin: 0 0 16px;
+  }
+
+  .video__subtitle {
+    max-width: 290px;
+    margin: 0 0 40px;
+  }
+
+  .video__small-button {
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  .video__small-button_position_left {
+    left: -10px;
+    top: calc(100% / 3 + 5px);
+  }
+
+  .video__small-button_position_right {
+    right: -10px;
+    top: calc(100% / 3 + 5px);
+  }
+
+  .video__wrapper:last-child {
+    width: 100%;
+  }
+  .video__more {
+    display: none;
+  }
+  .video__frame {
+    padding-top: calc((100% + 10px) / 2);
   }
 }
 </style>
