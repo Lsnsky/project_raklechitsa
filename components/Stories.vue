@@ -7,7 +7,7 @@
     <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
     <div class="cards-story__container">
       <card-story
-        v-for="card in cards_histories"
+        v-for="card in stories"
         :key="card.id"
         :url="card.history_photo"
         :history_title="card.history_title"
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      cards_histories: [
+      stories: [
         {
           id: '1',
           history_photo: '/images/Rectangle 23.png',

@@ -1,10 +1,8 @@
 <template>
   <div class="card" @click="$emit('cardClick')">
-    <!-- <nuxt-link class="card__path" to="/stories/_id"> -->
     <img class="card__photo" :src="url" />
     <div class="card__title">{{ history_title }}</div>
     <div class="card__text">{{ history_text }}</div>
-    <!-- </nuxt-link> -->
   </div>
 </template>
 
@@ -15,12 +13,6 @@ export default {
 </script>
 
 <style scoped>
-/* .card__path {
-  display: block;
-  margin: 0;
-  text-decoration: none;
-  color: #000 !important; */
-/* } */
 .card {
   /* border: 1px solid red; */
   display: flex;
