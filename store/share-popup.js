@@ -1,5 +1,5 @@
 export const state = () => ({
-  sharePopupOpened: true,
+  sharePopupOpened: false,
 });
 
 export const mutations = {

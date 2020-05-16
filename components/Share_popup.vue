@@ -2,22 +2,24 @@
   <popup :popDisplay="isShareActive()" class="share">
     <h3 class="share__title">Поделитесь</h3>
     <div class="share__icon-container">
-      <button class="share__icon share__icon_social_facebook"></button>
-      <button class="share__icon share__icon_social_twitter"></button>
-      <button class="share__icon share__icon_social_vkontakte"></button>
-      <button class="share__icon share__icon_social_odnoklasniki"></button>
-      <button class="share__icon share__icon_social_instagram"></button>
-      <button class="share__icon share__icon_social_youtube"></button>
+      <icon network="facebook" />
+      <icon network="twitter" />
+      <icon network="vkontakte" />
+      <icon network="odnoklasniki" />
+      <icon network="instagram" />
+      <icon network="youtube" />
       <button type="button" class="share__close" @click="toggleShare"></button>
     </div>
   </popup>
 </template>
 
 <script>
-import popup from '@/components/popup';
+import Popup from '@/components/Popup';
+import Social_icon from '@/components/ui/Social_icon';
 export default {
   components: {
-    popup: popup,
+    popup: Popup,
+    icon: Social_icon,
   },
   methods: {
     isShareActive() {
@@ -55,44 +57,6 @@ export default {
 .share__icon-container {
   display: flex;
   margin: 60px 0 0;
-}
-
-.share__icon {
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #fff;
-
-  height: 48px;
-  width: 48px;
-}
-.share__icon_social_facebook {
-  background-image: url('../static/images/facebook.svg');
-}
-
-.share__icon_social_twitter {
-  background-image: url('../static/images/twitter.svg');
-}
-
-.share__icon_social_vkontakte {
-  background-image: url('../static/images/VK.svg');
-}
-
-.share__icon_social_odnoklasniki {
-  background-image: url('../static/images/OK.svg');
-}
-
-.share__icon_social_instagram {
-  background-image: url('../static/images/instagram.svg');
-}
-
-.share__icon_social_youtube {
-  background-image: url('../static/images/youtube.svg');
 }
 
 .share__close {

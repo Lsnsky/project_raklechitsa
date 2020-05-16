@@ -62,10 +62,10 @@
 </template>
 
 <script>
-import popup from '@/components/popup';
+import Popup from '@/components/Popup';
 export default {
   components: {
-    popup: popup,
+    popup: Popup,
   },
   methods: {
     isQuestionnaireActive() {
