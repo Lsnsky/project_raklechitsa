@@ -316,8 +316,6 @@ export const state = () => ({
         'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
     },
   ],
-
-  storiesAll,
 });
 
 export const mutations = {};
