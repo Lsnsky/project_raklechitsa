@@ -17,7 +17,7 @@
           class="story__photo story__photo_type_mobile"
         />
         <div class="story__data">
-          <a href class="link story__link">Поделитесь&#8599;;</a>
+          <a @click="toggleShare" class="link story__link">Поделитесь&#8599;</a>
           <p class="story__date">20 апреля 2018</p>
         </div>
       </div>
@@ -75,7 +75,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    toggleShare() {
+      this.$store.commit('share-popup/toggleSharePopup');
+    },
+  },
+};
 </script>
 
 <style scoped>

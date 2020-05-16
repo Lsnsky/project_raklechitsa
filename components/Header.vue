@@ -12,7 +12,7 @@
       </div>
       <div :class="`header__wrapper header__wrapper_${isMenuActive()}`">
         <main-menu class="header__menu" />
-        <button class="header__share-story" @click="$emit('shareClick')">
+        <button class="header__share-story" @click="QuestionnaireOpen">
           Рассказать историю
         </button>
       </div>
@@ -29,6 +29,9 @@ export default {
     container: Container,
   },
   methods: {
+    QuestionnaireOpen() {
+      this.$store.commit('questionnaire/openQuestionnaire');
+    },
     menuToggle() {
       this.$store.commit('header-menu/toggleMobileMenu');
     },
