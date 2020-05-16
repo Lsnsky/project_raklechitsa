@@ -5,7 +5,7 @@
       {
         input_data_exist: hasData,
         input_data_notexist: !hasData,
-        input_bordered: border,
+        input_bordered: bordered,
       },
     ]"
     :placeholder="placeholder"
