@@ -1,5 +1,6 @@
 <template>
   <section class="cards-story">
+    <div class="cards-story__search-panel"></div>
     <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
     <div class="cards-story__container">
       <card-story
@@ -16,6 +17,8 @@
 
 <script>
 import CardStory from '@/components/ui/CardStory';
+import Button from '@/components/ui/Button';
+import input from '@/components/ui/input';
 export default {
   components: {
     'card-story': CardStory,
