@@ -85,10 +85,10 @@ export const mutations = {
   resetQuestionnaire(state) {
     return (state.id = 0);
   },
-  previousQuestion(state) {
+  previousId(state) {
     return (state.id = state.id === 0 ? 0 : state.id - 1);
   },
-  nextQuestion(state) {
+  nextId(state) {
     return (state.id = state.id + 1);
   },
   saveAnswer(state, answer) {
@@ -96,7 +96,23 @@ export const mutations = {
   },
 };
 
-export const actions = {};
+export const actions = {
+  async previousQuestion({ commit, getters }) {
+    await commit('previousId');
+    return getters.getCurrentAnswer;
+  },
+  async nextQuestion({ commit, getters }, answer) {
+    await commit('saveAnswer', answer);
+    commit('nextId');
+    if (getters.getId < 12) {
+      return getters.getCurrentAnswer;
+    }
+  },
+  closeQuestionnaire({ commit }) {
+    commit('closeQuestionnaire');
+    setTimeout(() => commit('resetQuestionnaire'), 200);
+  },
+};
 
 export const getters = {
   getQuestionnaireState(state) {
@@ -104,9 +120,6 @@ export const getters = {
   },
   getQuestion(state) {
     return state.questions[state.id];
-  },
-  getAnswer(state) {
-    return state.answers[state.id];
   },
   getId(state) {
     return state.id;

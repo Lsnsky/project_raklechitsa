@@ -72,30 +72,25 @@ export default {
       return this.getQuestionnaireState ? 'visible' : 'invisible';
     },
     previousQuestion() {
-      this.$store.commit('questionnaire/previousQuestion');
-      this.answer = this.getCurrentAnswer;
+      this.$store.dispatch('questionnaire/previousQuestion').then(item => {
+        this.answer = item;
+      });
     },
-    async nextQuestion() {
-      await this.$store.commit('questionnaire/saveAnswer', this.answer);
-      await this.$store.commit('questionnaire/nextQuestion');
-      if (this.id < 12) {
-        this.answer = this.getCurrentAnswer;
-      }
+    nextQuestion() {
+      this.$store
+        .dispatch('questionnaire/nextQuestion', this.answer)
+        .then(item => {
+          this.answer = item;
+        });
     },
     closeQuestionnaire() {
-      this.$store.commit('questionnaire/closeQuestionnaire');
-      setTimeout(
-        () => this.$store.commit('questionnaire/resetQuestionnaire'),
-        200
-      );
+      this.$store.dispatch('questionnaire/closeQuestionnaire');
     },
   },
+
   computed: {
     question() {
       return this.$store.getters['questionnaire/getQuestion'];
-    },
-    answer() {
-      return this.$store.getters['questionnaire/getAnswer'];
     },
     id() {
       return this.$store.getters['questionnaire/getId'];
@@ -109,7 +104,7 @@ export default {
   },
   data() {
     return {
-      answer: '',
+      answer: this.getCurrentAnswer,
     };
   },
 };
