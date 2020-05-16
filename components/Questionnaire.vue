@@ -10,40 +10,42 @@
       <span class="questionnaire__mainquestion">{{ question.mainQest }} </span
       >{{ question.qest }}
     </p>
-    <input
+    <main-input
       v-if="id < 12"
-      autofocus
-      class="questionnaire__input"
       placeholder="Напишите тут"
-      required
+      type="text"
+      :hasData="hasData()"
       v-model="answer"
+      :bordered="false"
+      class="questionnaire__input"
     />
-    <button
+    <main-button
       v-if="id < 12"
-      type="button"
       class="questionnaire__back"
-      @click="previousQuestion"
+      color="none"
+      :disabled="this.id === 0"
+      @buttonClick="previousQuestion"
     >
       Назад
-    </button>
-    <button v-if="id < 11" class="questionnaire__further" @click="nextQuestion">
-      Далее
-    </button>
-    <button
-      v-if="id === 11"
+    </main-button>
+    <main-button
+      v-if="this.id < 12"
       class="questionnaire__further"
-      @click="nextQuestion"
+      color="purple"
+      :disabled="!hasData()"
+      @buttonClick="nextQuestion"
     >
-      Отправить
-    </button>
-    <button
-      v-if="this.id === 12"
-      type="submit"
+      {{ buttonNext() }}
+    </main-button>
+    <main-button
+      v-else
       class="questionnaire__further questionnaire__further_step_last"
-      @click="closeQuestionnaire"
+      color="purple"
+      :disabled="false"
+      @buttonClick="closeQuestionnaire"
     >
       Закрыть
-    </button>
+    </main-button>
     <p v-if="id === 11" class="questionnaire__politica">
       Нажимая на кнопку «отправить», вы даете согласие на
       <nuxt-link to="/policy" class="questionnaire__link" target="_blank"
@@ -55,11 +57,21 @@
 
 <script>
 import Popup from '@/components/Popup';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
 export default {
   components: {
     popup: Popup,
+    'main-input': Input,
+    'main-button': Button,
   },
   methods: {
+    buttonNext() {
+      return this.id < 11 ? 'Далее' : 'Отправить';
+    },
+    hasData() {
+      return this.answer.length === 0 ? false : true;
+    },
     title() {
       return this.id === 12
         ? 'Спасибо что приняли участие!'
@@ -73,14 +85,14 @@ export default {
     },
     previousQuestion() {
       this.$store.dispatch('questionnaire/previousQuestion').then(item => {
-        this.answer = item;
+        this.answer = typeof item === 'undefined' ? '' : item;
       });
     },
     nextQuestion() {
       this.$store
         .dispatch('questionnaire/nextQuestion', this.answer)
         .then(item => {
-          this.answer = item;
+          this.answer = typeof item === 'undefined' ? '' : item;
         });
     },
     closeQuestionnaire() {
@@ -104,7 +116,7 @@ export default {
   },
   data() {
     return {
-      answer: this.getCurrentAnswer,
+      answer: '',
     };
   },
 };
@@ -143,22 +155,12 @@ export default {
 }
 
 .questionnaire__further {
-  border: none;
-  background-color: #714dbd;
-  outline: none;
   position: absolute;
   bottom: 40px;
   left: 118px;
   padding: 0;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
   width: 226px;
   height: 52px;
-  color: #fff;
-  cursor: pointer;
-  transition: all linear 0.1s;
 }
 
 .questionnaire__further:hover {
@@ -170,21 +172,11 @@ export default {
 }
 
 .questionnaire__back {
-  border: none;
-  background-color: #fff;
-  outline: none;
   position: absolute;
   bottom: 56px;
   left: 40px;
-  padding: 0;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
   width: 48px;
   height: 20px;
-  cursor: pointer;
-  transition: all linear 0.1s;
 }
 
 .questionnaire__back:hover {
@@ -192,23 +184,13 @@ export default {
 }
 
 .questionnaire__input {
-  display: block;
   width: 91%;
   margin: 0 40px;
-  min-height: 24px;
   height: 24px;
-  border: none;
-  outline: none;
   padding: 0 0 10px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 24px;
   position: absolute;
   top: 274px;
   left: 0;
-  border-bottom: 1px solid #eee;
   max-height: 200px;
   max-width: 840px;
 }
