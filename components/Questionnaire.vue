@@ -3,54 +3,49 @@
     :popDisplay="isQuestionnaireActive()"
     class="questionnaire"
     @closeClick="closeQuestionnaire"
+    :titleText="title()"
+    :titlePosition="position()"
   >
-    <h2 v-if="id < 12" class="questionnaire__title">
-      Шаг {{ question.id }} из 12
-    </h2>
-    <h2
-      v-if="id === 12"
-      class="questionnaire__title questionnaire__title_step_last"
-    >
-      Спасибо что приняли участие!
-    </h2>
     <p v-if="id < 12" class="questionnaire__question">
       <span class="questionnaire__mainquestion">{{ question.mainQest }} </span
       >{{ question.qest }}
     </p>
-    <input
+    <main-input
       v-if="id < 12"
-      autofocus
-      class="questionnaire__input"
       placeholder="Напишите тут"
-      required
-      v-model="answers[id]"
+      type="text"
+      :hasData="hasData()"
+      v-model="answer"
+      :bordered="false"
+      class="questionnaire__input"
     />
-    <button
+    <main-button
       v-if="id < 12"
-      type="button"
       class="questionnaire__back"
-      @click="previousQuestion"
+      color="none"
+      :disabled="this.id === 0"
+      @buttonClick="previousQuestion"
     >
       Назад
-    </button>
-    <button v-if="id < 11" class="questionnaire__further" @click="nextQuestion">
-      Далее
-    </button>
-    <button
-      v-if="id === 11"
+    </main-button>
+    <main-button
+      v-if="this.id < 12"
       class="questionnaire__further"
-      @click="saveAnswers"
+      color="purple"
+      :disabled="!hasData()"
+      @buttonClick="nextQuestion"
     >
-      Отправить
-    </button>
-    <button
-      v-if="this.id === 12"
-      type="submit"
+      {{ buttonNext() }}
+    </main-button>
+    <main-button
+      v-else
       class="questionnaire__further questionnaire__further_step_last"
-      @click="closeQuestionnaire"
+      color="purple"
+      :disabled="false"
+      @buttonClick="closeQuestionnaire"
     >
       Закрыть
-    </button>
+    </main-button>
     <p v-if="id === 11" class="questionnaire__politica">
       Нажимая на кнопку «отправить», вы даете согласие на
       <nuxt-link to="/policy" class="questionnaire__link" target="_blank"
@@ -62,36 +57,52 @@
 
 <script>
 import Popup from '@/components/Popup';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
 export default {
   components: {
     popup: Popup,
+    'main-input': Input,
+    'main-button': Button,
   },
   methods: {
+    buttonNext() {
+      return this.id < 11 ? 'Далее' : 'Отправить';
+    },
+    hasData() {
+      return this.answer.length === 0 ? false : true;
+    },
+    title() {
+      return this.id === 12
+        ? 'Спасибо что приняли участие!'
+        : `Шаг ${this.question.id} из 12`;
+    },
+    position() {
+      return this.id === 12 ? 'center' : 'left';
+    },
     isQuestionnaireActive() {
       return this.getQuestionnaireState ? 'visible' : 'invisible';
     },
     previousQuestion() {
-      this.$store.commit('questionnaire/previousQuestion');
+      this.$store.dispatch('questionnaire/previousQuestion').then(item => {
+        this.answer = typeof item === 'undefined' ? '' : item;
+      });
     },
     nextQuestion() {
-      this.$store.commit('questionnaire/nextQuestion');
-    },
-    saveAnswers() {
-      this.$store.commit('questionnaire/saveAnswer', this.answers);
-      this.nextQuestion();
-      this.answers = ['', '', '', '', '', '', '', '', '', '', '', ''];
+      this.$store
+        .dispatch('questionnaire/nextQuestion', this.answer)
+        .then(item => {
+          this.answer = typeof item === 'undefined' ? '' : item;
+        });
     },
     closeQuestionnaire() {
-      this.$store.commit('questionnaire/closeQuestionnaire');
-      this.$store.commit('questionnaire/resetQuestionnaire');
+      this.$store.dispatch('questionnaire/closeQuestionnaire');
     },
   },
+
   computed: {
     question() {
       return this.$store.getters['questionnaire/getQuestion'];
-    },
-    answer() {
-      return this.$store.getters['questionnaire/getAnswer'];
     },
     id() {
       return this.$store.getters['questionnaire/getId'];
@@ -99,10 +110,13 @@ export default {
     getQuestionnaireState() {
       return this.$store.getters['questionnaire/getQuestionnaireState'];
     },
+    getCurrentAnswer() {
+      return this.$store.getters['questionnaire/getCurrentAnswer'];
+    },
   },
   data() {
     return {
-      answers: ['', '', '', '', '', '', '', '', '', '', '', ''],
+      answer: '',
     };
   },
 };
@@ -141,22 +155,12 @@ export default {
 }
 
 .questionnaire__further {
-  border: none;
-  background-color: #714dbd;
-  outline: none;
   position: absolute;
   bottom: 40px;
   left: 118px;
   padding: 0;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
   width: 226px;
   height: 52px;
-  color: #fff;
-  cursor: pointer;
-  transition: all linear 0.1s;
 }
 
 .questionnaire__further:hover {
@@ -168,21 +172,11 @@ export default {
 }
 
 .questionnaire__back {
-  border: none;
-  background-color: #fff;
-  outline: none;
   position: absolute;
   bottom: 56px;
   left: 40px;
-  padding: 0;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
   width: 48px;
   height: 20px;
-  cursor: pointer;
-  transition: all linear 0.1s;
 }
 
 .questionnaire__back:hover {
@@ -190,23 +184,13 @@ export default {
 }
 
 .questionnaire__input {
-  display: block;
   width: 91%;
   margin: 0 40px;
-  min-height: 24px;
   height: 24px;
-  border: none;
-  outline: none;
   padding: 0 0 10px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 24px;
   position: absolute;
   top: 274px;
   left: 0;
-  border-bottom: 1px solid #eee;
   max-height: 200px;
   max-width: 840px;
 }
