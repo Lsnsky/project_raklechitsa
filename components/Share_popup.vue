@@ -1,5 +1,5 @@
 <template>
-  <popup :popDisplay="isShareActive()" class="share">
+  <popup :popDisplay="isShareActive()" class="share" @closeClick="toggleShare">
     <h3 class="share__title">Поделитесь</h3>
     <div class="share__icon-container">
       <icon network="facebook" />
@@ -8,7 +8,6 @@
       <icon network="odnoklasniki" />
       <icon network="instagram" />
       <icon network="youtube" />
-      <button type="button" class="share__close" @click="toggleShare"></button>
     </div>
   </popup>
 </template>

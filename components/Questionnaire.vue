@@ -1,5 +1,9 @@
 <template>
-  <popup :popDisplay="isQuestionnaireActive()" class="questionnaire">
+  <popup
+    :popDisplay="isQuestionnaireActive()"
+    class="questionnaire"
+    @closeClick="closeQuestionnaire"
+  >
     <h2 v-if="id < 12" class="questionnaire__title">
       Шаг {{ question.id }} из 12
     </h2>
@@ -53,11 +57,6 @@
         >обработку персональных данных</nuxt-link
       >
     </p>
-    <button
-      type="button"
-      class="questionnaire__close"
-      @click="closeQuestionnaire"
-    ></button>
   </popup>
 </template>
 
@@ -224,20 +223,6 @@ export default {
   line-height: 24px;
   color: #666;
   width: 91%;
-}
-
-.questionnaire__close {
-  background-position: center;
-  background-image: url('../static/images/hider-open.svg');
-  width: 20px;
-  height: 20px;
-  background-color: #fff;
-  border: none;
-  outline: none;
-  position: absolute;
-  top: 36px;
-  right: 36px;
-  cursor: pointer;
 }
 
 .questionnaire__title {
