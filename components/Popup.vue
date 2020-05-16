@@ -2,6 +2,11 @@
   <div :class="`popup popup_display_${popDisplay}`">
     <div class="popup__container">
       <slot></slot>
+      <button
+        type="button"
+        class="popup__close"
+        @click="$emit('closeClick')"
+      ></button>
     </div>
     <div class="popup__overlay"></div>
   </div>
@@ -49,5 +54,20 @@ export default {
   display: block;
   background: #fff;
   z-index: 1;
+}
+
+.popup__close {
+  background-position: center;
+  background-size: contain;
+  background-image: url('../static/images/hider-open.svg');
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  cursor: pointer;
 }
 </style>
