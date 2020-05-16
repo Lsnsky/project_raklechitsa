@@ -1,7 +1,7 @@
 export const state = () => ({
   isQuestionnaireOpened: false,
   id: 0,
-  answers: ['', '', '', '', '', '', '', '', '', '', '', ''],
+  answers: {},
   questions: [
     {
       id: '1',
@@ -91,10 +91,12 @@ export const mutations = {
   nextQuestion(state) {
     return (state.id = state.id + 1);
   },
-  saveAnswer(state, answers) {
-    return (state.answers = answers);
+  saveAnswer(state, answer) {
+    return (state.answers[state.questions[state.id].mainQest] = answer);
   },
 };
+
+export const actions = {};
 
 export const getters = {
   getQuestionnaireState(state) {
@@ -108,5 +110,8 @@ export const getters = {
   },
   getId(state) {
     return state.id;
+  },
+  getCurrentAnswer(state) {
+    return state.answers[state.questions[state.id].mainQest];
   },
 };
