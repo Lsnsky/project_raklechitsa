@@ -40,7 +40,6 @@ export default {
   methods: {
     handleInput() {
       this.$emit('input', this.content);
-      console.log(this.content);
     },
   },
 };
