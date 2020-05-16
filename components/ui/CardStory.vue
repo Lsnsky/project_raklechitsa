@@ -1,10 +1,8 @@
 <template>
-  <div class="card-history">
-    <nuxt-link class="card-history__path" to="/stories/_id">
-      <img class="card-history__photo" :src="url" />
-      <div class="card-history__title">{{ history_title }}</div>
-      <div class="card-history__text">{{ history_text }}</div>
-    </nuxt-link>
+  <div class="card" @click="$emit('cardClick')">
+    <img class="card__photo" :src="url" />
+    <div class="card__title">{{ history_title }}</div>
+    <div class="card__text">{{ history_text }}</div>
   </div>
 </template>
 
@@ -15,26 +13,21 @@ export default {
 </script>
 
 <style scoped>
-.card-history__path {
-  display: block;
-  margin: 0;
-  text-decoration: none;
-  color: #000 !important;
-}
-.card-history {
+.card {
   /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
-.card-history__photo {
+.card__photo {
   /* border: 1px solid red; */
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.card-history__title {
+.card__title {
   /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
@@ -45,7 +38,7 @@ export default {
   margin-top: 20px;
 }
 
-.card-history__text {
+.card__text {
   /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
@@ -53,7 +46,7 @@ export default {
   font-size: 14px;
   line-height: 18px;
   width: 250px;
-  margin: 14px 0 70px;
+  margin: 14px 0 0;
   color: #666666;
 }
 </style>
