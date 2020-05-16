@@ -1,6 +1,9 @@
 <template>
   <section class="cards-story">
-    <div class="cards-story__search-panel"></div>
+    <div class="cards-story__search-panel">
+      <input-search />
+      <button-search />
+    </div>
     <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
     <div class="cards-story__container">
       <card-story
@@ -22,6 +25,8 @@ import input from '@/components/ui/input';
 export default {
   components: {
     'card-story': CardStory,
+    'input-search': input,
+    'button-search': Button,
   },
   methods: {
     goToDetail(id) {
