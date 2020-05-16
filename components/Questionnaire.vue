@@ -3,16 +3,9 @@
     :popDisplay="isQuestionnaireActive()"
     class="questionnaire"
     @closeClick="closeQuestionnaire"
+    :titleText="title()"
+    :titlePosition="position()"
   >
-    <h2 v-if="id < 12" class="questionnaire__title">
-      Шаг {{ question.id }} из 12
-    </h2>
-    <h2
-      v-if="id === 12"
-      class="questionnaire__title questionnaire__title_step_last"
-    >
-      Спасибо что приняли участие!
-    </h2>
     <p v-if="id < 12" class="questionnaire__question">
       <span class="questionnaire__mainquestion">{{ question.mainQest }} </span
       >{{ question.qest }}
@@ -23,7 +16,7 @@
       class="questionnaire__input"
       placeholder="Напишите тут"
       required
-      v-model="answers[id]"
+      v-model="answer"
     />
     <button
       v-if="id < 12"
@@ -39,7 +32,7 @@
     <button
       v-if="id === 11"
       class="questionnaire__further"
-      @click="saveAnswers"
+      @click="nextQuestion"
     >
       Отправить
     </button>
@@ -67,31 +60,37 @@ export default {
     popup: Popup,
   },
   methods: {
+    title() {
+      return this.id === 12
+        ? 'Спасибо что приняли участие!'
+        : `Шаг ${this.question.id} из 12`;
+    },
+    position() {
+      return this.id === 12 ? 'center' : 'left';
+    },
     isQuestionnaireActive() {
       return this.getQuestionnaireState ? 'visible' : 'invisible';
     },
     previousQuestion() {
-      this.$store.commit('questionnaire/previousQuestion');
+      this.$store.dispatch('questionnaire/previousQuestion').then(item => {
+        this.answer = item;
+      });
     },
     nextQuestion() {
-      this.$store.commit('questionnaire/nextQuestion');
-    },
-    saveAnswers() {
-      this.$store.commit('questionnaire/saveAnswer', this.answers);
-      this.nextQuestion();
-      this.answers = ['', '', '', '', '', '', '', '', '', '', '', ''];
+      this.$store
+        .dispatch('questionnaire/nextQuestion', this.answer)
+        .then(item => {
+          this.answer = item;
+        });
     },
     closeQuestionnaire() {
-      this.$store.commit('questionnaire/closeQuestionnaire');
-      this.$store.commit('questionnaire/resetQuestionnaire');
+      this.$store.dispatch('questionnaire/closeQuestionnaire');
     },
   },
+
   computed: {
     question() {
       return this.$store.getters['questionnaire/getQuestion'];
-    },
-    answer() {
-      return this.$store.getters['questionnaire/getAnswer'];
     },
     id() {
       return this.$store.getters['questionnaire/getId'];
@@ -99,10 +98,13 @@ export default {
     getQuestionnaireState() {
       return this.$store.getters['questionnaire/getQuestionnaireState'];
     },
+    getCurrentAnswer() {
+      return this.$store.getters['questionnaire/getCurrentAnswer'];
+    },
   },
   data() {
     return {
-      answers: ['', '', '', '', '', '', '', '', '', '', '', ''],
+      answer: this.getCurrentAnswer,
     };
   },
 };

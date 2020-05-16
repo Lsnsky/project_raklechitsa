@@ -1,6 +1,11 @@
 <template>
-  <popup :popDisplay="isShareActive()" class="share" @closeClick="toggleShare">
-    <h3 class="share__title">Поделитесь</h3>
+  <popup
+    :popDisplay="isShareActive()"
+    titleText="Поделитесь"
+    titlePosition="center"
+    class="share"
+    @closeClick="toggleShare"
+  >
     <div class="share__icon-container">
       <icon network="facebook" />
       <icon network="twitter" />

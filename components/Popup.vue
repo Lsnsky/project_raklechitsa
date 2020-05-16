@@ -1,6 +1,9 @@
 <template>
   <div :class="`popup popup_display_${popDisplay}`">
     <div class="popup__container">
+      <h2 :class="`popup__title popup__title_position_${titlePosition}`">
+        {{ titleText }}
+      </h2>
       <slot></slot>
       <button
         type="button"
@@ -14,7 +17,7 @@
 
 <script>
 export default {
-  props: ['popDisplay'],
+  props: ['popDisplay', 'titleText', 'titlePosition'],
 };
 </script>
 
@@ -69,5 +72,18 @@ export default {
   top: 36px;
   right: 36px;
   cursor: pointer;
+}
+
+.popup__title {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+  margin: 40px 0 0 40px;
+  width: calc(100%-40px);
+}
+
+.popup__title_position_center {
+  text-align: center;
+  margin: 40px 0 0;
 }
 </style>
