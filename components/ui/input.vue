@@ -23,7 +23,7 @@ export default {
     placeholder: String,
     type: String,
     hasData: Boolean,
-    borderd: Boolean,
+    bordered: Boolean,
   },
   data() {
     return {
@@ -57,8 +57,6 @@ export default {
   font-size: 18px;
   line-height: 24px;
   border-bottom: 1px solid #eee;
-  max-height: 200px;
-  max-width: 840px;
 }
 
 .input_bordered {
