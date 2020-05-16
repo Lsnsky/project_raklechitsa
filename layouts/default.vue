@@ -1,8 +1,45 @@
 <template>
-  <div>
+  <div @keydown.esc="popupClose()">
+    <main-header @shareClick="popupOpen()" />
+    <main-popup :popDisplay="popupDisplay" @closeClick="popupClose()" />
     <nuxt />
+    <main-footer />
   </div>
 </template>
+
+<script>
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Popup from '@/components/Popup';
+export default {
+  components: {
+    'main-header': Header,
+    'main-footer': Footer,
+    'main-popup': Popup,
+  },
+  methods: {
+    popupClose() {
+      this.popupDisplay = 'invisible';
+    },
+    popupOpen() {
+      this.popupDisplay = 'visible';
+    },
+  },
+  created() {
+    this.$root.$on(
+      'shClick',
+      function() {
+        this.popupOpen();
+      }.bind(this)
+    );
+  },
+  data() {
+    return {
+      popupDisplay: 'invisible',
+    };
+  },
+};
+</script>
 
 <style>
 html {
@@ -16,6 +53,10 @@ html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
 }
 </style>
 
