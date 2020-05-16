@@ -21,11 +21,11 @@
 <script>
 import CardStory from '@/components/ui/CardStory';
 import Button from '@/components/ui/Button';
-import input from '@/components/ui/input';
+import mainInput from '@/components/ui/mainInput';
 export default {
   components: {
     'card-story': CardStory,
-    'input-search': input,
+    'input-search': mainInput,
     'button-search': Button,
   },
   methods: {
