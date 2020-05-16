@@ -10,13 +10,14 @@
       <span class="questionnaire__mainquestion">{{ question.mainQest }} </span
       >{{ question.qest }}
     </p>
-    <input
+    <main-input
       v-if="id < 12"
-      autofocus
-      class="questionnaire__input"
       placeholder="Напишите тут"
-      required
+      type="text"
+      :hasData="hasData()"
       v-model="answer"
+      bordered="flase"
+      class="questionnaire__input"
     />
     <button
       v-if="id < 12"
@@ -55,11 +56,16 @@
 
 <script>
 import Popup from '@/components/Popup';
+import Input from '@/components/ui/Input';
 export default {
   components: {
     popup: Popup,
+    'main-input': Input,
   },
   methods: {
+    hasData() {
+      return this.answer.length === 0 ? false : true;
+    },
     title() {
       return this.id === 12
         ? 'Спасибо что приняли участие!'
@@ -73,14 +79,14 @@ export default {
     },
     previousQuestion() {
       this.$store.dispatch('questionnaire/previousQuestion').then(item => {
-        this.answer = item;
+        this.answer = typeof item === 'undefined' ? '' : item;
       });
     },
     nextQuestion() {
       this.$store
         .dispatch('questionnaire/nextQuestion', this.answer)
         .then(item => {
-          this.answer = item;
+          this.answer = typeof item === 'undefined' ? '' : item;
         });
     },
     closeQuestionnaire() {
@@ -104,7 +110,7 @@ export default {
   },
   data() {
     return {
-      answer: this.getCurrentAnswer,
+      answer: '',
     };
   },
 };
@@ -192,23 +198,13 @@ export default {
 }
 
 .questionnaire__input {
-  display: block;
   width: 91%;
   margin: 0 40px;
-  min-height: 24px;
   height: 24px;
-  border: none;
-  outline: none;
   padding: 0 0 10px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 24px;
   position: absolute;
   top: 274px;
   left: 0;
-  border-bottom: 1px solid #eee;
   max-height: 200px;
   max-width: 840px;
 }
