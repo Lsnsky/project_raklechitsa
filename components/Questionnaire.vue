@@ -7,8 +7,10 @@
     :titlePosition="position()"
   >
     <p v-if="id < 12" class="questionnaire__question">
-      <span class="questionnaire__mainquestion">{{ question.mainQest }} </span
-      >{{ question.qest }}
+      <question class="questionnaire__mainquestion"
+        >{{ question.mainQest }}
+      </question>
+      <span class="questionnaire__subquestion">{{ question.qest }}</span>
     </p>
     <main-input
       v-if="id < 12"
@@ -46,24 +48,23 @@
     >
       Закрыть
     </main-button>
-    <p v-if="id === 11" class="questionnaire__politica">
-      Нажимая на кнопку «отправить», вы даете согласие на
-      <nuxt-link to="/policy" class="questionnaire__link" target="_blank"
-        >обработку персональных данных</nuxt-link
-      >
-    </p>
+    <policy v-if="id === 11" class="questionnaire__politica"> </policy>
   </popup>
 </template>
 
 <script>
 import Popup from '@/components/Popup';
-import Input from '@/components/ui/Input';
+import mainInput from '@/components/ui/mainInput';
 import Button from '@/components/ui/Button';
+import Question from '@/components/ui/Question';
+import Policy_text from '@/components/ui/Policy_text';
 export default {
   components: {
     popup: Popup,
-    'main-input': Input,
+    'main-input': mainInput,
     'main-button': Button,
+    question: Question,
+    policy: Policy_text,
   },
   methods: {
     buttonNext() {
@@ -129,24 +130,9 @@ export default {
 }
 
 .questionnaire__politica {
-  display: block;
   position: absolute;
   bottom: 49px;
   left: 374px;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  max-width: 378px;
-  color: #666666;
-  margin: 0;
-}
-
-.questionnaire__link {
-  color: inherit;
-}
-
-.questionnaire__link:hover {
-  opacity: 0.8;
 }
 
 .questionnaire_display_visible {
@@ -195,13 +181,13 @@ export default {
   max-width: 840px;
 }
 
-.questionnaire__mainquestion {
-  font-weight: bold;
-  color: #000;
-}
-
 .questionnaire__question {
   margin: 40px 0 0 40px;
+  width: 91%;
+}
+
+.questionnaire__subquestion {
+  margin: 0;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
