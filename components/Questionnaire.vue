@@ -57,12 +57,12 @@
 
 <script>
 import Popup from '@/components/Popup';
-import Input from '@/components/ui/Input';
+import mainInput from '@/components/ui/mainInput';
 import Button from '@/components/ui/Button';
 export default {
   components: {
     popup: Popup,
-    'main-input': Input,
+    'main-input': mainInput,
     'main-button': Button,
   },
   methods: {
