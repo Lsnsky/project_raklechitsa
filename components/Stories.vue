@@ -15,7 +15,7 @@
         @cardClick="goToDetail(card.id)"
       ></card-story>
     </div>
-    <btnhistory />
+    <btnhistory class="cards-story__button" />
   </section>
 </template>
 
@@ -45,9 +45,13 @@ export default {
 </script>
 
 <style scoped>
+.cards-story__button {
+  margin: 60px auto 0;
+}
+
 .cards-story {
   /* border: 1px solid red; */
-  padding-bottom: 30px;
+
   max-width: 1320px;
   margin: 0 auto;
 }

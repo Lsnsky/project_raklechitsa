@@ -1,90 +1,136 @@
 <template>
-  <article class="story">
-    <header class="story__header">
-      <img
-        src="https://i.postimg.cc/dQNQM071/632d61-6f4755d85f6543ec91c8cd9c151c666b-mv2-d-5760-3840-s-4-2.jpg"
-        alt
-        class="story__photo story__photo_type_pc"
-      />
-      <div class="story__block-title">
-        <h2 class="story__title">
-          <span class="story__span-accent">Александр Тарханов:</span> &laquo;Я
-          не могу победить свою пунктуальность в отличии от рака&raquo;
-        </h2>
+  <section>
+    <article class="story">
+      <header class="story__header">
         <img
           src="https://i.postimg.cc/dQNQM071/632d61-6f4755d85f6543ec91c8cd9c151c666b-mv2-d-5760-3840-s-4-2.jpg"
           alt
-          class="story__photo story__photo_type_mobile"
+          class="story__photo story__photo_type_pc"
         />
-        <div class="story__data">
-          <a @click="toggleShare" class="link story__link">Поделитесь&#8599;</a>
-          <p class="story__date">20 апреля 2018</p>
+        <div class="story__block-title">
+          <h2 class="story__title">
+            <span class="story__span-accent">Александр Тарханов:</span> &laquo;Я
+            не могу победить свою пунктуальность в отличии от рака&raquo;
+          </h2>
+          <img
+            src="https://i.postimg.cc/dQNQM071/632d61-6f4755d85f6543ec91c8cd9c151c666b-mv2-d-5760-3840-s-4-2.jpg"
+            alt
+            class="story__photo story__photo_type_mobile"
+          />
+          <div class="story__data">
+            <a @click="toggleShare" class="link story__link"
+              >Поделитесь&#8599;</a
+            >
+            <p class="story__date">20 апреля 2018</p>
+          </div>
         </div>
-      </div>
-    </header>
-    <section class="story__body">
-      <p class="story__paragraph">
-        Я из военной семьи. Отец хоть и не был военным сам, но нас всех держал в
-        ежовых рукавицах. Думаю, поэтому мы и выросли такими ответственными.
-      </p>
-      <p class="story__paragraph">
-        У меня дома до сих пор стоят часы в каждой комнате, хотя они и не нужны
-        особо — я сам чувствую, опаздываю куда-то или нет, отстаю от нужного
-        графика или опережаю. Вот такие встроенные внутренние часы! Будильник
-        мне тоже не нужен — я всегда встаю раньше. Одеваюсь тоже быстро, как в
-        армии, за 45 секунд.
-      </p>
-      <p class="story__paragraph story__paragraph_font-weight_bold">
-        <span class="story__span-accent">
-          «В футболе если команда опоздала на 15 минут, ей засчитывается
-          поражение».
-        </span>
-      </p>
-      <p class="story__paragraph">
-        Опаздывать я тоже не люблю, на все встречи прихожу заранее. Если знаю,
-        что могу попасть по дороге в пробку, то не еду на машине. В аэропорт
-        приезжаю задолго до начала регистрации. Лучше подожду и кофе попью, чем
-        опоздаю!
-      </p>
-      <p class="story__paragraph">
-        Когда мне было 16 лет, мне в школе геометрию нужно было пересдавать. Я
-        билеты выучил, знал абсолютно все. Пришел в нужное время, а учительница
-        — нет. Ну, я какое-то время подождал ее и ушел. Потом она спрашивала:
-        «Почему не дождался?». Я ответил: «В футболе если команда опоздала на 15
-        минут, ей засчитывается поражение». Экзамен мне все-таки поставили!
-        Сейчас если кто-то из футболистов моей команды опаздывает — начинаю
-        злиться, могу и прикрикнуть потом. А если кто-то опоздал на тренировку
-        перед игрой — все, подготовка насмарку. Я сразу начинаю думать тогда:
-        «Значит, точно проиграем». Такая болезненная пунктуальность уже не
-        лечится. В отличие от рака.
-      </p>
-      <p class="story__paragraph">
-        «Сейчас если кто-то из футболистов моей команды опаздывает — начинаю
-        злиться, могу и прикрикнуть потом. А если кто-то опоздал на тренировку
-        перед игрой — все, подготовка насмарку. Я сразу начинаю думать тогда:
-        «Значит, точно проиграем». Такая болезненная пунктуальность уже не
-        лечится».
-      </p>
-    </section>
-    <footer class="story__footer">
-      <a href="#" class="link story__link story__link_local_footer"
-        >Поделитесь этой статьей в своих социальных сетях &#8599;</a
-      >
-    </footer>
-  </article>
+      </header>
+      <section class="story__body">
+        <p class="story__paragraph">
+          Я из военной семьи. Отец хоть и не был военным сам, но нас всех держал
+          в ежовых рукавицах. Думаю, поэтому мы и выросли такими ответственными.
+        </p>
+        <p class="story__paragraph">
+          У меня дома до сих пор стоят часы в каждой комнате, хотя они и не
+          нужны особо — я сам чувствую, опаздываю куда-то или нет, отстаю от
+          нужного графика или опережаю. Вот такие встроенные внутренние часы!
+          Будильник мне тоже не нужен — я всегда встаю раньше. Одеваюсь тоже
+          быстро, как в армии, за 45 секунд.
+        </p>
+        <p class="story__paragraph story__paragraph_font-weight_bold">
+          <span class="story__span-accent">
+            «В футболе если команда опоздала на 15 минут, ей засчитывается
+            поражение».
+          </span>
+        </p>
+        <p class="story__paragraph">
+          Опаздывать я тоже не люблю, на все встречи прихожу заранее. Если знаю,
+          что могу попасть по дороге в пробку, то не еду на машине. В аэропорт
+          приезжаю задолго до начала регистрации. Лучше подожду и кофе попью,
+          чем опоздаю!
+        </p>
+        <p class="story__paragraph">
+          Когда мне было 16 лет, мне в школе геометрию нужно было пересдавать. Я
+          билеты выучил, знал абсолютно все. Пришел в нужное время, а
+          учительница — нет. Ну, я какое-то время подождал ее и ушел. Потом она
+          спрашивала: «Почему не дождался?». Я ответил: «В футболе если команда
+          опоздала на 15 минут, ей засчитывается поражение». Экзамен мне
+          все-таки поставили! Сейчас если кто-то из футболистов моей команды
+          опаздывает — начинаю злиться, могу и прикрикнуть потом. А если кто-то
+          опоздал на тренировку перед игрой — все, подготовка насмарку. Я сразу
+          начинаю думать тогда: «Значит, точно проиграем». Такая болезненная
+          пунктуальность уже не лечится. В отличие от рака.
+        </p>
+        <p class="story__paragraph">
+          «Сейчас если кто-то из футболистов моей команды опаздывает — начинаю
+          злиться, могу и прикрикнуть потом. А если кто-то опоздал на тренировку
+          перед игрой — все, подготовка насмарку. Я сразу начинаю думать тогда:
+          «Значит, точно проиграем». Такая болезненная пунктуальность уже не
+          лечится».
+        </p>
+      </section>
+      <footer class="story__footer">
+        <a href="#" class="link story__link story__link_local_footer"
+          >Поделитесь этой статьей в своих социальных сетях &#8599;</a
+        >
+      </footer>
+    </article>
+    <div class="story__cards-container">
+      <card-story
+        v-for="card in stories"
+        :key="card.id"
+        :url="card.history_photo"
+        :history_title="card.history_title"
+        :history_text="card.history_text"
+        @cardClick="goToDetail(card.id)"
+      ></card-story>
+    </div>
+    <btnhistory class="story__button" />
+  </section>
 </template>
 
 <script>
+import CardStory from '@/components/ui/CardStory';
+import Button_history from '@/components/ui/Button_history';
 export default {
+  components: {
+    'card-story': CardStory,
+    btnhistory: Button_history,
+  },
   methods: {
     toggleShare() {
       this.$store.commit('share-popup/toggleSharePopup');
+    },
+    goToDetail(id) {
+      this.$router.push(`/stories/${id}`);
+    },
+  },
+  computed: {
+    stories() {
+      return this.$store.getters['storiesData/getStoriesData'].filter(
+        (item, index) => index < 4
+      );
     },
   },
 };
 </script>
 
 <style scoped>
+.story__button {
+  margin: 60px auto 90px;
+}
+.story__cards-container {
+  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 300px));
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 70px;
+  justify-content: center;
+  grid-auto-flow: dense;
+  margin: 0 auto;
+  max-width: 1320px;
+}
 .story {
   max-width: 1320px;
   padding: 100px 4% 160px;

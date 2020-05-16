@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="$emit('QuestionnaireOpen')" class="button_search">
+    <button class="button_search">
       Заполнить форму
     </button>
   </div>
