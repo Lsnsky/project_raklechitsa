@@ -177,7 +177,7 @@ export default {
 
 .content__columns-main-text {
   max-width: 655px;
-
+  /* height: 88px; */
   color: #666;
   font-style: normal;
   font-weight: normal;
@@ -194,7 +194,15 @@ export default {
 .button-search {
   margin-top: 78px;
 }
-
+.active {
+  color: #000000;
+}
+.noActive {
+  color: #a2a2a2;
+}
+.buttonPosition {
+  margin-top: 122px;
+}
 @media screen and (max-width: 1280px) {
   .story-input {
     padding: 50px;
@@ -302,23 +310,12 @@ export default {
   .content__columns-text {
     margin-bottom: 50px;
   }
-  .active {
-    color: #000000;
-  }
-  .noActive {
-    color: #a2a2a2;
-  }
-  .buttonPosition {
-    margin-top: 122px;
-  }
 }
 @media screen and (max-width: 512px) {
   .story-input {
     margin: 0;
     padding: 0;
-  }
-  .content__columns-text {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
   .button-search {
     width: 290px;
@@ -360,6 +357,7 @@ export default {
     max-width: 295px;
     font-size: 15px;
     line-height: 19px;
+    margin-bottom: 30px;
   }
 }
 </style>
