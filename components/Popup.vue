@@ -1,165 +1,23 @@
 <template>
   <div :class="`popup popup_display_${popDisplay}`">
-    <form class="popoup__container" @submit.prevent="nextScreen()">
-      <h2 v-if="this.id <= 11" class="popup__title">Шаг {{ id + 1 }} из 12</h2>
-      <h2 v-if="this.id === 12" class="popup__title popup__title_step_last">
-        Спасибо что приняли участие!
+    <div class="popup__container">
+      <h2 :class="`popup__title popup__title_position_${titlePosition}`">
+        {{ titleText }}
       </h2>
-      <p v-if="this.id <= 11" class="popup__question">
-        <span v-if="this.id <= 11" class="popup__mainquestion"
-          >{{ questions[id].mainQest }} </span
-        >{{ questions[id].qest }}
-      </p>
-      <textarea
-        v-if="this.id <= 11"
-        autofocus
-        class="popup__input"
-        placeholder="Напишите тут"
-        v-model="answers[id]"
-        required
-      >
-      </textarea>
+      <slot></slot>
       <button
-        v-if="this.id <= 11"
-        type="button"
-        class="popup__back"
-        @click="before()"
-      >
-        Назад
-      </button>
-      <button v-if="this.id < 11" type="submit" class="popup__further">
-        Далее
-      </button>
-      <button v-if="this.id === 11" type="submit" class="popup__further">
-        Отправить
-      </button>
-      <button
-        v-if="this.id === 12"
-        type="submit"
-        class="popup__further popup__further_step_last"
-        @click="close"
-      >
-        Закрыть
-      </button>
-      <p v-if="this.id === 11" class="popup__politica">
-        Нажимая на кнопку «отправить», вы даете согласие на
-        <nuxt-link to="/policy" class="popup__link" target="_blank"
-          >обработку персональных данных</nuxt-link
-        >
-      </p>
-      <button
-        v-if="this.id <= 11"
         type="button"
         class="popup__close"
         @click="$emit('closeClick')"
       ></button>
-    </form>
+    </div>
     <div class="popup__overlay"></div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['popDisplay'],
-  methods: {
-    before() {
-      this.id = this.id === 0 ? 0 : this.id--;
-    },
-
-    nextScreen() {
-      if (this.id === 11) {
-        console.log(this.answers);
-        //Впоследствии тут произойдет отправка данных на сервер
-        this.id++;
-      } else {
-        this.id++;
-      }
-    },
-    close() {
-      this.$emit('closeClick');
-      setTimeout(() => {
-        this.id = 0;
-      }, 100);
-    },
-  },
-  data() {
-    return {
-      id: 0,
-      answers: ['', '', '', '', '', '', '', '', '', '', '', ''],
-      questions: [
-        {
-          id: '1',
-          mainQest: 'Как вас зовут?',
-          qest: '',
-          name: 'first',
-        },
-        {
-          id: '2',
-          mainQest: 'Было ли у вас онкологическое заболевание?',
-          qest:
-            'Если да – расскажите, пожалуйста, кратко, какой диагноз и текущий статус. Если нет — приглашаем Вас поделиться своей историей неизлечимых привычек в Инстаграм с хештегами #раклечится и #этонелечится',
-        },
-        {
-          id: '3',
-          mainQest: 'Какие занятия приносят Вам наибольшее удовольствие?',
-          qest:
-            'Расскажите о ваших неизлечимых привычках, чего Вы боитесь или без чего не можете жить.',
-        },
-        {
-          id: '4',
-          mainQest:
-            'На что, кроме семьи, быта и работы, Вы тратите свое время?',
-          qest: '',
-        },
-        {
-          id: '5',
-          mainQest: 'Какие сильные увлечения у Вас есть?',
-          qest:
-            'Расскажите о занятии, хобби или спорте, которые увлекают Вас с головой.',
-        },
-        {
-          id: '6',
-          mainQest:
-            'Ваши близкие, друзья или коллеги замечали за вами какие-нибудь необычные привычки или особенности?',
-          qest: '',
-        },
-        {
-          id: '7',
-          mainQest:
-            'Существуют ли какие-то ритуалы/действия, которые Вы совершаете регулярно?',
-          qest: 'Кроме необходимых, таких, как чистка зубов.',
-        },
-        {
-          id: '8',
-          mainQest:
-            'Если вам выдался свободный день/вечер в одиночестве, чем вы займетесь?',
-          qest: '',
-        },
-        {
-          id: '9',
-          mainQest: 'Что Вас успокаивает/умиротворяет лучше всего?',
-          qest: '',
-        },
-        {
-          id: '10',
-          mainQest:
-            'Какие события/ситуации или действия других людей обычно выводят Вас из себя?',
-          qest: '',
-        },
-        {
-          id: '11',
-          mainQest: 'Как вы обычно проводите выходные?',
-          qest: '',
-        },
-        {
-          id: '12',
-          mainQest: 'Почта или телефон для связи. ',
-          qest:
-            'Укажите удобный для вас формат связи. После обработки анкеты координатор проекта свяжется с Вами для размещения Вашей истории на сайте.',
-        },
-      ],
-    };
-  },
+  props: ['popDisplay', 'titleText', 'titlePosition'],
 };
 </script>
 
@@ -179,117 +37,6 @@ export default {
   transition: all linear 0.1s;
 }
 
-.popup__politica {
-  display: block;
-  position: absolute;
-  bottom: 49px;
-  left: 374px;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  max-width: 378px;
-  color: #666666;
-  margin: 0;
-}
-
-.popup__link {
-  color: inherit;
-}
-
-.popup__link:hover {
-  opacity: 0.8;
-}
-
-.popup_display_visible {
-  visibility: visible;
-  opacity: 1;
-}
-
-.popup__further {
-  border: none;
-  background-color: #714dbd;
-  outline: none;
-  position: absolute;
-  bottom: 40px;
-  left: 118px;
-  padding: 0;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  width: 226px;
-  height: 52px;
-  color: #fff;
-  cursor: pointer;
-  transition: all linear 0.1s;
-}
-
-.popup__further:hover {
-  opacity: 0.9;
-}
-
-.popup__further_step_last {
-  left: 347px;
-}
-
-.popup__back {
-  border: none;
-  background-color: #fff;
-  outline: none;
-  position: absolute;
-  bottom: 56px;
-  left: 40px;
-  padding: 0;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  width: 48px;
-  height: 20px;
-  cursor: pointer;
-  transition: all linear 0.1s;
-}
-
-.popup__back:hover {
-  opacity: 0.8;
-}
-
-.popup__input {
-  display: block;
-  width: 91%;
-  margin: 0 40px;
-  min-height: 24px;
-  height: 24px;
-  border: none;
-  outline: none;
-  padding: 0 0 10px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 24px;
-  position: absolute;
-  top: 274px;
-  left: 0;
-  border-bottom: 1px solid #eee;
-  max-height: 200px;
-  max-width: 840px;
-}
-
-.popup__mainquestion {
-  font-weight: bold;
-  color: #000;
-}
-
-.popup__question {
-  margin: 40px 0 0 40px;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  color: #666;
-  width: 91%;
-}
-
 .popup__overlay {
   position: absolute;
   top: 0;
@@ -300,18 +47,22 @@ export default {
   height: 100%;
 }
 
-.popoup__container {
+.popup_display_visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup__container {
   position: relative;
   display: block;
-  width: 920px;
-  height: 600px;
   background: #fff;
   z-index: 1;
 }
 
 .popup__close {
   background-position: center;
-  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='7.92879' y1='7.92912' x2='22.0709' y2='22.0713' stroke='black' stroke-width='2'/%3E%3Cline x1='7.92912' y1='22.0712' x2='22.0713' y2='7.92908' stroke='black' stroke-width='2'/%3E%3C/svg%3E%0A");
+  background-size: contain;
+  background-image: url('../static/images/hider-open.svg');
   width: 20px;
   height: 20px;
   background-color: #fff;
@@ -327,10 +78,28 @@ export default {
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
-  margin: 40px 0 0 40px;
+  margin: 40px 40px 0;
+  width: calc(100% - 80px);
 }
 
-.popup__title_step_last {
+.popup__title_position_center {
   text-align: center;
+  margin: 40px auto 0;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__title {
+    font-size: 18px;
+    line-height: 21px;
+    margin: 15px 15px 0;
+    width: calc(100% - 30px);
+  }
+  .popup__title_position_center {
+    margin: 15px auto 0;
+  }
+  .popup__close {
+    top: 19px;
+    right: 18px;
+  }
 }
 </style>

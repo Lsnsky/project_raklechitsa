@@ -23,7 +23,9 @@
               >Youtube</a
             >
           </p>
-          <a href="" class="footer__share">Поделитесь &#8599;</a>
+          <button @click="toggleShare" class="footer__share">
+            Поделитесь &#8599;
+          </button>
         </div>
       </div>
       <div class="footer__wrapper">
@@ -50,6 +52,11 @@ export default {
   components: {
     'main-menu': Menu,
     container: Container,
+  },
+  methods: {
+    toggleShare() {
+      this.$store.commit('share-popup/toggleSharePopup');
+    },
   },
 };
 </script>
@@ -104,7 +111,7 @@ export default {
   flex-direction: row;
 }
 
-.footer__menu /deep/ .menu__navigation-link_type_active {
+.footer__menu /deep/ .nuxt-link-exact-active {
   border: none;
 }
 
@@ -126,12 +133,18 @@ export default {
 }
 
 .footer__share {
+  outline: none;
+  background-color: inherit;
+  border: none;
   text-decoration: none;
+  text-align: left;
   font-weight: normal;
+  padding: 0;
   font-size: 18px;
   line-height: 24px;
   color: #121212;
   margin: 44px 0 0;
+  cursor: pointer;
 }
 
 .footer__share:hover {
@@ -188,7 +201,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 899px) {
+@media screen and (max-width: 905px) {
   .menu /deep/ {
     display: flex;
     flex-direction: column;

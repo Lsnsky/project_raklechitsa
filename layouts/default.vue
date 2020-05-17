@@ -1,42 +1,29 @@
 <template>
-  <div @keydown.esc="popupClose()">
-    <main-header @shareClick="popupOpen()" />
-    <main-popup :popDisplay="popupDisplay" @closeClick="popupClose()" />
+  <div @keydown.esc="closeQuestionnaire">
+    <main-header />
+    <questionnaire />
     <nuxt />
     <main-footer />
+    <share />
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Popup from '@/components/Popup';
+import Questionnaire from '@/components/Questionnaire';
+import Share_popup from '@/components/Share_popup';
 export default {
   components: {
     'main-header': Header,
     'main-footer': Footer,
-    'main-popup': Popup,
+    questionnaire: Questionnaire,
+    share: Share_popup,
   },
   methods: {
-    popupClose() {
-      this.popupDisplay = 'invisible';
+    closeQuestionnaire() {
+      this.$store.commit('questionnaire/closeQuestionnaire');
     },
-    popupOpen() {
-      this.popupDisplay = 'visible';
-    },
-  },
-  created() {
-    this.$root.$on(
-      'shClick',
-      function() {
-        this.popupOpen();
-      }.bind(this)
-    );
-  },
-  data() {
-    return {
-      popupDisplay: 'invisible',
-    };
   },
 };
 </script>

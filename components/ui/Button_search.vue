@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="some()" class="button_search">
+    <button class="button_search">
       Заполнить форму
     </button>
   </div>
@@ -8,11 +8,7 @@
 
 <script>
 export default {
-  methods: {
-    some() {
-      this.$root.$emit('shClick');
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -30,5 +26,17 @@ export default {
   cursor: pointer;
   transition: all linear 0.1s;
   outline: none;
+}
+@media screen and (max-width: 1280px) {
+  .button_search {
+    width: 230px;
+    height: 46px;
+  }
+}
+@media screen and (max-width: 512px) {
+  .button_search {
+    width: 290px;
+    height: 40px;
+  }
 }
 </style>
