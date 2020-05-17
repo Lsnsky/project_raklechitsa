@@ -2,22 +2,18 @@
   <article class="story">
     <header class="story__header">
       <img
-        src="https://i.postimg.cc/dQNQM071/632d61-6f4755d85f6543ec91c8cd9c151c666b-mv2-d-5760-3840-s-4-2.jpg"
-        alt
-        class="story__photo story__photo_type_pc"
-      />
+      src=https://i.postimg.cc/3x4HNBhy/chris-yang-o-TN03i-Tb-Wn-M-unsplash.jpg
+      alt class="story__photo story__photo_type_pc" />
       <div class="story__block-title">
         <h2 class="story__title">
           <span class="story__span-accent">Александр Тарханов:</span> &laquo;Я
           не могу победить свою пунктуальность в отличии от рака&raquo;
         </h2>
         <img
-          src="https://i.postimg.cc/dQNQM071/632d61-6f4755d85f6543ec91c8cd9c151c666b-mv2-d-5760-3840-s-4-2.jpg"
-          alt
-          class="story__photo story__photo_type_mobile"
-        />
+        src=https://i.postimg.cc/3x4HNBhy/chris-yang-o-TN03i-Tb-Wn-M-unsplash.jpg
+        alt class="story__photo story__photo_type_mobile" />
         <div class="story__data">
-          <a href class="link story__link">Поделитесь&#8599;;</a>
+          <a href class="link story__link">Поделитесь &#8599;;</a>
           <p class="story__date">20 апреля 2018</p>
         </div>
       </div>
@@ -68,7 +64,7 @@
     </section>
     <footer class="story__footer">
       <a href="#" class="link story__link story__link_local_footer"
-        >Поделитесь этой статьей в своих социальных сетях &#8599;</a
+        >Поделитесь этой статьей в своих социальных сетях&#160;&#8599;</a
       >
     </footer>
   </article>
@@ -127,12 +123,9 @@ export default {};
 .story__link {
   font-size: 18px;
   line-height: 24px;
+  font-weight: normal;
   color: #121212;
   text-decoration: none;
-}
-
-.link {
-  opacity: 1;
 }
 
 .link:hover {
