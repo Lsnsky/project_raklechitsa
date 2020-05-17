@@ -47,6 +47,6 @@ export default {
   line-height: 18px;
   width: 250px;
   margin: 14px 0 0;
-  color: #666666;
+  color: #666;
 }
 </style>

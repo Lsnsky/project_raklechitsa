@@ -12,13 +12,21 @@
     </div>
     <div class="cards-story__container">
       <card-story
-        v-for="card in stories"
+        v-for="card in paginatedStories"
         :key="card.id"
         :url="card.history_photo"
         :history_title="card.history_title"
         :history_text="card.history_text"
         @cardClick="goToDetail(card.id)"
       ></card-story>
+    </div>
+    <div class="cards-story__btn-group">
+      <button
+        v-for="page in paginatedPages"
+        :key="page.id"
+        @click.prevent="setPage(page)"
+        class="cards-story__set-page-button"
+      ></button>
     </div>
   </section>
 </template>
@@ -35,6 +43,7 @@ export default {
     'button-search': Button,
     pagination: Pagination,
   },
+
   methods: {
     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
@@ -44,6 +53,12 @@ export default {
     stories() {
       return this.$store.getters['storiesData/getStoriesData'];
     },
+  },
+  data() {
+    return {
+      storiesPerPage: 16,
+      paginatedStories: [],
+    };
   },
 };
 </script>

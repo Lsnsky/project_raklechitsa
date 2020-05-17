@@ -15,5 +15,6 @@ export default {};
   height: 100%;
   background: #ededed;
   object-fit: cover;
+  cursor: pointer;
 }
 </style>
