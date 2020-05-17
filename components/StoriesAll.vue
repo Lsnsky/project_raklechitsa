@@ -1,10 +1,15 @@
 <template>
   <section class="cards-story">
-    <div class="cards-story__search-panel">
-      <input-search />
-      <button-search />
-    </div>
     <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
+    <div class="cards-story__search">
+      <input-search class="cards-story__search-input" :bordered="true" />
+      <button-search
+        :color="'purple'"
+        :disabled="false"
+        class="cards-story__search-button"
+        >Поиск</button-search
+      >
+    </div>
     <div class="cards-story__container">
       <card-story
         v-for="card in stories"
@@ -22,11 +27,13 @@
 import CardStory from '@/components/ui/CardStory';
 import Button from '@/components/ui/Button';
 import mainInput from '@/components/ui/mainInput';
+import Pagination from '@/components/Pagination';
 export default {
   components: {
     'card-story': CardStory,
     'input-search': mainInput,
     'button-search': Button,
+    pagination: Pagination,
   },
   methods: {
     goToDetail(id) {
@@ -69,8 +76,30 @@ export default {
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
-  margin-top: 100px;
+  margin: 100px 0 auto 0;
   max-width: 413px;
-  margin-bottom: 70px;
+}
+.cards-story__search {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: 60px auto 70px;
+  width: 100%;
+}
+.cards-story__search-input {
+  /* border: 1px solid red; */
+  /* background: #e5e5e5; */
+  width: calc(100% - 228px);
+  padding: 0;
+  margin: 0 20px 0 0;
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.cards-story__search-button {
+  /* border: 1px solid red; */
+  width: 208px;
+  height: 46px;
 }
 </style>
