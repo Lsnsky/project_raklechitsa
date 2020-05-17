@@ -7,10 +7,10 @@
     :titlePosition="position()"
   >
     <p v-if="id < 12" class="questionnaire__question">
-      <question class="questionnaire__mainquestion"
-        >{{ question.mainQest }}
-      </question>
-      <span class="questionnaire__subquestion">{{ question.qest }}</span>
+      <question class="questionnaire__mainquestion">{{
+        question.mainQest
+      }}</question
+      ><span class="questionnaire__subquestion">{{ question.qest }}</span>
     </p>
     <main-input
       v-if="id < 12"
@@ -154,7 +154,7 @@ export default {
 }
 
 .questionnaire__further_step_last {
-  left: 347px;
+  left: calc(50% - 100px);
 }
 
 .questionnaire__back {
@@ -170,20 +170,23 @@ export default {
 }
 
 .questionnaire__input {
-  width: 91%;
+  width: calc(100% - 80px);
   margin: 0 40px;
   height: 24px;
   padding: 0 0 10px;
   position: absolute;
   top: 274px;
   left: 0;
-  max-height: 200px;
   max-width: 840px;
 }
 
+.questionnaire__mainquestion {
+  width: calc(100% - 80px);
+}
+
 .questionnaire__question {
-  margin: 40px 0 0 40px;
-  width: 91%;
+  margin: 40px 40px 0;
+  width: calc(100% - 80px);
 }
 
 .questionnaire__subquestion {
@@ -192,7 +195,7 @@ export default {
   font-size: 18px;
   line-height: 24px;
   color: #666;
-  width: 91%;
+  width: calc(100% - 80px);
 }
 
 .questionnaire__title {
@@ -204,5 +207,120 @@ export default {
 
 .questionnaire__title_step_last {
   text-align: center;
+  left: calc(50% - 100px);
+}
+
+@media screen and (max-width: 1280px) {
+  .questionnaire /deep/ .popup__container {
+    width: 800px;
+    height: 520px;
+  }
+
+  .questionnaire__input {
+    height: 20px;
+    top: 232px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .questionnaire__further {
+    width: 200px;
+    height: 48px;
+  }
+  .questionnaire__back {
+    bottom: 54px;
+    left: 40px;
+    width: 48px;
+    height: 20px;
+  }
+
+  .questionnaire__subquestion {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .questionnaire__politica {
+    bottom: 45px;
+    left: 335px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .questionnaire /deep/ .popup__container {
+    width: 580px;
+    height: 520px;
+  }
+
+  .questionnaire__input {
+    top: 230px;
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .questionnaire__further {
+    height: 46px;
+  }
+  .questionnaire__back {
+    bottom: 53px;
+  }
+
+  .questionnaire__subquestion {
+    font-size: 15px;
+    line-height: 19px;
+  }
+  .questionnaire__politica {
+    bottom: 40px;
+    left: 325px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .questionnaire /deep/ .popup__container {
+    width: 290px;
+    height: 520px;
+  }
+
+  .questionnaire__input {
+    top: 245px;
+    font-size: 15px;
+    line-height: 19px;
+    width: calc(100% - 30px);
+    margin: 0 15px;
+  }
+
+  .questionnaire__further {
+    height: 40px;
+    width: 206;
+    left: 69px;
+    bottom: 15px;
+  }
+
+  .questionnaire__back {
+    width: 39px;
+    height: 16px;
+    bottom: 27px;
+    left: 15px;
+  }
+
+  .questionnaire__subquestion {
+    font-size: 13px;
+    line-height: 16px;
+    width: 100%;
+    margin: 0 15px;
+  }
+
+  .questionnaire__question {
+    margin: 30px 15px 0;
+    width: calc(100% - 30px);
+  }
+
+  .questionnaire__mainquestion {
+    width: 100%;
+  }
+
+  .questionnaire__politica {
+    bottom: 65px;
+    left: 15px;
+  }
 }
 </style>

@@ -78,23 +78,28 @@ export default {
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
-  margin: 40px 0 0 40px;
-  width: calc(100%-40px);
+  margin: 40px 40px 0;
+  width: calc(100% - 80px);
 }
 
 .popup__title_position_center {
   text-align: center;
-  margin: 40px 0 0;
+  margin: 40px auto 0;
 }
 
 @media screen and (max-width: 600px) {
   .popup__title {
     font-size: 18px;
     line-height: 21px;
-    margin: 15px 0 0 15px;
+    margin: 15px 15px 0;
+    width: calc(100% - 30px);
   }
   .popup__title_position_center {
-    margin: 15px 0 0;
+    margin: 15px auto 0;
+  }
+  .popup__close {
+    top: 19px;
+    right: 18px;
   }
 }
 </style>
