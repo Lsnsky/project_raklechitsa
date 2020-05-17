@@ -1,15 +1,20 @@
 <template>
-  <button :class="`social-icon social-icon_${network}`"></button>
+  <a
+    :class="`social-icon social-icon_${network}`"
+    :href="url"
+    target="_blank"
+  ></a>
 </template>
 
 <script>
 export default {
-  props: ['network'],
+  props: ['network', 'url'],
 };
 </script>
 
 <style scoped>
 .social-icon {
+  display: block;
   margin: 0;
   padding: 0;
   border: none;

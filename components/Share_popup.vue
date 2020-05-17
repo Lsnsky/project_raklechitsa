@@ -7,12 +7,38 @@
     @closeClick="toggleShare"
   >
     <div class="share__icon-container">
-      <icon network="facebook" />
-      <icon network="twitter" />
-      <icon network="vkontakte" />
-      <icon network="odnoklasniki" />
-      <icon network="instagram" />
-      <icon network="youtube" />
+      <icon
+        network="facebook"
+        :url="
+          `https://www.facebook.com/sharer.php?src=sp&u=https%3A%2F%2Fraklechitsa.ru%2F&title=РАКЛЕЧИТСЯ.РФ%20—%20истории%20людей%2C%20победивших%20рак%2C%20но%20не%20свои%20привычки&utm_source=share2`
+        "
+      />
+      <icon
+        network="twitter"
+        :url="
+          `https://twitter.com/intent/tweet?text=РАКЛЕЧИТСЯ.РФ%20—%20истории%20людей%2C%20победивших%20рак%2C%20но%20не%20свои%20привычки&url=https%3A%2F%2Fraklechitsa.ru%2F&utm_source=share2`
+        "
+      />
+      <icon
+        network="vkontakte"
+        :url="
+          `https://vk.com/share.php?url=https%3A%2F%2Fraklechitsa.ru%2F&title=РАКЛЕЧИТСЯ.РФ%20—%20истории%20людей%2C%20победивших%20рак%2C%20но%20не%20свои%20привычки&utm_source=share2`
+        "
+      />
+      <icon
+        network="odnoklasniki"
+        :url="
+          `https://connect.ok.ru/offer?url=https%3A%2F%2Fraklechitsa.ru%2F&title=РАКЛЕЧИТСЯ.РФ%20—%20истории%20людей%2C%20победивших%20рак%2C%20но%20не%20свои%20привычки&utm_source=share2`
+        "
+      />
+      <icon
+        network="instagram"
+        :url="`https://www.instagram.com/raklechitsa/`"
+      />
+      <icon
+        network="youtube"
+        :url="`https://www.youtube.com/results?search_query=%23этонелечится`"
+      />
     </div>
   </popup>
 </template>
