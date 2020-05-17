@@ -37,6 +37,7 @@
             зададим вопросы, уточним детали вашей истории.
           </p>
           <story-button
+            @QuestionnaireOpen="QuestionnaireOpen"
             class="button-search"
             :class="{ buttonPosition: isActive }"
           />
@@ -73,6 +74,9 @@ export default {
       this.toogle = true;
       this.isNoActive = true;
       this.isActive = true;
+    },
+    QuestionnaireOpen() {
+      this.$store.commit('questionnaire/openQuestionnaire');
     },
   },
 };
@@ -295,6 +299,5 @@ export default {
   .buttonPosition {
     margin-top: 122px;
   }
-}
 }
 </style>

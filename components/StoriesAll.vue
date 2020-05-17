@@ -1,373 +1,105 @@
 <template>
-  <div class="cards-history__container">
-    <card-story
-      v-for="card in cards_histories"
-      :key="card.id"
-      :url="card.history_photo"
-      :history_title="card.history_title"
-      :history_text="card.history_text"
-    ></card-story>
-  </div>
+  <section class="cards-story">
+    <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
+    <div class="cards-story__search">
+      <input-search class="cards-story__search-input" :bordered="true" />
+      <button-search
+        :color="'purple'"
+        :disabled="false"
+        class="cards-story__search-button"
+        >Поиск</button-search
+      >
+    </div>
+    <div class="cards-story__container">
+      <card-story
+        v-for="card in stories"
+        :key="card.id"
+        :url="card.history_photo"
+        :history_title="card.history_title"
+        :history_text="card.history_text"
+        @cardClick="goToDetail(card.id)"
+      ></card-story>
+    </div>
+  </section>
 </template>
 
 <script>
 import CardStory from '@/components/ui/CardStory';
+import Button from '@/components/ui/Button';
+import mainInput from '@/components/ui/mainInput';
+import Pagination from '@/components/Pagination';
 export default {
   components: {
     'card-story': CardStory,
+    'input-search': mainInput,
+    'button-search': Button,
+    pagination: Pagination,
   },
-  data() {
-    return {
-      cards_histories: [
-        {
-          id: '1',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '2',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '3',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '4',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '5',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '6',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '7',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '8',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '9',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '10',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '11',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '12',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '13',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '14',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '15',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '16',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '17',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '18',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '19',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '20',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '21',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '22',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '23',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '24',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '25',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '26',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '27',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '28',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '29',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '30',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '31',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '32',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '33',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '34',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '35',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '36',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '37',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '38',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '39',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '40',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '41',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '42',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '43',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '44',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-        {
-          id: '45',
-          history_photo: '/images/Rectangle 23.png',
-          history_title: 'Владимир Тен',
-          history_text:
-            'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
-        },
-      ],
-    };
+  methods: {
+    goToDetail(id) {
+      this.$router.push(`/stories/${id}`);
+    },
+  },
+  computed: {
+    stories() {
+      return this.$store.getters['storiesData/getStoriesData'];
+    },
   },
 };
 </script>
 
 <style scoped>
-.cards-history__container {
+.cards-story {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1320px;
+  margin: auto;
+}
+.cards-story__container {
   /* border: 1px solid red; */
   display: grid;
   grid-template-columns: repeat(4, minmax(265px, 300px));
   grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 40px;
+  grid-row-gap: 60px;
   justify-content: center;
   grid-auto-flow: dense;
   margin: 0 auto;
 }
-.cards-history {
-  /* border: 1px solid red; */
-  padding-bottom: 30px;
-  width: 1320px;
-  margin: 0 auto;
-}
-.section-title {
+
+.cards-story__title {
   /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
+  margin: 100px 0 auto 0;
+  max-width: 413px;
 }
-.cards-history__section-title {
+.cards-story__search {
   /* border: 1px solid red; */
-  width: 413px;
-  margin-bottom: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: 60px auto 70px;
+  width: 100%;
+}
+.cards-story__search-input {
+  /* border: 1px solid red; */
+  /* background: #e5e5e5; */
+  width: calc(100% - 228px);
+  padding: 0;
+  margin: 0 20px 0 0;
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.cards-story__search-button {
+  /* border: 1px solid red; */
+  width: 208px;
+  height: 46px;
 }
 </style>

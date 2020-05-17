@@ -1,0 +1,55 @@
+<template>
+  <button
+    :class="[
+      'button',
+      `button_color_${color}`,
+      {
+        button_disabled: disabled,
+      },
+    ]"
+    :disabled="disabled"
+    @click="$emit('buttonClick')"
+  >
+    <slot></slot>
+  </button>
+</template>
+
+<script>
+export default {
+  props: {
+    color: String,
+    disabled: Boolean,
+  },
+};
+</script>
+
+<style scoped>
+.button {
+  border: none;
+  padding: 0;
+  outline: none;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all linear 0.1s;
+}
+
+.button_color_purple {
+  background-color: #714dbd;
+}
+
+.button_color_none {
+  background-color: #fff;
+  color: #000;
+}
+.button_disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.button_disabled:hover {
+  opacity: 0.3;
+}
+</style>

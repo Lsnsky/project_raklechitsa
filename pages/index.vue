@@ -7,6 +7,7 @@
     <story-input />
     <statistics />
     <cover-about />
+    <callback />
   </main>
 </template>
 
@@ -18,6 +19,7 @@ import Photos from '@/components/Photos';
 import Cover from '@/components/Cover';
 import Cover_about from '@/components/Cover_about';
 import Story_input from '@/components/Story_input';
+import Callback from '@/components/Callback';
 
 export default {
   components: {
@@ -28,6 +30,7 @@ export default {
     cover: Cover,
     'cover-about': Cover_about,
     'story-input': Story_input,
+    callback: Callback,
   },
 };
 </script>

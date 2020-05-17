@@ -2,7 +2,7 @@
   <section class="cover">
     <h2 class="cover__title">#РАКЛЕЧИТСЯ</h2>
     <div class="cover__button">
-      <button-down />
+      <a href="#video"> <button-down /></a>
     </div>
   </section>
 </template>
@@ -18,55 +18,51 @@ export default {
 
 <style scoped>
 .cover {
-  max-width: 1440px;
-  height: 689px;
+  min-height: calc(100vh - 76px);
   background-color: #613a93;
   margin: auto;
-  margin-bottom: 60px;
+  padding-bottom: 0;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 .cover__title {
-  color: #ffffff;
+  color: #fff;
   font-style: normal;
   font-weight: 800;
   font-size: 92px;
-  line-height: 111px;
-  margin: 290px auto 0px;
 }
 .cover__button {
   width: 36px;
   height: 12px;
-  margin-top: auto;
-  margin-bottom: 40px;
-  margin-right: auto;
-  margin-left: auto;
+  position: absolute;
+  bottom: 40px;
 }
 @media screen and (max-width: 1280px) {
-  .cover {
-    max-width: 100%;
-    height: 620px;
-  }
   .cover__title {
     font-size: 78px;
-    line-height: 94px;
-    margin-top: 263px;
+  }
+  .cover__button {
   }
 }
 @media screen and (max-width: 1024px) {
-  .cover {
-    height: 540px;
-  }
-  .cover__title {
-    margin-top: 223px;
+  .cover__button {
   }
 }
 @media screen and (max-width: 899px) {
-  .cover {
-    height: 780px;
-  }
   .cover__title {
-    margin-top: 351px;
+    font-size: 64px;
+  }
+  .cover__button {
+  }
+  @media screen and (max-width: 530px) {
+    .cover__title {
+      font-size: 36px;
+    }
+    .cover__button {
+      bottom: 30px;
+    }
   }
 }
 </style>
