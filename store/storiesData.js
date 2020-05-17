@@ -2,10 +2,10 @@ export const state = () => ({
   stories: [
     {
       id: '1',
-      history_photo: '/images/Rectangle 23.png',
-      history_title: 'Владимир Тен',
-      history_text:
-        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+      history_photo:
+        'https://i.postimg.cc/3x4HNBhy/chris-yang-o-TN03i-Tb-Wn-M-unsplash.jpg',
+      history_title: 'Александр Тарханов',
+      history_text: 'Я не могу победить свою пунктуальность в отличии от рака.',
     },
     {
       id: '2',
