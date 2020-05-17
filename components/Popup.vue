@@ -86,4 +86,15 @@ export default {
   text-align: center;
   margin: 40px 0 0;
 }
+
+@media screen and (max-width: 600px) {
+  .popup__title {
+    font-size: 18px;
+    line-height: 21px;
+    margin: 15px 0 0 15px;
+  }
+  .popup__title_position_center {
+    margin: 15px 0 0;
+  }
+}
 </style>

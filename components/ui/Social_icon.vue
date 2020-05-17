@@ -15,7 +15,7 @@ export default {
 <style scoped>
 .social-icon {
   display: block;
-  margin: 0;
+  margin: 0 20px 0 0;
   padding: 0;
   border: none;
   outline: none;
@@ -27,6 +27,10 @@ export default {
 
   height: 48px;
   width: 48px;
+}
+
+.social-icon:last-child {
+  margin: 0;
 }
 .social-icon_facebook {
   background-image: url('../../static/images/facebook.svg');
@@ -50,5 +54,13 @@ export default {
 
 .social-icon_youtube {
   background-image: url('../../static/images/youtube.svg');
+}
+
+@media screen and (max-width: 600px) {
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    margin: 0 14.54px 0 0;
+  }
 }
 </style>
