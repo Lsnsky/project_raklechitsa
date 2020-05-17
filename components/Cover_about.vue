@@ -150,7 +150,6 @@ export default {
     font-size: 58px;
     line-height: 70px;
     margin: 0 auto 60px;
-    padding-top: 80px;
     max-width: 640px;
   }
   .content__about-title {
