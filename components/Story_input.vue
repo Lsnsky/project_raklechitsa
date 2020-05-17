@@ -1,58 +1,63 @@
 <template>
   <section class="story-input">
-    <div class="content">
-      <div class="content__about">
-        <h2 class="content__about_title">Расскажите свою историю</h2>
-        <p class="content__about_paragraph">
-          Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
-          поделиться своей историей неизлечимых привычек, навязчивых идей и
-          болезненных привязанностей.
-        </p>
-      </div>
-      <div class="content__columns">
-        <div id="app" class="content__columns_descriotion">
-          <p
-            @click="clickOn"
-            class="content__columns_link-1"
-            :class="{ noActive: isNoActive }"
-          >
-            1-й вариант
-          </p>
-          <p
-            @click="clickOff"
-            class="content__columns_link-2"
-            :class="{ active: isActive }"
-          >
-            2-й вариант
+    <container>
+      <div class="content">
+        <div class="content__about">
+          <h2 class="content__about-title">Расскажите свою историю</h2>
+          <p class="content__about-paragraph">
+            Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
+            поделиться своей историей неизлечимых привычек, навязчивых идей и
+            болезненных привязанностей.
           </p>
         </div>
-        <div class="content__columns_main-text">
-          <p v-if="defaultStatus" class="content__columns_text">
-            Заполнить подробную форму прямо на сайте и мы опубликуем вашу
-            историю после проверки. Пожалуйста, заполняйте все пункты корректно,
-            если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
-          </p>
-          <p v-else-if="toogle" class="content__columns_text-2">
-            Оставить контакт (почту или номер телефона) и мы свяжемся с вами,
-            зададим вопросы, уточним детали вашей истории.
-          </p>
-          <story-button
-            @QuestionnaireOpen="QuestionnaireOpen"
-            class="button-search"
-            :class="{ buttonPosition: isActive }"
-          />
+        <div class="content__columns">
+          <div id="app" class="content__columns-description">
+            <p
+              @click="clickOn"
+              class="content__columns_link-1"
+              :class="{ noActive: isNoActive }"
+            >
+              1-й вариант
+            </p>
+            <p
+              @click="clickOff"
+              class="content__columns_link-2"
+              :class="{ active: isActive }"
+            >
+              2-й вариант
+            </p>
+          </div>
+          <div class="content__columns-main-text">
+            <p v-if="defaultStatus" class="content__columns-text">
+              Заполнить подробную форму прямо на сайте и мы опубликуем вашу
+              историю после проверки. Пожалуйста, заполняйте все пункты
+              корректно, если вы испытаете какие-то сложности, воспользуйтесь
+              2-м вариантом.
+            </p>
+            <p v-else-if="toogle" class="content__columns-text-2">
+              Оставить контакт (почту или номер телефона) и мы свяжемся с вами,
+              зададим вопросы, уточним детали вашей истории.
+            </p>
+            <story-button
+              @QuestionnaireOpen="QuestionnaireOpen"
+              class="button-search"
+              :class="{ buttonPosition: isActive }"
+              >Заполнить форму</story-button
+            >
+          </div>
         </div>
       </div>
-    </div>
+    </container>
   </section>
 </template>
 
 <script>
-import Button_search from '@/components/ui/Button_search';
-
+import Button from '@/components/ui/Button';
+import Container from '@/components/ui/Container';
 export default {
   components: {
-    'story-button': Button_search,
+    'story-button': Button,
+    container: Container,
   },
   data() {
     return {
@@ -84,44 +89,54 @@ export default {
 
 <style scoped>
 .story-input {
-  max-width: 1440px;
-  height: 522px;
-  background-color: #f7f7f7;
-  margin: 0px auto 100px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 100px;
+  background-color: #f7f7f7;
+  padding: 0 60px;
 }
-
+.button-search {
+  width: 280px;
+  height: 52px;
+  background-color: #613a93;
+  color: white;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  border: none;
+  cursor: pointer;
+  transition: all linear 0.1s;
+  outline: none;
+}
 .content {
   display: flex;
-  margin-left: 60px;
-  margin-right: 60px;
+  padding-bottom: 100px;
 }
 .content__about {
   display: flex;
   flex-direction: column;
 }
-.content__about_title {
+.content__about-title {
   width: 413px;
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
-  color: #000000;
+  color: #000;
   margin-top: 100px;
   margin-bottom: 32px;
   margin-right: 73px;
 }
-.content__about_paragraph {
+.content__about-paragraph {
   width: 340px;
-  height: 66px;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
-  color: #666666;
+  color: #666;
 }
-.content__columns_descriotion {
+.content__columns-description {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -129,16 +144,14 @@ export default {
 .content__columns {
   display: flex;
   margin-top: 204px;
-  margin-left: 0;
 }
 .content__columns_link-1 {
   width: 106px;
-  height: 22px;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  color: #000000;
+  color: #000;
   margin-top: 0;
   margin-bottom: 10px;
   cursor: pointer;
@@ -162,20 +175,20 @@ export default {
   opacity: 0.7;
 }
 
-.content__columns_main-text {
+.content__columns-main-text {
   max-width: 655px;
-  height: 242px;
-  color: #666666;
+
+  color: #666;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
   margin-left: 40px;
 }
-.content__columns_text {
+.content__columns-text {
   margin: 0;
 }
-.content__columns_text-2 {
+.content__columns-text-2 {
   margin: 0;
 }
 .button-search {
@@ -184,68 +197,72 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .story-input {
-    max-width: 100%;
-    height: 626px;
+    padding: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   .content {
-    margin-left: 50px;
-    margin-right: 50px;
+    padding-bottom: 90px;
   }
-
-  .content__about_title {
+  .button-search {
+    width: 230px;
+    height: 46px;
+  }
+  .content__about-title {
     width: 367px;
     font-size: 28px;
     line-height: 32px;
     margin-bottom: 30px;
     margin-right: 49px;
   }
-  .content__about_paragraph {
+  .content__about-paragraph {
     margin-top: 0;
     max-width: 305px;
     font-size: 16px;
     line-height: 20px;
   }
-  .content__columns_main-text {
+  .content__columns-main-text {
     max-width: 570px;
   }
 }
-@media screen and (max-width: 1184px) {
-  .story-input {
-    height: 571px;
-  }
-  .content__about_title {
+@media screen and (max-width: 1024px) {
+  .content__about-title {
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 30px;
     margin-right: 49px;
     width: 288px;
   }
-  .content__about_paragraph {
+  .content__about-paragraph {
     max-width: 260px;
     font-size: 13px;
     line-height: 16px;
   }
-  .content__columns_main-text {
+  .content__columns-main-text {
     max-width: 447px;
     font-size: 15px;
     line-height: 19px;
     margin-left: 30px;
   }
-  .content__columns_brief {
+  .content__columns_link-1 {
     font-size: 15px;
     line-height: 19px;
     width: 89px;
   }
-  .content__columns_paragraph {
+  .content__columns_link-2 {
     font-size: 15px;
     line-height: 19px;
     width: 90px;
   }
+
+  .button-search {
+    width: 230px;
+    height: 46px;
+  }
 }
 @media screen and (max-width: 960px) {
-  .story-input {
-    width: 100%;
-    height: 660px;
+  .button-search {
+    margin-top: 0;
   }
   .content__columns {
     flex-direction: column;
@@ -253,43 +270,38 @@ export default {
   }
   .content {
     flex-direction: column;
+    padding-bottom: 80px;
   }
-  .content__columns_brief {
+  .content__columns_link-1 {
     margin: 0 0 30px;
     margin-right: 30px;
   }
-  .content__columns_paragraph {
-    margin: 0 0 33px;
+  .content__columns_link-2 {
+    margin: 0 0 30px;
   }
-  .content__about_title {
+  .content__about-title {
     width: 380px;
-
     margin: 0 auto 26px;
     text-align: center;
   }
   .content__about {
-    margin: 80px auto 80px;
+    margin: 0 auto 80px;
+    padding-top: 80px;
   }
-  .content__columns_descriotion {
+  .content__columns-description {
     flex-direction: row;
   }
-  .content__columns_main-text {
+  .content__columns-main-text {
     max-width: 380px;
     margin: 0 auto 0;
   }
-  .content__about_paragraph {
+  .content__about-paragraph {
     max-width: 380px;
     margin-bottom: 0;
   }
-  .content__columns_text {
-    margin-bottom: 93px;
+  .content__columns-text {
+    margin-bottom: 50px;
   }
-}
-@media screen and (max-width: 768px) {
-  .story-input {
-    width: 768px;
-  }
-
   .active {
     color: #000000;
   }
@@ -298,6 +310,56 @@ export default {
   }
   .buttonPosition {
     margin-top: 122px;
+  }
+}
+@media screen and (max-width: 512px) {
+  .story-input {
+    margin: 0;
+    padding: 0;
+  }
+  .content__columns-text {
+    margin-bottom: 30px;
+  }
+  .button-search {
+    width: 290px;
+    height: 40px;
+  }
+  .content {
+    padding: 0 15px 50px;
+  }
+  .content__about {
+    padding: 0;
+    margin: 0;
+  }
+  .content__about-title {
+    max-width: 295px;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 16px;
+    padding-top: 50px;
+    text-align: left;
+  }
+  .content__about-paragraph {
+    margin: 0 auto 40px;
+    font-size: 13px;
+    line-height: 16px;
+    max-width: 295px;
+  }
+  .content__columns_link-1 {
+    font-size: 13px;
+    line-height: 19px;
+    margin: 0 0 20px;
+    margin-right: 16px;
+  }
+  .content__columns_link-2 {
+    font-size: 13px;
+    line-height: 19px;
+    margin: 0 0 20px;
+  }
+  .content__columns-text {
+    max-width: 295px;
+    font-size: 15px;
+    line-height: 19px;
   }
 }
 </style>
