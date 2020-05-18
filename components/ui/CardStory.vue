@@ -52,6 +52,6 @@ export default {
   font-size: 14px;
   line-height: 18px;
   margin: 14px 0 0;
-  color: #666666;
+  color: #666;
 }
 </style>

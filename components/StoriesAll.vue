@@ -12,7 +12,7 @@
     </div>
     <div class="cards-story__container">
       <card-story
-        v-for="card in stories"
+        v-for="card in storiesToRender"
         :key="card.id"
         :url="card.history_photo"
         :history_title="card.history_title"
@@ -20,6 +20,11 @@
         @cardClick="goToDetail(card.id)"
       ></card-story>
     </div>
+    <pagination
+      :totalItems="this.$store.state.storiesData.stories.length"
+      :itemsPerPage="itemsPerPage"
+      @onPageChanged="changeStartIndex"
+    />
   </section>
 </template>
 
@@ -35,14 +40,29 @@ export default {
     'button-search': Button,
     pagination: Pagination,
   },
+  data() {
+    return {
+      storiesName: '',
+      itemsPerPage: 16,
+      startIndex: 0,
+    };
+  },
   methods: {
     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
     },
+    changeStartIndex(index) {
+      this.startIndex = (index - 1) * this.itemsPerPage;
+    },
   },
   computed: {
-    stories() {
-      return this.$store.getters['storiesData/getStoriesData'];
+    storiesToRender() {
+      const { storiesData } = this.$store.state;
+      return storiesData.stories.filter(
+        (item, idx) =>
+          idx >= this.startIndex &&
+          idx <= this.startIndex + this.itemsPerPage - 1
+      );
     },
   },
 };
