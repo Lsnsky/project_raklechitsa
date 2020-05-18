@@ -115,7 +115,7 @@ export const state = () => ({
     {
       id: '17',
       history_photo: '/images/Rectangle 23.png',
-      history_title: 'Владимир Тен',
+      history_title: '222 Владимир Тен',
       history_text:
         'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
     },
@@ -220,7 +220,7 @@ export const state = () => ({
     {
       id: '32',
       history_photo: '/images/Rectangle 23.png',
-      history_title: 'Владимир Тен',
+      history_title: '33333 Владимир Тен',
       history_text:
         'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
     },

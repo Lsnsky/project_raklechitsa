@@ -15,7 +15,7 @@ export default {};
     background: #613a93;
     border: 1px solid #000000;
     box-sizing: border-box;
-    max-width: 1320px;
+    width: 100%;
     height: 86px;
     display: flex;
     justify-content: center;

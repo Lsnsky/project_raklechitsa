@@ -107,46 +107,44 @@ export default {
 </script>
 
 <style scoped>
-@media (min-width: 1281px) {
-  .cards {
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    max-width: 1320px;
-    margin: 0 auto 100px;
-  }
-  .cards__title {
-    /* border: 1px solid red; */
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 36px;
-    margin-left: 0px;
-    margin-top: 0px;
-    margin-bottom: 70px;
-    max-width: 413px;
-  }
-  .cards__container {
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: space-between;
-  }
-  .card {
-    /* border: 1px solid red; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 300px;
-    height: 300px;
-    background: #ffffff;
-    border: 1px solid #efefef;
-    box-sizing: border-box;
-  }
+.cards {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  max-width: 1320px;
+  margin: 0 auto 100px;
+}
+.cards__title {
+  /* border: 1px solid red; */
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 70px;
+  max-width: 413px;
+}
+.cards__container {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 300px;
+  height: 300px;
+  background: #ffffff;
+  border: 1px solid #efefef;
+  box-sizing: border-box;
 }
 
-@media (max-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .cards {
     /* border: 1px solid red; */
     display: flex;
