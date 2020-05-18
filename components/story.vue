@@ -2,25 +2,21 @@
   <section>
     <article class="story">
       <header class="story__header">
-        <img
-          src="https://i.postimg.cc/dQNQM071/632d61-6f4755d85f6543ec91c8cd9c151c666b-mv2-d-5760-3840-s-4-2.jpg"
-          alt
-          class="story__photo story__photo_type_pc"
-        />
+        <img alt="" class="story__photo story__photo_type_pc" :src="url" />
         <div class="story__block-title">
           <h2 class="story__title">
-            <span class="story__span-accent">Александр Тарханов:</span> &laquo;Я
-            не могу победить свою пунктуальность в отличии от рака&raquo;
+            <span class="story__span-accent">{{ history_title }}:</span>
+            &laquo;{{ history_text }}&raquo;
           </h2>
           <img
-            src="https://i.postimg.cc/dQNQM071/632d61-6f4755d85f6543ec91c8cd9c151c666b-mv2-d-5760-3840-s-4-2.jpg"
-            alt
+            src="https://i.postimg.cc/3x4HNBhy/chris-yang-o-TN03i-Tb-Wn-M-unsplash.jpg"
+            alt=""
             class="story__photo story__photo_type_mobile"
           />
           <div class="story__data">
-            <a @click="toggleShare" class="link story__link"
-              >Поделитесь&#8599;</a
-            >
+            <button @click="toggleShare" class="story__share">
+              Поделитесь &#8599;
+            </button>
             <p class="story__date">20 апреля 2018</p>
           </div>
         </div>
@@ -70,11 +66,15 @@
         </p>
       </section>
       <footer class="story__footer">
-        <a href="#" class="link story__link story__link_local_footer"
-          >Поделитесь этой статьей в своих социальных сетях &#8599;</a
+        <button
+          @click="toggleShare"
+          class="link story__share story__share_local_footer"
         >
+          Поделитесь этой статьей в своих социальных сетях &#8599;
+        </button>
       </footer>
     </article>
+
     <div class="story__cards-container">
       <card-story
         v-for="card in stories"
@@ -93,6 +93,7 @@
 import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
 export default {
+  props: ['url', 'history_title', 'history_text'],
   components: {
     'card-story': CardStory,
     btnhistory: Button_history,
@@ -120,7 +121,6 @@ export default {
   margin: 60px auto 90px;
 }
 .story__cards-container {
-  /* border: 1px solid red; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(265px, 300px));
   grid-template-rows: repeat(1, 1fr);
@@ -176,18 +176,20 @@ export default {
   align-self: end;
 }
 
-.story__link {
+.story__share {
   font-size: 18px;
   line-height: 24px;
+  font-weight: normal;
   color: #121212;
-  text-decoration: none;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'Inter', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-.link {
-  opacity: 1;
-}
-
-.link:hover {
+.story__share:hover {
   opacity: 0.8;
 }
 
@@ -225,7 +227,7 @@ export default {
   margin: 0 auto;
 }
 
-.story__link_local_footer {
+.story__share_local_footer {
   display: flex;
   width: 100%;
   padding: 30px 0;
@@ -288,7 +290,7 @@ export default {
     padding: 20px 0;
   }
 
-  .story__link {
+  .story__share {
     font-size: 16px;
   }
 
@@ -373,7 +375,7 @@ export default {
     letter-spacing: -0.02em;
   }
 
-  .story__link {
+  .story__share {
     font-size: 13px;
     line-height: 16px;
   }
