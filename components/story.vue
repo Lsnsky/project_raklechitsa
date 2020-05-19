@@ -140,7 +140,7 @@ export default {
   border-top: 1px solid #efefef;
 }
 
-.story__span-accent {
+section >>> .story__span-accent {
   font-weight: 700;
 }
 
@@ -191,11 +191,11 @@ export default {
   box-sizing: border-box;
 }
 
-.story__paragraph:last-child {
+section >>> .story__paragraph:last-child {
   margin-bottom: 0;
 }
 
-.story__paragraph {
+section >>> .story__paragraph {
   font-size: 22px;
   line-height: 30px;
   font-weight: 500;
