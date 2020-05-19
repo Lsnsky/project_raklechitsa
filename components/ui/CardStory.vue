@@ -20,7 +20,7 @@ export default {
   max-width: 300px;
 }
 
-.wrapper {
+.card__wrapper {
   position: relative;
   padding-top: 100%;
 }
