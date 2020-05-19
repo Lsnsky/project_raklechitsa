@@ -112,9 +112,17 @@ export default {
 
 .story__wrapper {
   width: 100%;
+  height: 100%;
   position: relative;
-  padding-top: 100%;
+  /*padding-top: 100%;*/
   grid-row: span 2;
+  background-color: #ededed;
+}
+
+.story__wrapper:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
 }
 
 .story__photo {
@@ -302,6 +310,7 @@ export default {
 
   .story__header {
     grid-template-columns: 1fr minmax(290px, 420px) 1fr;
+    grid-row-gap: 60px;
     grid-column-gap: 0;
     margin-bottom: 100px;
   }
@@ -321,7 +330,7 @@ export default {
     grid-column-start: 2;
     grid-column-end: 3;
     justify-self: center;
-    margin: 60px auto;
+    margin: 0 auto;
     max-width: 420px;
     box-sizing: border-box;
   }
@@ -350,10 +359,7 @@ export default {
 
   .story__header {
     margin-bottom: 40px;
-  }
-
-  .story__wrapper {
-    margin: 30px auto;
+    grid-row-gap: 30px;
   }
 
   .story__title {
