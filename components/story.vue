@@ -2,23 +2,21 @@
   <section>
     <article class="story">
       <header class="story__header">
-        <img alt="" class="story__photo story__photo_type_pc" :src="url" />
-        <div class="story__block-title">
-          <h2 class="story__title">
-            <span class="story__span-accent">{{ history_title }}:</span>
-            &laquo;{{ history_text }}&raquo;
-          </h2>
-          <img
-            src="https://i.postimg.cc/3x4HNBhy/chris-yang-o-TN03i-Tb-Wn-M-unsplash.jpg"
-            alt=""
-            class="story__photo story__photo_type_mobile"
-          />
-          <div class="story__data">
-            <button @click="toggleShare" class="story__share">
-              Поделитесь &#8599;
-            </button>
-            <p class="story__date">20 апреля 2018</p>
-          </div>
+        <img
+          alt=""
+          class="story__photo story__photo_type_pc"
+          src="https://i.postimg.cc/3x4HNBhy/chris-yang-o-TN03i-Tb-Wn-M-unsplash.jpg"
+        />
+        <h2 class="story__title">
+          <span class="story__span-accent">Александр Тарханов:</span>
+          &laquo;Я не могу победить свою пунктуальность в отличии от
+          рака.&raquo;
+        </h2>
+        <div class="story__data">
+          <button @click="toggleShare" class="story__share">
+            Поделитесь &#8599;
+          </button>
+          <p class="story__date">20 апреля 2018</p>
         </div>
       </header>
       <section class="story__body">
@@ -145,25 +143,25 @@ export default {
 }
 
 .story__photo {
+  grid-row-start: 1;
+  grid-row-end: 3;
   max-width: 100%;
   height: auto;
-  background-color: #ededed;
   object-fit: cover;
   object-position: right;
 }
 
-.story__block-title {
-  display: grid;
-  padding: 30px 0;
-  border-top: 1px solid #efefef;
-  border-bottom: 1px solid #efefef;
-}
-
 .story__title {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
   font-weight: 500;
   font-size: 38px;
   line-height: 48px;
   margin: 0;
+  padding-top: 30px;
+  border-top: 1px solid #efefef;
 }
 
 .story__span-accent {
@@ -171,9 +169,15 @@ export default {
 }
 
 .story__data {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
   display: flex;
   justify-content: space-between;
   align-self: end;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #efefef;
 }
 
 .story__share {
@@ -253,10 +257,6 @@ export default {
   .story__header {
     grid-template-columns: minmax(518px, 540px) 1fr;
   }
-
-  /* .story__photo {
-    max-height: 540px;
-  } */
 }
 
 @media screen and (max-width: 1280px) {
@@ -278,6 +278,7 @@ export default {
   .story__title {
     font-size: 30px;
     line-height: 38px;
+    padding-top: 20px;
   }
 
   .story__header {
@@ -286,8 +287,8 @@ export default {
     margin-bottom: 90px;
   }
 
-  .story__block-title {
-    padding: 20px 0;
+  .story__data {
+    padding-bottom: 10px;
   }
 
   .story__share {
@@ -323,30 +324,39 @@ export default {
   }
 
   .story__header {
-    display: flex;
+    grid-template-columns: 1fr;
     margin-bottom: 100px;
   }
 
   .story__title {
     text-align: center;
     letter-spacing: -0.01em;
-  }
-
-  .story__photo_type_mobile {
-    display: block;
-  }
-
-  .story__photo_type_pc {
-    display: none;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
 
   .story__photo {
-    max-width: 460px;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-self: center;
     margin: 60px auto;
+    padding: 0 17.25%;
+    box-sizing: border-box;
+  }
+
+  .story__data {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
 
   .story__body {
-    margin-bottom: 46px;
+    margin-bottom: 72px;
     padding: 0;
   }
 
@@ -357,7 +367,7 @@ export default {
 
 @media screen and (max-width: 550px) {
   .story {
-    padding: 80px 4.69% 120px;
+    padding: 49px 4.69% 120px;
   }
 
   .story__header {
@@ -375,6 +385,10 @@ export default {
     letter-spacing: -0.02em;
   }
 
+  .story__data {
+    padding-bottom: 20px;
+  }
+
   .story__share {
     font-size: 13px;
     line-height: 16px;
@@ -386,7 +400,7 @@ export default {
   }
 
   .story__body {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 
   .story__paragraph {
@@ -394,6 +408,10 @@ export default {
     line-height: 16px;
     letter-spacing: -0.02em;
     margin-bottom: 16px;
+  }
+
+  .story__share_local_footer {
+    padding: 20px 0;
   }
 }
 </style>
