@@ -2,12 +2,15 @@
   <section>
     <article class="story">
       <header class="story__header">
-        <div class="story__wrapper">
-          <img alt="" class="story__photo" :src="story.history_photo" />
-        </div>
+        <img
+          alt=""
+          class="story__photo story__photo_type_pc"
+          src="https://i.postimg.cc/3x4HNBhy/chris-yang-o-TN03i-Tb-Wn-M-unsplash.jpg"
+        />
         <h2 class="story__title">
-          <span class="story__span-accent">{{ story.history_title }}:</span>
-          &laquo;{{ story.history_text }}&raquo;
+          <span class="story__span-accent">Александр Тарханов:</span>
+          &laquo;Я не могу победить свою пунктуальность в отличии от
+          рака.&raquo;
         </h2>
         <div class="story__data">
           <button @click="toggleShare" class="story__share">
@@ -16,7 +19,50 @@
           <p class="story__date">20 апреля 2018</p>
         </div>
       </header>
-      <section class="story__body" v-html="story.history_story"></section>
+      <section class="story__body">
+        <p class="story__paragraph">
+          Я из военной семьи. Отец хоть и не был военным сам, но нас всех держал
+          в ежовых рукавицах. Думаю, поэтому мы и выросли такими ответственными.
+        </p>
+        <p class="story__paragraph">
+          У меня дома до сих пор стоят часы в каждой комнате, хотя они и не
+          нужны особо — я сам чувствую, опаздываю куда-то или нет, отстаю от
+          нужного графика или опережаю. Вот такие встроенные внутренние часы!
+          Будильник мне тоже не нужен — я всегда встаю раньше. Одеваюсь тоже
+          быстро, как в армии, за 45 секунд.
+        </p>
+        <p class="story__paragraph story__paragraph_font-weight_bold">
+          <span class="story__span-accent">
+            «В футболе если команда опоздала на 15 минут, ей засчитывается
+            поражение».
+          </span>
+        </p>
+        <p class="story__paragraph">
+          Опаздывать я тоже не люблю, на все встречи прихожу заранее. Если знаю,
+          что могу попасть по дороге в пробку, то не еду на машине. В аэропорт
+          приезжаю задолго до начала регистрации. Лучше подожду и кофе попью,
+          чем опоздаю!
+        </p>
+        <p class="story__paragraph">
+          Когда мне было 16 лет, мне в школе геометрию нужно было пересдавать. Я
+          билеты выучил, знал абсолютно все. Пришел в нужное время, а
+          учительница — нет. Ну, я какое-то время подождал ее и ушел. Потом она
+          спрашивала: «Почему не дождался?». Я ответил: «В футболе если команда
+          опоздала на 15 минут, ей засчитывается поражение». Экзамен мне
+          все-таки поставили! Сейчас если кто-то из футболистов моей команды
+          опаздывает — начинаю злиться, могу и прикрикнуть потом. А если кто-то
+          опоздал на тренировку перед игрой — все, подготовка насмарку. Я сразу
+          начинаю думать тогда: «Значит, точно проиграем». Такая болезненная
+          пунктуальность уже не лечится. В отличие от рака.
+        </p>
+        <p class="story__paragraph">
+          «Сейчас если кто-то из футболистов моей команды опаздывает — начинаю
+          злиться, могу и прикрикнуть потом. А если кто-то опоздал на тренировку
+          перед игрой — все, подготовка насмарку. Я сразу начинаю думать тогда:
+          «Значит, точно проиграем». Такая болезненная пунктуальность уже не
+          лечится».
+        </p>
+      </section>
       <footer class="story__footer">
         <button
           @click="toggleShare"
@@ -45,6 +91,7 @@
 import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
 export default {
+  props: ['url', 'history_title', 'history_text'],
   components: {
     'card-story': CardStory,
     btnhistory: Button_history,
@@ -63,12 +110,6 @@ export default {
         (item, index) => index < 4
       );
     },
-    story() {
-      return this.$store.getters['storiesData/getCurrentStory'];
-    },
-  },
-  mounted() {
-    console.log(this.$route.params.id);
   },
 };
 </script>
@@ -96,35 +137,18 @@ export default {
 
 .story__header {
   display: grid;
-  grid-template-columns: minmax(407px, 580px) 1fr;
+  grid-template-columns: minmax(518px, 580px) 1fr;
   grid-column-gap: 60px;
   margin-bottom: 130px;
 }
 
-.story__wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  /*padding-top: 100%;*/
-  grid-row: span 2;
-  background-color: #ededed;
-}
-
-.story__wrapper:after {
-  content: '';
-  display: block;
-  padding-bottom: 100%;
-}
-
 .story__photo {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
+  object-position: right;
 }
 
 .story__title {
@@ -300,9 +324,7 @@ export default {
   }
 
   .story__header {
-    grid-template-columns: 1fr minmax(290px, 420px) 1fr;
-    grid-row-gap: 60px;
-    grid-column-gap: 0;
+    grid-template-columns: 1fr;
     margin-bottom: 100px;
   }
 
@@ -312,17 +334,17 @@ export default {
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 2;
   }
 
-  .story__wrapper {
+  .story__photo {
     grid-row-start: 2;
     grid-row-end: 3;
-    grid-column-start: 2;
-    grid-column-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
     justify-self: center;
-    margin: 0 auto;
-    max-width: 420px;
+    margin: 60px auto;
+    padding: 0 17.25%;
     box-sizing: border-box;
   }
 
@@ -330,7 +352,7 @@ export default {
     grid-row-start: 3;
     grid-row-end: 4;
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 2;
   }
 
   .story__body {
@@ -350,7 +372,11 @@ export default {
 
   .story__header {
     margin-bottom: 40px;
-    grid-row-gap: 30px;
+  }
+
+  .story__photo {
+    max-width: 100%;
+    margin: 30px auto;
   }
 
   .story__title {
