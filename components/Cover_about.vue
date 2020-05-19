@@ -11,12 +11,24 @@
           </p>
         </div>
         <div class="content__columns">
-          <div class="content__columns-description">
-            <p class="content__columns-brief">Рак Лечится</p>
-            <p class="content__columns-paragraph">Фонд Хабенского</p>
+          <div id="app" class="content__columns-description">
+            <p
+              @click="clickOn"
+              class="content__columns_link-1"
+              :class="{ noActive: isNoActive }"
+            >
+              Рак Лечится
+            </p>
+            <p
+              @click="clickOff"
+              class="content__columns_link-2"
+              :class="{ active: isActive }"
+            >
+              Фонд Хабенского
+            </p>
           </div>
           <div class="content__columns-main-text">
-            <p class="content__columns-text">
+            <p v-if="defaultStatus" class="content__columns-text">
               Есть вещи, которые не лечатся. Особенности характера, страстные
               увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
               приобрели в детстве. Список можно продолжать до бесконечности, но
@@ -24,11 +36,19 @@
               лечится, и лучшее доказательство — люди с их неизлечимыми
               особенностями, которые сумели победить рак.
             </p>
-            <p class="content__columns-text">
+            <p v-if="defaultStatus" class="content__columns-text">
               Рак лечится — проект Благотворительного Фонда Константина
               Хабенского и Leo Burnett Moscow. С его помощью мы надеемся
               изменить отношение людей к раку и заставить каждого поверить:
               онкологическое заболевание — это не приговор.
+            </p>
+            <p v-else-if="toogle" class="content__columns-text-2">
+              Благотворительный Фонд Константина Хабенского с 2008 года помогает
+              детям с онкологическими и другими тяжелыми заболеваниями головного
+              мозга. Фонд не только поддерживает семью заболевшего ребенка в
+              самый сложный момент, оплачивая обследования, лечение и
+              медицинские препараты, но и в целом меняет систему оказания помощи
+              детям с опухолями мозга в России.
             </p>
           </div>
         </div>
@@ -42,6 +62,28 @@ import Container from '@/components/ui/Container';
 export default {
   components: {
     container: Container,
+  },
+  data() {
+    return {
+      defaultStatus: true,
+      toogle: false,
+      isActive: false,
+      isNoActive: false,
+    };
+  },
+  methods: {
+    clickOn() {
+      this.defaultStatus = true;
+      this.toogle = false;
+      this.isNoActive = false;
+      this.isActive = false;
+    },
+    clickOff() {
+      this.defaultStatus = false;
+      this.toogle = true;
+      this.isNoActive = true;
+      this.isActive = true;
+    },
   },
 };
 </script>
@@ -68,7 +110,7 @@ export default {
 }
 .content {
   display: flex;
-  padding-bottom: 100px;
+  /* padding-bottom: 100px; */
 }
 .content__about {
   display: flex;
@@ -102,7 +144,7 @@ export default {
   display: flex;
   margin-top: 68px;
 }
-.content__columns-brief {
+.content__columns_link-1 {
   width: 112px;
   font-style: normal;
   font-weight: 500;
@@ -111,8 +153,9 @@ export default {
   color: #fff;
   margin-top: 0;
   margin-bottom: 10px;
+  cursor: pointer;
 }
-.content__columns-paragraph {
+.content__columns_link-2 {
   width: 155px;
   font-style: normal;
   font-weight: normal;
@@ -120,6 +163,7 @@ export default {
   line-height: 22px;
   margin-top: 0;
   color: #c9c9c9;
+  cursor: pointer;
 }
 .content__columns-main-text {
   max-width: 655px;
@@ -134,8 +178,28 @@ export default {
 .content__columns-text {
   margin-top: 0;
 }
+.content__columns-text-2 {
+  margin-top: 0;
+  padding-bottom: 188px;
+}
 .content__columns-text:last-child {
   margin-bottom: 0;
+  padding-bottom: 100px;
+}
+.active {
+  color: #fff;
+}
+.content__columns_link-2:hover {
+  opacity: 0.7;
+}
+.content__columns_link-1:hover {
+  opacity: 0.7;
+}
+.noActive {
+  color: #c9c9c9;
+}
+.buttonPosition {
+  margin-top: 122px;
 }
 @media screen and (max-width: 1280px) {
   .cover-about {
@@ -143,14 +207,11 @@ export default {
     padding-top: 0;
     padding-bottom: 0;
   }
-  .content {
-    padding-bottom: 90px;
-  }
+
   .cover-about__title {
     font-size: 58px;
     line-height: 70px;
     margin: 0 auto 60px;
-    padding-top: 80px;
     max-width: 640px;
   }
   .content__about-title {
@@ -168,6 +229,12 @@ export default {
   }
   .content__columns-main-text {
     max-width: 570px;
+  }
+  .content__columns-text-2 {
+    padding-bottom: 200px;
+  }
+  .content__columns-text:last-child {
+    padding-bottom: 90px;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -193,15 +260,21 @@ export default {
     line-height: 19px;
     margin-left: 30px;
   }
-  .content__columns-brief {
+  .content__columns_link-1 {
     font-size: 15px;
     line-height: 19px;
     width: 93px;
   }
-  .content__columns-paragraph {
+  .content__columns_link-2 {
     font-size: 15px;
     line-height: 19px;
     width: 129px;
+  }
+  .content__columns-text-2 {
+    padding-bottom: 175px;
+  }
+  .content__columns-text:last-child {
+    padding-bottom: 80px;
   }
 }
 @media screen and (max-width: 984px) {
@@ -214,13 +287,12 @@ export default {
   }
   .content {
     flex-direction: column;
-    padding-bottom: 80px;
   }
-  .content__columns-brief {
+  .content__columns_link-1 {
     margin: 0 0 30px;
     margin-right: 30px;
   }
-  .content__columns-paragraph {
+  .content__columns_link-2 {
     margin: 0 0 30px;
   }
   .content__about-title {
@@ -251,7 +323,7 @@ export default {
   }
 
   .content {
-    padding: 0 15px 50px;
+    padding: 0 15px 0;
   }
   .content__about {
     padding: 0;
@@ -272,13 +344,13 @@ export default {
     max-width: 295px;
   }
 
-  .content__columns-brief {
+  .content__columns_link-1 {
     font-size: 13px;
     line-height: 19px;
     margin: 0 0 20px;
     margin-right: 16px;
   }
-  .content__columns-paragraph {
+  .content__columns_link-2 {
     font-size: 13px;
     line-height: 19px;
     margin: 0 0 20px;
@@ -288,6 +360,13 @@ export default {
     max-width: 295px;
     font-size: 15px;
     line-height: 19px;
+  }
+  .content__columns-text-2 {
+    padding-bottom: 202px;
+    max-width: 295px;
+  }
+  .content__columns-text:last-child {
+    padding-bottom: 50px;
   }
 }
 </style>

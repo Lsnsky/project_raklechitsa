@@ -3,26 +3,20 @@
     <article class="story">
       <header class="story__header">
         <img
-          src="https://i.postimg.cc/dQNQM071/632d61-6f4755d85f6543ec91c8cd9c151c666b-mv2-d-5760-3840-s-4-2.jpg"
-          alt
+          alt=""
           class="story__photo story__photo_type_pc"
+          src="https://i.postimg.cc/3x4HNBhy/chris-yang-o-TN03i-Tb-Wn-M-unsplash.jpg"
         />
-        <div class="story__block-title">
-          <h2 class="story__title">
-            <span class="story__span-accent">Александр Тарханов:</span> &laquo;Я
-            не могу победить свою пунктуальность в отличии от рака&raquo;
-          </h2>
-          <img
-            src="https://i.postimg.cc/dQNQM071/632d61-6f4755d85f6543ec91c8cd9c151c666b-mv2-d-5760-3840-s-4-2.jpg"
-            alt
-            class="story__photo story__photo_type_mobile"
-          />
-          <div class="story__data">
-            <a @click="toggleShare" class="link story__link"
-              >Поделитесь&#8599;</a
-            >
-            <p class="story__date">20 апреля 2018</p>
-          </div>
+        <h2 class="story__title">
+          <span class="story__span-accent">Александр Тарханов:</span>
+          &laquo;Я не могу победить свою пунктуальность в отличии от
+          рака.&raquo;
+        </h2>
+        <div class="story__data">
+          <button @click="toggleShare" class="story__share">
+            Поделитесь &#8599;
+          </button>
+          <p class="story__date">20 апреля 2018</p>
         </div>
       </header>
       <section class="story__body">
@@ -70,11 +64,15 @@
         </p>
       </section>
       <footer class="story__footer">
-        <a href="#" class="link story__link story__link_local_footer"
-          >Поделитесь этой статьей в своих социальных сетях &#8599;</a
+        <button
+          @click="toggleShare"
+          class="link story__share story__share_local_footer"
         >
+          Поделитесь этой статьей в своих социальных сетях &#8599;
+        </button>
       </footer>
     </article>
+
     <div class="story__cards-container">
       <card-story
         v-for="card in stories"
@@ -93,6 +91,7 @@
 import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
 export default {
+  props: ['url', 'history_title', 'history_text'],
   components: {
     'card-story': CardStory,
     btnhistory: Button_history,
@@ -120,7 +119,6 @@ export default {
   margin: 60px auto 90px;
 }
 .story__cards-container {
-  /* border: 1px solid red; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(265px, 300px));
   grid-template-rows: repeat(1, 1fr);
@@ -145,25 +143,25 @@ export default {
 }
 
 .story__photo {
+  grid-row-start: 1;
+  grid-row-end: 3;
   max-width: 100%;
   height: auto;
-  background-color: #ededed;
   object-fit: cover;
   object-position: right;
 }
 
-.story__block-title {
-  display: grid;
-  padding: 30px 0;
-  border-top: 1px solid #efefef;
-  border-bottom: 1px solid #efefef;
-}
-
 .story__title {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
   font-weight: 500;
   font-size: 38px;
   line-height: 48px;
   margin: 0;
+  padding-top: 30px;
+  border-top: 1px solid #efefef;
 }
 
 .story__span-accent {
@@ -171,23 +169,31 @@ export default {
 }
 
 .story__data {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
   display: flex;
   justify-content: space-between;
   align-self: end;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #efefef;
 }
 
-.story__link {
+.story__share {
   font-size: 18px;
   line-height: 24px;
+  font-weight: normal;
   color: #121212;
-  text-decoration: none;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'Inter', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-.link {
-  opacity: 1;
-}
-
-.link:hover {
+.story__share:hover {
   opacity: 0.8;
 }
 
@@ -225,7 +231,7 @@ export default {
   margin: 0 auto;
 }
 
-.story__link_local_footer {
+.story__share_local_footer {
   display: flex;
   width: 100%;
   padding: 30px 0;
@@ -251,10 +257,6 @@ export default {
   .story__header {
     grid-template-columns: minmax(518px, 540px) 1fr;
   }
-
-  /* .story__photo {
-    max-height: 540px;
-  } */
 }
 
 @media screen and (max-width: 1280px) {
@@ -276,6 +278,7 @@ export default {
   .story__title {
     font-size: 30px;
     line-height: 38px;
+    padding-top: 20px;
   }
 
   .story__header {
@@ -284,11 +287,11 @@ export default {
     margin-bottom: 90px;
   }
 
-  .story__block-title {
-    padding: 20px 0;
+  .story__data {
+    padding-bottom: 10px;
   }
 
-  .story__link {
+  .story__share {
     font-size: 16px;
   }
 
@@ -321,30 +324,39 @@ export default {
   }
 
   .story__header {
-    display: flex;
+    grid-template-columns: 1fr;
     margin-bottom: 100px;
   }
 
   .story__title {
     text-align: center;
     letter-spacing: -0.01em;
-  }
-
-  .story__photo_type_mobile {
-    display: block;
-  }
-
-  .story__photo_type_pc {
-    display: none;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
 
   .story__photo {
-    max-width: 460px;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-self: center;
     margin: 60px auto;
+    padding: 0 17.25%;
+    box-sizing: border-box;
+  }
+
+  .story__data {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
 
   .story__body {
-    margin-bottom: 46px;
+    margin-bottom: 72px;
     padding: 0;
   }
 
@@ -355,7 +367,7 @@ export default {
 
 @media screen and (max-width: 550px) {
   .story {
-    padding: 80px 4.69% 120px;
+    padding: 49px 4.69% 120px;
   }
 
   .story__header {
@@ -373,7 +385,11 @@ export default {
     letter-spacing: -0.02em;
   }
 
-  .story__link {
+  .story__data {
+    padding-bottom: 20px;
+  }
+
+  .story__share {
     font-size: 13px;
     line-height: 16px;
   }
@@ -384,7 +400,7 @@ export default {
   }
 
   .story__body {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 
   .story__paragraph {
@@ -392,6 +408,10 @@ export default {
     line-height: 16px;
     letter-spacing: -0.02em;
     margin-bottom: 16px;
+  }
+
+  .story__share_local_footer {
+    padding: 20px 0;
   }
 }
 </style>
