@@ -3,11 +3,11 @@
     <article class="story">
       <header class="story__header">
         <div class="story__wrapper">
-          <img alt="" class="story__photo" :src="card.history_photo" />
+          <img alt="" class="story__photo" :src="story.history_photo" />
         </div>
         <h2 class="story__title">
-          <span class="story__span-accent">{{ card.history_title }}:</span>
-          &laquo;{{ card.history_text }}&raquo;
+          <span class="story__span-accent">{{ story.history_title }}:</span>
+          &laquo;{{ story.history_text }}&raquo;
         </h2>
         <div class="story__data">
           <button @click="toggleShare" class="story__share">
@@ -16,7 +16,7 @@
           <p class="story__date">20 апреля 2018</p>
         </div>
       </header>
-      <section class="story__body" v-html="card.history_story"></section>
+      <section class="story__body" v-html="story.history_story"></section>
       <footer class="story__footer">
         <button
           @click="toggleShare"
@@ -45,21 +45,6 @@
 import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
 export default {
-  data() {
-    return {
-      card: {
-        id: '1',
-        history_photo:
-          'https://i.postimg.cc/3x4HNBhy/chris-yang-o-TN03i-Tb-Wn-M-unsplash.jpg',
-        history_title: 'Александр Тарханов',
-        history_text:
-          'Я не могу победить свою пунктуальность в отличии от рака.',
-        history_story:
-          '<p class="story__paragraph">Я из военной семьи. Отец хоть и не был военным сам, но нас всех держал в ежовых рукавицах. Думаю, поэтому мы и выросли такими ответственными.</p><p class="story__paragraph"> У меня дома до сих пор стоят часы в каждой комнате, хотя они и не нужны особо — я сам чувствую, опаздываю куда-то или нет, отстаю от нужного графика или опережаю. Вот такие встроенные внутренние часы! Будильник мне тоже не нужен — я всегда встаю раньше. Одеваюсь тоже быстро, как в армии, за 45 секунд. </p><p class="story__paragraph"><span class="story__span-accent">«В футболе если команда опоздала на 15 минут, ей засчитывается поражение».</span></p><p class="story__paragraph">Опаздывать я тоже не люблю, на все встречи прихожу заранее. Если знаю, что могу попасть по дороге в пробку, то не еду на машине. В аэропорт приезжаю задолго до начала регистрации. Лучше подожду и кофе попью, чем опоздаю!</p><p class="story__paragraph">Когда мне было 16 лет, мне в школе геометрию нужно было пересдавать. Я билеты выучил, знал абсолютно все. Пришел в нужное время, а учительница — нет. Ну, я какое-то время подождал ее и ушел. Потом она спрашивала: «Почему не дождался?». Я ответил: «В футболе если команда опоздала на 15 минут, ей засчитывается поражение». Экзамен мне все-таки поставили! Сейчас если кто-то из футболистов моей команды опаздывает — начинаю злиться, могу и прикрикнуть потом. А если кто-то опоздал на тренировку перед игрой — все, подготовка насмарку. Я сразу начинаю думать тогда: «Значит, точно проиграем». Такая болезненная пунктуальность уже не лечится. В отличие от рака.</p><p class="story__paragraph">«Сейчас если кто-то из футболистов моей команды опаздывает — начинаю злиться, могу и прикрикнуть потом. А если кто-то опоздал на тренировку перед игрой — все, подготовка насмарку. Я сразу начинаю думать тогда: «Значит, точно проиграем». Такая болезненная пунктуальность уже не лечится».</p>',
-      },
-    };
-  },
-
   components: {
     'card-story': CardStory,
     btnhistory: Button_history,
@@ -78,6 +63,12 @@ export default {
         (item, index) => index < 4
       );
     },
+    story() {
+      return this.$store.getters['storiesData/getCurrentStory'];
+    },
+  },
+  mounted() {
+    console.log(this.$route.params.id);
   },
 };
 </script>
