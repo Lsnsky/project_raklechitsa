@@ -15,34 +15,36 @@
             <p
               @click="clickOn"
               class="content__columns_link-1"
-              :class="{ noActive: isNoActive }"
+              :class="{ noActive: isActive, active: !isActive }"
             >
               1-й вариант
             </p>
             <p
               @click="clickOff"
               class="content__columns_link-2"
-              :class="{ active: isActive }"
+              :class="{ active: isActive, noActive: !isActive }"
             >
               2-й вариант
             </p>
           </div>
           <div class="content__columns-main-text">
-            <p v-if="defaultStatus" class="content__columns-text">
-              Заполнить подробную форму прямо на сайте и мы опубликуем вашу
-              историю после проверки. Пожалуйста, заполняйте все пункты
-              корректно, если вы испытаете какие-то сложности, воспользуйтесь
-              2-м вариантом.
-            </p>
-            <p v-else-if="toogle" class="content__columns-text-2">
-              Оставить контакт (почту или номер телефона) и мы свяжемся с вами,
-              зададим вопросы, уточним детали вашей истории.
-            </p>
+            <div class="text-container">
+              <p v-if="!isActive" class="content__columns-text">
+                Заполнить подробную форму прямо на сайте и мы опубликуем вашу
+                историю после проверки. Пожалуйста, заполняйте все пункты
+                корректно, если вы испытаете какие-то сложности, воспользуйтесь
+                2-м вариантом.
+              </p>
+              <p v-else-if="isActive" class="content__columns-text-2">
+                Оставить контакт (почту или номер телефона) и мы свяжемся с
+                вами, зададим вопросы, уточним детали вашей истории.
+              </p>
+            </div>
             <story-button
-              @QuestionnaireOpen="QuestionnaireOpen"
-              class="button-search"
+              @buttonClick="popupOpen"
+              class="story-button"
               :class="{ buttonPosition: isActive }"
-              >Заполнить форму</story-button
+              >{{ buttonText() }}</story-button
             >
           </div>
         </div>
@@ -50,7 +52,6 @@
     </container>
   </section>
 </template>
-
 <script>
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
@@ -61,27 +62,25 @@ export default {
   },
   data() {
     return {
-      defaultStatus: true,
-      toogle: false,
       isActive: false,
-      isNoActive: false,
     };
   },
   methods: {
+    buttonText() {
+      return this.isActive ? 'Оставить контакт' : 'Заполнить форму';
+    },
     clickOn() {
-      this.defaultStatus = true;
-      this.toogle = false;
-      this.isNoActive = false;
       this.isActive = false;
     },
     clickOff() {
-      this.defaultStatus = false;
-      this.toogle = true;
-      this.isNoActive = true;
       this.isActive = true;
     },
-    QuestionnaireOpen() {
-      this.$store.commit('questionnaire/openQuestionnaire');
+    popupOpen() {
+      if (this.isActive) {
+        this.$store.commit('callback/toggleCallback');
+      } else {
+        this.$store.commit('questionnaire/openQuestionnaire');
+      }
     },
   },
 };
@@ -95,7 +94,10 @@ export default {
   background-color: #f7f7f7;
   padding: 0 60px;
 }
-.button-search {
+.text-container {
+  max-width: 640px;
+}
+.story-button {
   width: 280px;
   height: 52px;
   background-color: #613a93;
@@ -135,6 +137,8 @@ export default {
   font-size: 18px;
   line-height: 22px;
   color: #666;
+  padding-bottom: 108px;
+  margin: 0;
 }
 .content__columns-description {
   display: flex;
@@ -177,13 +181,15 @@ export default {
 
 .content__columns-main-text {
   max-width: 655px;
-  /* height: 88px; */
   color: #666;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
   margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .content__columns-text {
   margin: 0;
@@ -191,28 +197,25 @@ export default {
 .content__columns-text-2 {
   margin: 0;
 }
-.button-search {
-  margin-top: 78px;
-}
+
 .active {
-  color: #000000;
+  color: #000;
 }
 .noActive {
   color: #a2a2a2;
 }
-.buttonPosition {
-  margin-top: 122px;
-}
+
 @media screen and (max-width: 1280px) {
   .story-input {
     padding: 50px;
     padding-top: 0;
     padding-bottom: 0;
   }
+
   .content {
     padding-bottom: 90px;
   }
-  .button-search {
+  .story-button {
     width: 230px;
     height: 46px;
   }
@@ -263,15 +266,19 @@ export default {
     width: 90px;
   }
 
-  .button-search {
+  .story-button {
     width: 230px;
     height: 46px;
   }
 }
 @media screen and (max-width: 960px) {
-  .button-search {
-    margin-top: 0;
+  .active {
+    border-bottom: #000 2px solid;
   }
+  .noActive {
+    border-bottom: #f7f7f7 2px solid;
+  }
+
   .content__columns {
     flex-direction: column;
     margin: 0 auto 0;
@@ -310,6 +317,12 @@ export default {
   .content__columns-text {
     margin-bottom: 50px;
   }
+  .content__columns-text-2 {
+    margin-bottom: 88px;
+  }
+  .content__about-paragraph {
+    padding-bottom: 0;
+  }
 }
 @media screen and (max-width: 512px) {
   .story-input {
@@ -317,7 +330,7 @@ export default {
     padding: 0;
     margin-bottom: 50px;
   }
-  .button-search {
+  .story-button {
     width: 290px;
     height: 40px;
   }
@@ -343,12 +356,14 @@ export default {
     max-width: 295px;
   }
   .content__columns_link-1 {
+    width: 77px;
     font-size: 13px;
     line-height: 19px;
     margin: 0 0 20px;
     margin-right: 16px;
   }
   .content__columns_link-2 {
+    width: 78px;
     font-size: 13px;
     line-height: 19px;
     margin: 0 0 20px;
@@ -358,6 +373,12 @@ export default {
     font-size: 15px;
     line-height: 19px;
     margin-bottom: 30px;
+  }
+  .content__columns-text-2 {
+    max-width: 295px;
+    font-size: 15px;
+    line-height: 19px;
+    margin-bottom: 87px;
   }
 }
 </style>

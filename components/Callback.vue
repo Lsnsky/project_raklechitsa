@@ -174,7 +174,7 @@ export default {
 }
 .callback__small-input {
   margin: 40px 0 0;
-  width: 400px;
+  width: calc(100%);
   padding-bottom: 10px;
 }
 .callback__button {
@@ -184,5 +184,124 @@ export default {
 }
 .callback__policy {
   margin: 15px 0 0;
+}
+
+@media screen and (max-width: 1280px) {
+  .callback /deep/ .popup__container {
+    overflow: auto;
+    max-width: 800px;
+  }
+
+  .callback /deep/ .popup__title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .callback__input {
+    margin-bottom: 36px;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .callback /deep/ .popup__container {
+    max-width: 580px;
+  }
+
+  .callback__input {
+    margin: 0 40px 37px;
+    font-size: 15px;
+    line-height: 19px;
+    max-height: 19px;
+  }
+
+  .callback__main-quest {
+    margin: 50px 40px 39px;
+  }
+  .callback__container {
+    margin-bottom: 37px;
+  }
+  .callback__small-input {
+    font-size: 15px;
+    line-height: 19px;
+    max-height: 19px;
+  }
+  .callback__button {
+    width: 200px;
+    height: 46px;
+    margin: 10px 30px 0 40px;
+  }
+  .callback__policy {
+    font-size: 11px;
+    line-height: 13px;
+    max-width: 270px;
+    margin: 23px 0 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .callback /deep/ .popup__container {
+    max-width: 290px;
+  }
+
+  .callback /deep/ .popup__title {
+    font-size: 18px;
+    line-height: 21px;
+    max-width: 185px;
+  }
+  .callback__input {
+    margin: 0 15px 30px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .callback__main-quest {
+    margin: 35px 15px 30px;
+  }
+  .callback__container {
+    margin: 0;
+    flex-direction: column;
+  }
+  .callback__small-input {
+    font-size: 13px;
+    line-height: 16px;
+    margin: 20px 0 0;
+  }
+  .callback__button {
+    width: 260px;
+    height: 40px;
+    margin: 5px 15px 0;
+  }
+  .callback__policy {
+    max-width: 260px;
+    margin: 10px 15px 15px;
+  }
+
+  .callback__wrapper {
+    width: calc(100% - 30px);
+    margin: 0 15px 30px;
+  }
+
+  .callback__quest {
+    margin: 0 15px 20px;
+  }
+}
+
+@media screen and (max-height: 728px) and (min-width: 1280px) {
+  .callback /deep/ .popup__container {
+    overflow: auto;
+    height: 100%;
+  }
+}
+
+@media screen and (max-height: 710px) and (max-width: 1280px) and (min-width: 600px) {
+  .callback /deep/ .popup__container {
+    overflow: auto;
+    height: 100%;
+  }
+}
+@media screen and (max-height: 698px) and (max-width: 600px) {
+  .callback /deep/ .popup__container {
+    overflow: auto;
+    height: 100%;
+  }
 }
 </style>
