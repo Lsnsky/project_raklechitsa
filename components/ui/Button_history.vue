@@ -12,6 +12,7 @@ export default {};
 
 <style scoped>
 .cards-history-link {
+  display: inline;
   text-decoration: none;
   color: #000000;
   font-size: 16px;
