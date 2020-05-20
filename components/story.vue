@@ -1,9 +1,10 @@
 <template>
   <section>
+    <!-- комент -->
     <article class="story">
       <header class="story__header">
         <div class="story__wrapper">
-          <img alt="" class="story__photo" :src="story.history_photo" />
+          <img alt class="story__photo" :src="story.history_photo" />
         </div>
         <h2 class="story__title">
           <span class="story__span-accent">{{ story.history_title }}:</span>
