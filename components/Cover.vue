@@ -43,8 +43,6 @@ export default {
   .cover__title {
     font-size: 78px;
   }
-  .cover__button {
-  }
 }
 @media screen and (max-width: 1024px) {
   .cover__button {
