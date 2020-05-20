@@ -1,5 +1,12 @@
 <template>
-  <div @keydown.esc="closeQuestionnaire">
+  <div
+    @keydown.esc="closeQuestionnaire"
+    :class="[
+      {
+        body_noscroll: getCallbackState,
+      },
+    ]"
+  >
     <main-header />
     <questionnaire />
     <nuxt />
@@ -25,6 +32,11 @@ export default {
       this.$store.commit('questionnaire/closeQuestionnaire');
     },
   },
+  computed: {
+    getCallbackState() {
+      return this.$store.getters['callback/getCallbackState'];
+    },
+  },
 };
 </script>
 
@@ -44,5 +56,25 @@ html {
 
 body {
   margin: 0;
+  min-width: 320px;
+}
+
+@media screen and (max-height: 728px) and (min-width: 1280px) {
+  .body_noscroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+}
+@media screen and (max-height: 710px) and (max-width: 1280px) and (min-width: 600px) {
+  .body_noscroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+}
+@media screen and (max-height: 698px) and (max-width: 600px) {
+  .body_noscroll {
+    overflow: hidden;
+    height: 100vh;
+  }
 }
 </style>
