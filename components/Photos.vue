@@ -136,6 +136,7 @@ export default {
 @media screen and (max-width: 1280px) {
   .photos {
     padding: 0px 50px;
+    margin: 90px 0 0;
   }
   .photos__cards {
     /* border: 1px solid red; */

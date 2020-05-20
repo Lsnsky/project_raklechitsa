@@ -12,16 +12,18 @@ export default {};
 
 <style scoped>
 .cards-history-link {
-  display: inline;
+  display: block;
   text-decoration: none;
   color: #000000;
   font-size: 16px;
   line-height: 20px;
   display: flex;
   background-color: #fbfbfb;
-  padding: 31px 0;
+  max-height: 78px;
+  height: 100%;
+  /* padding: 31px 0; */
   justify-content: center;
-  max-width: 1320px;
+  align-items: center;
   margin: 0 auto;
   font-family: Inter;
   font-style: normal;
