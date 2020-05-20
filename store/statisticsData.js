@@ -40,4 +40,55 @@ export const state = () => ({
       id: 4,
     },
   ],
+  cards: [
+    {
+      id: '1',
+      title:
+        'Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000 человек.',
+      image: '/images/__item-6.jpg',
+      content: '1 из 3',
+      source: 'Левада-Центр 2018',
+      value: 1,
+      maxValue: 3,
+    },
+    {
+      id: '2',
+      title: '2,6% Россиян имеют онкозаболевания.',
+      image: '/images/__item-6.jpg',
+      content: '3 700 000',
+      source: 'Росстат 2018',
+      value: 2.6,
+      maxValue: 100,
+    },
+    {
+      id: '3',
+      title:
+        'На 28% выросла доля выявления заболеваний на ранней стадии за 10 лет.',
+      image: '/images/__item-6.jpg',
+      content: '↑28%',
+      source: 'МНИОИ Герцена 2018',
+      valueEmpty: 61.5,
+      maxValueEmpty: 100,
+      valueFill: 80,
+      maxValueFill: 100,
+    },
+    {
+      id: '4',
+      title:
+        'На 25% снизилась смертность в течение первого года после постановки диагноза.',
+      image: '/images/__item-6.jpg',
+      content: '↓25%',
+      source: 'МНИОИ Герцена 2018',
+      valueEmpty: 73,
+      maxValueEmpty: 100,
+      valueFill: 54.6,
+      maxValueFill: 100,
+    },
+  ],
 });
+
+export const getters = {
+  getStatistics(state) {
+    return state.cards;
+  },
+};

@@ -47,29 +47,21 @@ export default {
 </script>
 
 <style scoped>
-.cards-story__button {
-  margin: 60px auto 0;
-  padding: 0;
-  height: 78px;
-}
-
 .cards-story {
-  /* border: 1px solid red; */
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 60px 0;
 }
 
 .card-story__panel {
-  /* border: 1px solid red; */
   width: 100%;
   height: 86px;
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
 }
+
 .card-story__panel-text {
-  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -77,11 +69,9 @@ export default {
   line-height: 46px;
   text-align: center;
   color: #ffffff;
-  margin-right: 10px;
 }
 
 .card-story__panel-hashtag {
-  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: bold;
@@ -92,7 +82,6 @@ export default {
 }
 
 .cards-story__title {
-  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -103,7 +92,6 @@ export default {
 }
 
 .cards-story__container {
-  /* border: 1px solid red; */
   display: grid;
   grid-template-columns: repeat(4, minmax(300px, 1fr));
   grid-template-rows: repeat(2, minmax(300px, 1fr));
@@ -113,6 +101,13 @@ export default {
   grid-auto-flow: dense;
   margin: 0 auto;
 }
+
+.cards-story__button {
+  margin: 60px auto 0;
+  padding: 0;
+  height: 78px;
+}
+
 @media screen and (max-width: 1280px) {
   .cards-story {
     padding: 0 50px 0;
@@ -141,7 +136,6 @@ export default {
 }
 @media screen and (max-width: 1024px) {
   .cards-story__container {
-    /* border: 1px solid red; */
     display: grid;
     grid-template-columns: repeat(4, minmax(208px, 1fr));
     grid-template-rows: repeat(2, minmax(208px, 1fr));
@@ -206,6 +200,41 @@ export default {
     grid-row-gap: 40px;
     justify-content: center;
     margin: 0 auto;
+  }
+}
+@media screen and (max-width: 320px) {
+  .cards-story {
+    padding: 0 15px 0;
+  }
+  .cards-story__container {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(290px, 1fr));
+    grid-template-rows: repeat(6, minmax(290px, 1fr));
+    grid-row-gap: 30px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .card-story__panel-text {
+    font-size: 16px;
+    line-height: 18px;
+    max-width: 220px;
+    text-align: center;
+  }
+  .card-story__panel-hashtag {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .cards-story__title {
+    margin: 50px auto 40px;
+    max-width: 380px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: left;
+  }
+  .cards-story__button {
+    margin: 40px auto 0;
   }
 }
 </style>

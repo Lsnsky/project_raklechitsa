@@ -2,39 +2,22 @@
   <section class="cards">
     <div class="cards__title">Статистика по онкозаболеваниям</div>
     <div class="cards__container">
-      <div class="card">
-        <card-title :title="cards[0].title" />
-        <progressbar :value="cards[0].value" :maxValue="cards[0].maxValue" />
-        <card-content :content="cards[0].content" />
-        <card-source :source="cards[0].source" />
+      <div class="card" v-for="card in cardsWithProgressBar" :key="card.id">
+        <card-title :title="card.title" />
+        <progressbar :value="card.value" :maxValue="card.maxValue" />
+        <card-content :content="card.content" />
+        <card-source :source="card.source" />
       </div>
-      <div class="card">
-        <card-title :title="cards[1].title" />
-        <progressbar :value="cards[1].value" :maxValue="cards[1].maxValue" />
-        <card-content :content="cards[1].content" />
-        <card-source :source="cards[1].source" />
-      </div>
-      <div class="card">
-        <card-title :title="cards[2].title" />
+      <div class="card" v-for="card in cardsWithComparedInfo" :key="card.id">
+        <card-title :title="card.title" />
         <card-diagram
-          :valueEmpty="cards[2].valueEmpty"
-          :maxValueEmpty="cards[2].maxValueEmpty"
-          :valueFill="cards[2].valueFill"
-          :maxValueFill="cards[2].maxValueFill"
+          :valueEmpty="card.valueEmpty"
+          :maxValueEmpty="card.maxValueEmpty"
+          :valueFill="card.valueFill"
+          :maxValueFill="card.maxValueFill"
         />
-        <card-content :content="cards[2].content" />
-        <card-source :source="cards[2].source" />
-      </div>
-      <div class="card">
-        <card-title :title="cards[3].title" />
-        <card-diagram
-          :valueEmpty="cards[3].valueEmpty"
-          :maxValueEmpty="cards[3].maxValueEmpty"
-          :valueFill="cards[3].valueFill"
-          :maxValueFill="cards[3].maxValueFill"
-        />
-        <card-content :content="cards[3].content" />
-        <card-source :source="cards[3].source" />
+        <card-content :content="card.content" />
+        <card-source :source="card.source" />
       </div>
     </div>
   </section>
@@ -54,61 +37,19 @@ export default {
     'card-source': CardStatSource,
     'card-diagram': Diagram,
   },
-  data() {
-    return {
-      cards: [
-        {
-          id: '1',
-          title:
-            'Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000 человек.',
-          image: '/images/__item-6.jpg',
-          content: '1 из 3',
-          source: 'Левада-Центр 2018',
-          value: 1,
-          maxValue: 3,
-        },
-        {
-          id: '2',
-          title: '2,6% Россиян имеют онкозаболевания.',
-          image: '/images/__item-6.jpg',
-          content: '3 700 000',
-          source: 'Росстат 2018',
-          value: 2.6,
-          maxValue: 100,
-        },
-        {
-          id: '3',
-          title:
-            'На 28% выросла доля выявления заболеваний на ранней стадии за 10 лет.',
-          image: '/images/__item-6.jpg',
-          content: '↑28%',
-          source: 'МНИОИ Герцена 2018',
-          valueEmpty: 61.5,
-          maxValueEmpty: 100,
-          valueFill: 80,
-          maxValueFill: 100,
-        },
-        {
-          id: '4',
-          title:
-            'На 25% снизилась смертность в течение первого года после постановки диагноза.',
-          image: '/images/__item-6.jpg',
-          content: '↓25%',
-          source: 'МНИОИ Герцена 2018',
-          valueEmpty: 73,
-          maxValueEmpty: 100,
-          valueFill: 54.6,
-          maxValueFill: 100,
-        },
-      ],
-    };
+  computed: {
+    cardsWithProgressBar() {
+      return this.$store.getters['statisticsData/getStatistics'].slice(0, 2);
+    },
+    cardsWithComparedInfo() {
+      return this.$store.getters['statisticsData/getStatistics'].slice(2);
+    },
   },
 };
 </script>
 
 <style scoped>
 .cards {
-  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -116,7 +57,6 @@ export default {
   margin: 0 auto 100px;
 }
 .cards__title {
-  /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -128,12 +68,10 @@ export default {
   max-width: 413px;
 }
 .cards__container {
-  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
 }
 .card {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -146,7 +84,6 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .cards {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -154,7 +91,6 @@ export default {
     margin: 0 auto 100px;
   }
   .cards__title {
-    /* border: 1px solid red; */
     font-family: Inter;
     font-style: normal;
     font-weight: 600;
@@ -166,12 +102,10 @@ export default {
     max-width: 367px;
   }
   .cards__container {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
   }
   .card {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -184,7 +118,6 @@ export default {
 }
 @media (max-width: 1024px) {
   .cards {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -192,7 +125,6 @@ export default {
     margin: 0 auto 100px;
   }
   .cards__title {
-    /* border: 1px solid red; */
     font-family: Inter;
     font-style: normal;
     font-weight: 600;
@@ -204,12 +136,10 @@ export default {
     max-width: 367px;
   }
   .cards__container {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
   }
   .card {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
