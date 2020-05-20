@@ -15,20 +15,20 @@
             <p
               @click="clickOn"
               class="content__columns_link-1"
-              :class="{ noActive: isNoActive }"
+              :class="{ noActive: isActive, active: !isActive }"
             >
               Рак Лечится
             </p>
             <p
               @click="clickOff"
               class="content__columns_link-2"
-              :class="{ active: isActive }"
+              :class="{ active: isActive, noActive: !isActive }"
             >
               Фонд Хабенского
             </p>
           </div>
           <div class="content__columns-main-text">
-            <p v-if="defaultStatus" class="content__columns-text">
+            <p v-if="!isActive" class="content__columns-text">
               Есть вещи, которые не лечатся. Особенности характера, страстные
               увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
               приобрели в детстве. Список можно продолжать до бесконечности, но
@@ -36,13 +36,13 @@
               лечится, и лучшее доказательство — люди с их неизлечимыми
               особенностями, которые сумели победить рак.
             </p>
-            <p v-if="defaultStatus" class="content__columns-text">
+            <p v-if="!isActive" class="content__columns-text">
               Рак лечится — проект Благотворительного Фонда Константина
               Хабенского и Leo Burnett Moscow. С его помощью мы надеемся
               изменить отношение людей к раку и заставить каждого поверить:
               онкологическое заболевание — это не приговор.
             </p>
-            <p v-else-if="toogle" class="content__columns-text-2">
+            <p v-else-if="isActive" class="content__columns-text-2">
               Благотворительный Фонд Константина Хабенского с 2008 года помогает
               детям с онкологическими и другими тяжелыми заболеваниями головного
               мозга. Фонд не только поддерживает семью заболевшего ребенка в
@@ -65,23 +65,14 @@ export default {
   },
   data() {
     return {
-      defaultStatus: true,
-      toogle: false,
       isActive: false,
-      isNoActive: false,
     };
   },
   methods: {
     clickOn() {
-      this.defaultStatus = true;
-      this.toogle = false;
-      this.isNoActive = false;
       this.isActive = false;
     },
     clickOff() {
-      this.defaultStatus = false;
-      this.toogle = true;
-      this.isNoActive = true;
       this.isActive = true;
     },
   },
@@ -167,7 +158,6 @@ export default {
 }
 .content__columns-main-text {
   max-width: 655px;
-
   color: #dedede;
   font-style: normal;
   font-weight: normal;
@@ -281,6 +271,12 @@ export default {
   .cover-about__title {
     display: none;
   }
+  .active {
+    border-bottom: #fff 2px solid;
+  }
+  .noActive {
+    border-bottom: #613a93 2px solid;
+  }
   .content__columns {
     flex-direction: column;
     margin: 0 auto 0;
@@ -291,9 +287,12 @@ export default {
   .content__columns_link-1 {
     margin: 0 0 30px;
     margin-right: 30px;
+    padding-bottom: 6px;
+    /* border-bottom: #fff 1px solid; */
   }
   .content__columns_link-2 {
     margin: 0 0 30px;
+    padding-bottom: 6px;
   }
   .content__about-title {
     width: 380px;
@@ -345,15 +344,19 @@ export default {
   }
 
   .content__columns_link-1 {
+    width: 81px;
     font-size: 13px;
     line-height: 19px;
     margin: 0 0 20px;
     margin-right: 16px;
+    padding-bottom: 4px;
   }
   .content__columns_link-2 {
+    width: 113px;
     font-size: 13px;
     line-height: 19px;
     margin: 0 0 20px;
+    padding-bottom: 4px;
   }
 
   .content__columns-text {
