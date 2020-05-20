@@ -1,6 +1,8 @@
 <template>
   <div class="card" @click="$emit('cardClick')">
-    <div class="wrapper"><img class="card__photo" :src="url" /></div>
+    <div class="card__wrapper">
+      <img class="card__photo" :src="url" />
+    </div>
     <div class="card__title">{{ history_title }}</div>
     <div class="card__text">{{ history_text }}</div>
   </div>
@@ -20,7 +22,7 @@ export default {
   max-width: 300px;
 }
 
-.wrapper {
+.card__wrapper {
   position: relative;
   padding-top: 100%;
 }
