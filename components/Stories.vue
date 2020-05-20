@@ -1,8 +1,10 @@
 <template>
   <section class="cards-story">
     <panel class="card-story__panel">
-      <div class="card-story__panel_text">И В ОТЛИЧИЕ ОТ РАКА,</div>
-      <div class="card-story__panel_hashtag">#ЭТОНЕЛЕЧИТСЯ</div>
+      <div class="card-story__panel_text">
+        И В ОТЛИЧИЕ ОТ РАКА,
+        <span class="card-story__panel_hashtag">#ЭТОНЕЛЕЧИТСЯ</span>
+      </div>
     </panel>
     <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
     <div class="cards-story__container">
@@ -52,14 +54,15 @@ export default {
 .cards-story {
   /* border: 1px solid red; */
 
-  max-width: 1320px;
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 0 60px;
 }
 
 .card-story__panel {
   /* border: 1px solid red; */
-  max-width: 1320px;
-  height: 129px;
+  width: 100%;
+  height: 86px;
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
@@ -69,9 +72,8 @@ export default {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 28px;
+  font-size: 30px;
   line-height: 46px;
-  /* identical to box height, or 153% */
   text-align: center;
   color: #ffffff;
   margin-right: 10px;
@@ -84,7 +86,6 @@ export default {
   font-weight: bold;
   font-size: 34px;
   line-height: 40px;
-  /* identical to box height, or 153% */
   text-align: center;
   color: #ffffff;
 }
@@ -104,8 +105,8 @@ export default {
 .cards-story__container {
   /* border: 1px solid red; */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(265px, 300px));
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 300px);
+  grid-template-rows: repeat(2, 300);
   grid-column-gap: 40px;
   grid-row-gap: 70px;
   justify-content: center;
