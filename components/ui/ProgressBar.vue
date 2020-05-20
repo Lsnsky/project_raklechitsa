@@ -16,49 +16,44 @@ export default {
 </script>
 
 <style scoped>
-@media (min-width: 1281px) {
-  .progress-bar {
-    /* border: 1px solid red; */
-    width: 260px;
-    height: 40px;
-    background: #f4f4f4;
-    margin: auto;
-    margin-bottom: 20px;
-  }
-  .progress-bar__fill {
-    /* border: 1px solid red; */
-    height: 100%;
-    background: #613a93;
-  }
+.progress-bar {
+  max-width: 260px;
+  width: 100%;
+  height: 40px;
+  background: #f4f4f4;
+  margin: auto;
+  margin-bottom: 20px;
 }
-@media (max-width: 1280px) {
+.progress-bar__fill {
+  height: 100%;
+  background: #613a93;
+}
+
+@media screen and(max-width: 1280px) {
   .progress-bar {
-    /* border: 1px solid red; */
-    width: 229px;
+    max-width: 229px;
     height: 36px;
     background: #f4f4f4;
-    margin: auto;
-    margin-bottom: 20px;
   }
   .progress-bar__fill {
-    /* border: 1px solid red; */
     height: 100%;
     background: #613a93;
   }
 }
-@media (max-width: 1024px) {
+@media screen and (max-width: 1166px) {
   .progress-bar {
-    /* border: 1px solid red; */
-    width: 188px;
+    max-width: 188px;
     height: 28px;
     background: #f4f4f4;
-    margin: auto;
-    margin-bottom: 20px;
   }
   .progress-bar__fill {
-    /* border: 1px solid red; */
     height: 100%;
     background: #613a93;
+  }
+}
+@media screen and(max-width: 1024px) {
+  .progress-bar {
+    margin-bottom: 10px;
   }
 }
 </style>

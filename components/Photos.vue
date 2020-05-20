@@ -97,8 +97,8 @@ export default {
 .photos__cards {
   /* border: 1px solid red; */
   display: grid;
-  grid-template-rows: repeat(2, 195px);
-  grid-template-columns: repeat(4, 195px);
+  grid-template-rows: repeat(2, minmax(171px, 195px));
+  grid-template-columns: repeat(4, minmax(171px, 195px));
   grid-gap: 30px;
 }
 .photos__panel-container {
@@ -141,8 +141,8 @@ export default {
   .photos__cards {
     /* border: 1px solid red; */
     display: grid;
-    grid-template-rows: repeat(2, 171px);
-    grid-template-columns: repeat(4, 171px);
+    grid-template-rows: repeat(2, minmax(136px, 171px));
+    grid-template-columns: repeat(4, minmax(136px, 171px));
     grid-gap: 27px;
   }
   .photos__title {

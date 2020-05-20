@@ -93,8 +93,8 @@ export default {
 
 .cards-story__container {
   display: grid;
-  grid-template-columns: repeat(4, minmax(300px, 1fr));
-  grid-template-rows: repeat(2, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, minmax(265px, 300px));
+  grid-template-rows: repeat(2, minmax(357px, 392px));
   grid-column-gap: 40px;
   grid-row-gap: 70px;
   justify-content: center;
@@ -114,8 +114,8 @@ export default {
   }
   .cards-story__container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(265px, 1fr));
-    grid-template-rows: repeat(2, minmax(265px, 1fr));
+    grid-template-columns: repeat(4, minmax(208px, 265px));
+    grid-template-rows: repeat(2, minmax(305px, 357px));
     grid-column-gap: 40px;
     grid-row-gap: 60px;
     justify-content: center;
@@ -137,8 +137,8 @@ export default {
 @media screen and (max-width: 1024px) {
   .cards-story__container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(208px, 1fr));
-    grid-template-rows: repeat(2, minmax(208px, 1fr));
+    grid-template-columns: repeat(4, minmax(160px, 208px));
+    grid-template-rows: repeat(2, minmax(160px, 305px));
     grid-column-gap: 30px;
     grid-row-gap: 46px;
     justify-content: center;
