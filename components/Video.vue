@@ -1,7 +1,7 @@
 <template>
   <section id="video" class="video">
     <div class="video__wrapper">
-      <h2 class="video__title" @click="toggleCallback">
+      <h2 class="video__title">
         Истории людей, победивших рак, но не свои привычки
       </h2>
       <p class="video__subtitle">
@@ -66,9 +66,6 @@ export default {
           this.id === this.links.length - 1 ? 'inactive' : 'active';
         this.lActive = this.id === 0 ? 'inactive' : 'active';
       }
-    },
-    toggleCallback() {
-      this.$store.commit('callback/toggleCallback');
     },
   },
   components: {
