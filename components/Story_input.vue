@@ -41,7 +41,7 @@
               </p>
             </div>
             <story-button
-              @QuestionnaireOpen="QuestionnaireOpen"
+              @buttonClick="popupOpen"
               class="story-button"
               :class="{ buttonPosition: isActive }"
               >{{ buttonText() }}</story-button
@@ -75,8 +75,12 @@ export default {
     clickOff() {
       this.isActive = true;
     },
-    QuestionnaireOpen() {
-      this.$store.commit('questionnaire/openQuestionnaire');
+    popupOpen() {
+      if (this.isActive) {
+        this.$store.commit('callback/toggleCallback');
+      } else {
+        this.$store.commit('questionnaire/openQuestionnaire');
+      }
     },
   },
 };

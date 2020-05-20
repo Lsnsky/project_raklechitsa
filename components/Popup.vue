@@ -35,6 +35,7 @@ export default {
   visibility: hidden;
   opacity: 0;
   transition: all linear 0.1s;
+  min-width: 320px;
 }
 
 .popup__overlay {
