@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="$emit('cardClick')">
-    <div class="wrapper">
+    <div class="card__wrapper">
       <img class="card__photo" :src="url" />
     </div>
     <div class="card__title">{{ history_title }}</div>
@@ -21,7 +21,7 @@ export default {
   cursor: pointer;
 }
 
-.wrapper {
+.card__wrapper {
   position: relative;
   padding-top: 100%;
 }

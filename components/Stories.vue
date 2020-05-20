@@ -1,9 +1,9 @@
 <template>
   <section class="cards-story">
     <panel class="card-story__panel">
-      <div class="card-story__panel_text">
+      <div class="card-story__panel-text">
         И В ОТЛИЧИЕ ОТ РАКА,
-        <span class="card-story__panel_hashtag">#ЭТОНЕЛЕЧИТСЯ</span>
+        <span class="card-story__panel-hashtag">#ЭТОНЕЛЕЧИТСЯ</span>
       </div>
     </panel>
     <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
@@ -68,7 +68,7 @@ export default {
   /* flex-direction: column; */
   justify-content: center;
 }
-.card-story__panel_text {
+.card-story__panel-text {
   /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
@@ -80,7 +80,7 @@ export default {
   margin-right: 10px;
 }
 
-.card-story__panel_hashtag {
+.card-story__panel-hashtag {
   /* border: 1px solid red; */
   font-family: Inter;
   font-style: normal;
@@ -132,7 +132,7 @@ export default {
     display: flex;
     justify-content: center;
   }
-  .card-story__panel_text {
+  .card-story__panel-text {
     font-size: 28px;
   }
   .cards-story__title {
@@ -151,10 +151,7 @@ export default {
     margin: 0 auto;
   }
   .cards-story {
-    /* border: 1px solid red; */
-    padding-bottom: 30px;
-    max-width: 924px;
-    margin: 0 auto;
+    padding: 0 50px;
   }
   .cards-story__title {
     margin: 80px 0 46px;
@@ -166,13 +163,13 @@ export default {
   .card-story__panel {
     height: 80px;
   }
-  .card-story__panel_text {
+  .card-story__panel-text {
     font-size: 24px;
     line-height: 40px;
     text-align: center;
   }
 
-  .card-story__panel_hashtag {
+  .card-story__panel-hashtag {
     font-weight: bold;
     font-size: 32px;
     line-height: 40px;
@@ -182,67 +179,33 @@ export default {
     height: 50px;
   }
 }
-@media (max-width: 768px) {
-  .cards-story__container {
-    /* border: 1px solid red; */
-    display: grid;
-    grid-template-columns: repeat(3, minmax(208px, 1fr));
-    grid-template-rows: repeat(3, minmax(208px, 1fr));
-    grid-gap: 30px;
-    justify-content: center;
-    grid-auto-flow: dense;
-    margin: 0 auto;
-  }
+@media screen and (max-width: 768px) {
   .cards-story {
-    /* border: 1px solid red; */
-    padding-bottom: 30px;
-    max-width: 924px;
-    margin: 0 auto;
+    padding: 0 40px 0;
   }
-  .section-title {
-    /* border: 1px solid red; */
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 32px;
+  .card-story__panel-text {
+    font-size: 22px;
+    line-height: 36px;
+    max-width: 444px;
   }
-  .cards-story__section-title {
-    /* border: 1px solid red; */
-    width: 413px;
-    margin-bottom: 70px;
-  }
-  .card-story__panel {
-    /* border: 1px solid red; */
-    max-width: 1320px;
-    height: 129px;
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-  }
-  .card-story__panel_text {
-    /* border: 1px solid red; */
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 46px;
-    /* identical to box height, or 153% */
-    text-align: center;
-    color: #ffffff;
-    margin-right: 10px;
-  }
-
-  .card-story__panel_hashtag {
-    /* border: 1px solid red; */
-    font-family: Inter;
-    font-style: normal;
+  .card-story__panel-hashtag {
     font-weight: bold;
-    font-size: 36px;
-    line-height: 40px;
-    /* identical to box height, or 153% */
+    font-size: 32px;
+    line-height: 30px;
+  }
+  .cards-story__title {
+    margin: 80px auto 60px;
+    max-width: 380px;
     text-align: center;
-    color: #ffffff;
+  }
+  .cards-story__container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(216px, 1fr));
+    grid-template-rows: repeat(3, minmax(216px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+    justify-content: center;
+    margin: 0 auto;
   }
 }
 </style>
