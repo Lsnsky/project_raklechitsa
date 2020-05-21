@@ -38,9 +38,23 @@ export default {
   },
   computed: {
     stories() {
-      return this.$store.getters['storiesData/getStoriesData'].filter(
-        (item, index) => index < 8
-      );
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          return this.$store.getters['storiesData/getStoriesData'].filter(
+            (item, index) => index < 8
+          );
+        }
+        if (window.innerWidth <= 320) {
+          return this.$store.getters['storiesData/getStoriesData'].filter(
+            (item, index) => index < 6
+          );
+        }
+        if (window.innerWidth <= 768) {
+          return this.$store.getters['storiesData/getStoriesData'].filter(
+            (item, index) => index < 9
+          );
+        }
+      }
     },
   },
 };
