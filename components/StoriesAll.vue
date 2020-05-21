@@ -66,16 +66,16 @@ export default {
     },
     // в разработке
 
-    calcItemPerPage() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          return (this.itemsPerPage = 16);
-        }
-        if (window.innerWidth <= 768) {
-          return (this.itemsPerPage = 12);
-        }
-      }
-    },
+    // calcItemPerPage() {
+    //   if (process.browser) {
+    //     if (window.innerWidth > 768) {
+    //       return (this.itemsPerPage = 16);
+    //     }
+    //     if (window.innerWidth <= 768) {
+    //       return (this.itemsPerPage = 12);
+    //     }
+    //   }
+    // },
   },
 };
 </script>
