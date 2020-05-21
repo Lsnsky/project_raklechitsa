@@ -48,16 +48,14 @@ export default {
 
 <style scoped>
 .cards-story {
-  max-width: 1440px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 60px 0;
 }
 
 .card-story__panel {
-  width: 100%;
   height: 86px;
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
 }
 
@@ -89,6 +87,7 @@ export default {
   line-height: 36px;
   max-width: 413px;
   margin: 100px 0 70px;
+  width: 100%;
 }
 
 .cards-story__container {
@@ -194,14 +193,26 @@ export default {
   }
   .cards-story__container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(216px, 1fr));
-    grid-template-rows: repeat(3, minmax(216px, 1fr));
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    grid-template-rows: repeat(3, minmax(160px, 1fr));
     grid-column-gap: 20px;
     grid-row-gap: 40px;
     justify-content: center;
     margin: 0 auto;
   }
 }
+
+@media screen and (max-width: 525px) {
+  .cards-story__container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+    grid-template-rows: repeat(4, minmax(160px, 1fr));
+    grid-row-gap: 30px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .cards-story {
     padding: 0 15px 0;
