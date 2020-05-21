@@ -19,7 +19,6 @@ export default {
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  max-width: 300px;
 }
 
 .card__wrapper {
@@ -55,5 +54,18 @@ export default {
   line-height: 18px;
   margin: 14px 0 0;
   color: #666;
+}
+@media screen and (max-width: 1024px) {
+  .card__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 16px 0 0;
+  }
+
+  .card__text {
+    font-size: 13px;
+    line-height: 16px;
+    margin: 16px 0 0;
+  }
 }
 </style>

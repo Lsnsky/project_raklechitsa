@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <img class="photo" src="../../static/images/__item-6.jpg" />
+  <div class="photo-wrapper">
+    <img class="photo" src="/images/__item-6.jpg" />
   </div>
 </template>
 
@@ -14,7 +14,16 @@ export default {};
   width: 100%;
   height: 100%;
   background: #ededed;
-  object-fit: cover;
   cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+}
+.photo-wrapper {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
 }
 </style>
