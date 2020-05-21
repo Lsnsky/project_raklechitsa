@@ -19,7 +19,7 @@ export default {};
   line-height: 20px;
   display: flex;
   background-color: #fbfbfb;
-  max-height: 78px;
+
   height: 100%;
   /* padding: 31px 0; */
   justify-content: center;
@@ -27,5 +27,11 @@ export default {};
   margin: 0 auto;
   font-family: Inter;
   font-style: normal;
+}
+@media screen and (max-width: 320px) {
+  .cards-history-link {
+    font-size: 13px;
+    line-height: 20px;
+  }
 }
 </style>

@@ -76,18 +76,22 @@ export default {
 
 <style scoped>
 .story__button {
-  margin: 60px auto 90px;
+  margin: 70px auto 100px;
+  max-width: 1320px;
+
+  padding: 0 60px;
+  height: 82px;
 }
 .story__cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(265px, 300px));
+  grid-template-columns: repeat(4, minmax(265px, 300px));
   grid-template-rows: repeat(1, 1fr);
   grid-column-gap: 40px;
-  grid-row-gap: 70px;
   justify-content: center;
-  grid-auto-flow: dense;
+
   margin: 0 auto;
   max-width: 1320px;
+  padding: 0 60px;
 }
 .story {
   max-width: 1320px;
@@ -245,8 +249,23 @@ section >>> .story__paragraph {
   .story__body {
     margin-bottom: 60px;
   }
-}
 
+  .story__cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(1fr, 265px));
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 40px;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 50px;
+  }
+
+  .story__button {
+    margin: 60px auto 90px;
+    padding: 0 50px;
+    height: 78px;
+  }
+}
 @media screen and (max-width: 1140px) {
   .story {
     padding: 100px 5% 120px;
@@ -292,6 +311,20 @@ section >>> .story__paragraph {
   .story__header {
     grid-template-columns: 407px 1fr;
     margin-bottom: 90px;
+  }
+  .story__cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(160px, 208px));
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 30px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .story__button {
+    margin: 46px auto 80px;
+    padding: 0 50px;
+    height: 50px;
   }
 }
 
@@ -344,6 +377,26 @@ section >>> .story__paragraph {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .story__cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(120px, 216px));
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .story__button {
+    margin: 40px auto 80px;
+    padding: 0 40px;
+    height: 50px;
+  }
+}
+
 @media screen and (max-width: 550px) {
   .story {
     padding: 49px 4.69% 120px;
@@ -387,6 +440,35 @@ section >>> .story__paragraph {
 
   .story__share_local_footer {
     padding: 20px 0;
+  }
+  .story__cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 216px));
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .story__cards-container {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(160px, 290px));
+    grid-template-rows: repeat(2, 1fr);
+    grid-row-gap: 30px;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .story__button {
+    margin: 40px auto 50px;
+    padding: 0 15px;
+    height: 50px;
   }
 }
 </style>

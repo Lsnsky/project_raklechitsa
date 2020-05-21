@@ -116,7 +116,7 @@ export default {
     grid-column-gap: 30px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 810px) {
   .cards {
     padding: 0 40px;
   }
@@ -125,7 +125,7 @@ export default {
     grid-template-rows: repeat(1, 216px);
     grid-template-columns: repeat(4, 216px);
     grid-column-gap: 20px;
-    max-width: 688px;
+    max-width: 100%;
     overflow-x: scroll;
   }
 }
@@ -138,7 +138,7 @@ export default {
     grid-template-rows: repeat(1, 216px);
     grid-template-columns: repeat(4, 216px);
     grid-column-gap: 20px;
-    max-width: 290px;
+    max-width: 100%;
     overflow-x: scroll;
   }
 }
