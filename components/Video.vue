@@ -10,11 +10,17 @@
         их историями.
       </p>
       <div class="video__buttons">
-        <button-switch position="left" :type="lActive" @buttonClick="back" />
+        <button-switch
+          position="left"
+          :type="getLeftStatus"
+          :disabled="isDisabled(getLeftStatus)"
+          @buttonClick="back"
+        />
         <button-switch
           position="right"
-          :type="rActive"
+          :type="getRightStatus"
           @buttonClick="further"
+          :disabled="isDisabled(getRightStatus)"
         />
       </div>
     </div>
@@ -22,17 +28,19 @@
       <button-switch
         class="video__small-button video__small-button_position_left"
         position="left"
-        :type="lActive"
+        :type="getLeftStatus"
         @buttonClick="back"
+        :disabled="isDisabled(getLeftStatus)"
       />
       <button-switch
         class="video__small-button video__small-button_position_right"
         position="right"
-        :type="rActive"
+        :type="getRightStatus"
         @buttonClick="further"
+        :disabled="isDisabled(getRightStatus)"
       />
       <div class="video__frame">
-        <video-frame :url="links[id].url" />
+        <video-frame :url="getCurrentVideo" />
       </div>
       <p class="video__more">
         Все видео вы можете найте на нашем
@@ -51,47 +59,30 @@ import Button_switch from '@/components/ui/Button_switch';
 import Video_frame from '@/components/ui/Video_frame';
 export default {
   methods: {
+    isDisabled(status) {
+      return status === 'inactive';
+    },
     back() {
-      if (this.id !== 0) {
-        this.id -= 1;
-        this.lActive = this.id === 0 ? 'inactive' : 'active';
-        this.rActive =
-          this.id === this.links.length - 1 ? 'inactive' : 'active';
-      }
+      this.$store.dispatch('video/priviousVideo');
     },
     further() {
-      if (this.id < this.links.length - 1) {
-        this.id += 1;
-        this.rActive =
-          this.id === this.links.length - 1 ? 'inactive' : 'active';
-        this.lActive = this.id === 0 ? 'inactive' : 'active';
-      }
+      this.$store.dispatch('video/nextVideo');
+    },
+  },
+  computed: {
+    getCurrentVideo() {
+      return this.$store.getters['video/getCurrentVideo'];
+    },
+    getLeftStatus() {
+      return this.$store.getters['video/getLeftStatus'];
+    },
+    getRightStatus() {
+      return this.$store.getters['video/getRightStatus'];
     },
   },
   components: {
     'button-switch': Button_switch,
     'video-frame': Video_frame,
-  },
-  data() {
-    return {
-      lActive: 'inactive',
-      rActive: 'active',
-      id: 0,
-      links: [
-        {
-          id: 1,
-          url: 'https://www.youtube.com/embed/coOppM34GtI',
-        },
-        {
-          id: 2,
-          url: 'https://www.youtube.com/embed/FFrioIZ65q0',
-        },
-        {
-          id: 3,
-          url: 'https://www.youtube.com/embed/ZKWilQnPovg',
-        },
-      ],
-    };
   },
 };
 </script>

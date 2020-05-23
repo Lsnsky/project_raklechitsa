@@ -32,6 +32,10 @@ export default {
     'story-input': Story_input,
     callback: Callback,
   },
+
+  async fetch({ store }) {
+    await store.dispatch('video/fetchVideos');
+  },
 };
 </script>
 

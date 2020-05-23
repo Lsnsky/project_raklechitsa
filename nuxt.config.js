@@ -57,4 +57,7 @@ export default {
      */
     extend(config, ctx) {},
   },
+  env: {
+    API_URL: 'https://strapi.kruzhok.io',
+  },
 };

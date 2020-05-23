@@ -1,13 +1,18 @@
 <template>
   <button
     :class="[`button button_position_${position} button_type_${type}`]"
+    :disabled="disabled"
     @click="$emit('buttonClick')"
   ></button>
 </template>
 
 <script>
 export default {
-  props: ['position', 'type'],
+  props: {
+    position: String,
+    type: String,
+    disabled: Boolean,
+  },
 };
 </script>
 
@@ -24,6 +29,7 @@ export default {
 
 .button_type_inactive {
   opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .button_position_left {
