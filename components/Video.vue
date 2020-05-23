@@ -65,8 +65,17 @@ export default {
         this.rActive =
           this.id === this.links.length - 1 ? 'inactive' : 'active';
         this.lActive = this.id === 0 ? 'inactive' : 'active';
+        console.log(this.getVideos);
       }
     },
+  },
+  computed: {
+    getVideos() {
+      return this.$store.getters['video/getVideos'];
+    },
+  },
+  beforeCreate() {
+    this.$store.dispatch('video/fetchVideos');
   },
   components: {
     'button-switch': Button_switch,
