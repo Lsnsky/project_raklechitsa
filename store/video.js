@@ -1,5 +1,3 @@
-import axios from '~/.nuxt/axios';
-
 export const state = () => ({
   videos: [],
 });
@@ -11,14 +9,12 @@ export const mutations = {
 };
 export const actions = {
   async fetchVideos(state) {
-    return await this.$axios
-      .$get(`${process.env.API_URL}/videos`)
-      .then(response => {
-        state.commit('setState', {
-          name: 'videos',
-          value: response,
-        });
+    return this.$axios.$get(`${process.env.API_URL}/videos`).then(response => {
+      state.commit('setState', {
+        name: 'videos',
+        value: response,
       });
+    });
   },
 };
 

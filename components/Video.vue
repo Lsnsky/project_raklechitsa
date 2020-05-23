@@ -32,7 +32,7 @@
         @buttonClick="further"
       />
       <div class="video__frame">
-        <video-frame :url="links[id].url" />
+        <video-frame :url="this.getVideos[this.id]['url']" />
       </div>
       <p class="video__more">
         Все видео вы можете найте на нашем
@@ -56,16 +56,16 @@ export default {
         this.id -= 1;
         this.lActive = this.id === 0 ? 'inactive' : 'active';
         this.rActive =
-          this.id === this.links.length - 1 ? 'inactive' : 'active';
+          this.id === this.getVideos.length - 1 ? 'inactive' : 'active';
       }
     },
     further() {
-      if (this.id < this.links.length - 1) {
+      if (this.id < this.getVideos.length - 1) {
         this.id += 1;
         this.rActive =
-          this.id === this.links.length - 1 ? 'inactive' : 'active';
+          this.id === this.getVideos.length - 1 ? 'inactive' : 'active';
         this.lActive = this.id === 0 ? 'inactive' : 'active';
-        console.log(this.getVideos);
+        console.log(this.getVideos[this.id]['url']);
       }
     },
   },
@@ -73,9 +73,6 @@ export default {
     getVideos() {
       return this.$store.getters['video/getVideos'];
     },
-  },
-  beforeCreate() {
-    this.$store.dispatch('video/fetchVideos');
   },
   components: {
     'button-switch': Button_switch,
@@ -86,20 +83,6 @@ export default {
       lActive: 'inactive',
       rActive: 'active',
       id: 0,
-      links: [
-        {
-          id: 1,
-          url: 'https://www.youtube.com/embed/coOppM34GtI',
-        },
-        {
-          id: 2,
-          url: 'https://www.youtube.com/embed/FFrioIZ65q0',
-        },
-        {
-          id: 3,
-          url: 'https://www.youtube.com/embed/ZKWilQnPovg',
-        },
-      ],
     };
   },
 };
