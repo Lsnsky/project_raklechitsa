@@ -11,13 +11,17 @@
         @click="$emit('closeClick')"
       ></button>
     </div>
-    <div class="popup__overlay"></div>
+    <overlay @overlayClick="$emit('closeClick')" />
   </div>
 </template>
 
 <script>
+import Overlay from '@/components/ui/Overlay';
 export default {
   props: ['popDisplay', 'titleText', 'titlePosition'],
+  components: {
+    overlay: Overlay,
+  },
 };
 </script>
 
@@ -36,16 +40,6 @@ export default {
   opacity: 0;
   transition: all linear 0.1s;
   min-width: 320px;
-}
-
-.popup__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.5;
-  background: #000;
-  width: 100%;
-  height: 100%;
 }
 
 .popup_display_visible {
