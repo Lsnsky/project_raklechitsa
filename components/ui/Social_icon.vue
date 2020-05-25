@@ -33,27 +33,27 @@ export default {
   margin: 0;
 }
 .social-icon_facebook {
-  background-image: url('../../static/images/facebook.svg');
+  background-image: url('~@/static/images/facebook.svg');
 }
 
 .social-icon_twitter {
-  background-image: url('../../static/images/twitter.svg');
+  background-image: url('~@/static/images/twitter.svg');
 }
 
 .social-icon_vkontakte {
-  background-image: url('../../static/images/VK.svg');
+  background-image: url('~@/static/images/VK.svg');
 }
 
 .social-icon_odnoklasniki {
-  background-image: url('../../static/images/OK.svg');
+  background-image: url('~@/static/images/OK.svg');
 }
 
 .social-icon_instagram {
-  background-image: url('../../static/images/instagram.svg');
+  background-image: url('~@/static/images/instagram.svg');
 }
 
 .social-icon_youtube {
-  background-image: url('../../static/images/youtube.svg');
+  background-image: url('~@/static/images/youtube.svg');
 }
 
 @media screen and (max-width: 600px) {

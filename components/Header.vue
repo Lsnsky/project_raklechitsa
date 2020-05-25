@@ -161,7 +161,7 @@ export default {
     height: 27px;
     width: 32px;
     display: block;
-    background-image: url('../static/images/hider.svg');
+    background-image: url('~@/static/images/hider.svg');
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -171,7 +171,7 @@ export default {
   }
 
   .header__hider_active {
-    background-image: url('../static/images/hider-open.svg');
+    background-image: url('~@/static/images/hider-open.svg');
     margin: 4.5px 0 0;
   }
 }

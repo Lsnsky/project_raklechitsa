@@ -28,7 +28,7 @@ export default {
   border: none;
   outline: none;
   cursor: pointer;
-  background: center no-repeat url('../../static/images/button-switch.svg');
+  background: center no-repeat url('~@/static/images/button-switch.svg');
 }
 
 .button_type_inactive {
