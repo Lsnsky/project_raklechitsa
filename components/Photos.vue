@@ -2,9 +2,9 @@
   <section class="photos">
     <panel class="photos__panel-container">
       <div class="photos__panel-text">
-        РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В ИНСТАГРАМ
+        {{ secondPanelData.title }}
       </div>
-      <div class="photos__panel-hashtag">#ЭТОНЕЛЕЧИТСЯ</div>
+      <div class="photos__panel-hashtag">{{ secondPanelData.hashtag }}</div>
     </panel>
     <div class="photos__content">
       <div class="photos__info">
@@ -12,14 +12,9 @@
           href="https://www.instagram.com/raklechitsa/"
           target="_blank"
           class="photos__title"
-          >Инстаграм</a
+          >{{ instagramData.title }}</a
         >
-        <p class="photos__text">
-          Два раза в неделю мы просматриваем все посты по хештегу #этонелечится.
-          Все истории, где нет нецензурных выражений и запрещенного контента
-          попадают сюда. Следите за правильным написанием хештега, чтобы мы не
-          пропустили вашу историю.
-        </p>
+        <p class="photos__text" v-html="instagramData.text"></p>
       </div>
       <div class="photos__cards">
         <photo v-for="photo in photos" :key="photo.id" />
@@ -39,6 +34,12 @@ export default {
   computed: {
     photos() {
       return this.$store.getters['photoData/getPhotosData'];
+    },
+    secondPanelData() {
+      return this.$store.getters['blocks/getSecondPanelBlock'];
+    },
+    instagramData() {
+      return this.$store.getters['blocks/getInstagramBlock'];
     },
   },
 };

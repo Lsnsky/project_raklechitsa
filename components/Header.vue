@@ -4,7 +4,7 @@
       <div class="header__title-wrapper">
         <nuxt-link to="/" class="header__link"
           ><h3 class="header__title">
-            Проект Благотворительного Фонда Константина Хабенского
+            {{ headerData.title }}
           </h3></nuxt-link
         >
         <button
@@ -44,6 +44,9 @@ export default {
   computed: {
     isMobileMenuOpened() {
       return this.$store.getters['header-menu/getMobileMenuState'];
+    },
+    headerData() {
+      return this.$store.getters['blocks/getHeaderBlock'];
     },
   },
 };

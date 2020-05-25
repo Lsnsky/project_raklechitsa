@@ -1,6 +1,6 @@
 <template>
   <section class="cover">
-    <h2 class="cover__title">#РАКЛЕЧИТСЯ</h2>
+    <h2 class="cover__title">{{ coverData.hashtag }}</h2>
     <div class="cover__button">
       <a href="#video"> <button-down /></a>
     </div>
@@ -12,6 +12,11 @@ import Button_down from '@/components/ui/Button_down';
 export default {
   components: {
     'button-down': Button_down,
+  },
+  computed: {
+    coverData() {
+      return this.$store.getters['blocks/getCoverBlock'];
+    },
   },
 };
 </script>
@@ -44,16 +49,12 @@ export default {
     font-size: 78px;
   }
 }
-@media screen and (max-width: 1024px) {
-  .cover__button {
-  }
-}
+
 @media screen and (max-width: 899px) {
   .cover__title {
     font-size: 64px;
   }
-  .cover__button {
-  }
+
   @media screen and (max-width: 530px) {
     .cover__title {
       font-size: 36px;

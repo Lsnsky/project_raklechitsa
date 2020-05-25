@@ -3,7 +3,7 @@
     <container class="footer__container">
       <div class="footer__wrapper">
         <h3 class="footer__title">
-          Спасибо всем, кто помог состояться этому проекту
+          {{ footerData.title }}
         </h3>
         <main-menu class="footer__menu" />
         <div class="footer__vertical-wrapper">
@@ -30,6 +30,8 @@
       </div>
       <div class="footer__wrapper">
         <p class="footer__copyright">Рак Лечится {{ this.date }}</p>
+        <!--        <p class="footer__copyright" v-html="footerData.text"></p>
+        <p class="footer__copyright"> {{this.date}}</p> -->
         <p class="footer__copyright">
           Сделано студентами
           <a
@@ -58,6 +60,12 @@ export default {
       this.$store.commit('share-popup/toggleSharePopup');
     },
   },
+  computed: {
+    footerData() {
+      return this.$store.getters['blocks/getFooterBlock'];
+    },
+  },
+
   data() {
     return {
       date: new Date().getFullYear(),
