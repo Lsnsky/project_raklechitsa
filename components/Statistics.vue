@@ -1,6 +1,6 @@
 <template>
   <section class="cards">
-    <div class="cards__title">Статистика по онкозаболеваниям</div>
+    <div class="cards__title">{{ statisticsData.title }}</div>
     <div class="cards__container">
       <div class="card" v-for="card in cardsWithProgressBar" :key="card.id">
         <card-title :title="card.title" />
@@ -43,6 +43,9 @@ export default {
     },
     cardsWithComparedInfo() {
       return this.$store.getters['statisticsData/getStatistics'].slice(2);
+    },
+    statisticsData() {
+      return this.$store.getters['blocks/getStatisticsBlock'];
     },
   },
 };

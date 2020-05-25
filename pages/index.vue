@@ -33,9 +33,10 @@ export default {
     callback: Callback,
   },
 
-  async fetch({ store }) {
+  /*   async fetch({ store }) {
     await store.dispatch('video/fetchVideos');
-  },
+    await store.dispatch('blocks/fetchBlocks');
+  }, */
 };
 </script>
 

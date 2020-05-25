@@ -3,12 +3,13 @@
     <container>
       <div class="content">
         <div class="content__about">
-          <h2 class="content__about-title">Расскажите свою историю</h2>
+          <h2 class="content__about-title">{{ storyData.title }}</h2>
           <p class="content__about-paragraph">
             Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
             поделиться своей историей неизлечимых привычек, навязчивых идей и
             болезненных привязанностей.
           </p>
+          <!-- <p class="content__about-paragraph" v-html="storyData.text"></p> Должно быть так -->
         </div>
         <div class="content__columns">
           <div id="app" class="content__columns-description">
@@ -17,14 +18,14 @@
               class="content__columns_link-1"
               :class="{ noActive: isActive, active: !isActive }"
             >
-              1-й вариант
+              {{ storyData.extraTexts[0].title }}
             </p>
             <p
               @click="clickOff"
               class="content__columns_link-2"
               :class="{ active: isActive, noActive: !isActive }"
             >
-              2-й вариант
+              {{ storyData.extraTexts[1].title }}
             </p>
           </div>
           <div class="content__columns-main-text">
@@ -35,10 +36,12 @@
                 корректно, если вы испытаете какие-то сложности, воспользуйтесь
                 2-м вариантом.
               </p>
+              <!-- <p v-if="!isActive" class="content__columns-text" v-html="storyData.extraTexts[0].text" ></p> Должно быть так-->
               <p v-else-if="isActive" class="content__columns-text-2">
                 Оставить контакт (почту или номер телефона) и мы свяжемся с
                 вами, зададим вопросы, уточним детали вашей истории.
               </p>
+              <!--  <p v-else-if="isActive" class="content__columns-text-2" v-html="storyData.extraTexts[1].text"></p> Должно быть тak -->
             </div>
             <story-button
               @buttonClick="popupOpen"
@@ -65,6 +68,11 @@ export default {
     return {
       isActive: false,
     };
+  },
+  computed: {
+    storyData() {
+      return this.$store.getters['blocks/getStoryBlock'];
+    },
   },
   methods: {
     buttonText() {

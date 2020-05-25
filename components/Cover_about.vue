@@ -1,14 +1,15 @@
 <template>
   <section class="cover-about">
     <container>
-      <h2 class="cover-about__title">#РАКЛЕЧИТСЯ</h2>
+      <h2 class="cover-about__title">{{ aboutData.hashtag }}</h2>
       <div class="content">
         <div class="content__about">
-          <h3 class="content__about-title">О проекте</h3>
+          <h3 class="content__about-title">{{ aboutData.title }}</h3>
           <p class="content__about-paragraph">
             Этот проект был создан благотворительным фондом Константина
             Хабенского.
           </p>
+          <!-- <p class="content__about-paragraph" v-html="aboutData.text"></p>  Должно быть так-->
         </div>
         <div class="content__columns">
           <div id="app" class="content__columns-description">
@@ -17,14 +18,14 @@
               class="content__columns_link-1"
               :class="{ noActive: isActive, active: !isActive }"
             >
-              Рак Лечится
+              {{ aboutData.extraTexts[0].title }}
             </p>
             <p
               @click="clickOff"
               class="content__columns_link-2"
               :class="{ active: isActive, noActive: !isActive }"
             >
-              Фонд Хабенского
+              {{ aboutData.extraTexts[1].title }}
             </p>
           </div>
           <div class="content__columns-main-text">
@@ -42,6 +43,7 @@
               изменить отношение людей к раку и заставить каждого поверить:
               онкологическое заболевание — это не приговор.
             </p>
+            <!--      <p v-if="!isActive" class="content__columns-text" v-html="aboutData.extraTexts[0].text"></p>  Должно быть так-->
             <p v-else-if="isActive" class="content__columns-text-2">
               Благотворительный Фонд Константина Хабенского с 2008 года помогает
               детям с онкологическими и другими тяжелыми заболеваниями головного
@@ -50,6 +52,7 @@
               медицинские препараты, но и в целом меняет систему оказания помощи
               детям с опухолями мозга в России.
             </p>
+            <!-- <p v-else-if="isActive" class="content__columns-text-2" v-html="aboutData.extraTexts[1].text"></p> Должно быть так-->
           </div>
         </div>
       </div>
@@ -74,6 +77,11 @@ export default {
     },
     clickOff() {
       this.isActive = true;
+    },
+  },
+  computed: {
+    aboutData() {
+      return this.$store.getters['blocks/getAboutBlock'];
     },
   },
 };

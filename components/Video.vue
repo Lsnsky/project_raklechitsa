@@ -2,13 +2,10 @@
   <section id="video" class="video">
     <div class="video__wrapper">
       <h2 class="video__title">
-        Истории людей, победивших рак, но не свои привычки
+        {{ videoData.title }}
       </h2>
-      <p class="video__subtitle">
-        Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я», фобии,
-        страхи. Но это точно не рак. Рак лечится. Лучшее доказательство — люди с
-        их историями.
-      </p>
+
+      <p class="video__subtitle" v-html="videoData.text"></p>
       <div class="video__buttons">
         <button-switch
           position="left"
@@ -39,11 +36,10 @@
         <video-frame :url="getCurrentVideo" />
       </div>
       <p class="video__more">
-        Все видео вы можете найте на нашем
         <a
           href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
           class="video__link"
-          >YouTube канале.</a
+          >{{ videoData.note }}</a
         >
       </p>
     </div>
@@ -60,6 +56,7 @@ export default {
     },
     further() {
       this.$store.dispatch('video/nextVideo');
+      console.log(this.defaultData);
     },
   },
   computed: {
@@ -72,7 +69,11 @@ export default {
     getRightStatus() {
       return this.$store.getters['video/getRightStatus'];
     },
+    videoData() {
+      return this.$store.getters['blocks/getVideoBlock'];
+    },
   },
+
   components: {
     'button-switch': Button_switch,
     'video-frame': Video_frame,

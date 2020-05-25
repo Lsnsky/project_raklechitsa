@@ -2,11 +2,13 @@
   <section class="cards-story">
     <panel class="card-story__panel">
       <div class="card-story__panel-text">
-        И В ОТЛИЧИЕ ОТ РАКА,
-        <span class="card-story__panel-hashtag">#ЭТОНЕЛЕЧИТСЯ</span>
+        {{ firstPanelData.title }}
+        <span class="card-story__panel-hashtag">{{
+          firstPanelData.hashtag
+        }}</span>
       </div>
     </panel>
-    <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
+    <h2 class="cards-story__title">{{ storiesData.title }}</h2>
     <div class="cards-story__container">
       <card-story
         v-for="card in stories"
@@ -55,6 +57,12 @@ export default {
           );
         }
       }
+    },
+    firstPanelData() {
+      return this.$store.getters['blocks/getFirstPanelBlock'];
+    },
+    storiesData() {
+      return this.$store.getters['blocks/getStoriesBlock'];
     },
   },
 };
