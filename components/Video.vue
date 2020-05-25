@@ -32,8 +32,16 @@
         @buttonClick="further"
         :disabled="getRightStatus"
       />
-      <div class="video__frame">
-        <video-frame :url="getCurrentVideo" />
+      <div v-swiper:mySwiper="swiperOption">
+        <div class="swiper-wrapper video__frame">
+          <div
+            class="swiper-slide some"
+            v-for="video in getVideos"
+            :key="video.id"
+          >
+            <video-frame :url="video.url" />
+          </div>
+        </div>
       </div>
       <p class="video__more">
         <a
@@ -53,16 +61,27 @@ export default {
   methods: {
     back() {
       this.$store.dispatch('video/priviousVideo');
+      let mySwiper = document.querySelector('.swiper-container').swiper;
+      this.mySwiper.slidePrev();
     },
     further() {
       this.$store.dispatch('video/nextVideo');
-      console.log(this.defaultData);
+      let mySwiper = document.querySelector('.swiper-container').swiper;
+      this.mySwiper.slideNext();
     },
   },
+  data() {
+    return {
+      amySwiper: {},
+      swiperOption: {
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        effect: 'coverflow',
+        centeredSlides: true,
+      },
+    };
+  },
   computed: {
-    getCurrentVideo() {
-      return this.$store.getters['video/getCurrentVideo'];
-    },
     getLeftStatus() {
       return this.$store.getters['video/getLeftStatus'];
     },
@@ -71,6 +90,9 @@ export default {
     },
     videoData() {
       return this.$store.getters['blocks/getVideoBlock'];
+    },
+    getVideos() {
+      return this.$store.getters['video/getVideos'];
     },
   },
   mounted() {
@@ -87,6 +109,9 @@ export default {
 </script>
 
 <style scoped>
+.some {
+  height: 100%;
+}
 .video {
   max-width: 1320px;
   margin: 0 auto 74px;
@@ -119,7 +144,6 @@ export default {
   position: relative;
   border: none;
   width: 100%;
-  padding-top: calc((100% + 33px) / 2);
 }
 
 .video__more {
@@ -178,7 +202,7 @@ export default {
   }
 
   .video__frame {
-    padding-top: calc((100% + 27px) / 2);
+    min-height: 400px;
   }
 }
 
@@ -204,7 +228,7 @@ export default {
   }
 
   .video__frame {
-    padding-top: calc((100% + 23px) / 2);
+    min-height: 314px;
   }
 }
 
@@ -256,7 +280,7 @@ export default {
     margin: 18px 0 0;
   }
   .video__frame {
-    padding-top: calc((100% + 19px) / 2);
+    min-height: 300px;
   }
 }
 
@@ -301,7 +325,7 @@ export default {
     display: none;
   }
   .video__frame {
-    padding-top: calc((100% + 10px) / 2);
+    min-height: 150px;
   }
 }
 </style>
