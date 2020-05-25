@@ -100,14 +100,17 @@ export default {
   },
   methods: {
     hasInvalidInput() {
+      let validity = [];
       let invalid = true;
-      for (let i = 1; i <= 4; i++) {
-        invalid =
-          typeof this.answers[this.getQuestions[i]] === 'undefined' ||
-          this.answers[this.getQuestions[i]].length === 0
-            ? true
-            : false;
+      for (let i = 0; i <= 3; i++) {
+        validity[i] = !(
+          typeof this.answers[this.getQuestions[i + 1]] === 'undefined' ||
+          this.answers[this.getQuestions[i + 1]].length === 0
+        );
       }
+      invalid = !validity.reduce((summ, item) => {
+        return item && summ;
+      });
       return invalid;
     },
     isCallbackActive() {

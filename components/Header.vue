@@ -2,9 +2,11 @@
   <header class="header">
     <container class="header__container">
       <div class="header__title-wrapper">
-        <h3 class="header__title">
-          Проект Благотворительного Фонда Константина Хабенского
-        </h3>
+        <nuxt-link to="/" class="header__link"
+          ><h3 class="header__title">
+            Проект Благотворительного Фонда Константина Хабенского
+          </h3></nuxt-link
+        >
         <button
           :class="`header__hider header__hider_${isMenuActive()}`"
           @click="menuToggle"
@@ -68,6 +70,11 @@ export default {
   line-height: 20px;
   margin: 0;
   max-width: 340px;
+}
+
+.header__link {
+  color: #000;
+  text-decoration: none;
 }
 
 .header__wrapper {
