@@ -71,7 +71,7 @@ export default {
       return this.id < 11 ? 'Далее' : 'Отправить';
     },
     hasData() {
-      return this.answer.length === 0 ? false : true;
+      return !(this.answer.length === 0);
     },
     title() {
       return this.id === 12
@@ -97,7 +97,9 @@ export default {
         });
     },
     closeQuestionnaire() {
-      this.$store.dispatch('questionnaire/closeQuestionnaire');
+      this.$store.dispatch('questionnaire/closeQuestionnaire').then(item => {
+        this.answer = typeof item === 'undefined' ? '' : item;
+      });
     },
   },
 
@@ -117,7 +119,7 @@ export default {
   },
   data() {
     return {
-      answer: '',
+      answer: this.getCurrentAnswer || '',
     };
   },
 };
