@@ -22,4 +22,7 @@ export const getters = {
   getBlocks(state) {
     return state.blocks;
   },
+  getVideoBlock(state) {
+    return state.blocks.find(el => el.block === 'videos');
+  },
 };
