@@ -5,7 +5,7 @@
         {{ videoData.title }}
       </h2>
 
-      <p class="video__subtitle" v-html="videoData.text"></p>
+      <div class="video__subtitle-wrapper" v-html="videoData.text"></div>
       <div class="video__buttons">
         <button-switch
           position="left"
@@ -73,7 +73,12 @@ export default {
       return this.$store.getters['blocks/getVideoBlock'];
     },
   },
-
+  mounted() {
+    document
+      .querySelector('.video__subtitle-wrapper')
+      .querySelector('p')
+      .classList.add('video__subtitle');
+  },
   components: {
     'button-switch': Button_switch,
     'video-frame': Video_frame,
@@ -101,7 +106,7 @@ export default {
   margin: 10px 0 32px;
 }
 
-.video__subtitle {
+.video__subtitle-wrapper >>> .video__subtitle {
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
@@ -158,7 +163,7 @@ export default {
     margin: 10px 0 30px;
   }
 
-  .video__subtitle {
+  .video__subtitle-wrapper >>> .video__subtitle {
     font-size: 16px;
     line-height: 20px;
     max-width: 305px;
@@ -188,7 +193,7 @@ export default {
     max-width: 288px;
     margin: 10px 0 20px;
   }
-  .video__subtitle {
+  .video__subtitle-wrapper >>> .video__subtitle {
     font-size: 13px;
     line-height: 16px;
     max-width: 260px;
@@ -217,7 +222,7 @@ export default {
     margin: 10px 0 26px;
   }
 
-  .video__subtitle {
+  .video__subtitle-wrapper >>> .video__subtitle {
     max-width: 385px;
     margin: 0 0 60px;
   }
@@ -269,7 +274,7 @@ export default {
     margin: 0 0 16px;
   }
 
-  .video__subtitle {
+  .video__subtitle-wrapper >>> .video__subtitle {
     max-width: 290px;
     margin: 0 0 40px;
   }
