@@ -13,6 +13,6 @@ export default {};
   height: 12px;
   border: none;
   outline: none;
-  background: center no-repeat url('../../static/images/button-down.svg');
+  background: center no-repeat url('/images/button-down.svg');
 }
 </style>

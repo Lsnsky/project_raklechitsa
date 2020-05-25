@@ -67,9 +67,6 @@ export const getters = {
   getId(state) {
     return state.id;
   },
-  getCurrentVideo(state) {
-    return state.videos[state.id]['url'];
-  },
   getLeftStatus(state) {
     return state.leftStatus;
   },

@@ -14,7 +14,13 @@
           class="photos__title"
           >{{ instagramData.title }}</a
         >
-        <p class="photos__text" v-html="instagramData.text"></p>
+        <p class="photos__text">
+          Два раза в неделю мы просматриваем все посты по хештегу #этонелечится.
+          Все истории, где нет нецензурных выражений и запрещенного контента
+          попадают сюда. Следите за правильным написанием хештега, чтобы мы не
+          пропустили вашу историю.
+        </p>
+        <!--  <p class="photos__text" v-html="instagramData.text"></p> должно быть так -->
       </div>
       <div class="photos__cards">
         <photo v-for="photo in photos" :key="photo.id" />

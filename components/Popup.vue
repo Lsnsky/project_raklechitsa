@@ -68,7 +68,7 @@ export default {
 .popup__close {
   background-position: center;
   background-size: contain;
-  background-image: url('~@/static/images/hider-open.svg');
+  background-image: url('/images/hider-open.svg');
   width: 20px;
   height: 20px;
   background-color: #fff;
