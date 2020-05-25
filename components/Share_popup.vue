@@ -1,6 +1,6 @@
 <template>
   <popup
-    :popDisplay="isShareActive()"
+    :popDisplay="getShareState"
     titleText="Поделитесь"
     titlePosition="center"
     class="share"
@@ -49,9 +49,6 @@ export default {
     icon: Social_icon,
   },
   methods: {
-    isShareActive() {
-      return this.getShareState ? 'visible' : 'invisible';
-    },
     toggleShare() {
       this.$store.commit('share-popup/toggleSharePopup');
     },

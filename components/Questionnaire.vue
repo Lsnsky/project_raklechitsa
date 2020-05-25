@@ -1,6 +1,6 @@
 <template>
   <popup
-    :popDisplay="isQuestionnaireActive()"
+    :popDisplay="getQuestionnaireState"
     class="questionnaire"
     @closeClick="closeQuestionnaire"
     :titleText="title()"
@@ -80,9 +80,6 @@ export default {
     },
     position() {
       return this.id === 12 ? 'center' : 'left';
-    },
-    isQuestionnaireActive() {
-      return this.getQuestionnaireState ? 'visible' : 'invisible';
     },
     previousQuestion() {
       this.$store.dispatch('questionnaire/previousQuestion').then(item => {

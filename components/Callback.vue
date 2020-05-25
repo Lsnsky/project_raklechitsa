@@ -1,6 +1,6 @@
 <template>
   <popup
-    :popDisplay="isCallbackActive()"
+    :popDisplay="getCallbackState"
     titleText="Оставьте контакт для связи"
     titlePosition="left"
     class="callback"
@@ -112,9 +112,6 @@ export default {
         return item && summ;
       });
       return invalid;
-    },
-    isCallbackActive() {
-      return this.getCallbackState ? 'visible' : 'invisible';
     },
     toggleCallback() {
       this.$store.commit('callback/toggleCallback');

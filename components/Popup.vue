@@ -1,5 +1,12 @@
 <template>
-  <div :class="`popup popup_display_${popDisplay}`">
+  <div
+    :class="[
+      'popup',
+      {
+        popup_display_visible: popDisplay,
+      },
+    ]"
+  >
     <div class="popup__container">
       <h2 :class="`popup__title popup__title_position_${titlePosition}`">
         {{ titleText }}
@@ -18,7 +25,11 @@
 <script>
 import Overlay from '@/components/ui/Overlay';
 export default {
-  props: ['popDisplay', 'titleText', 'titlePosition'],
+  props: {
+    popDisplay: { type: Boolean, default: false },
+    titleText: String,
+    titlePosition: { type: String, default: 'left' },
+  },
   components: {
     overlay: Overlay,
   },
