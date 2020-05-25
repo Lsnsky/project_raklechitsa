@@ -195,19 +195,19 @@ export default {
     border-bottom: 1px solid #efefef;
     padding: 0 0 18px;
   }
-  .menu /deep/ {
+  .header__menu /deep/ .menu {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .header__menu /deep/ .menu__navigation-link {
+  .header__menu /deep/ .menu__navigation-el {
     font-size: 13px;
     line-height: 16px;
     margin: 0;
   }
 
-  .header__menu /deep/ .menu__navigation-link:last-child {
+  .header__menu /deep/ .menu__navigation-el:last-child {
     margin-top: 18px;
   }
   .header__share-story {

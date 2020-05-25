@@ -207,16 +207,16 @@ export default {
 }
 
 @media screen and (max-width: 905px) {
-  .menu /deep/ {
+  .footer__menu /deep/ .menu {
     display: flex;
     flex-direction: column;
   }
 
-  .footer__menu /deep/ .menu__navigation-link {
+  .footer__menu /deep/ .menu__navigation-el {
     margin: 0;
   }
 
-  .footer__menu /deep/ .menu__navigation-link:last-child {
+  .footer__menu /deep/ .menu__navigation-el:last-child {
     margin-top: 14px;
   }
 }
@@ -273,13 +273,13 @@ export default {
     font-size: 13px;
     line-height: 15px;
   }
-  .footer__menu /deep/ .menu__navigation-link {
+  .footer__menu /deep/ .menu__navigation-el {
     font-size: 13px;
     line-height: 15px;
     margin: 0;
   }
 
-  .footer__menu /deep/ .menu__navigation-link:last-child {
+  .footer__menu /deep/ .menu__navigation-el:last-child {
     margin-top: 18px;
   }
 }

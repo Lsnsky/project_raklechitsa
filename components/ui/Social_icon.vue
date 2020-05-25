@@ -60,7 +60,7 @@ export default {
   .social-icon {
     width: 35px;
     height: 35px;
-    margin: 0 14.54px 0 0;
+    margin: 0 15px 0 0;
   }
 }
 </style>

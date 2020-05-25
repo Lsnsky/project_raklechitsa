@@ -86,19 +86,19 @@ export default {
     },
     previousQuestion() {
       this.$store.dispatch('questionnaire/previousQuestion').then(item => {
-        this.answer = typeof item === 'undefined' ? '' : item;
+        this.answer = item || '';
       });
     },
     nextQuestion() {
       this.$store
         .dispatch('questionnaire/nextQuestion', this.answer)
         .then(item => {
-          this.answer = typeof item === 'undefined' ? '' : item;
+          this.answer = item || '';
         });
     },
     closeQuestionnaire() {
       this.$store.dispatch('questionnaire/closeQuestionnaire').then(item => {
-        this.answer = typeof item === 'undefined' ? '' : item;
+        this.answer = item || '';
       });
     },
   },

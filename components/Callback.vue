@@ -13,10 +13,10 @@
       placeholder="Напишите тут"
       type="text"
       :hasData="
-        typeof answers[getQuestions[1]] === 'undefined' ||
-        answers[getQuestions[1]].length === 0
-          ? false
-          : true
+        !(
+          typeof answers[getQuestions[1]] === 'undefined' ||
+          answers[getQuestions[1]].length === 0
+        )
       "
       v-model="answers[getQuestions[1]]"
       :bordered="false"
@@ -29,10 +29,10 @@
           placeholder="pochta@example.com"
           type="email"
           :hasData="
-            typeof answers[getQuestions[2]] === 'undefined' ||
-            answers[getQuestions[2]].length === 0
-              ? false
-              : true
+            !(
+              typeof answers[getQuestions[2]] === 'undefined' ||
+              answers[getQuestions[2]].length === 0
+            )
           "
           v-model="answers[getQuestions[2]]"
           :bordered="false"
@@ -46,10 +46,10 @@
           type="text"
           v-model="answers[getQuestions[3]]"
           :hasData="
-            typeof answers[getQuestions[3]] === 'undefined' ||
-            answers[getQuestions[3]].length === 0
-              ? false
-              : true
+            !(
+              typeof answers[getQuestions[3]] === 'undefined' ||
+              answers[getQuestions[3]].length === 0
+            )
           "
           :bordered="false"
         />
@@ -63,10 +63,10 @@
       type="text"
       v-model="answers[getQuestions[4]]"
       :hasData="
-        typeof answers[getQuestions[4]] === 'undefined' ||
-        answers[getQuestions[4]].length === 0
-          ? false
-          : true
+        !(
+          typeof answers[getQuestions[4]] === 'undefined' ||
+          answers[getQuestions[4]].length === 0
+        )
       "
       :bordered="false"
     />

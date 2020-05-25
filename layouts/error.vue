@@ -3,7 +3,9 @@
     <div class="container">
       <h1 class="error__title">404</h1>
       <span class="error__text"> Страница не найдена.</span>
-      <nuxt-link to="/" class="error__text_link">Перейти на главную.</nuxt-link>
+      <nuxt-link to="/" class="error__text error__text_link"
+        >Перейти на главную.</nuxt-link
+      >
     </div>
   </div>
 </template>
