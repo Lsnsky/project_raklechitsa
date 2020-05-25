@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="footer__wrapper">
-        <p class="footer__copyright">Рак Лечится 2020</p>
+        <p class="footer__copyright">Рак Лечится {{ this.date }}</p>
         <p class="footer__copyright">
           Сделано студентами
           <a
@@ -57,6 +57,11 @@ export default {
     toggleShare() {
       this.$store.commit('share-popup/toggleSharePopup');
     },
+  },
+  data() {
+    return {
+      date: new Date().getFullYear(),
+    };
   },
 };
 </script>
