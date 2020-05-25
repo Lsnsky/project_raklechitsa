@@ -1,6 +1,6 @@
 <template>
   <popup
-    :popDisplay="isCallbackActive()"
+    :popDisplay="getCallbackState"
     titleText="Оставьте контакт для связи"
     titlePosition="left"
     class="callback"
@@ -13,10 +13,10 @@
       placeholder="Напишите тут"
       type="text"
       :hasData="
-        typeof answers[getQuestions[1]] === 'undefined' ||
-        answers[getQuestions[1]].length === 0
-          ? false
-          : true
+        !(
+          typeof answers[getQuestions[1]] === 'undefined' ||
+          answers[getQuestions[1]].length === 0
+        )
       "
       v-model="answers[getQuestions[1]]"
       :bordered="false"
@@ -29,10 +29,10 @@
           placeholder="pochta@example.com"
           type="email"
           :hasData="
-            typeof answers[getQuestions[2]] === 'undefined' ||
-            answers[getQuestions[2]].length === 0
-              ? false
-              : true
+            !(
+              typeof answers[getQuestions[2]] === 'undefined' ||
+              answers[getQuestions[2]].length === 0
+            )
           "
           v-model="answers[getQuestions[2]]"
           :bordered="false"
@@ -46,10 +46,10 @@
           type="text"
           v-model="answers[getQuestions[3]]"
           :hasData="
-            typeof answers[getQuestions[3]] === 'undefined' ||
-            answers[getQuestions[3]].length === 0
-              ? false
-              : true
+            !(
+              typeof answers[getQuestions[3]] === 'undefined' ||
+              answers[getQuestions[3]].length === 0
+            )
           "
           :bordered="false"
         />
@@ -63,10 +63,10 @@
       type="text"
       v-model="answers[getQuestions[4]]"
       :hasData="
-        typeof answers[getQuestions[4]] === 'undefined' ||
-        answers[getQuestions[4]].length === 0
-          ? false
-          : true
+        !(
+          typeof answers[getQuestions[4]] === 'undefined' ||
+          answers[getQuestions[4]].length === 0
+        )
       "
       :bordered="false"
     />
@@ -100,18 +100,18 @@ export default {
   },
   methods: {
     hasInvalidInput() {
+      let validity = [];
       let invalid = true;
-      for (let i = 1; i <= 4; i++) {
-        invalid =
-          typeof this.answers[this.getQuestions[i]] === 'undefined' ||
-          this.answers[this.getQuestions[i]].length === 0
-            ? true
-            : false;
+      for (let i = 0; i <= 3; i++) {
+        validity[i] = !(
+          typeof this.answers[this.getQuestions[i + 1]] === 'undefined' ||
+          this.answers[this.getQuestions[i + 1]].length === 0
+        );
       }
+      invalid = !validity.reduce((summ, item) => {
+        return item && summ;
+      });
       return invalid;
-    },
-    isCallbackActive() {
-      return this.getCallbackState ? 'visible' : 'invisible';
     },
     toggleCallback() {
       this.$store.commit('callback/toggleCallback');

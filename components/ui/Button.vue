@@ -17,8 +17,8 @@
 <script>
 export default {
   props: {
-    color: String,
-    disabled: Boolean,
+    color: { type: String, default: 'none' },
+    disabled: { type: Boolean, default: true },
   },
 };
 </script>

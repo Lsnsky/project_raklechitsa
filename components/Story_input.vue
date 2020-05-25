@@ -43,7 +43,8 @@
             <story-button
               @buttonClick="popupOpen"
               class="story-button"
-              :class="{ buttonPosition: isActive }"
+              :disabled="false"
+              color="purple"
               >{{ buttonText() }}</story-button
             >
           </div>
@@ -100,16 +101,11 @@ export default {
 .story-button {
   width: 280px;
   height: 52px;
-  background-color: #613a93;
-  color: white;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  border: none;
-  cursor: pointer;
   transition: all linear 0.1s;
-  outline: none;
 }
 .content {
   display: flex;

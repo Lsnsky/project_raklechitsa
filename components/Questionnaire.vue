@@ -1,6 +1,6 @@
 <template>
   <popup
-    :popDisplay="isQuestionnaireActive()"
+    :popDisplay="getQuestionnaireState"
     class="questionnaire"
     @closeClick="closeQuestionnaire"
     :titleText="title()"
@@ -71,7 +71,7 @@ export default {
       return this.id < 11 ? 'Далее' : 'Отправить';
     },
     hasData() {
-      return this.answer.length === 0 ? false : true;
+      return !(this.answer.length === 0);
     },
     title() {
       return this.id === 12
@@ -81,23 +81,22 @@ export default {
     position() {
       return this.id === 12 ? 'center' : 'left';
     },
-    isQuestionnaireActive() {
-      return this.getQuestionnaireState ? 'visible' : 'invisible';
-    },
     previousQuestion() {
       this.$store.dispatch('questionnaire/previousQuestion').then(item => {
-        this.answer = typeof item === 'undefined' ? '' : item;
+        this.answer = item || '';
       });
     },
     nextQuestion() {
       this.$store
         .dispatch('questionnaire/nextQuestion', this.answer)
         .then(item => {
-          this.answer = typeof item === 'undefined' ? '' : item;
+          this.answer = item || '';
         });
     },
     closeQuestionnaire() {
-      this.$store.dispatch('questionnaire/closeQuestionnaire');
+      this.$store.dispatch('questionnaire/closeQuestionnaire').then(item => {
+        this.answer = item || '';
+      });
     },
   },
 
@@ -117,7 +116,7 @@ export default {
   },
   data() {
     return {
-      answer: '',
+      answer: this.getCurrentAnswer || '',
     };
   },
 };

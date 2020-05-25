@@ -1,5 +1,12 @@
 <template>
-  <div :class="`popup popup_display_${popDisplay}`">
+  <div
+    :class="[
+      'popup',
+      {
+        popup_display_visible: popDisplay,
+      },
+    ]"
+  >
     <div class="popup__container">
       <h2 :class="`popup__title popup__title_position_${titlePosition}`">
         {{ titleText }}
@@ -11,13 +18,21 @@
         @click="$emit('closeClick')"
       ></button>
     </div>
-    <div class="popup__overlay"></div>
+    <overlay @overlayClick="$emit('closeClick')" />
   </div>
 </template>
 
 <script>
+import Overlay from '@/components/ui/Overlay';
 export default {
-  props: ['popDisplay', 'titleText', 'titlePosition'],
+  props: {
+    popDisplay: { type: Boolean, default: false },
+    titleText: String,
+    titlePosition: { type: String, default: 'left' },
+  },
+  components: {
+    overlay: Overlay,
+  },
 };
 </script>
 
@@ -38,16 +53,6 @@ export default {
   min-width: 320px;
 }
 
-.popup__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.5;
-  background: #000;
-  width: 100%;
-  height: 100%;
-}
-
 .popup_display_visible {
   visibility: visible;
   opacity: 1;
@@ -63,7 +68,7 @@ export default {
 .popup__close {
   background-position: center;
   background-size: contain;
-  background-image: url('../static/images/hider-open.svg');
+  background-image: url('~@/static/images/hider-open.svg');
   width: 20px;
   height: 20px;
   background-color: #fff;

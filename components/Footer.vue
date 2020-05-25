@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="footer__wrapper">
-        <p class="footer__copyright">Рак Лечится 2020</p>
+        <p class="footer__copyright">Рак Лечится {{ this.date }}</p>
         <p class="footer__copyright">
           Сделано студентами
           <a
@@ -57,6 +57,11 @@ export default {
     toggleShare() {
       this.$store.commit('share-popup/toggleSharePopup');
     },
+  },
+  data() {
+    return {
+      date: new Date().getFullYear(),
+    };
   },
 };
 </script>
@@ -202,16 +207,16 @@ export default {
 }
 
 @media screen and (max-width: 905px) {
-  .menu /deep/ {
+  .footer__menu /deep/ .menu {
     display: flex;
     flex-direction: column;
   }
 
-  .footer__menu /deep/ .menu__navigation-link {
+  .footer__menu /deep/ .menu__navigation-el {
     margin: 0;
   }
 
-  .footer__menu /deep/ .menu__navigation-link:last-child {
+  .footer__menu /deep/ .menu__navigation-el:last-child {
     margin-top: 14px;
   }
 }
@@ -268,13 +273,13 @@ export default {
     font-size: 13px;
     line-height: 15px;
   }
-  .footer__menu /deep/ .menu__navigation-link {
+  .footer__menu /deep/ .menu__navigation-el {
     font-size: 13px;
     line-height: 15px;
     margin: 0;
   }
 
-  .footer__menu /deep/ .menu__navigation-link:last-child {
+  .footer__menu /deep/ .menu__navigation-el:last-child {
     margin-top: 18px;
   }
 }

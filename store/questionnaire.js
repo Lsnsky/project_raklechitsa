@@ -108,9 +108,13 @@ export const actions = {
       return getters.getCurrentAnswer;
     }
   },
-  closeQuestionnaire({ commit }) {
-    commit('closeQuestionnaire');
-    setTimeout(() => commit('resetQuestionnaire'), 200);
+  async closeQuestionnaire({ commit, getters }) {
+    await commit('closeQuestionnaire');
+    if (getters.getId === 12) {
+      await new Promise(resolve => setTimeout(resolve, 200));
+      await commit('resetQuestionnaire');
+    }
+    return getters.getCurrentAnswer;
   },
 };
 

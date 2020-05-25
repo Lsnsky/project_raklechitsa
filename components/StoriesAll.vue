@@ -4,7 +4,7 @@
     <div class="cards-story__search">
       <input-search class="cards-story__search-input" :bordered="true" />
       <button-search
-        :color="'purple'"
+        color="purple"
         :disabled="false"
         class="cards-story__search-button"
         >Поиск</button-search

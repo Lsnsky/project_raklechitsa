@@ -12,15 +12,13 @@
       <div class="video__buttons">
         <button-switch
           position="left"
-          :type="getLeftStatus"
-          :disabled="isDisabled(getLeftStatus)"
+          :disabled="getLeftStatus"
           @buttonClick="back"
         />
         <button-switch
           position="right"
-          :type="getRightStatus"
           @buttonClick="further"
-          :disabled="isDisabled(getRightStatus)"
+          :disabled="getRightStatus"
         />
       </div>
     </div>
@@ -28,16 +26,14 @@
       <button-switch
         class="video__small-button video__small-button_position_left"
         position="left"
-        :type="getLeftStatus"
         @buttonClick="back"
-        :disabled="isDisabled(getLeftStatus)"
+        :disabled="getLeftStatus"
       />
       <button-switch
         class="video__small-button video__small-button_position_right"
         position="right"
-        :type="getRightStatus"
         @buttonClick="further"
-        :disabled="isDisabled(getRightStatus)"
+        :disabled="getRightStatus"
       />
       <div class="video__frame">
         <video-frame :url="getCurrentVideo" />
@@ -59,9 +55,6 @@ import Button_switch from '@/components/ui/Button_switch';
 import Video_frame from '@/components/ui/Video_frame';
 export default {
   methods: {
-    isDisabled(status) {
-      return status === 'inactive';
-    },
     back() {
       this.$store.dispatch('video/priviousVideo');
     },

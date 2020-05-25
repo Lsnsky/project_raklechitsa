@@ -1,6 +1,11 @@
 <template>
   <button
-    :class="[`button button_position_${position} button_type_${type}`]"
+    :class="[
+      `button button_position_${position}`,
+      {
+        button_type_inactive: disabled,
+      },
+    ]"
     :disabled="disabled"
     @click="$emit('buttonClick')"
   ></button>
@@ -9,9 +14,8 @@
 <script>
 export default {
   props: {
-    position: String,
-    type: String,
-    disabled: Boolean,
+    position: { type: String, required: true },
+    disabled: { type: Boolean, default: false },
   },
 };
 </script>
@@ -24,7 +28,7 @@ export default {
   border: none;
   outline: none;
   cursor: pointer;
-  background: center no-repeat url('../../static/images/button-switch.svg');
+  background: center no-repeat url('~@/static/images/button-switch.svg');
 }
 
 .button_type_inactive {
