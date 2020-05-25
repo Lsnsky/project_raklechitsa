@@ -1,6 +1,6 @@
 export const state = () => ({
-  leftStatus: 'inactive',
-  rightStatus: 'active',
+  leftStatus: true,
+  rightStatus: false,
   id: 0,
   videos: [],
 });
@@ -16,16 +16,16 @@ export const mutations = {
     return (state.id = state.id - 1);
   },
   setLeftInactive(state) {
-    return (state.leftStatus = 'inactive');
+    return (state.leftStatus = true);
   },
   setLeftActive(state) {
-    return (state.leftStatus = 'active');
+    return (state.leftStatus = false);
   },
   setRightInactive(state) {
-    return (state.rightStatus = 'inactive');
+    return (state.rightStatus = true);
   },
   setRightActive(state) {
-    return (state.rightStatus = 'active');
+    return (state.rightStatus = false);
   },
 };
 export const actions = {
