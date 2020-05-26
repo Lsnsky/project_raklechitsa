@@ -46,6 +46,17 @@ export default {
     panel: Panel,
   },
   beforeMount() {
+    if (process.browser) {
+      if (window.innerWidth > 768) {
+        this.count = 8;
+      }
+      if (window.innerWidth <= 768) {
+        this.count = 9;
+      }
+      if (window.innerWidth <= 320) {
+        this.count = 6;
+      }
+    }
     for (let i = 0; i < this.count; i++) {
       do {
         this.stories[i] = this.storiesAPI[
@@ -59,19 +70,6 @@ export default {
     }
   },
   computed: {
-    storiesCount() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          this.count = 8;
-        }
-        if (window.innerWidth <= 320) {
-          this.count = 6;
-        }
-        if (window.innerWidth <= 768) {
-          this.count = 9;
-        }
-      }
-    },
     storiesAPI() {
       return this.$store.getters['storiesData/getStoriesAPI'];
     },

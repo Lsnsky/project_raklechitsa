@@ -318,6 +318,7 @@ export const state = () => ({
   ],
   stories_api: [],
   id: 0,
+  currentPage: 1,
 });
 
 export const mutations = {
@@ -326,7 +327,9 @@ export const mutations = {
   },
   setId(state, id) {
     return (state.id = id);
-    // return state.currentStory = state.stories_api.find((el) => {el.id === id})
+  },
+  setPage(state, page) {
+    return (state.currentPage = page);
   },
 };
 export const actions = {
@@ -356,5 +359,8 @@ export const getters = {
     return state.stories_api.find(el => {
       return el.id === Number(state.id);
     });
+  },
+  getCurrentPage(state) {
+    return state.currentPage;
   },
 };
