@@ -18,7 +18,7 @@
           <button @click="toggleShare" class="story__share">
             Поделитесь &#8599;
           </button>
-          <p class="story__date">20 апреля 2018</p>
+          <p class="story__date">{{ this.data }}</p>
         </div>
       </header>
       <section class="story__body" v-html="story.text"></section>
@@ -58,14 +58,11 @@ export default {
   methods: {
     toggleShare() {
       this.$store.commit('share-popup/toggleSharePopup');
-      console.log(this.story);
-      this.data = `${new Date(this.story.date).getDate()} ${new Date(
-        this.story.date
-      ).getMonth()} ${new Date(this.story.date).getFullYear()}`;
-      console.log(this.data);
-    },
+
+      /*     },
     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
+    }, */
     },
   },
   computed: {
@@ -74,16 +71,41 @@ export default {
         (item, index) => index < 4
       ); */
     },
-    Currentstory() {
-      /*       return this.$store.getters['storiesData/getCurrentStory']; */
-    },
     story() {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
   },
+  beforeMount() {
+    this.data = `${new Date(this.story.date).getDate()} ${
+      this.arr[new Date(this.story.date).getMonth()]
+    } ${new Date(this.story.date).getFullYear()}`;
+  },
+  mounted() {
+    document
+      .querySelector('.story__body')
+      .querySelectorAll('p')
+      .forEach(item => item.classList.add('story__paragraph'));
+    document
+      .querySelector('.story__body')
+      .querySelectorAll('blockquote')
+      .forEach(item => item.classList.add('story__span-accent'));
+  },
   data() {
     return {
       data: '',
+      arr: [
+        'января',
+        'февраля',
+        'марта',
+        'апреля',
+        'мая',
+        'июня',
+        'июля',
+        'августа',
+        'сентября',
+        'ноября',
+        'декабря',
+      ],
     };
   },
 };
@@ -162,6 +184,7 @@ export default {
 
 section >>> .story__span-accent {
   font-weight: 700;
+  margin: 0 0 30px;
 }
 
 .story__data {
@@ -205,6 +228,7 @@ section >>> .story__span-accent {
 }
 
 .story__body {
+  font-weight: 500;
   max-width: 100%;
   margin: 0 auto 70px;
   padding: 0 19.5%;
@@ -218,7 +242,7 @@ section >>> .story__paragraph:last-child {
 section >>> .story__paragraph {
   font-size: 22px;
   line-height: 30px;
-  font-weight: 500;
+  font-weight: inherit;
   margin: 0 0 30px;
 }
 
