@@ -4,11 +4,16 @@
       Истории неизлечимых привычек
     </h2>
     <div class="cards-story__search">
-      <input-search class="cards-story__search-input" :bordered="true" />
+      <input-search
+        class="cards-story__search-input"
+        :bordered="true"
+        v-model="search"
+      />
       <button-search
         color="purple"
-        :disabled="false"
+        :disabled="!this.search.length > 0"
         class="cards-story__search-button"
+        @buttonClick="getSerch"
         >Поиск</button-search
       >
     </div>
@@ -54,6 +59,14 @@ export default {
     pagination: Pagination,
   },
   methods: {
+    getSerch() {
+      this.currentStories.splice(0, this.currentStories.length);
+      this.storiesData.forEach(el => {
+        if (el.author.includes(this.search)) {
+          this.currentStories.push(el);
+        }
+      });
+    },
     setCurrentPage() {
       this.currentStories.splice(0, this.itemsPerPage);
       for (
@@ -65,11 +78,6 @@ export default {
           this.currentStories.push(this.storiesData[i]);
         }
       }
-      console.log(this.currentStories);
-      console.log(this.itemsPerPage * this.currentPage - this.itemsPerPage);
-      console.log(this.itemsPerPage * this.currentPage);
-      console.log(this.itemsPerPage);
-      console.log(this.currentPage);
     },
   },
   beforeMount() {
@@ -90,12 +98,12 @@ export default {
       }
       this.currentStories[j] = this.storiesData[i];
     }
-    console.log(this.currentStories);
   },
   data() {
     return {
       itemsPerPage: 16,
       currentStories: [],
+      search: '',
     };
   },
   /*  methods: {
