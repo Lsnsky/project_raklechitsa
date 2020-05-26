@@ -9,15 +9,27 @@
       </div>
     </panel>
     <h2 class="cards-story__title">{{ storiesData.title }}</h2>
+
     <div class="cards-story__container">
-      <card-story
+      <!--  <card-story
         v-for="card in stories"
         :key="card.id"
         :url="card.history_photo"
         :history_title="card.history_title"
         :history_text="card.history_text"
         @cardClick="goToDetail(card.id)"
-      ></card-story>
+      ></card-story>  -->
+      <nuxt-link
+        class="card-story__link"
+        v-for="card in this.stories"
+        :key="card.id"
+        :to="`/stories/${card.id}`"
+        ><card-story
+          :url="`https://strapi.kruzhok.io${card.ImageUrl[0].url}`"
+          :history_title="card.author"
+          :history_text="card.title"
+        ></card-story>
+      </nuxt-link>
     </div>
     <btnhistory class="cards-story__button" />
   </section>
@@ -33,37 +45,48 @@ export default {
     btnhistory: Button_history,
     panel: Panel,
   },
-  methods: {
-    goToDetail(id) {
-      this.$router.push(`/stories/${id}`);
-    },
+  beforeMount() {
+    for (let i = 0; i < this.count; i++) {
+      do {
+        this.stories[i] = this.storiesAPI[
+          Math.floor(Math.random() * this.storiesAPI.length)
+        ];
+      } while (
+        this.stories.some((item, index) => {
+          return index === i ? false : item === this.stories[i];
+        })
+      );
+    }
   },
   computed: {
-    stories() {
+    storiesCount() {
       if (process.browser) {
         if (window.innerWidth > 768) {
-          return this.$store.getters['storiesData/getStoriesData'].filter(
-            (item, index) => index < 8
-          );
+          this.count = 8;
         }
         if (window.innerWidth <= 320) {
-          return this.$store.getters['storiesData/getStoriesData'].filter(
-            (item, index) => index < 6
-          );
+          this.count = 6;
         }
         if (window.innerWidth <= 768) {
-          return this.$store.getters['storiesData/getStoriesData'].filter(
-            (item, index) => index < 9
-          );
+          this.count = 9;
         }
       }
     },
-    firstPanelData() {
-      return this.$store.getters['blocks/getFirstPanelBlock'];
+    storiesAPI() {
+      return this.$store.getters['storiesData/getStoriesAPI'];
     },
     storiesData() {
       return this.$store.getters['blocks/getStoriesBlock'];
     },
+    firstPanelData() {
+      return this.$store.getters['blocks/getFirstPanelBlock'];
+    },
+  },
+  data() {
+    return {
+      count: 8,
+      stories: [],
+    };
   },
 };
 </script>
@@ -75,6 +98,12 @@ export default {
   padding: 0 60px 0;
 }
 
+.card-story__link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #000;
+}
 .card-story__panel {
   height: 86px;
   display: flex;

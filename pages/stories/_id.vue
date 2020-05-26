@@ -9,6 +9,9 @@ export default {
   components: {
     story: Story,
   },
+  async fetch({ store, params }) {
+    await store.commit('storiesData/setId', params.id);
+  },
 };
 </script>
 

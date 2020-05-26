@@ -7,7 +7,24 @@
       },
     ]"
   >
-    <div class="popup__container">
+    <form
+      v-if="isItForm"
+      class="popup__container"
+      @submit.prevent="$emit('formSubmit')"
+      :name="formName"
+      novalidate
+    >
+      <h2 :class="`popup__title popup__title_position_${titlePosition}`">
+        {{ titleText }}
+      </h2>
+      <slot></slot>
+      <button
+        type="button"
+        class="popup__close"
+        @click="$emit('closeClick')"
+      ></button>
+    </form>
+    <div v-else class="popup__container">
       <h2 :class="`popup__title popup__title_position_${titlePosition}`">
         {{ titleText }}
       </h2>
@@ -29,6 +46,8 @@ export default {
     popDisplay: { type: Boolean, default: false },
     titleText: String,
     titlePosition: { type: String, default: 'left' },
+    isItForm: { type: Boolean, default: false },
+    formName: { type: String },
   },
   components: {
     overlay: Overlay,
@@ -68,7 +87,7 @@ export default {
 .popup__close {
   background-position: center;
   background-size: contain;
-  background-image: url('~@/static/images/hider-open.svg');
+  background-image: url('/images/hider-open.svg');
   width: 20px;
   height: 20px;
   background-color: #fff;

@@ -17,10 +17,31 @@ export default {
 <style scoped>
 .video__iframe {
   border: none;
-  position: absolute;
   width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+  min-height: 450px;
+}
+
+@media screen and (max-width: 1280px) {
+  .video__iframe {
+    min-height: 400px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .video__iframe {
+    min-height: 314px;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .video__iframe {
+    min-height: 300px;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .video__iframe {
+    min-height: 150px;
+  }
 }
 </style>

@@ -29,10 +29,11 @@
         </div>
       </div>
       <div class="footer__wrapper">
-        <p class="footer__copyright">Рак Лечится {{ this.date }}</p>
-        <!--        <p class="footer__copyright" v-html="footerData.text"></p>
-        <p class="footer__copyright"> {{this.date}}</p> -->
-        <p class="footer__copyright">
+        <div class="footer__copyright-wrapper">
+          <div class="footer__copyright-slot" v-html="footerData.text"></div>
+          <p class="footer__copyright">&nbsp;{{ this.date }}</p>
+        </div>
+        <p class=" footer__copyright footer__copyright_position_right">
           Сделано студентами
           <a
             href="https://praktikum.yandex.ru/"
@@ -70,6 +71,12 @@ export default {
     return {
       date: new Date().getFullYear(),
     };
+  },
+  mounted() {
+    document
+      .querySelector('.footer__copyright-slot')
+      .querySelector('p')
+      .classList.add('footer__copyright');
   },
 };
 </script>
@@ -109,7 +116,17 @@ export default {
   color: #898989;
 }
 
-.footer__copyright:last-child {
+.footer__copyright-wrapper {
+  display: flex;
+}
+.footer__copyright-wrapper >>> .footer__copyright {
+  margin: 0;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 18px;
+  color: #898989;
+}
+.footer__copyright_position_right {
   margin: 0 0 0 auto;
 }
 
@@ -177,6 +194,11 @@ export default {
   }
 
   .footer__copyright {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .footer__copyright-wrapper >>> .footer__copyright {
     font-size: 16px;
     line-height: 18px;
   }
@@ -262,11 +284,16 @@ export default {
     margin: 18px 0 50px;
   }
 
-  .footer__copyright:last-child {
+  .footer__copyright_position_right {
     margin: 10px 0 0;
   }
 
   .footer__copyright {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .footer__copyright-wrapper >>> .footer__copyright {
     font-size: 13px;
     line-height: 18px;
   }
