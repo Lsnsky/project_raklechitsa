@@ -4,78 +4,91 @@
     titleText="Оставьте контакт для связи"
     titlePosition="left"
     class="callback"
+    :isItForm="true"
     @closeClick="toggleCallback"
+    @formSubmit="saveAnswers"
+    formName="Callback"
   >
     <question class="callback__main-quest">{{ getQuestions[0] }}</question>
     <question class="callback__quest">{{ getQuestions[1] }}</question>
-    <main-input
-      class="callback__input"
-      placeholder="Напишите тут"
-      type="text"
-      :hasData="
-        !(
-          typeof answers[getQuestions[1]] === 'undefined' ||
-          answers[getQuestions[1]].length === 0
-        )
-      "
-      v-model="answers[getQuestions[1]]"
-      :bordered="false"
-    />
+    <div class="callback__input-wrapper">
+      <main-input
+        class="callback__input"
+        placeholder="Напишите тут"
+        type="text"
+        :hasData="this.validity[0]"
+        pattern="[ёЁА-Яа-яA-Za-z -]{1,}"
+        v-model="answers[getQuestions[1]]"
+        :bordered="false"
+        :required="true"
+        @input="checkValidity(0)"
+      />
+      <p class="callback__error-massage">{{ this.errors[0] }}</p>
+    </div>
     <div class="callback__container">
       <div class="callback__wrapper">
         <question class="callback__small-quest">{{ getQuestions[2] }}</question>
-        <main-input
-          class="callback__small-input"
-          placeholder="pochta@example.com"
-          type="email"
-          :hasData="
-            !(
-              typeof answers[getQuestions[2]] === 'undefined' ||
-              answers[getQuestions[2]].length === 0
-            )
-          "
-          v-model="answers[getQuestions[2]]"
-          :bordered="false"
-        />
+        <div class="callback__input-wrapper">
+          <main-input
+            class="callback__small-input"
+            placeholder="pochta@example.com"
+            type="email"
+            :hasData="this.validity[1]"
+            v-model="answers[getQuestions[2]]"
+            :bordered="false"
+            :required="true"
+            @input="checkValidity(1)"
+          />
+          <p
+            class="callback__error-massage callback__error-massage_input_small"
+          >
+            {{ this.errors[1] }}
+          </p>
+        </div>
       </div>
       <div class="callback__wrapper">
         <question class="callback__small-quest">{{ getQuestions[3] }}</question>
-        <main-input
-          class="callback__small-input"
-          placeholder="+7 000 000 00 00"
-          type="text"
-          v-model="answers[getQuestions[3]]"
-          :hasData="
-            !(
-              typeof answers[getQuestions[3]] === 'undefined' ||
-              answers[getQuestions[3]].length === 0
-            )
-          "
-          :bordered="false"
-        />
+        <div class="callback__input-wrapper">
+          <main-input
+            class="callback__small-input"
+            placeholder="+7 000 000 00 00"
+            type="text"
+            pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
+            v-model="answers[getQuestions[3]]"
+            :hasData="this.validity[2]"
+            :bordered="false"
+            :required="true"
+            @input="checkValidity(2)"
+          />
+          <p
+            class="callback__error-massage callback__error-massage_input_small"
+          >
+            {{ this.errors[2] }}
+          </p>
+        </div>
       </div>
     </div>
 
     <question class="callback__quest">{{ getQuestions[4] }}</question>
-    <main-input
-      class="callback__input"
-      placeholder="Телефон / почта и удобное время"
-      type="text"
-      v-model="answers[getQuestions[4]]"
-      :hasData="
-        !(
-          typeof answers[getQuestions[4]] === 'undefined' ||
-          answers[getQuestions[4]].length === 0
-        )
-      "
-      :bordered="false"
-    />
+    <div class="callback__input-wrapper">
+      <main-input
+        class="callback__input"
+        placeholder="Телефон / почта и удобное время"
+        type="text"
+        v-model="answers[getQuestions[4]]"
+        :hasData="this.validity[3]"
+        :bordered="false"
+        :required="true"
+        @input="checkValidity(3)"
+      />
+      <p class="callback__error-massage">{{ this.errors[3] }}</p>
+    </div>
     <div class="callback__container">
       <main-button
         class="callback__button"
         color="purple"
         :disabled="hasInvalidInput()"
-        @buttonClick="saveAnswers"
+        type="submit"
       >
         Отправить
       </main-button>
@@ -99,25 +112,30 @@ export default {
     policy: Policy_text,
   },
   methods: {
-    hasInvalidInput() {
-      let validity = [];
-      let invalid = true;
-      for (let i = 0; i <= 3; i++) {
-        validity[i] = !(
-          typeof this.answers[this.getQuestions[i + 1]] === 'undefined' ||
-          this.answers[this.getQuestions[i + 1]].length === 0
-        );
-      }
-      invalid = !validity.reduce((summ, item) => {
-        return item && summ;
+    checkValidity(input) {
+      const inputs = Array.from(
+        document.forms.Callback.querySelectorAll('input')
+      );
+      inputs.forEach((item, i) => {
+        this.validity[i] = item.validity.valid;
       });
-      return invalid;
+      this.errors[input] = inputs[input].validationMessage;
+      console.log(this.validity);
+      console.log(this.errors);
+    },
+    hasInvalidInput() {
+      return !this.validity.reduce((summ, item) => {
+        return item && summ;
+      }, true);
     },
     toggleCallback() {
       this.$store.commit('callback/toggleCallback');
     },
     saveAnswers() {
-      this.$store.commit('callback/saveAnswers', this.answers);
+      this.$store.commit(
+        'callback/saveAnswers',
+        Object.assign({}, this.answers)
+      );
       this.toggleCallback();
     },
   },
@@ -129,9 +147,18 @@ export default {
       return this.$store.getters['callback/getQuestions'];
     },
   },
+  mounted() {
+    Array.from(document.forms.Callback.querySelectorAll('input')).forEach(
+      (item, i) => {
+        this.validity[i] = item.validity.valid;
+      }
+    );
+  },
   data() {
     return {
       answers: {},
+      validity: [],
+      errors: [],
     };
   },
 };
@@ -141,6 +168,27 @@ export default {
 .callback /deep/ .popup__container {
   display: flex;
   flex-direction: column;
+}
+
+.callback__error-massage {
+  margin: 0;
+  color: red;
+  position: absolute;
+  top: 42px;
+  left: 40px;
+  font-size: 12px;
+  max-height: 30px;
+  overflow: hidden;
+}
+
+.callback__error-massage_input_small {
+  top: 42px;
+  left: 0;
+}
+
+.callback__input-wrapper {
+  width: 100%;
+  position: relative;
 }
 
 .callback__main-quest {
@@ -155,6 +203,7 @@ export default {
 .callback__input {
   margin: 0 40px 40px;
   padding-bottom: 10px;
+  width: calc(100% - 80px);
 }
 
 .callback__container {
