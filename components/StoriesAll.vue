@@ -63,7 +63,7 @@ export default {
     getSerch() {
       this.currentStories.splice(0, this.currentStories.length);
       this.storiesData.forEach(el => {
-        if (el.author.includes(this.search)) {
+        if (el.author.toLowerCase().includes(this.search)) {
           this.currentStories.push(el);
         }
       });
