@@ -34,14 +34,9 @@
       />
       <div v-swiper:mySwiper="swiperOption">
         <div class="swiper-wrapper video__frame">
-          <div
-            class="swiper-slide"
-            v-for="video in getVideos"
-            :key="video.id"
-            @click="videoStart($event)"
-          >
+          <div class="swiper-slide" v-for="video in getVideos" :key="video.id">
             <video-frame :url="video.url" />
-            <div class="video__overlay"></div>
+            <div class="video__overlay" @click="videoStart($event)"></div>
           </div>
         </div>
       </div>
@@ -157,7 +152,7 @@ export default {
   background-size: auto, cover;
   background-repeat: no-repeat;
   cursor: pointer;
-  transition: all linear 0.5s 0.5s;
+  transition: all linear 0.6s 0.2s;
 }
 
 .video__overlay:hover {
