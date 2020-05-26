@@ -1,5 +1,6 @@
 <template>
   <input
+    :required="required"
     :class="[
       'input',
       {
@@ -11,6 +12,7 @@
     :placeholder="placeholder"
     :type="type"
     autofocus
+    :pattern="pattern"
     @input="handleInput"
     v-model="content"
   />
@@ -24,6 +26,8 @@ export default {
     type: String,
     hasData: Boolean,
     bordered: Boolean,
+    pattern: { type: String },
+    required: { type: Boolean, default: false },
   },
   data() {
     return {

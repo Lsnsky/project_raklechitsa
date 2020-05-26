@@ -9,6 +9,7 @@
     ]"
     :disabled="disabled"
     @click="$emit('buttonClick')"
+    :type="type"
   >
     <slot></slot>
   </button>
@@ -19,6 +20,7 @@ export default {
   props: {
     color: { type: String, default: 'none' },
     disabled: { type: Boolean, default: true },
+    type: { type: String, default: 'button' },
   },
 };
 </script>
@@ -35,6 +37,10 @@ export default {
   color: #fff;
   cursor: pointer;
   transition: all linear 0.1s;
+}
+
+.button:hover {
+  opacity: 0.9;
 }
 
 .button_color_purple {

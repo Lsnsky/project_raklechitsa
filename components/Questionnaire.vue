@@ -5,6 +5,9 @@
     @closeClick="closeQuestionnaire"
     :titleText="title()"
     :titlePosition="position()"
+    :isItForm="true"
+    @formSubmit="nextQuestion"
+    formName="Questionnaire"
   >
     <p v-if="id < 12" class="questionnaire__question">
       <question class="questionnaire__mainquestion">{{
@@ -34,8 +37,8 @@
       v-if="this.id < 12"
       class="questionnaire__further"
       color="purple"
+      type="submit"
       :disabled="!hasData()"
-      @buttonClick="nextQuestion"
     >
       {{ buttonNext() }}
     </main-button>
@@ -148,9 +151,9 @@ export default {
   height: 52px;
 }
 
-.questionnaire__further:hover {
+/* .questionnaire__further:hover {
   opacity: 0.9;
-}
+} */
 
 .questionnaire__further_step_last {
   left: calc(50% - 100px);
