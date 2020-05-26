@@ -4,11 +4,15 @@
     <article class="story">
       <header class="story__header">
         <div class="story__wrapper">
-          <img alt class="story__photo" :src="story.history_photo" />
+          <img
+            alt
+            class="story__photo"
+            :src="`https://strapi.kruzhok.io${story.ImageUrl[0].url}`"
+          />
         </div>
         <h2 class="story__title">
-          <span class="story__span-accent">{{ story.history_title }}:</span>
-          &laquo;{{ story.history_text }}&raquo;
+          <span class="story__span-accent">{{ story.author }}:</span>
+          &laquo;{{ story.title }}&raquo;
         </h2>
         <div class="story__data">
           <button @click="toggleShare" class="story__share">
@@ -17,7 +21,7 @@
           <p class="story__date">20 апреля 2018</p>
         </div>
       </header>
-      <section class="story__body" v-html="story.history_story"></section>
+      <section class="story__body" v-html="story.text"></section>
       <footer class="story__footer">
         <button
           @click="toggleShare"
@@ -45,6 +49,7 @@
 <script>
 import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
+import route from '../plugins/route';
 export default {
   components: {
     'card-story': CardStory,
@@ -53,6 +58,11 @@ export default {
   methods: {
     toggleShare() {
       this.$store.commit('share-popup/toggleSharePopup');
+      console.log(this.story);
+      this.data = `${new Date(this.story.date).getDate()} ${new Date(
+        this.story.date
+      ).getMonth()} ${new Date(this.story.date).getFullYear()}`;
+      console.log(this.data);
     },
     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
@@ -60,16 +70,21 @@ export default {
   },
   computed: {
     stories() {
-      return this.$store.getters['storiesData/getStoriesData'].filter(
+      /*       return this.$store.getters['storiesData/getStoriesData'].filter(
         (item, index) => index < 4
-      );
+      ); */
+    },
+    Currentstory() {
+      /*       return this.$store.getters['storiesData/getCurrentStory']; */
     },
     story() {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
   },
-  mounted() {
-    console.log(this.$route.params.id);
+  data() {
+    return {
+      data: '',
+    };
   },
 };
 </script>
