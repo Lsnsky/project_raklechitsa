@@ -73,14 +73,11 @@ export default {
     },
   },
   beforeMount() {
-    if (window.innerWidth > 768) {
-      this.itemsPerPage = 16;
-    }
     if (window.innerWidth <= 768) {
-      this.count = 12;
+      this.itemsPerPage = 12;
     }
     if (window.innerWidth <= 320) {
-      this.count = 9;
+      this.itemsPerPage = 9;
     }
     for (
       let i = this.itemsPerPage * this.currentPage - this.itemsPerPage;
@@ -183,7 +180,7 @@ export default {
 .cards-story__search-input {
   /* background: #e5e5e5; */
   width: calc(100% - 228px);
-  padding: 0;
+  padding: 0 0 0 10px;
   margin: 0 20px 0 0;
   border-bottom: 1px solid #eee;
   box-sizing: border-box;
