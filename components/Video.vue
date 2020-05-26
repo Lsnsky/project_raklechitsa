@@ -63,12 +63,12 @@ export default {
     back() {
       this.$store.dispatch('video/priviousVideo');
       let mySwiper = document.querySelector('.swiper-container').swiper;
-      this.mySwiper.slidePrev();
+      this.mySwiper.slidePrev(400, true);
     },
     further() {
       this.$store.dispatch('video/nextVideo');
       let mySwiper = document.querySelector('.swiper-container').swiper;
-      this.mySwiper.slideNext();
+      this.mySwiper.slideNext(400, true);
     },
   },
   data() {
