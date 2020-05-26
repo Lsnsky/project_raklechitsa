@@ -53,7 +53,7 @@
             class="callback__small-input"
             placeholder="+7 000 000 00 00"
             type="text"
-            pattern="[\+0-9]{1,}"
+            pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
             v-model="answers[getQuestions[3]]"
             :hasData="this.validity[2]"
             :bordered="false"
@@ -157,7 +157,6 @@ export default {
   data() {
     return {
       answers: {},
-      patterns: [],
       validity: [],
       errors: [],
     };
