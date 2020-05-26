@@ -58,14 +58,14 @@ export default {
       startIndex: 0,
     };
   },
-  methods: {
+  /*  methods: {
     /*     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
-    }, */
+    }, 
     changeStartIndex(index) {
       this.startIndex = (index - 1) * this.itemsPerPage;
     },
-  },
+  }, */
   computed: {
     /*     storiesToRender() {
       const { storiesData } = this.$store.state;

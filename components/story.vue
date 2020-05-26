@@ -33,14 +33,17 @@
     </article>
 
     <div class="story__cards-container">
-      <card-story
-        v-for="card in stories"
+      <nuxt-link
+        class="story__cards-link"
+        v-for="card in this.stories"
         :key="card.id"
-        :url="card.history_photo"
-        :history_title="card.history_title"
-        :history_text="card.history_text"
-        @cardClick="goToDetail(card.id)"
-      ></card-story>
+        :to="`/stories/${card.id}`"
+        ><card-story
+          :url="`https://strapi.kruzhok.io${card.ImageUrl[0].url}`"
+          :history_title="card.author"
+          :history_text="card.title"
+        ></card-story>
+      </nuxt-link>
     </div>
     <btnhistory class="story__button" />
   </section>
@@ -66,23 +69,49 @@ export default {
     },
   },
   computed: {
-    stories() {
+    stories12() {
       /*       return this.$store.getters['storiesData/getStoriesData'].filter(
         (item, index) => index < 4
       ); */
     },
+    storiesAPI() {
+      return this.$store.getters['storiesData/getStoriesAPI'];
+    },
     story() {
       return this.$store.getters['storiesData/getCurrentStory'];
+    },
+    storiesCount() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          this.id = 4;
+        }
+        if (window.innerWidth <= 320) {
+          this.id = 2;
+        }
+        if (window.innerWidth <= 768) {
+          this.id = 3;
+        }
+      }
     },
   },
   beforeMount() {
     this.data = `${new Date(this.story.date).getDate()} ${
       this.arr[new Date(this.story.date).getMonth()]
     } ${new Date(this.story.date).getFullYear()}`;
+    for (let i = 0; i < this.count; i++) {
+      do {
+        this.stories[i] = this.storiesAPI[
+          Math.floor(Math.random() * this.storiesAPI.length)
+        ];
+      } while (
+        this.stories.some((item, index) => {
+          return index === i ? false : item === this.stories[i];
+        })
+      );
+    }
   },
   mounted() {
     let container = document.querySelector('.story__body');
-
     container
       .querySelectorAll('p')
       .forEach(item => item.classList.add('story__paragraph'));
@@ -106,12 +135,20 @@ export default {
         'ноября',
         'декабря',
       ],
+      count: 4,
+      stories: [],
     };
   },
 };
 </script>
 
 <style scoped>
+.story__cards-link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #000;
+}
 .story__button {
   margin: 70px auto 100px;
   max-width: 1320px;
