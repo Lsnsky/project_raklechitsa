@@ -37,8 +37,9 @@ export default {
     },
   },
   methods: {
-    setActive(index) {
+    async setActive(index) {
       this.active = index;
+      await this.$store.commit('storiesData/setPage', index);
       this.$emit('onPageChanged', index);
     },
   },

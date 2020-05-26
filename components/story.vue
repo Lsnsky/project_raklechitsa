@@ -80,21 +80,18 @@ export default {
     story() {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
-    storiesCount() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          this.count = 4;
-        }
-        if (window.innerWidth <= 320) {
-          this.count = 2;
-        }
-        if (window.innerWidth <= 768) {
-          this.count = 3;
-        }
-      }
-    },
   },
   beforeMount() {
+    if (window.innerWidth > 768) {
+      this.count = 4;
+    }
+    if (window.innerWidth <= 768) {
+      this.count = 3;
+    }
+    if (window.innerWidth <= 320) {
+      this.count = 2;
+    }
+
     this.data = `${new Date(this.story.date).getDate()} ${
       this.arr[new Date(this.story.date).getMonth()]
     } ${new Date(this.story.date).getFullYear()}`;
