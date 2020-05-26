@@ -8,6 +8,7 @@
         class="cards-story__search-input"
         :bordered="true"
         v-model="search"
+        placeholder="Введите имя"
       />
       <button-search
         color="purple"
