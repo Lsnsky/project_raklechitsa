@@ -81,12 +81,12 @@ export default {
     } ${new Date(this.story.date).getFullYear()}`;
   },
   mounted() {
-    document
-      .querySelector('.story__body')
+    let container = document.querySelector('.story__body');
+
+    container
       .querySelectorAll('p')
       .forEach(item => item.classList.add('story__paragraph'));
-    document
-      .querySelector('.story__body')
+    container
       .querySelectorAll('blockquote')
       .forEach(item => item.classList.add('story__span-accent'));
   },
