@@ -83,13 +83,13 @@ export default {
     storiesCount() {
       if (process.browser) {
         if (window.innerWidth > 768) {
-          this.id = 4;
+          this.count = 4;
         }
         if (window.innerWidth <= 320) {
-          this.id = 2;
+          this.count = 2;
         }
         if (window.innerWidth <= 768) {
-          this.id = 3;
+          this.count = 3;
         }
       }
     },
