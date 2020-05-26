@@ -19,6 +19,7 @@ export default {
   border: none;
   width: 100%;
   min-height: 450px;
+  position: relative;
 }
 
 @media screen and (max-width: 1280px) {
@@ -40,6 +41,12 @@ export default {
 }
 
 @media screen and (max-width: 525px) {
+  .video__iframe {
+    min-height: 225px;
+  }
+}
+
+@media screen and (max-width: 350px) {
   .video__iframe {
     min-height: 150px;
   }
