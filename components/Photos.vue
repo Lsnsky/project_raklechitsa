@@ -1,9 +1,7 @@
 <template>
   <section class="photos">
     <panel class="photos__panel-container">
-      <div class="photos__panel-text">
-        {{ secondPanelData.title }}
-      </div>
+      <div class="photos__panel-text">{{ secondPanelData.title }}</div>
       <div class="photos__panel-hashtag">{{ secondPanelData.hashtag }}</div>
     </panel>
     <div class="photos__content">
@@ -17,7 +15,12 @@
         <p class="photos__text" v-html="instagramData.text"></p>
       </div>
       <div class="photos__cards">
-        <photo v-for="photo in photos" :key="photo.id" />
+        <img
+          :src="photo.url"
+          class="photos__item"
+          v-for="photo in photos"
+          :key="photo.id"
+        />
       </div>
     </div>
   </section>
@@ -25,11 +28,11 @@
 
 <script>
 import Panel from '@/components/ui/Panel';
-import Photo from '@/components/ui/Photo';
+// import Photo from '@/components/ui/Photo';
 export default {
   components: {
     panel: Panel,
-    photo: Photo,
+    // photo: Photo,
   },
   computed: {
     photos() {
@@ -95,6 +98,18 @@ export default {
   grid-template-rows: repeat(2, minmax(171px, 195px));
   grid-template-columns: repeat(4, minmax(171px, 195px));
   grid-gap: 30px;
+}
+.photos__item {
+  border: 1px solid red;
+  width: 100%;
+  height: 100%;
+  background: #ededed;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
 }
 .photos__panel-container {
   width: 100%;
