@@ -1,12 +1,20 @@
 <template>
   <section class="cards-story">
-    <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
+    <h2 class="cards-story__title" @click="setCurrentPage">
+      Истории неизлечимых привычек
+    </h2>
     <div class="cards-story__search">
-      <input-search class="cards-story__search-input" :bordered="true" />
+      <input-search
+        class="cards-story__search-input"
+        :bordered="true"
+        v-model="search"
+        placeholder="Введите имя"
+      />
       <button-search
         color="purple"
-        :disabled="false"
+        :disabled="!this.search.length > 0"
         class="cards-story__search-button"
+        @buttonClick="getSerch"
         >Поиск</button-search
       >
     </div>
@@ -21,7 +29,7 @@
       ></card-story> -->
       <nuxt-link
         class="card__link"
-        v-for="card in storiesData"
+        v-for="card in currentStories"
         :key="card.id"
         :to="`/stories/${card.id}`"
         ><card-story
@@ -32,9 +40,9 @@
       </nuxt-link>
     </div>
     <pagination
-      :totalItems="this.$store.state.storiesData.stories.length"
+      :totalItems="storiesData.length"
       :itemsPerPage="itemsPerPage"
-      @onPageChanged="changeStartIndex"
+      @onPageChanged="setCurrentPage"
     />
   </section>
 </template>
@@ -51,17 +59,58 @@ export default {
     'button-search': Button,
     pagination: Pagination,
   },
+  methods: {
+    getSerch() {
+      this.currentStories.splice(0, this.currentStories.length);
+      this.storiesData.forEach(el => {
+        if (el.author.toLowerCase().includes(this.search)) {
+          this.currentStories.push(el);
+        }
+      });
+    },
+    setCurrentPage() {
+      this.currentStories.splice(0, this.itemsPerPage);
+      for (
+        let i = this.itemsPerPage * this.currentPage - this.itemsPerPage;
+        i < this.itemsPerPage * this.currentPage;
+        i++
+      ) {
+        if (this.storiesData[i]) {
+          this.currentStories.push(this.storiesData[i]);
+        }
+      }
+    },
+  },
+  beforeMount() {
+    if (window.innerWidth <= 768) {
+      this.itemsPerPage = 12;
+    }
+    if (window.innerWidth <= 320) {
+      this.itemsPerPage = 9;
+    }
+    for (
+      let i = this.itemsPerPage * this.currentPage - this.itemsPerPage;
+      i < this.itemsPerPage * this.currentPage;
+      i++
+    ) {
+      let j = i;
+      if (i >= this.itemsPerPage) {
+        let j = i - this.itemsPerPage * this.currentPage;
+      }
+      this.currentStories[j] = this.storiesData[i];
+    }
+  },
   data() {
     return {
-      storiesName: '',
       itemsPerPage: 16,
-      startIndex: 0,
+      currentStories: [],
+      search: '',
     };
   },
   /*  methods: {
     /*     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
-    }, 
+    },
     changeStartIndex(index) {
       this.startIndex = (index - 1) * this.itemsPerPage;
     },
@@ -76,6 +125,9 @@ export default {
       )}, */
     storiesData() {
       return this.$store.getters['storiesData/getStoriesAPI'];
+    },
+    currentPage() {
+      return this.$store.getters['storiesData/getCurrentPage'];
     },
   },
   // в разработке
@@ -137,7 +189,7 @@ export default {
 .cards-story__search-input {
   /* background: #e5e5e5; */
   width: calc(100% - 228px);
-  padding: 0;
+  padding: 0 0 0 10px;
   margin: 0 20px 0 0;
   border-bottom: 1px solid #eee;
   box-sizing: border-box;
