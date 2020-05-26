@@ -4,20 +4,24 @@
     <article class="story">
       <header class="story__header">
         <div class="story__wrapper">
-          <img alt class="story__photo" :src="story.history_photo" />
+          <img
+            alt
+            class="story__photo"
+            :src="`https://strapi.kruzhok.io${story.ImageUrl[0].url}`"
+          />
         </div>
         <h2 class="story__title">
-          <span class="story__span-accent">{{ story.history_title }}:</span>
-          &laquo;{{ story.history_text }}&raquo;
+          <span class="story__span-accent">{{ story.author }}:</span>
+          &laquo;{{ story.title }}&raquo;
         </h2>
         <div class="story__data">
           <button @click="toggleShare" class="story__share">
             Поделитесь &#8599;
           </button>
-          <p class="story__date">20 апреля 2018</p>
+          <p class="story__date">{{ this.data }}</p>
         </div>
       </header>
-      <section class="story__body" v-html="story.history_story"></section>
+      <section class="story__body" v-html="story.text"></section>
       <footer class="story__footer">
         <button
           @click="toggleShare"
@@ -29,14 +33,17 @@
     </article>
 
     <div class="story__cards-container">
-      <card-story
-        v-for="card in stories"
+      <nuxt-link
+        class="story__cards-link"
+        v-for="card in this.stories"
         :key="card.id"
-        :url="card.history_photo"
-        :history_title="card.history_title"
-        :history_text="card.history_text"
-        @cardClick="goToDetail(card.id)"
-      ></card-story>
+        :to="`/stories/${card.id}`"
+        ><card-story
+          :url="`https://strapi.kruzhok.io${card.ImageUrl[0].url}`"
+          :history_title="card.author"
+          :history_text="card.title"
+        ></card-story>
+      </nuxt-link>
     </div>
     <btnhistory class="story__button" />
   </section>
@@ -45,6 +52,7 @@
 <script>
 import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
+import route from '../plugins/route';
 export default {
   components: {
     'card-story': CardStory,
@@ -53,28 +61,94 @@ export default {
   methods: {
     toggleShare() {
       this.$store.commit('share-popup/toggleSharePopup');
-    },
+
+      /*     },
     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
+    }, */
     },
   },
   computed: {
-    stories() {
-      return this.$store.getters['storiesData/getStoriesData'].filter(
+    stories12() {
+      /*       return this.$store.getters['storiesData/getStoriesData'].filter(
         (item, index) => index < 4
-      );
+      ); */
+    },
+    storiesAPI() {
+      return this.$store.getters['storiesData/getStoriesAPI'];
     },
     story() {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
+    storiesCount() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          this.count = 4;
+        }
+        if (window.innerWidth <= 320) {
+          this.count = 2;
+        }
+        if (window.innerWidth <= 768) {
+          this.count = 3;
+        }
+      }
+    },
+  },
+  beforeMount() {
+    this.data = `${new Date(this.story.date).getDate()} ${
+      this.arr[new Date(this.story.date).getMonth()]
+    } ${new Date(this.story.date).getFullYear()}`;
+    for (let i = 0; i < this.count; i++) {
+      do {
+        this.stories[i] = this.storiesAPI[
+          Math.floor(Math.random() * this.storiesAPI.length)
+        ];
+      } while (
+        this.stories.some((item, index) => {
+          return index === i ? false : item === this.stories[i];
+        })
+      );
+    }
   },
   mounted() {
-    console.log(this.$route.params.id);
+    let container = document.querySelector('.story__body');
+    container
+      .querySelectorAll('p')
+      .forEach(item => item.classList.add('story__paragraph'));
+    container
+      .querySelectorAll('blockquote')
+      .forEach(item => item.classList.add('story__span-accent'));
+  },
+  data() {
+    return {
+      data: '',
+      arr: [
+        'января',
+        'февраля',
+        'марта',
+        'апреля',
+        'мая',
+        'июня',
+        'июля',
+        'августа',
+        'сентября',
+        'ноября',
+        'декабря',
+      ],
+      count: 4,
+      stories: [],
+    };
   },
 };
 </script>
 
 <style scoped>
+.story__cards-link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #000;
+}
 .story__button {
   margin: 70px auto 100px;
   max-width: 1320px;
@@ -147,6 +221,7 @@ export default {
 
 section >>> .story__span-accent {
   font-weight: 700;
+  margin: 0 0 30px;
 }
 
 .story__data {
@@ -190,6 +265,7 @@ section >>> .story__span-accent {
 }
 
 .story__body {
+  font-weight: 500;
   max-width: 100%;
   margin: 0 auto 70px;
   padding: 0 19.5%;
@@ -203,7 +279,7 @@ section >>> .story__paragraph:last-child {
 section >>> .story__paragraph {
   font-size: 22px;
   line-height: 30px;
-  font-weight: 500;
+  font-weight: inherit;
   margin: 0 0 30px;
 }
 
