@@ -1,55 +1,45 @@
 <template>
-  <div>
-    <article class="story">
-      <container>
-        <header class="story__header">
-          <div class="story__wrapper">
-            <img
-              alt
-              class="story__photo"
-              :src="`https://strapi.kruzhok.io${story.ImageUrl[0].url}`"
-            />
-          </div>
-          <h2 class="story__title">
-            <span class="story__span-accent">{{ story.author }}:</span>
-            &laquo;{{ story.title }}&raquo;
-          </h2>
-          <div class="story__data">
-            <button @click="toggleShare" class="story__share">
-              Поделитесь &#8599;
-            </button>
-            <p class="story__date">{{ this.data }}</p>
-          </div>
-        </header>
-        <section class="story__body" v-html="story.text"></section>
-        <footer class="story__footer">
-          <button
-            @click="toggleShare"
-            class="link story__share story__share_local_footer"
-          >
-            Поделитесь этой статьей в своих социальных сетях &#8599;
+  <article class="story">
+    <container>
+      <header class="story__header">
+        <div class="story__wrapper">
+          <img
+            alt
+            class="story__photo"
+            :src="`https://strapi.kruzhok.io${story.ImageUrl[0].url}`"
+          />
+        </div>
+        <h2 class="story__title">
+          <span class="story__span-accent">{{ story.author }}:</span>
+          &laquo;{{ story.title }}&raquo;
+        </h2>
+        <div class="story__data">
+          <button @click="toggleShare" class="story__share">
+            Поделитесь &#8599;
           </button>
-        </footer>
-      </container>
-    </article>
-    <div class="wrapper">
-      <container>
-        <card-container :stories="this.stories" />
-        <btnhistory class="story__button" />
-      </container>
-    </div>
-  </div>
+          <p class="story__date">{{ this.data }}</p>
+        </div>
+      </header>
+      <section class="story__body" v-html="story.text"></section>
+      <footer class="story__footer">
+        <button
+          @click="toggleShare"
+          class="link story__share story__share_local_footer"
+        >
+          Поделитесь этой статьей в своих социальных сетях &#8599;
+        </button>
+      </footer>
+    </container>
+  </article>
 </template>
 
 <script>
 import Container from '@/components/ui/Container';
-import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
 import CardContainer from '@/components/CardContainer';
 export default {
   components: {
     container: Container,
-    'card-story': CardStory,
     btnhistory: Button_history,
     'card-container': CardContainer,
   },
@@ -59,25 +49,11 @@ export default {
     },
   },
   computed: {
-    stories() {
-      return this.$store.getters['storiesData/getRandomStories'];
-    },
     story() {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
   },
-  async beforeMount() {
-    if (process.browser) {
-      if (window.innerWidth > 1000) {
-        await this.$store.dispatch('storiesData/setRandomStories', 4);
-      }
-      if (window.innerWidth <= 1000) {
-        await this.$store.dispatch('storiesData/setRandomStories', 3);
-      }
-      if (window.innerWidth <= 500) {
-        await this.$store.dispatch('storiesData/setRandomStories', 2);
-      }
-    }
+  beforeMount() {
     this.data = `${new Date(this.story.date).getDate()} ${
       this.arr[new Date(this.story.date).getMonth()]
     } ${new Date(this.story.date).getFullYear()}`;
@@ -113,14 +89,6 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  display: flex;
-}
-.story__button {
-  margin: 70px auto 100px;
-  height: 82px;
-}
-
 .story {
   display: flex;
   width: 100%;
@@ -283,10 +251,6 @@ section >>> .story__paragraph {
   .story__body {
     margin-bottom: 60px;
   }
-  .story__button {
-    margin: 60px auto 90px;
-    height: 78px;
-  }
 }
 @media screen and (max-width: 1140px) {
   .story {
@@ -337,10 +301,6 @@ section >>> .story__paragraph {
   .story__header {
     grid-template-columns: 407px 1fr;
     margin-bottom: 90px;
-  }
-  .story__button {
-    margin: 46px auto 80px;
-    height: 50px;
   }
 }
 
@@ -393,13 +353,6 @@ section >>> .story__paragraph {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .story__button {
-    margin: 40px auto 80px;
-    height: 50px;
-  }
-}
-
 @media screen and (max-width: 550px) {
   .story {
     padding: 49px 0 120px;
@@ -447,13 +400,6 @@ section >>> .story__paragraph {
 
   .story__share_local_footer {
     padding: 20px 0;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .story__button {
-    margin: 40px auto 50px;
-    height: 50px;
   }
 }
 </style>
