@@ -1,5 +1,5 @@
 <template>
-  <section id="video" class="video">
+  <section class="video">
     <container class="video__container">
       <div class="video__wrapper">
         <h2 class="video__title">
