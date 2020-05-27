@@ -1,7 +1,7 @@
 <template>
-  <container>
-    <!-- комент -->
-    <article class="story">
+  <!-- комент -->
+  <article class="story">
+    <container>
       <header class="story__header">
         <div class="story__wrapper">
           <img
@@ -30,9 +30,11 @@
           Поделитесь этой статьей в своих социальных сетях &#8599;
         </button>
       </footer>
-    </article>
+    </container>
+  </article>
 
-    <div class="story__cards-container">
+  <!-- <div class="story__cards-container">
+    <container>
       <nuxt-link
         class="story__cards-link"
         v-for="card in this.stories"
@@ -44,9 +46,9 @@
           :history_text="card.title"
         ></card-story>
       </nuxt-link>
-    </div>
-    <btnhistory class="story__button" />
-  </container>
+    </container>
+  </div>  
+    <btnhistory class="story__button" /> -->
 </template>
 
 <script>
@@ -151,6 +153,7 @@ export default {
 }
 
 .story {
+  display: flex;
   width: 100%;
   padding: 100px 0 160px;
 }
@@ -275,7 +278,7 @@ section >>> .story__paragraph {
   width: 100%;
   padding: 30px 0;
   margin: 0 auto;
-  background-color: #fbfbfb;
+  background-color: #ffffff;
   justify-content: center;
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;
