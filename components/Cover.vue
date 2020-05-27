@@ -45,6 +45,9 @@ export default {
   bottom: 40px;
 }
 @media screen and (max-width: 1280px) {
+  .cover {
+    min-height: calc(100vh - 72px);
+  }
   .cover__title {
     font-size: 78px;
   }
@@ -56,6 +59,9 @@ export default {
   }
 
   @media screen and (max-width: 530px) {
+    .cover {
+      min-height: calc(100vh - 64px);
+    }
     .cover__title {
       font-size: 36px;
     }

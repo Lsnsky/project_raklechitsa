@@ -15,14 +15,14 @@
           <div id="app" class="content__columns-description">
             <p
               @click="clickOn"
-              class="content__columns_link-1"
+              class="columns__link-1"
               :class="{ noActive: isActive, active: !isActive }"
             >
               {{ aboutData.extraTexts[0].title }}
             </p>
             <p
               @click="clickOff"
-              class="content__columns_link-2"
+              class="columns__link-2"
               :class="{ active: isActive, noActive: !isActive }"
             >
               {{ aboutData.extraTexts[1].title }}
@@ -143,7 +143,7 @@ export default {
   display: flex;
   margin-top: 68px;
 }
-.content__columns_link-1 {
+.columns__link-1 {
   width: 112px;
   font-style: normal;
   font-weight: 500;
@@ -154,7 +154,7 @@ export default {
   margin-bottom: 10px;
   cursor: pointer;
 }
-.content__columns_link-2 {
+.columns__link-2 {
   width: 155px;
   font-style: normal;
   font-weight: normal;
@@ -187,10 +187,10 @@ export default {
 .active {
   color: #fff;
 }
-.content__columns_link-2:hover {
+.columns__link-2:hover {
   opacity: 0.7;
 }
-.content__columns_link-1:hover {
+.columns__link-1:hover {
   opacity: 0.7;
 }
 .noActive {
@@ -258,12 +258,12 @@ export default {
     line-height: 19px;
     margin-left: 30px;
   }
-  .content__columns_link-1 {
+  .columns__link-1 {
     font-size: 15px;
     line-height: 19px;
     width: 93px;
   }
-  .content__columns_link-2 {
+  .columns__link-2 {
     font-size: 15px;
     line-height: 19px;
     width: 129px;
@@ -292,13 +292,13 @@ export default {
   .content {
     flex-direction: column;
   }
-  .content__columns_link-1 {
+  .columns__link-1 {
     margin: 0 0 30px;
     margin-right: 30px;
     padding-bottom: 6px;
     /* border-bottom: #fff 1px solid; */
   }
-  .content__columns_link-2 {
+  .columns__link-2 {
     margin: 0 0 30px;
     padding-bottom: 6px;
   }
@@ -351,7 +351,7 @@ export default {
     max-width: 295px;
   }
 
-  .content__columns_link-1 {
+  .columns__link-1 {
     width: 81px;
     font-size: 13px;
     line-height: 19px;
@@ -359,7 +359,7 @@ export default {
     margin-right: 16px;
     padding-bottom: 4px;
   }
-  .content__columns_link-2 {
+  .columns__link-2 {
     width: 113px;
     font-size: 13px;
     line-height: 19px;

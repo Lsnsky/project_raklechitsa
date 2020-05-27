@@ -4,25 +4,25 @@
       <div class="content">
         <div class="content__about">
           <h2 class="content__about-title">{{ storyData.title }}</h2>
-          <p class="content__about-paragraph">
+          <!-- <p class="content__about-paragraph">
             Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
             поделиться своей историей неизлечимых привычек, навязчивых идей и
             болезненных привязанностей.
-          </p>
-          <!-- <p class="content__about-paragraph" v-html="storyData.text"></p> Должно быть так -->
+          </p> -->
+          <p class="content__about-paragraph" v-html="storyData.text"></p>
         </div>
         <div class="content__columns">
           <div id="app" class="content__columns-description">
             <p
               @click="clickOn"
-              class="content__columns_link-1"
+              class="columns__link-1"
               :class="{ noActive: isActive, active: !isActive }"
             >
               {{ storyData.extraTexts[0].title }}
             </p>
             <p
               @click="clickOff"
-              class="content__columns_link-2"
+              class="columns__link-2"
               :class="{ active: isActive, noActive: !isActive }"
             >
               {{ storyData.extraTexts[1].title }}
@@ -30,18 +30,26 @@
           </div>
           <div class="content__columns-main-text">
             <div class="text-container">
-              <p v-if="!isActive" class="content__columns-text">
+              <!-- <p v-if="!isActive" class="content__columns-text">
                 Заполнить подробную форму прямо на сайте и мы опубликуем вашу
                 историю после проверки. Пожалуйста, заполняйте все пункты
                 корректно, если вы испытаете какие-то сложности, воспользуйтесь
                 2-м вариантом.
-              </p>
-              <!-- <p v-if="!isActive" class="content__columns-text" v-html="storyData.extraTexts[0].text" ></p> Должно быть так-->
-              <p v-else-if="isActive" class="content__columns-text-2">
+              </p> -->
+              <p
+                v-if="!isActive"
+                class="content__columns-text"
+                v-html="storyData.extraTexts[0].text"
+              ></p>
+              <!-- <p v-else-if="isActive" class="content__columns-text-2">
                 Оставить контакт (почту или номер телефона) и мы свяжемся с
                 вами, зададим вопросы, уточним детали вашей истории.
-              </p>
-              <!--  <p v-else-if="isActive" class="content__columns-text-2" v-html="storyData.extraTexts[1].text"></p> Должно быть тak -->
+              </p> -->
+              <p
+                v-else-if="isActive"
+                class="content__columns-text-2"
+                v-html="storyData.extraTexts[1].text"
+              ></p>
             </div>
             <story-button
               @buttonClick="popupOpen"
@@ -153,7 +161,7 @@ export default {
   display: flex;
   margin-top: 204px;
 }
-.content__columns_link-1 {
+.columns__link-1 {
   width: 106px;
   font-style: normal;
   font-weight: 500;
@@ -165,11 +173,11 @@ export default {
   cursor: pointer;
   display: block;
 }
-.content__columns_link-1:hover {
+.columns__link-1:hover {
   opacity: 0.7;
 }
 
-.content__columns_link-2 {
+.columns__link-2 {
   width: 108px;
   font-style: normal;
   font-weight: normal;
@@ -179,7 +187,7 @@ export default {
   color: #a2a2a2;
   cursor: pointer;
 }
-.content__columns_link-2:hover {
+.columns__link-2:hover {
   opacity: 0.7;
 }
 
@@ -259,12 +267,12 @@ export default {
     line-height: 19px;
     margin-left: 30px;
   }
-  .content__columns_link-1 {
+  .columns__link-1 {
     font-size: 15px;
     line-height: 19px;
     width: 89px;
   }
-  .content__columns_link-2 {
+  .columns__link-2 {
     font-size: 15px;
     line-height: 19px;
     width: 90px;
@@ -291,11 +299,11 @@ export default {
     flex-direction: column;
     padding-bottom: 80px;
   }
-  .content__columns_link-1 {
+  .columns__link-1 {
     margin: 0 0 30px;
     margin-right: 30px;
   }
-  .content__columns_link-2 {
+  .columns__link-2 {
     margin: 0 0 30px;
   }
   .content__about-title {
@@ -359,14 +367,14 @@ export default {
     line-height: 16px;
     max-width: 295px;
   }
-  .content__columns_link-1 {
+  .columns__link-1 {
     width: 77px;
     font-size: 13px;
     line-height: 19px;
     margin: 0 0 20px;
     margin-right: 16px;
   }
-  .content__columns_link-2 {
+  .columns__link-2 {
     width: 78px;
     font-size: 13px;
     line-height: 19px;
