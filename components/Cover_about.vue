@@ -90,11 +90,9 @@ export default {
 <style scoped>
 .cover-about {
   background-color: #613a93;
-  padding: 60px;
+  padding: 0 60px;
   display: flex;
   flex-direction: column;
-  padding-top: 0;
-  padding-bottom: 0;
 }
 .cover-about__title {
   max-width: 720px;
@@ -109,7 +107,6 @@ export default {
 }
 .content {
   display: flex;
-  /* padding-bottom: 100px; */
 }
 .content__about {
   display: flex;

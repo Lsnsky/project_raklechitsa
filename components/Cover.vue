@@ -2,7 +2,9 @@
   <section class="cover">
     <h2 class="cover__title">{{ coverData.hashtag }}</h2>
     <div class="cover__button">
-      <a href="#video"> <button-down /></a>
+      <a href="#video" @click.prevent="$emit('scrollClick')">
+        <button-down
+      /></a>
     </div>
   </section>
 </template>

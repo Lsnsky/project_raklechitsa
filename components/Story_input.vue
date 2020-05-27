@@ -1,14 +1,9 @@
 <template>
   <section class="story-input">
-    <container>
+    <container class="container">
       <div class="content">
         <div class="content__about">
           <h2 class="content__about-title">{{ storyData.title }}</h2>
-          <!-- <p class="content__about-paragraph">
-            Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
-            поделиться своей историей неизлечимых привычек, навязчивых идей и
-            болезненных привязанностей.
-          </p> -->
           <p class="content__about-paragraph" v-html="storyData.text"></p>
         </div>
         <div class="content__columns">
@@ -30,21 +25,12 @@
           </div>
           <div class="content__columns-main-text">
             <div class="text-container">
-              <!-- <p v-if="!isActive" class="content__columns-text">
-                Заполнить подробную форму прямо на сайте и мы опубликуем вашу
-                историю после проверки. Пожалуйста, заполняйте все пункты
-                корректно, если вы испытаете какие-то сложности, воспользуйтесь
-                2-м вариантом.
-              </p> -->
               <p
                 v-if="!isActive"
                 class="content__columns-text"
                 v-html="storyData.extraTexts[0].text"
               ></p>
-              <!-- <p v-else-if="isActive" class="content__columns-text-2">
-                Оставить контакт (почту или номер телефона) и мы свяжемся с
-                вами, зададим вопросы, уточним детали вашей истории.
-              </p> -->
+
               <p
                 v-else-if="isActive"
                 class="content__columns-text-2"
@@ -104,12 +90,25 @@ export default {
 </script>
 
 <style scoped>
+.content__columns-text >>> p {
+  margin: 0;
+}
+.content__columns-text-2 >>> p {
+  margin: 0;
+}
+.content__about-paragraph >>> p {
+  margin: 0;
+}
 .story-input {
+  margin-bottom: 100px;
+  padding: 0;
+  margin: 0;
+}
+.container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 100px;
   background-color: #f7f7f7;
-  padding: 0 60px;
+  border: 1px red solid;
 }
 .text-container {
   max-width: 640px;
@@ -130,6 +129,7 @@ export default {
 .content__about {
   display: flex;
   flex-direction: column;
+  margin-right: 47px;
 }
 .content__about-title {
   width: 413px;
@@ -219,9 +219,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .story-input {
-    padding: 50px;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
   }
 
   .content {

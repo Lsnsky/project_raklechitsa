@@ -62,6 +62,7 @@ export default {
 .header__container {
   display: flex;
   justify-content: space-between;
+  border: 1px solid red;
 }
 
 .header__hider {
