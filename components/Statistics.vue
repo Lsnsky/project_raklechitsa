@@ -3,20 +3,21 @@
     <div class="cards__title">{{ statisticsData.title }}</div>
     <div class="cards__container">
       <div class="card" v-for="card in cardsWithProgressBar" :key="card.id">
-        <card-title :title="card.title" />
-        <progressbar :value="card.value" :maxValue="card.maxValue" />
-        <card-content :content="card.content" />
+        <card-title :title="card.description" />
+        <progressbar :value="card.currentValue" :maxValue="card.maxValue" />
+        <card-content :content="card.summary" />
         <card-source :source="card.source" />
       </div>
       <div class="card" v-for="card in cardsWithComparedInfo" :key="card.id">
-        <card-title :title="card.title" />
+        <card-title :title="card.description" />
+        <!-- в бар с двумя полосами пока не приходят все необходимые для отрисовки данные, указал пока числа, чтобы обозначить  -->
         <card-diagram
-          :valueEmpty="card.valueEmpty"
-          :maxValueEmpty="card.maxValueEmpty"
-          :valueFill="card.valueFill"
-          :maxValueFill="card.maxValueFill"
+          :valueEmpty="(card.valueEmpty = 5)"
+          :maxValueEmpty="(card.maxValueEmpty = 10)"
+          :valueFill="(card.valueFill = 2)"
+          :maxValueFill="(card.maxValueFill = 3)"
         />
-        <card-content :content="card.content" />
+        <card-content :content="card.summary" />
         <card-source :source="card.source" />
       </div>
     </div>
