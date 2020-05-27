@@ -103,18 +103,6 @@ export default {
       return this.$store.getters['storiesData/getPageStories'];
     },
   },
-  // в разработке
-
-  // calcItemPerPage() {
-  //   if (process.browser) {
-  //     if (window.innerWidth > 768) {
-  //       return (this.itemsPerPage = 16);
-  //     }
-  //     if (window.innerWidth <= 768) {
-  //       return (this.itemsPerPage = 12);
-  //     }
-  //   }
-  // },
 };
 </script>
 
