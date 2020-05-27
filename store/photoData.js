@@ -2,7 +2,7 @@ export const state = () => ({
   photos: [
     {
       id: '1',
-      url: '/images/Rectangle 23.png',
+      url: '/images/__item-6.jpg',
     },
     {
       id: '2',

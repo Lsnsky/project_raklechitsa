@@ -19,20 +19,13 @@
       >
     </div>
     <div class="cards-story__container">
-      <!-- <card-story
-        v-for="card in storiesToRender"
-        :key="card.id"
-        :url="card.history_photo"
-        :history_title="card.history_title"
-        :history_text="card.history_text"
-        @cardClick="goToDetail(card.id)"
-      ></card-story> -->
       <nuxt-link
         class="card__link"
         v-for="card in currentStories"
         :key="card.id"
         :to="`/stories/${card.id}`"
-        ><card-story
+      >
+        <card-story
           :url="`https://strapi.kruzhok.io${card.ImageUrl[0].url}`"
           :history_title="card.author"
           :history_text="card.title"
@@ -77,22 +70,8 @@ export default {
       search: '',
     };
   },
-  /*  methods: {
-    /*     goToDetail(id) {
-      this.$router.push(`/stories/${id}`);
-    },
-    changeStartIndex(index) {
-      this.startIndex = (index - 1) * this.itemsPerPage;
-    },
-  }, */
+
   computed: {
-    /*     storiesToRender() {
-      const { storiesData } = this.$store.state;
-      return storiesData.stories.filter(
-        (item, idx) =>
-          idx >= this.startIndex &&
-          idx <= this.startIndex + this.itemsPerPage - 1
-      )}, */
     storiesData() {
       return this.$store.getters['storiesData/getStoriesAPI'];
     },
@@ -103,18 +82,6 @@ export default {
       return this.$store.getters['storiesData/getPageStories'];
     },
   },
-  // в разработке
-
-  // calcItemPerPage() {
-  //   if (process.browser) {
-  //     if (window.innerWidth > 768) {
-  //       return (this.itemsPerPage = 16);
-  //     }
-  //     if (window.innerWidth <= 768) {
-  //       return (this.itemsPerPage = 12);
-  //     }
-  //   }
-  // },
 };
 </script>
 
