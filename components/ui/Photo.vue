@@ -1,11 +1,13 @@
 <template>
-  <div class="photo-wrapper">
-    <img class="photo" src="/images/__item-6.jpg" />
-  </div>
+  <a :href="href" class="photo-wrapper" target="_blank">
+    <img class="photo" :src="src" />
+  </a>
 </template>
 
 <script>
-export default {};
+export default {
+  props: { href: { type: String }, src: { type: String } },
+};
 </script>
 
 <style scoped>
@@ -25,5 +27,6 @@ export default {};
   width: 100%;
   padding-bottom: 100%;
   position: relative;
+  display: block;
 }
 </style>

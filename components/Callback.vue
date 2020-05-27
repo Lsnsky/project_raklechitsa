@@ -9,8 +9,10 @@
     @formSubmit="saveAnswers"
     formName="Callback"
   >
-    <question class="callback__main-quest">{{ getQuestions[0] }}</question>
-    <question class="callback__quest">{{ getQuestions[1] }}</question>
+    <question class="callback__main-quest">{{
+      getQuestions[0].quest
+    }}</question>
+    <question class="callback__quest">{{ getQuestions[1].quest }}</question>
     <div class="callback__input-wrapper">
       <main-input
         class="callback__input"
@@ -18,7 +20,7 @@
         type="text"
         :hasData="this.validity[0]"
         pattern="[ёЁА-Яа-яA-Za-z -]{1,}"
-        v-model="answers[getQuestions[1]]"
+        v-model="answers[getQuestions[1].key]"
         :bordered="false"
         :required="true"
         @input="checkValidity(0)"
@@ -27,14 +29,16 @@
     </div>
     <div class="callback__container">
       <div class="callback__wrapper">
-        <question class="callback__small-quest">{{ getQuestions[2] }}</question>
+        <question class="callback__small-quest">{{
+          getQuestions[2].quest
+        }}</question>
         <div class="callback__input-wrapper">
           <main-input
             class="callback__small-input"
             placeholder="pochta@example.com"
             type="email"
             :hasData="this.validity[1]"
-            v-model="answers[getQuestions[2]]"
+            v-model="answers[getQuestions[2].key]"
             :bordered="false"
             :required="true"
             @input="checkValidity(1)"
@@ -47,14 +51,16 @@
         </div>
       </div>
       <div class="callback__wrapper">
-        <question class="callback__small-quest">{{ getQuestions[3] }}</question>
+        <question class="callback__small-quest">{{
+          getQuestions[3].quest
+        }}</question>
         <div class="callback__input-wrapper">
           <main-input
             class="callback__small-input"
             placeholder="+7 000 000 00 00"
             type="text"
             pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
-            v-model="answers[getQuestions[3]]"
+            v-model="answers[getQuestions[3].key]"
             :hasData="this.validity[2]"
             :bordered="false"
             :required="true"
@@ -69,13 +75,13 @@
       </div>
     </div>
 
-    <question class="callback__quest">{{ getQuestions[4] }}</question>
+    <question class="callback__quest">{{ getQuestions[4].quest }}</question>
     <div class="callback__input-wrapper">
       <main-input
         class="callback__input"
         placeholder="Телефон / почта и удобное время"
         type="text"
-        v-model="answers[getQuestions[4]]"
+        v-model="answers[getQuestions[4].key]"
         :hasData="this.validity[3]"
         :bordered="false"
         :required="true"
@@ -120,8 +126,6 @@ export default {
         this.validity[i] = item.validity.valid;
       });
       this.errors[input] = inputs[input].validationMessage;
-      console.log(this.validity);
-      console.log(this.errors);
     },
     hasInvalidInput() {
       return !this.validity.reduce((summ, item) => {
