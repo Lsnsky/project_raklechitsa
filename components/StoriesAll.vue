@@ -70,6 +70,8 @@ export default {
       search: '',
     };
   },
+
+  computed: {
     storiesData() {
       return this.$store.getters['storiesData/getStoriesAPI'];
     },
@@ -79,8 +81,8 @@ export default {
     currentStories() {
       return this.$store.getters['storiesData/getPageStories'];
     },
-  };
-}
+  },
+};
 </script>
 
 <style scoped>
