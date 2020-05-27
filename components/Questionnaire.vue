@@ -9,14 +9,14 @@
     @formSubmit="nextQuestion"
     formName="Questionnaire"
   >
-    <p v-if="id < 12" class="questionnaire__question">
+    <p v-if="id < 13" class="questionnaire__question">
       <question class="questionnaire__mainquestion">{{
         question.mainQest
       }}</question
       ><span class="questionnaire__subquestion">{{ question.qest }}</span>
     </p>
     <main-input
-      v-if="id < 12"
+      v-if="id < 13"
       placeholder="Напишите тут"
       type="text"
       :hasData="hasData()"
@@ -25,7 +25,7 @@
       class="questionnaire__input"
     />
     <main-button
-      v-if="id < 12"
+      v-if="id < 13"
       class="questionnaire__back"
       color="none"
       :disabled="this.id === 0"
@@ -34,7 +34,7 @@
       Назад
     </main-button>
     <main-button
-      v-if="this.id < 12"
+      v-if="this.id < 13"
       class="questionnaire__further"
       color="purple"
       type="submit"
@@ -51,7 +51,7 @@
     >
       Закрыть
     </main-button>
-    <policy v-if="id === 11" class="questionnaire__politica"> </policy>
+    <policy v-if="id === 12" class="questionnaire__politica"> </policy>
   </popup>
 </template>
 
@@ -71,18 +71,18 @@ export default {
   },
   methods: {
     buttonNext() {
-      return this.id < 11 ? 'Далее' : 'Отправить';
+      return this.id < 12 ? 'Далее' : 'Отправить';
     },
     hasData() {
       return !(this.answer.length === 0);
     },
     title() {
-      return this.id === 12
+      return this.id === 13
         ? 'Спасибо что приняли участие!'
-        : `Шаг ${this.question.id} из 12`;
+        : `Шаг ${this.question.id} из 13`;
     },
     position() {
-      return this.id === 12 ? 'center' : 'left';
+      return this.id === 13 ? 'center' : 'left';
     },
     previousQuestion() {
       this.$store.dispatch('questionnaire/previousQuestion').then(item => {
@@ -95,6 +95,9 @@ export default {
         .then(item => {
           this.answer = item || '';
         });
+      if (this.id === 12) {
+        console.log(this.getAnswers);
+      }
     },
     closeQuestionnaire() {
       this.$store.dispatch('questionnaire/closeQuestionnaire').then(item => {
@@ -115,6 +118,9 @@ export default {
     },
     getCurrentAnswer() {
       return this.$store.getters['questionnaire/getCurrentAnswer'];
+    },
+    getAnswers() {
+      return this.$store.getters['questionnaire/getAnswers'];
     },
   },
   data() {

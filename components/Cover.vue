@@ -1,10 +1,14 @@
 <template>
-  <section class="cover">
+  <section class="cover" ref="section">
     <h2 class="cover__title">{{ coverData.hashtag }}</h2>
     <div class="cover__button">
+      <<<<<<< HEAD
       <a href="#video" @click.prevent="$emit('scrollClick')">
         <button-down
       /></a>
+      =======
+      <a href="#video" @click.prevent="scroll"> <button-down /></a>
+      >>>>>>> dev
     </div>
   </section>
 </template>
@@ -18,6 +22,14 @@ export default {
   computed: {
     coverData() {
       return this.$store.getters['blocks/getCoverBlock'];
+    },
+  },
+  methods: {
+    scroll() {
+      this.$refs.section.nextElementSibling.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     },
   },
 };

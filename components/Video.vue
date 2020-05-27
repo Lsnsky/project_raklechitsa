@@ -1,64 +1,70 @@
 <template>
-  <section id="video" class="video">
-    <div class="video__wrapper">
-      <h2 class="video__title">
-        {{ videoData.title }}
-      </h2>
+  <section class="video">
+    <container class="video__container">
+      <div class="video__wrapper">
+        <h2 class="video__title">
+          {{ videoData.title }}
+        </h2>
 
-      <div class="video__subtitle-wrapper" v-html="videoData.text"></div>
-      <div class="video__buttons">
+        <div class="video__subtitle-wrapper" v-html="videoData.text"></div>
+        <div class="video__buttons">
+          <button-switch
+            position="left"
+            :disabled="getLeftStatus"
+            @buttonClick="back"
+          />
+          <button-switch
+            position="right"
+            @buttonClick="further"
+            :disabled="getRightStatus"
+          />
+        </div>
+      </div>
+      <div class="video__wrapper">
         <button-switch
+          class="video__small-button video__small-button_position_left"
           position="left"
-          :disabled="getLeftStatus"
           @buttonClick="back"
+          :disabled="getLeftStatus"
         />
         <button-switch
+          class="video__small-button video__small-button_position_right"
           position="right"
           @buttonClick="further"
           :disabled="getRightStatus"
         />
-      </div>
-    </div>
-    <div class="video__wrapper">
-      <button-switch
-        class="video__small-button video__small-button_position_left"
-        position="left"
-        @buttonClick="back"
-        :disabled="getLeftStatus"
-      />
-      <button-switch
-        class="video__small-button video__small-button_position_right"
-        position="right"
-        @buttonClick="further"
-        :disabled="getRightStatus"
-      />
-      <div v-swiper:mySwiper="swiperOption">
-        <div class="swiper-wrapper video__frame">
-          <div class="swiper-slide" v-for="video in getVideos" :key="video.id">
-            <video-frame :url="video.url" />
-            <div class="video__overlay" @click="videoStart($event)"></div>
+        <div v-swiper:mySwiper="swiperOption">
+          <div class="swiper-wrapper video__frame">
+            <div
+              class="swiper-slide"
+              v-for="video in getVideos"
+              :key="video.id"
+            >
+              <video-frame :url="video.url" />
+              <div class="video__overlay" @click="videoStart($event)"></div>
+            </div>
           </div>
         </div>
+        <p class="video__more">
+          <a
+            href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
+            class="video__link"
+            >{{ videoData.note }}</a
+          >
+        </p>
       </div>
-      <p class="video__more">
-        <a
-          href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
-          class="video__link"
-          >{{ videoData.note }}</a
-        >
-      </p>
-    </div>
+    </container>
   </section>
 </template>
 
 <script>
 import Button_switch from '@/components/ui/Button_switch';
 import Video_frame from '@/components/ui/Video_frame';
+import Container from '@/components/ui/Container';
 export default {
   methods: {
     videoStart(evt) {
       evt.target.classList.remove('video__overlay');
-      console.log(evt.target);
     },
     back() {
       this.$store.dispatch('video/priviousVideo');
@@ -114,6 +120,7 @@ export default {
   components: {
     'button-switch': Button_switch,
     'video-frame': Video_frame,
+    container: Container,
   },
 };
 </script>
@@ -123,9 +130,12 @@ export default {
   height: 100%;
 }
 .video {
-  max-width: 1320px;
-  margin: 0 auto 74px;
-  padding: 100px 60px 0;
+  margin: 100px 0 74px;
+  display: flex;
+  padding: 0;
+}
+
+.video__container {
   display: flex;
 }
 
@@ -204,8 +214,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .video {
-    padding: 90px 50px 0;
-    margin: 0 auto 64px;
+    margin: 90px 0 64px;
   }
 
   .video__title {
@@ -236,8 +245,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .video {
-    padding: 80px 50px 0;
-    margin: 0 auto 54px;
+    margin: 80px 0 54px;
   }
   .video__title {
     font-size: 24px;
@@ -262,10 +270,12 @@ export default {
 
 @media screen and (max-width: 899px) {
   .video {
+    margin: 72px 0 44px;
+  }
+
+  .video__container {
     flex-direction: column;
     align-items: center;
-    padding: 72px 15px 0;
-    margin: 0 auto 44px;
   }
 
   .video__title {
@@ -314,8 +324,7 @@ export default {
 
 @media screen and (max-width: 525px) {
   .video {
-    padding: 50px 15px 0;
-    margin: 0 auto 50px;
+    margin: 50px 0;
   }
 
   .video__title {
