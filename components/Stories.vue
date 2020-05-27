@@ -1,37 +1,18 @@
 <template>
   <section class="cards-story">
-    <panel class="card-story__panel">
-      <div class="card-story__panel-text">
-        {{ firstPanelData.title }}
-        <span class="card-story__panel-hashtag">{{
-          firstPanelData.hashtag
-        }}</span>
-      </div>
-    </panel>
-    <h2 class="cards-story__title">{{ storiesData.title }}</h2>
-
-    <div class="cards-story__container">
-      <!--  <card-story
-        v-for="card in stories"
-        :key="card.id"
-        :url="card.history_photo"
-        :history_title="card.history_title"
-        :history_text="card.history_text"
-        @cardClick="goToDetail(card.id)"
-      ></card-story>  -->
-      <nuxt-link
-        class="card-story__link"
-        v-for="card in this.stories"
-        :key="card.id"
-        :to="`/stories/${card.id}`"
-        ><card-story
-          :url="`https://strapi.kruzhok.io${card.ImageUrl[0].url}`"
-          :history_title="card.author"
-          :history_text="card.title"
-        ></card-story>
-      </nuxt-link>
-    </div>
-    <btnhistory class="cards-story__button" />
+    <container class="cards-story__container">
+      <panel class="card-story__panel">
+        <div class="card-story__panel-text">
+          {{ firstPanelData.title }}
+          <span class="card-story__panel-hashtag">{{
+            firstPanelData.hashtag
+          }}</span>
+        </div>
+      </panel>
+      <h2 class="cards-story__title">{{ storiesData.title }}</h2>
+      <cards class="card-story__grid" :stories="this.stories" />
+      <btnhistory class="cards-story__button" />
+    </container>
   </section>
 </template>
 
@@ -39,31 +20,32 @@
 import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
 import Panel from '@/components/ui/Panel';
+import CardContainer from '@/components/CardContainer';
+import Container from '@/components/ui/Container';
 export default {
   components: {
     'card-story': CardStory,
     btnhistory: Button_history,
     panel: Panel,
+    cards: CardContainer,
+    container: Container,
   },
   async beforeMount() {
     if (process.browser) {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 1000) {
         await this.$store.dispatch('storiesData/setRandomStories', 8);
       }
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 1000) {
         await this.$store.dispatch('storiesData/setRandomStories', 9);
         this.count = 9;
       }
-      if (window.innerWidth <= 320) {
+      if (window.innerWidth <= 500) {
         await this.$store.dispatch('storiesData/setRandomStories', 6);
         this.count = 6;
       }
     }
   },
   computed: {
-    /*     storiesAPI() {
-      return this.$store.getters['storiesData/getStoriesAPI'];
-    }, */
     storiesData() {
       return this.$store.getters['blocks/getStoriesBlock'];
     },
@@ -78,18 +60,18 @@ export default {
 </script>
 
 <style scoped>
+.card-story__grid {
+  justify-self: center;
+}
 .cards-story {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 0 60px 0;
+  display: flex;
 }
 
-.card-story__link {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  color: #000;
+.cards-story__container {
+  display: flex;
+  flex-direction: column;
 }
+
 .card-story__panel {
   height: 86px;
   display: flex;
@@ -127,37 +109,14 @@ export default {
   width: 100%;
 }
 
-.cards-story__container {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(265px, 300px));
-  grid-template-rows: repeat(2, minmax(357px, 392px));
-  grid-column-gap: 40px;
-  grid-row-gap: 70px;
-  justify-content: center;
-  grid-auto-flow: dense;
-  margin: 0 auto;
-}
-
 .cards-story__button {
+  width: 100%;
   margin: 60px auto 0;
   padding: 0;
   height: 78px;
 }
 
 @media screen and (max-width: 1280px) {
-  .cards-story {
-    padding: 0 50px 0;
-  }
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(208px, 265px));
-    grid-template-rows: repeat(2, minmax(305px, 357px));
-    grid-column-gap: 40px;
-    grid-row-gap: 60px;
-    justify-content: center;
-    margin: 0 auto;
-  }
-
   .card-story__panel {
     max-width: 1320px;
     display: flex;
@@ -171,18 +130,6 @@ export default {
   }
 }
 @media screen and (max-width: 1024px) {
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(160px, 208px));
-    grid-template-rows: repeat(2, minmax(160px, 305px));
-    grid-column-gap: 30px;
-    grid-row-gap: 46px;
-    justify-content: center;
-    margin: 0 auto;
-  }
-  .cards-story {
-    padding: 0 50px;
-  }
   .cards-story__title {
     margin: 80px 0 46px;
     font-size: 24px;
@@ -210,9 +157,6 @@ export default {
   }
 }
 @media screen and (max-width: 768px) {
-  .cards-story {
-    padding: 0 40px 0;
-  }
   .card-story__panel-text {
     font-size: 22px;
     line-height: 36px;
@@ -228,40 +172,9 @@ export default {
     max-width: 380px;
     text-align: center;
   }
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(160px, 1fr));
-    grid-template-rows: repeat(3, minmax(160px, 1fr));
-    grid-column-gap: 20px;
-    grid-row-gap: 40px;
-    justify-content: center;
-    margin: 0 auto;
-  }
-}
-
-@media screen and (max-width: 525px) {
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(160px, 1fr));
-    grid-template-rows: repeat(4, minmax(160px, 1fr));
-    grid-row-gap: 30px;
-    justify-content: center;
-    margin: 0 auto;
-  }
 }
 
 @media screen and (max-width: 320px) {
-  .cards-story {
-    padding: 0 15px 0;
-  }
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(290px, 1fr));
-    grid-template-rows: repeat(6, minmax(290px, 1fr));
-    grid-row-gap: 30px;
-    justify-content: center;
-    margin: 0 auto;
-  }
   .card-story__panel-text {
     font-size: 16px;
     line-height: 18px;
