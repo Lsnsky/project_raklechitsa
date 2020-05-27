@@ -3,6 +3,11 @@ export const state = () => ({
   rightStatus: false,
   id: 0,
   videos: [],
+  overlays: [
+    '/images/Pozner_1920_1080.jpg',
+    '/images/Rinat_1920_1080.jpg',
+    '/images/Olga_1920_1080.jpg',
+  ],
 });
 
 export const mutations = {
@@ -72,5 +77,8 @@ export const getters = {
   },
   getRightStatus(state) {
     return state.rightStatus;
+  },
+  getOverlays(state) {
+    return state.overlays;
   },
 };

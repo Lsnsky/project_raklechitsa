@@ -34,12 +34,9 @@
       />
       <div v-swiper:mySwiper="swiperOption">
         <div class="swiper-wrapper video__frame">
-          <div
-            class="swiper-slide some"
-            v-for="video in getVideos"
-            :key="video.id"
-          >
+          <div class="swiper-slide" v-for="video in getVideos" :key="video.id">
             <video-frame :url="video.url" />
+            <div class="video__overlay" @click="videoStart($event)"></div>
           </div>
         </div>
       </div>
@@ -59,15 +56,19 @@ import Button_switch from '@/components/ui/Button_switch';
 import Video_frame from '@/components/ui/Video_frame';
 export default {
   methods: {
+    videoStart(evt) {
+      evt.target.classList.remove('video__overlay');
+      console.log(evt.target);
+    },
     back() {
       this.$store.dispatch('video/priviousVideo');
       let mySwiper = document.querySelector('.swiper-container').swiper;
-      this.mySwiper.slidePrev();
+      this.mySwiper.slidePrev(400, true);
     },
     further() {
       this.$store.dispatch('video/nextVideo');
       let mySwiper = document.querySelector('.swiper-container').swiper;
-      this.mySwiper.slideNext();
+      this.mySwiper.slideNext(400, true);
     },
   },
   data() {
@@ -78,6 +79,9 @@ export default {
         centeredSlides: true,
         effect: 'coverflow',
         centeredSlides: true,
+        simulateTouch: false,
+        shortSwipes: false,
+        longSwipes: false,
       },
     };
   },
@@ -94,12 +98,18 @@ export default {
     getVideos() {
       return this.$store.getters['video/getVideos'];
     },
+    getOverlays() {
+      return this.$store.getters['video/getOverlays'];
+    },
   },
   mounted() {
     document
       .querySelector('.video__subtitle-wrapper')
       .querySelector('p')
       .classList.add('video__subtitle');
+    document.querySelectorAll('.video__overlay').forEach((el, i) => {
+      el.style.backgroundImage = `url('/images/Subtract.svg'), url('${this.getOverlays[i]}')`;
+    });
   },
   components: {
     'button-switch': Button_switch,
@@ -129,6 +139,24 @@ export default {
   line-height: 36px;
   max-width: 413px;
   margin: 10px 0 32px;
+}
+
+.video__overlay {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-position: center, center;
+  background-size: auto, cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: all linear 0.6s 0.2s;
+}
+
+.video__overlay:hover {
+  opacity: 0;
 }
 
 .video__subtitle-wrapper >>> .video__subtitle {
