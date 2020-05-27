@@ -302,7 +302,7 @@ section >>> .story__paragraph {
     line-height: 44px;
   }
 
-  .story__paragraph {
+  section >>> .story__paragraph {
     font-size: 20px;
     line-height: 28px;
     margin-bottom: 28px;
@@ -373,7 +373,7 @@ section >>> .story__paragraph {
     padding: 0 15.4%;
   }
 
-  .story__paragraph {
+  section >>> .story__paragraph {
     font-size: 18px;
     line-height: 27px;
     margin-bottom: 27px;
@@ -504,7 +504,7 @@ section >>> .story__paragraph {
     margin-bottom: 40px;
   }
 
-  .story__paragraph {
+  section >>> .story__paragraph {
     font-size: 13px;
     line-height: 16px;
     letter-spacing: -0.02em;
