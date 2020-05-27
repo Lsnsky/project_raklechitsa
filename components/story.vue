@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <container>
     <!-- комент -->
     <article class="story">
       <header class="story__header">
@@ -46,15 +46,17 @@
       </nuxt-link>
     </div>
     <btnhistory class="story__button" />
-  </section>
+  </container>
 </template>
 
 <script>
+import Container from '@/components/ui/Container';
 import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
 import route from '../plugins/route';
 export default {
   components: {
+    container: Container,
     'card-story': CardStory,
     btnhistory: Button_history,
   },
@@ -131,33 +133,26 @@ export default {
 
 <style scoped>
 .story__cards-link {
-  margin: 0;
-  padding: 0;
   text-decoration: none;
   color: #000;
 }
+
 .story__button {
   margin: 70px auto 100px;
-  max-width: 1320px;
-
-  padding: 0 60px;
   height: 82px;
 }
+
 .story__cards-container {
+  widows: 100%;
   display: grid;
   grid-template-columns: repeat(4, minmax(265px, 300px));
   grid-template-rows: repeat(1, 1fr);
   grid-column-gap: 40px;
-  justify-content: center;
-
-  margin: 0 auto;
-  max-width: 1320px;
-  padding: 0 60px;
 }
+
 .story {
-  max-width: 1320px;
-  padding: 100px 4% 160px;
-  margin: 0 auto;
+  width: 100%;
+  padding: 100px 0 160px;
 }
 
 .story__header {
@@ -298,6 +293,10 @@ section >>> .story__paragraph {
     margin-bottom: 28px;
   }
 
+  section >>> .story__span-accent {
+    margin-bottom: 28px;
+  }
+
   .story__header {
     grid-template-columns: minmax(518px, 540px) 1fr;
   }
@@ -318,20 +317,16 @@ section >>> .story__paragraph {
     grid-template-columns: repeat(4, minmax(1fr, 265px));
     grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 40px;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 50px;
   }
 
   .story__button {
     margin: 60px auto 90px;
-    padding: 0 50px;
     height: 78px;
   }
 }
 @media screen and (max-width: 1140px) {
   .story {
-    padding: 100px 5% 120px;
+    padding: 100px 0 120px;
   }
 
   .story__title {
@@ -368,6 +363,10 @@ section >>> .story__paragraph {
     line-height: 27px;
     margin-bottom: 27px;
   }
+
+  section >>> .story__span-accent {
+    margin-bottom: 27px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -380,20 +379,17 @@ section >>> .story__paragraph {
     grid-template-columns: repeat(4, minmax(160px, 208px));
     grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 30px;
-    justify-content: center;
-    margin: 0 auto;
   }
 
   .story__button {
     margin: 46px auto 80px;
-    padding: 0 50px;
     height: 50px;
   }
 }
 
 @media screen and (max-width: 940px) {
   .story {
-    padding: 80px 8.33% 120px;
+    padding: 80px 0 120px;
   }
 
   .story__header {
@@ -447,22 +443,17 @@ section >>> .story__paragraph {
     grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 40px;
-
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 40px;
   }
 
   .story__button {
     margin: 40px auto 80px;
-    padding: 0 40px;
     height: 50px;
   }
 }
 
 @media screen and (max-width: 550px) {
   .story {
-    padding: 49px 4.69% 120px;
+    padding: 49px 0 120px;
   }
 
   .story__header {
@@ -501,6 +492,10 @@ section >>> .story__paragraph {
     margin-bottom: 16px;
   }
 
+  section >>> .story__span-accent {
+    margin-bottom: 16px;
+  }
+
   .story__share_local_footer {
     padding: 20px 0;
   }
@@ -510,10 +505,6 @@ section >>> .story__paragraph {
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 40px;
-
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 40px;
   }
 }
 
@@ -523,14 +514,10 @@ section >>> .story__paragraph {
     grid-template-columns: repeat(1, minmax(160px, 290px));
     grid-template-rows: repeat(2, 1fr);
     grid-row-gap: 30px;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 15px;
   }
 
   .story__button {
     margin: 40px auto 50px;
-    padding: 0 15px;
     height: 50px;
   }
 }
