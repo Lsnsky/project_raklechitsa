@@ -1,38 +1,28 @@
 <template>
   <section class="cards-story">
-    <h2 class="cards-story__title" @click="setCurrentPage">
-      Истории неизлечимых привычек
-    </h2>
-    <div class="cards-story__search">
-      <input-search
-        class="cards-story__search-input"
-        :bordered="true"
-        v-model="search"
-        placeholder="Введите имя"
-      />
-      <button-search
-        color="purple"
-        :disabled="!this.search.length > 0"
-        class="cards-story__search-button"
-        @buttonClick="getSerch"
-        >Поиск</button-search
-      >
-    </div>
-    <div class="cards-story__container">
-      <nuxt-link
-        class="card__link"
-        v-for="card in currentStories"
-        :key="card.id"
-        :to="`/stories/${card.id}`"
-      >
-        <card-story
-          :url="`https://strapi.kruzhok.io${card.ImageUrl[0].url}`"
-          :history_title="card.author"
-          :history_text="card.title"
-        ></card-story>
-      </nuxt-link>
-    </div>
-    <pagination @onPageChanged="setCurrentPage" />
+    <container class="card-story__container">
+      <h2 class="cards-story__title" @click="setCurrentPage">
+        Истории неизлечимых привычек
+      </h2>
+      <div class="cards-story__search">
+        <input-search
+          class="cards-story__search-input"
+          :bordered="true"
+          v-model="search"
+          placeholder="Введите имя"
+        />
+        <button-search
+          color="purple"
+          :disabled="!this.search.length > 0"
+          class="cards-story__search-button"
+          @buttonClick="getSerch"
+          >Поиск</button-search
+        >
+      </div>
+      <card-container :stories="this.currentStories" />
+
+      <pagination @onPageChanged="setCurrentPage" />
+    </container>
   </section>
 </template>
 
@@ -41,12 +31,16 @@ import CardStory from '@/components/ui/CardStory';
 import Button from '@/components/ui/Button';
 import mainInput from '@/components/ui/mainInput';
 import Pagination from '@/components/Pagination';
+import CardContainer from '@/components/CardContainer';
+import Container from '@/components/ui/Container';
 export default {
   components: {
     'card-story': CardStory,
     'input-search': mainInput,
     'button-search': Button,
     pagination: Pagination,
+    'card-container': CardContainer,
+    container: Container,
   },
   methods: {
     getSerch() {
@@ -57,10 +51,10 @@ export default {
     },
   },
   async beforeMount() {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1000) {
       await this.$store.commit('storiesData/setItemsPerPage', 12);
     }
-    if (window.innerWidth <= 320) {
+    if (window.innerWidth <= 500) {
       await this.$store.commit('storiesData/setItemsPerPage', 9);
     }
     await this.$store.dispatch('storiesData/setCurrentPage');
@@ -70,7 +64,6 @@ export default {
       search: '',
     };
   },
-
   computed: {
     storiesData() {
       return this.$store.getters['storiesData/getStoriesAPI'];
@@ -86,28 +79,14 @@ export default {
 </script>
 
 <style scoped>
-.card__link {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  color: #000;
-}
 .cards-story {
+  display: flex;
+}
+
+.card-story__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1320px;
-  margin: auto;
-  padding: 0 60px;
-}
-.cards-story__container {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(265px, 300px));
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 40px;
-  grid-row-gap: 70px;
-  justify-content: center;
-  margin: 0 auto;
 }
 
 .cards-story__title {
@@ -139,35 +118,8 @@ export default {
   width: 208px;
   height: 46px;
 }
-@media screen and (max-width: 1280px) {
-  .cards-story {
-    padding: 0 50px;
-  }
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(208px, 265px));
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 40px;
-    grid-row-gap: 60px;
-    justify-content: center;
-    margin: 0 auto;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(140px, 208px));
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 30px;
-    grid-row-gap: 46px;
-    justify-content: center;
-    margin: 0 auto;
-  }
-}
+
 @media screen and (max-width: 768px) {
-  .cards-story {
-    padding: 0 40px;
-  }
   .cards-story__title {
     font-size: 24px;
     line-height: 28px;
@@ -178,20 +130,8 @@ export default {
   .cards-story__search {
     margin: 50px auto 60px;
   }
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(140px, 216px));
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 40px;
-    justify-content: center;
-    margin: 0 auto;
-  }
 }
 @media screen and (max-width: 550px) {
-  .cards-story {
-    padding: 0 40px;
-  }
   .cards-story__search-button {
     color: transparent;
     max-width: 46px;
@@ -201,20 +141,8 @@ export default {
     width: calc(100% - 52px);
     margin: 0;
   }
-
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(120px, 290px));
-    grid-template-rows: repeat(6, 1fr);
-    grid-row-gap: 30px;
-    justify-content: center;
-    margin: 0 auto;
-  }
 }
 @media screen and (max-width: 320px) {
-  .cards-story {
-    padding: 0 15px;
-  }
   .cards-story__title {
     font-size: 18px;
     line-height: 21px;
@@ -222,14 +150,6 @@ export default {
   }
   .cards-story__search {
     margin: 40px auto 30px;
-  }
-  .cards-story__container {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(140px, 290px));
-    grid-template-rows: repeat(9, 1fr);
-    grid-row-gap: 30px;
-    justify-content: center;
-    margin: 0 auto;
   }
 }
 </style>

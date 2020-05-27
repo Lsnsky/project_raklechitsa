@@ -1,5 +1,4 @@
 <template>
-  <!-- комент -->
   <article class="story">
     <container>
       <header class="story__header">
@@ -32,73 +31,29 @@
       </footer>
     </container>
   </article>
-
-  <!-- <div class="story__cards-container">
-    <container>
-      <nuxt-link
-        class="story__cards-link"
-        v-for="card in this.stories"
-        :key="card.id"
-        :to="`/stories/${card.id}`"
-        ><card-story
-          :url="`https://strapi.kruzhok.io${card.ImageUrl[0].url}`"
-          :history_title="card.author"
-          :history_text="card.title"
-        ></card-story>
-      </nuxt-link>
-    </container>
-  </div>  
-    <btnhistory class="story__button" /> -->
 </template>
 
 <script>
 import Container from '@/components/ui/Container';
-import CardStory from '@/components/ui/CardStory';
 import Button_history from '@/components/ui/Button_history';
-import route from '../plugins/route';
+import CardContainer from '@/components/CardContainer';
 export default {
   components: {
     container: Container,
-    'card-story': CardStory,
     btnhistory: Button_history,
+    'card-container': CardContainer,
   },
   methods: {
     toggleShare() {
       this.$store.commit('share-popup/toggleSharePopup');
-
-      /*     },
-    goToDetail(id) {
-      this.$router.push(`/stories/${id}`);
-    }, */
     },
   },
   computed: {
-    stories12() {
-      /*       return this.$store.getters['storiesData/getStoriesData'].filter(
-        (item, index) => index < 4
-      ); */
-    },
-    stories() {
-      return this.$store.getters['storiesData/getRandomStories'];
-    },
     story() {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
   },
-  async beforeMount() {
-    if (process.browser) {
-      if (window.innerWidth > 768) {
-        await this.$store.dispatch('storiesData/setRandomStories', 4);
-      }
-      if (window.innerWidth <= 768) {
-        await this.$store.dispatch('storiesData/setRandomStories', 3);
-        this.count = 9;
-      }
-      if (window.innerWidth <= 320) {
-        await this.$store.dispatch('storiesData/setRandomStories', 2);
-        this.count = 6;
-      }
-    }
+  beforeMount() {
     this.data = `${new Date(this.story.date).getDate()} ${
       this.arr[new Date(this.story.date).getMonth()]
     } ${new Date(this.story.date).getFullYear()}`;
@@ -134,24 +89,6 @@ export default {
 </script>
 
 <style scoped>
-.story__cards-link {
-  text-decoration: none;
-  color: #000;
-}
-
-.story__button {
-  margin: 70px auto 100px;
-  height: 82px;
-}
-
-.story__cards-container {
-  widows: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(265px, 300px));
-  grid-template-rows: repeat(1, 1fr);
-  grid-column-gap: 40px;
-}
-
 .story {
   display: flex;
   width: 100%;
@@ -314,18 +251,6 @@ section >>> .story__paragraph {
   .story__body {
     margin-bottom: 60px;
   }
-
-  .story__cards-container {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(1fr, 265px));
-    grid-template-rows: repeat(1, 1fr);
-    grid-column-gap: 40px;
-  }
-
-  .story__button {
-    margin: 60px auto 90px;
-    height: 78px;
-  }
 }
 @media screen and (max-width: 1140px) {
   .story {
@@ -376,17 +301,6 @@ section >>> .story__paragraph {
   .story__header {
     grid-template-columns: 407px 1fr;
     margin-bottom: 90px;
-  }
-  .story__cards-container {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(160px, 208px));
-    grid-template-rows: repeat(1, 1fr);
-    grid-column-gap: 30px;
-  }
-
-  .story__button {
-    margin: 46px auto 80px;
-    height: 50px;
   }
 }
 
@@ -439,21 +353,6 @@ section >>> .story__paragraph {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .story__cards-container {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(120px, 216px));
-    grid-template-rows: repeat(1, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 40px;
-  }
-
-  .story__button {
-    margin: 40px auto 80px;
-    height: 50px;
-  }
-}
-
 @media screen and (max-width: 550px) {
   .story {
     padding: 49px 0 120px;
@@ -501,27 +400,6 @@ section >>> .story__paragraph {
 
   .story__share_local_footer {
     padding: 20px 0;
-  }
-  .story__cards-container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(120px, 216px));
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 40px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .story__cards-container {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(160px, 290px));
-    grid-template-rows: repeat(2, 1fr);
-    grid-row-gap: 30px;
-  }
-
-  .story__button {
-    margin: 40px auto 50px;
-    height: 50px;
   }
 }
 </style>

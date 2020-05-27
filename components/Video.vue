@@ -65,7 +65,6 @@ export default {
   methods: {
     videoStart(evt) {
       evt.target.classList.remove('video__overlay');
-      console.log(evt.target);
     },
     back() {
       this.$store.dispatch('video/priviousVideo');
