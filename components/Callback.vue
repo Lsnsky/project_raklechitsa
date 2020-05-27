@@ -140,7 +140,7 @@ export default {
         'callback/saveAnswers',
         Object.assign({}, this.answers)
       );
-      сonsole.log(this.answers);
+      console.log(this.answers);
       this.toggleCallback();
     },
   },
