@@ -16,16 +16,6 @@
 
 <script>
 export default {
-  props: {
-    /*     totalItems: {
-      type: Number,
-      default: 0,
-    },
-    itemsPerPage: {
-      type: Number,
-      default: 0,
-    }, */
-  },
   data() {
     return {
       active: 1,

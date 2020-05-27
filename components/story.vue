@@ -1,39 +1,42 @@
 <template>
-  <container>
-    <!-- комент -->
+  <div>
     <article class="story">
-      <header class="story__header">
-        <div class="story__wrapper">
-          <img
-            alt
-            class="story__photo"
-            :src="`https://strapi.kruzhok.io${story.ImageUrl[0].url}`"
-          />
-        </div>
-        <h2 class="story__title">
-          <span class="story__span-accent">{{ story.author }}:</span>
-          &laquo;{{ story.title }}&raquo;
-        </h2>
-        <div class="story__data">
-          <button @click="toggleShare" class="story__share">
-            Поделитесь &#8599;
+      <container>
+        <header class="story__header">
+          <div class="story__wrapper">
+            <img
+              alt
+              class="story__photo"
+              :src="`https://strapi.kruzhok.io${story.ImageUrl[0].url}`"
+            />
+          </div>
+          <h2 class="story__title">
+            <span class="story__span-accent">{{ story.author }}:</span>
+            &laquo;{{ story.title }}&raquo;
+          </h2>
+          <div class="story__data">
+            <button @click="toggleShare" class="story__share">
+              Поделитесь &#8599;
+            </button>
+            <p class="story__date">{{ this.data }}</p>
+          </div>
+        </header>
+        <section class="story__body" v-html="story.text"></section>
+        <footer class="story__footer">
+          <button
+            @click="toggleShare"
+            class="link story__share story__share_local_footer"
+          >
+            Поделитесь этой статьей в своих социальных сетях &#8599;
           </button>
-          <p class="story__date">{{ this.data }}</p>
-        </div>
-      </header>
-      <section class="story__body" v-html="story.text"></section>
-      <footer class="story__footer">
-        <button
-          @click="toggleShare"
-          class="link story__share story__share_local_footer"
-        >
-          Поделитесь этой статьей в своих социальных сетях &#8599;
-        </button>
-      </footer>
+        </footer>
+      </container>
     </article>
-    <card-container :stories="this.stories" />
-    <btnhistory class="story__button" />
-  </container>
+    <container>
+      <card-container :stories="this.stories" />
+      <btnhistory class="story__button" />
+    </container>
+  </div>
 </template>
 
 <script>
@@ -114,6 +117,7 @@ export default {
 }
 
 .story {
+  display: flex;
   width: 100%;
   padding: 100px 0 160px;
 }
@@ -238,7 +242,7 @@ section >>> .story__paragraph {
   width: 100%;
   padding: 30px 0;
   margin: 0 auto;
-  background-color: #fbfbfb;
+  background-color: #ffffff;
   justify-content: center;
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;
