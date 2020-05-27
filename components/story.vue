@@ -74,38 +74,30 @@ export default {
         (item, index) => index < 4
       ); */
     },
-    storiesAPI() {
-      return this.$store.getters['storiesData/getStoriesAPI'];
+    stories() {
+      return this.$store.getters['storiesData/getRandomStories'];
     },
     story() {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
   },
-  beforeMount() {
-    if (window.innerWidth > 768) {
-      this.count = 4;
+  async beforeMount() {
+    if (process.browser) {
+      if (window.innerWidth > 768) {
+        await this.$store.dispatch('storiesData/setRandomStories', 4);
+      }
+      if (window.innerWidth <= 768) {
+        await this.$store.dispatch('storiesData/setRandomStories', 3);
+        this.count = 9;
+      }
+      if (window.innerWidth <= 320) {
+        await this.$store.dispatch('storiesData/setRandomStories', 2);
+        this.count = 6;
+      }
     }
-    if (window.innerWidth <= 768) {
-      this.count = 3;
-    }
-    if (window.innerWidth <= 320) {
-      this.count = 2;
-    }
-
     this.data = `${new Date(this.story.date).getDate()} ${
       this.arr[new Date(this.story.date).getMonth()]
     } ${new Date(this.story.date).getFullYear()}`;
-    for (let i = 0; i < this.count; i++) {
-      do {
-        this.stories[i] = this.storiesAPI[
-          Math.floor(Math.random() * this.storiesAPI.length)
-        ];
-      } while (
-        this.stories.some((item, index) => {
-          return index === i ? false : item === this.stories[i];
-        })
-      );
-    }
   },
   mounted() {
     let container = document.querySelector('.story__body');
@@ -132,8 +124,6 @@ export default {
         'ноября',
         'декабря',
       ],
-      count: 4,
-      stories: [],
     };
   },
 };

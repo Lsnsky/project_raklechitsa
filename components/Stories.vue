@@ -45,46 +45,34 @@ export default {
     btnhistory: Button_history,
     panel: Panel,
   },
-  beforeMount() {
+  async beforeMount() {
     if (process.browser) {
       if (window.innerWidth > 768) {
-        this.count = 8;
+        await this.$store.dispatch('storiesData/setRandomStories', 8);
       }
       if (window.innerWidth <= 768) {
+        await this.$store.dispatch('storiesData/setRandomStories', 9);
         this.count = 9;
       }
       if (window.innerWidth <= 320) {
+        await this.$store.dispatch('storiesData/setRandomStories', 6);
         this.count = 6;
       }
     }
-    for (let i = 0; i < this.count; i++) {
-      do {
-        this.stories[i] = this.storiesAPI[
-          Math.floor(Math.random() * this.storiesAPI.length)
-        ];
-      } while (
-        this.stories.some((item, index) => {
-          return index === i ? false : item === this.stories[i];
-        })
-      );
-    }
   },
   computed: {
-    storiesAPI() {
+    /*     storiesAPI() {
       return this.$store.getters['storiesData/getStoriesAPI'];
-    },
+    }, */
     storiesData() {
       return this.$store.getters['blocks/getStoriesBlock'];
     },
     firstPanelData() {
       return this.$store.getters['blocks/getFirstPanelBlock'];
     },
-  },
-  data() {
-    return {
-      count: 8,
-      stories: [],
-    };
+    stories() {
+      return this.$store.getters['storiesData/getRandomStories'];
+    },
   },
 };
 </script>

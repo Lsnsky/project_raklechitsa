@@ -39,11 +39,7 @@
         ></card-story>
       </nuxt-link>
     </div>
-    <pagination
-      :totalItems="storiesData.length"
-      :itemsPerPage="itemsPerPage"
-      @onPageChanged="setCurrentPage"
-    />
+    <pagination @onPageChanged="setCurrentPage" />
   </section>
 </template>
 
@@ -61,49 +57,23 @@ export default {
   },
   methods: {
     getSerch() {
-      this.currentStories.splice(0, this.currentStories.length);
-      this.storiesData.forEach(el => {
-        if (el.author.toLowerCase().includes(this.search)) {
-          this.currentStories.push(el);
-        }
-      });
+      this.$store.dispatch('storiesData/getSerch', this.search);
     },
     setCurrentPage() {
-      this.currentStories.splice(0, this.itemsPerPage);
-      for (
-        let i = this.itemsPerPage * this.currentPage - this.itemsPerPage;
-        i < this.itemsPerPage * this.currentPage;
-        i++
-      ) {
-        if (this.storiesData[i]) {
-          this.currentStories.push(this.storiesData[i]);
-        }
-      }
+      this.$store.dispatch('storiesData/setCurrentPage');
     },
   },
-  beforeMount() {
+  async beforeMount() {
     if (window.innerWidth <= 768) {
-      this.itemsPerPage = 12;
+      await this.$store.commit('storiesData/setItemsPerPage', 12);
     }
     if (window.innerWidth <= 320) {
-      this.itemsPerPage = 9;
+      await this.$store.commit('storiesData/setItemsPerPage', 9);
     }
-    for (
-      let i = this.itemsPerPage * this.currentPage - this.itemsPerPage;
-      i < this.itemsPerPage * this.currentPage;
-      i++
-    ) {
-      let j = i;
-      if (i >= this.itemsPerPage) {
-        let j = i - this.itemsPerPage * this.currentPage;
-      }
-      this.currentStories[j] = this.storiesData[i];
-    }
+    await this.$store.dispatch('storiesData/setCurrentPage');
   },
   data() {
     return {
-      itemsPerPage: 16,
-      currentStories: [],
       search: '',
     };
   },
@@ -128,6 +98,9 @@ export default {
     },
     currentPage() {
       return this.$store.getters['storiesData/getCurrentPage'];
+    },
+    currentStories() {
+      return this.$store.getters['storiesData/getPageStories'];
     },
   },
   // в разработке
