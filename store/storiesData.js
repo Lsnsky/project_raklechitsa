@@ -3,7 +3,8 @@ export const state = () => ({
   id: 0,
   currentPage: 1,
   itemsPerPage: 16,
-  page_stories: [],
+  pageStories: [],
+  randomStories: [],
 });
 
 export const mutations = {
@@ -17,10 +18,13 @@ export const mutations = {
     return (state.currentPage = page);
   },
   setPageStories(state, stories) {
-    return (state.page_stories = stories);
+    return (state.pageStories = stories);
   },
   setItemsPerPage(state, items) {
     return (state.itemsPerPage = items);
+  },
+  setRandomStories(state, stories) {
+    return (state.randomStories = stories);
   },
 };
 export const actions = {
@@ -60,6 +64,22 @@ export const actions = {
     });
     await commit('setPageStories', currentStories);
   },
+  async setRandomStories({ commit, getters }, count) {
+    let randomStories = [];
+    for (let i = 0; i < count; i++) {
+      do {
+        randomStories[i] =
+          getters.getStoriesData[
+            Math.floor(Math.random() * getters.getStoriesData.length)
+          ];
+      } while (
+        randomStories.some((item, index) => {
+          return index === i ? false : item === randomStories[i];
+        })
+      );
+    }
+    await commit('setRandomStories', randomStories);
+  },
 };
 
 export const getters = {
@@ -81,9 +101,12 @@ export const getters = {
     return state.itemsPerPage;
   },
   getPageStories(state) {
-    return state.page_stories;
+    return state.pageStories;
   },
   getTotalItems(state) {
     return state.stories.length;
+  },
+  getRandomStories(state) {
+    return state.randomStories;
   },
 };
