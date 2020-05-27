@@ -32,10 +32,12 @@
         </footer>
       </container>
     </article>
-    <container>
-      <card-container :stories="this.stories" />
-      <btnhistory class="story__button" />
-    </container>
+    <div class="wrapper">
+      <container>
+        <card-container :stories="this.stories" />
+        <btnhistory class="story__button" />
+      </container>
+    </div>
   </div>
 </template>
 
@@ -111,6 +113,9 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  display: flex;
+}
 .story__button {
   margin: 70px auto 100px;
   height: 82px;
