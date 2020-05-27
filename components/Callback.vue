@@ -182,7 +182,6 @@ export default {
 }
 
 .callback__error-massage_input_small {
-  top: 42px;
   left: 0;
 }
 
@@ -284,6 +283,12 @@ export default {
     max-width: 270px;
     margin: 23px 0 0;
   }
+
+  .callback__error-massage {
+    font-size: 10px;
+    line-height: 10px;
+    top: 33px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -300,6 +305,7 @@ export default {
     margin: 0 15px 30px;
     font-size: 13px;
     line-height: 16px;
+    width: calc(100% - 30px);
   }
 
   .callback__main-quest {
@@ -331,6 +337,15 @@ export default {
 
   .callback__quest {
     margin: 0 15px 20px;
+  }
+  .callback__error-massage {
+    font-size: 10px;
+    line-height: 10px;
+    top: 31px;
+    left: 15px;
+  }
+  .callback__error-massage_input_small {
+    left: 0;
   }
 }
 

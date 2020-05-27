@@ -17,14 +17,14 @@
 <script>
 export default {
   props: {
-    totalItems: {
+    /*     totalItems: {
       type: Number,
       default: 0,
     },
     itemsPerPage: {
       type: Number,
       default: 0,
-    },
+    }, */
   },
   data() {
     return {
@@ -34,6 +34,12 @@ export default {
   computed: {
     pageCount() {
       return Math.ceil(this.totalItems / this.itemsPerPage);
+    },
+    itemsPerPage() {
+      return this.$store.getters['storiesData/getItemsPerPage'];
+    },
+    totalItems() {
+      return this.$store.getters['storiesData/getTotalItems'];
     },
   },
   methods: {
