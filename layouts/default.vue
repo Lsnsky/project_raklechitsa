@@ -42,6 +42,7 @@ export default {
     await store.dispatch('blocks/fetchBlocks');
     await store.dispatch('statisticsData/fetchStatistic');
     await store.dispatch('storiesData/fetchStories');
+    await store.dispatch('instagram/fetchPhotos');
   },
 };
 </script>

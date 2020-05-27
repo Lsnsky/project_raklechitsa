@@ -83,9 +83,10 @@ export default {
 
 <style scoped>
 .footer {
-  padding: 60px 60px;
+  padding: 60px 0;
   margin: 0;
   background: #fbfbfb;
+  display: flex;
 }
 
 .footer__container {
@@ -183,7 +184,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .footer {
-    padding: 50px;
+    padding: 50px 0;
   }
 
   .footer__title {
@@ -266,7 +267,7 @@ export default {
 
 @media screen and (max-width: 715px) {
   .footer {
-    padding: 50px 15px;
+    padding: 50px 0;
   }
 
   .footer__wrapper {
