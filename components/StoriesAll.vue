@@ -79,8 +79,8 @@ export default {
     currentStories() {
       return this.$store.getters['storiesData/getPageStories'];
     },
-  },
-};
+  };
+}
 </script>
 
 <style scoped>
