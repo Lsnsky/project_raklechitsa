@@ -49,6 +49,7 @@
           <a
             href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
             class="video__link"
+            target="_blank"
             >{{ videoData.note }}</a
           >
         </p>

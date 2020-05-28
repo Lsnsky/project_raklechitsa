@@ -11,10 +11,10 @@
     :noValidate="false"
   >
     <p v-if="id < 13" class="questionnaire__question">
-      <question class="questionnaire__mainquestion">{{
-        question.mainQest
-      }}</question
-      ><span class="questionnaire__subquestion">{{ question.qest }}</span>
+      <question class="questionnaire__mainquestion">
+        {{ question.mainQest }}
+      </question>
+      <span class="questionnaire__subquestion">{{ question.qest }}</span>
     </p>
     <main-input
       v-if="id < 13 && id !== 11"
@@ -39,37 +39,32 @@
       class="questionnaire__input"
       @input="checkValidity"
     />
-    <p class="questionnaire__error-massage">
-      {{ this.error }}
-    </p>
+    <p class="questionnaire__error-massage">{{ this.error }}</p>
     <main-button
       v-if="id < 13"
       class="questionnaire__back"
       color="none"
       :disabled="this.id === 0"
       @buttonClick="previousQuestion"
+      >Назад</main-button
     >
-      Назад
-    </main-button>
     <main-button
       v-if="this.id < 13"
       class="questionnaire__further"
       color="purple"
       type="submit"
       :disabled="!this.validity"
+      >{{ buttonNext() }}</main-button
     >
-      {{ buttonNext() }}
-    </main-button>
     <main-button
       v-else
       class="questionnaire__further questionnaire__further_step_last"
       color="purple"
       :disabled="false"
       @buttonClick="closeQuestionnaire"
+      >Закрыть</main-button
     >
-      Закрыть
-    </main-button>
-    <policy v-if="id === 12" class="questionnaire__politica"> </policy>
+    <policy v-if="id === 12" class="questionnaire__politica"></policy>
   </popup>
 </template>
 
@@ -171,9 +166,6 @@ export default {
     this.validity = document.forms.Questionnaire.querySelector(
       'input'
     ).validity.valid;
-    console.log(
-      document.forms.Questionnaire.querySelector('input').validity.valid
-    );
   },
 };
 </script>
