@@ -7,7 +7,24 @@
 
 <script>
 export default {
-  props: ['valueEmpty', 'maxValueEmpty', 'valueFill', 'maxValueFill'],
+  props: {
+    valueEmpty: {
+      type: Number,
+      default: 0,
+    },
+    maxValueEmpty: {
+      type: Number,
+      default: 0,
+    },
+    valueFill: {
+      type: Number,
+      default: 0,
+    },
+    maxValueFill: {
+      type: Number,
+      default: 0,
+    },
+  },
   computed: {
     styleEmpty() {
       return `width: ${(this.valueEmpty / this.maxValueEmpty) * 100}%;`;

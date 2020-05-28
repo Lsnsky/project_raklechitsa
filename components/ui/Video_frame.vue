@@ -4,13 +4,16 @@
     :src="url"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen
-  >
-  </iframe>
+  ></iframe>
 </template>
 
 <script>
 export default {
-  props: ['url'],
+  props: {
+    url: {
+      type: String,
+    },
+  },
 };
 </script>
 

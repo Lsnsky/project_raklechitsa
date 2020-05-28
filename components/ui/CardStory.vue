@@ -10,7 +10,17 @@
 
 <script>
 export default {
-  props: ['url', 'history_title', 'history_text'],
+  props: {
+    url: {
+      type: String,
+    },
+    history_title: {
+      type: String,
+    },
+    history_text: {
+      type: String,
+    },
+  },
 };
 </script>
 
