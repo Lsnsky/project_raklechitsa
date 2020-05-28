@@ -1,8 +1,10 @@
 <template>
-  <section class="cover">
+  <section class="cover" ref="section">
     <h2 class="cover__title">{{ coverData.hashtag }}</h2>
     <div class="cover__button">
-      <a href="#video"> <button-down /></a>
+      <a href="#video" @click.prevent="scroll">
+        <button-down class="botton__down"
+      /></a>
     </div>
   </section>
 </template>
@@ -18,10 +20,23 @@ export default {
       return this.$store.getters['blocks/getCoverBlock'];
     },
   },
+  methods: {
+    scroll() {
+      this.$refs.section.nextElementSibling.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    },
+  },
 };
 </script>
 
 <style scoped>
+.button__down:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: transform 0.7s ease-in-out;
+}
 .cover {
   min-height: calc(100vh - 76px);
   background-color: #613a93;
@@ -45,6 +60,9 @@ export default {
   bottom: 40px;
 }
 @media screen and (max-width: 1280px) {
+  .cover {
+    min-height: calc(100vh - 72px);
+  }
   .cover__title {
     font-size: 78px;
   }
@@ -56,6 +74,9 @@ export default {
   }
 
   @media screen and (max-width: 530px) {
+    .cover {
+      min-height: calc(100vh - 64px);
+    }
     .cover__title {
       font-size: 36px;
     }
