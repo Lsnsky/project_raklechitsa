@@ -146,7 +146,7 @@ export const getters = {
     return state.id;
   },
   getCurrentAnswer(state) {
-    return state.answers[state.questions[state.id].mainQest];
+    return state.answers[state.questions[state.id].key];
   },
   getAnswers(state) {
     return state.answers;
