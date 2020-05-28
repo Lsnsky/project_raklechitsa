@@ -54,16 +54,14 @@ export default {
 
 <style scoped>
 .header {
-  padding: 18px 0;
+  padding: 18px 60px;
   margin: 0;
   border-bottom: 1px solid #e8e8e8;
-  display: flex;
 }
 
 .header__container {
   display: flex;
   justify-content: space-between;
-  border: 1px solid red;
 }
 
 .header__hider {
@@ -108,7 +106,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .header {
-    padding: 18px 0;
+    padding: 18px 50px;
   }
 
   .header__title {
@@ -183,7 +181,7 @@ export default {
 
 @media screen and (max-width: 460px) {
   .header {
-    padding: 18px 0 17px;
+    padding: 18px 15px 17px;
   }
 
   .header__hider {

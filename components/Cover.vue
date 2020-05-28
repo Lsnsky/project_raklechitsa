@@ -2,13 +2,9 @@
   <section class="cover" ref="section">
     <h2 class="cover__title">{{ coverData.hashtag }}</h2>
     <div class="cover__button">
-      <<<<<<< HEAD
-      <a href="#video" @click.prevent="$emit('scrollClick')">
-        <button-down
+      <a href="#video" @click.prevent="scroll">
+        <button-down class="botton__down"
       /></a>
-      =======
-      <a href="#video" @click.prevent="scroll"> <button-down /></a>
-      >>>>>>> dev
     </div>
   </section>
 </template>
@@ -36,6 +32,11 @@ export default {
 </script>
 
 <style scoped>
+.button__down:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: transform 0.7s ease-in-out;
+}
 .cover {
   min-height: calc(100vh - 76px);
   background-color: #613a93;

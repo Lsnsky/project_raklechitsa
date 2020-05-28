@@ -1,15 +1,11 @@
 <template>
   <section class="cover-about">
-    <container>
-      <h2 class="cover-about__title">{{ aboutData.hashtag }}</h2>
-      <div class="content">
+    <h2 class="cover-about__title">{{ aboutData.hashtag }}</h2>
+    <div class="content">
+      <container class="container">
         <div class="content__about">
           <h3 class="content__about-title">{{ aboutData.title }}</h3>
-          <p class="content__about-paragraph">
-            Этот проект был создан благотворительным фондом Константина
-            Хабенского.
-          </p>
-          <!-- <p class="content__about-paragraph" v-html="aboutData.text"></p>  Должно быть так-->
+          <div class="content__about-paragraph" v-html="aboutData.text"></div>
         </div>
         <div class="content__columns">
           <div id="app" class="content__columns-description">
@@ -29,34 +25,21 @@
             </p>
           </div>
           <div class="content__columns-main-text">
-            <p v-if="!isActive" class="content__columns-text">
-              Есть вещи, которые не лечатся. Особенности характера, страстные
-              увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
-              приобрели в детстве. Список можно продолжать до бесконечности, но
-              одна болезнь в него точно не войдет. Эта болезнь — рак. Рак
-              лечится, и лучшее доказательство — люди с их неизлечимыми
-              особенностями, которые сумели победить рак.
-            </p>
-            <p v-if="!isActive" class="content__columns-text">
-              Рак лечится — проект Благотворительного Фонда Константина
-              Хабенского и Leo Burnett Moscow. С его помощью мы надеемся
-              изменить отношение людей к раку и заставить каждого поверить:
-              онкологическое заболевание — это не приговор.
-            </p>
-            <!--      <p v-if="!isActive" class="content__columns-text" v-html="aboutData.extraTexts[0].text"></p>  Должно быть так-->
-            <p v-else-if="isActive" class="content__columns-text-2">
-              Благотворительный Фонд Константина Хабенского с 2008 года помогает
-              детям с онкологическими и другими тяжелыми заболеваниями головного
-              мозга. Фонд не только поддерживает семью заболевшего ребенка в
-              самый сложный момент, оплачивая обследования, лечение и
-              медицинские препараты, но и в целом меняет систему оказания помощи
-              детям с опухолями мозга в России.
-            </p>
-            <!-- <p v-else-if="isActive" class="content__columns-text-2" v-html="aboutData.extraTexts[1].text"></p> Должно быть так-->
+            <p
+              v-if="!isActive"
+              class="content__columns-text"
+              v-html="aboutData.extraTexts[0].text"
+            ></p>
+
+            <p
+              v-else-if="isActive"
+              class="content__columns-text-2"
+              v-html="aboutData.extraTexts[1].text"
+            ></p>
           </div>
         </div>
-      </div>
-    </container>
+      </container>
+    </div>
   </section>
 </template>
 
@@ -88,11 +71,23 @@ export default {
 </script>
 
 <style scoped>
+.content__columns-text >>> p {
+  margin: 0;
+}
+.content__columns-text-2 >>> p {
+  margin: 0;
+}
+.content__about-paragraph >>> p {
+  margin: 0;
+}
 .cover-about {
   background-color: #613a93;
-  padding: 0 60px;
+  padding: 0;
   display: flex;
   flex-direction: column;
+}
+.container {
+  display: flex;
 }
 .cover-about__title {
   max-width: 720px;
@@ -107,6 +102,7 @@ export default {
 }
 .content {
   display: flex;
+  padding: 0;
 }
 .content__about {
   display: flex;
@@ -198,9 +194,7 @@ export default {
 }
 @media screen and (max-width: 1280px) {
   .cover-about {
-    padding: 50px;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
   }
 
   .cover-about__title {
@@ -285,6 +279,10 @@ export default {
   .content__columns {
     flex-direction: column;
     margin: 0 auto 0;
+  }
+  .container {
+    flex-direction: column;
+    padding: 0;
   }
   .content {
     flex-direction: column;

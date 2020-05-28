@@ -1,7 +1,8 @@
 <template>
   <section class="story-input">
-    <container class="container">
-      <div class="content">
+    <!-- <container class="container"> -->
+    <div class="content">
+      <container class="container">
         <div class="content__about">
           <h2 class="content__about-title">{{ storyData.title }}</h2>
           <p class="content__about-paragraph" v-html="storyData.text"></p>
@@ -46,8 +47,9 @@
             >
           </div>
         </div>
-      </div>
-    </container>
+      </container>
+    </div>
+    <!-- </container> -->
   </section>
 </template>
 <script>
@@ -103,12 +105,13 @@ export default {
   margin-bottom: 100px;
   padding: 0;
   margin: 0;
-}
-.container {
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   background-color: #f7f7f7;
-  border: 1px red solid;
+}
+.container {
+  display: flex;
 }
 .text-container {
   max-width: 640px;
@@ -129,7 +132,7 @@ export default {
 .content__about {
   display: flex;
   flex-direction: column;
-  margin-right: 47px;
+  margin-right: 60px;
 }
 .content__about-title {
   width: 413px;
@@ -169,7 +172,6 @@ export default {
   line-height: 22px;
   color: #000;
   margin-top: 0;
-  margin-bottom: 10px;
   cursor: pointer;
   display: block;
 }
@@ -220,6 +222,7 @@ export default {
 @media screen and (max-width: 1280px) {
   .story-input {
     padding: 0;
+    margin-bottom: 90px;
   }
 
   .content {
@@ -246,7 +249,7 @@ export default {
     max-width: 570px;
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1090px) {
   .content__about-title {
     font-size: 24px;
     line-height: 28px;
@@ -275,10 +278,15 @@ export default {
     line-height: 19px;
     width: 90px;
   }
-
+  .story-input {
+    margin-bottom: 80px;
+  }
   .story-button {
     width: 230px;
     height: 46px;
+  }
+  .content__columns {
+    margin-top: 186px;
   }
 }
 @media screen and (max-width: 960px) {
@@ -296,6 +304,10 @@ export default {
   .content {
     flex-direction: column;
     padding-bottom: 80px;
+  }
+  .container {
+    flex-direction: column;
+    padding: 0;
   }
   .columns__link-1 {
     margin: 0 0 30px;
@@ -345,7 +357,8 @@ export default {
     height: 40px;
   }
   .content {
-    padding: 0 15px 50px;
+    padding: 0;
+    padding-bottom: 50px;
   }
   .content__about {
     padding: 0;
