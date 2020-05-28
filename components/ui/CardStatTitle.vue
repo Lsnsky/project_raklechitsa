@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <div class="card__title">{{ title }}</div>
+  <div class="card__title">
+    {{ title }}
   </div>
 </template>
 
 <script>
 export default {
-  props: ['title'],
+  props: {
+    title: {
+      type: String,
+    },
+  },
 };
 </script>
 

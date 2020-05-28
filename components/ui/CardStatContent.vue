@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <div class="card__content">{{ content }}</div>
+  <div class="card__content">
+    {{ content }}
   </div>
 </template>
 
 <script>
 export default {
-  props: ['content'],
+  props: {
+    content: {
+      type: String,
+    },
+  },
 };
 </script>
 

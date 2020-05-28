@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <div class="card__source">{{ source }}</div>
-  </div>
+  <div class="card__source">>{{ source }}</div>
 </template>
 
 <script>
 export default {
-  props: ['source'],
+  props: {
+    source: {
+      type: String,
+    },
+  },
 };
 </script>
 
