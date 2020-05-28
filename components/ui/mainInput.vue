@@ -1,6 +1,7 @@
 <template>
   <input
     :required="required"
+    :pattern="pattern"
     :class="[
       'input',
       {
@@ -12,7 +13,6 @@
     :placeholder="placeholder"
     :type="type"
     autofocus
-    :pattern="pattern"
     @input="handleInput"
     v-model="content"
   />

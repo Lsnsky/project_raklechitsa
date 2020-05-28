@@ -58,7 +58,7 @@ export const actions = {
   async getSerch({ commit, getters }, search) {
     let currentStories = [];
     await getters.getStoriesData.forEach(el => {
-      if (el.author.toLowerCase().includes(search)) {
+      if (el.author.toLowerCase().includes(search.toLowerCase())) {
         currentStories.push(el);
       }
     });

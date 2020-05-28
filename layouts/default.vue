@@ -1,6 +1,6 @@
 <template>
   <div
-    @keydown.esc="closeQuestionnaire"
+    @keydown.esc="closeAll"
     :class="[
       {
         body_noscroll: getCallbackState,
@@ -28,8 +28,10 @@ export default {
     share: Share_popup,
   },
   methods: {
-    closeQuestionnaire() {
+    closeAll() {
       this.$store.commit('questionnaire/closeQuestionnaire');
+      this.$store.commit('callback/closeCallback');
+      this.$store.commit('share-popup/closeSharePopup');
     },
   },
   computed: {

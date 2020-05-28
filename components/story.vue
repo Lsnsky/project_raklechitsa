@@ -161,6 +161,7 @@ section >>> .story__span-accent {
   font-size: 18px;
   line-height: 24px;
   font-weight: normal;
+  outline: none;
   color: #121212;
   background-color: inherit;
   border: none;
