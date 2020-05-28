@@ -12,7 +12,7 @@
       class="popup__container"
       @submit.prevent="$emit('formSubmit')"
       :name="formName"
-      novalidate
+      :novalidate="noValidate"
     >
       <h2 :class="`popup__title popup__title_position_${titlePosition}`">
         {{ titleText }}
@@ -48,6 +48,7 @@ export default {
     titlePosition: { type: String, default: 'left' },
     isItForm: { type: Boolean, default: false },
     formName: { type: String },
+    noValidate: { type: Boolean, default: true },
   },
   components: {
     overlay: Overlay,
