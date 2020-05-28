@@ -99,7 +99,6 @@ export default {
 }
 
 .cards-story__title {
-  font-family: Inter;
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
@@ -174,7 +173,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .card-story__panel-text {
     font-size: 16px;
     line-height: 18px;
@@ -196,6 +195,9 @@ export default {
   }
   .cards-story__button {
     margin: 40px auto 0;
+  }
+  .cards-story >>> .container {
+    padding: 0px 15px;
   }
 }
 </style>
