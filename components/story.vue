@@ -189,7 +189,7 @@ section >>> .story__span-accent {
   font-weight: 500;
   max-width: 100%;
   margin: 0 auto 70px;
-  padding: 0 19.5%;
+  padding: 0 20.5%;
   box-sizing: border-box;
 }
 
@@ -221,6 +221,9 @@ section >>> .story__paragraph {
 }
 
 @media screen and (max-width: 1400px) {
+  .story {
+    padding: 100px 0 150px;
+  }
   .story__title {
     font-size: 34px;
     line-height: 44px;
@@ -239,6 +242,10 @@ section >>> .story__paragraph {
   .story__header {
     grid-template-columns: minmax(518px, 540px) 1fr;
   }
+
+  .story__body {
+    padding: 0 19.5%;
+  }
 }
 
 @media screen and (max-width: 1280px) {
@@ -253,7 +260,7 @@ section >>> .story__paragraph {
 }
 @media screen and (max-width: 1140px) {
   .story {
-    padding: 100px 0 120px;
+    padding: 100px 0 110px;
   }
 
   .story__title {
@@ -281,7 +288,7 @@ section >>> .story__paragraph {
   }
 
   .story__body {
-    margin-bottom: 46px;
+    margin-bottom: 40px;
     padding: 0 15.4%;
   }
 
@@ -305,7 +312,7 @@ section >>> .story__paragraph {
 
 @media screen and (max-width: 940px) {
   .story {
-    padding: 80px 0 120px;
+    padding: 80px 0 110px;
   }
 
   .story__header {
@@ -354,7 +361,7 @@ section >>> .story__paragraph {
 
 @media screen and (max-width: 550px) {
   .story {
-    padding: 49px 0 120px;
+    padding: 49px 0 100px;
   }
 
   .story__header {
