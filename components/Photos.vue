@@ -170,6 +170,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .photos__cards {
+    grid-template-columns: repeat(4, minmax(120px, 136px));
     grid-gap: 20px;
   }
   .photos__title {
@@ -239,7 +240,7 @@ export default {
     margin: 50px 0;
   }
   .photos__cards {
-    grid-template-columns: repeat(2, minmax(140px, 180px));
+    grid-template-columns: repeat(2, minmax(140px, 250px));
     grid-gap: 15px;
   }
 }
@@ -252,8 +253,7 @@ export default {
     padding: 0px 15px;
   }
   .photos__cards {
-    grid-template-rows: repeat(4, 140px);
-    grid-template-columns: repeat(2, 140px);
+    grid-template-columns: repeat(2, minmax(140px, 250px));
     grid-gap: 10px;
     margin: 0 auto;
   }
