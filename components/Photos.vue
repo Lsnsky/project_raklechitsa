@@ -112,7 +112,7 @@ export default {
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-rows: repeat(2, minmax(171px, 195px));
+  /* grid-template-rows: repeat(2, minmax(171px, 195px)); */
   grid-template-columns: repeat(4, minmax(171px, 195px));
   grid-gap: 30px;
 }
@@ -150,8 +150,8 @@ export default {
     margin: 90px 0;
   }
   .photos__cards {
-    grid-template-rows: repeat(2, minmax(136px, 1fr));
-    grid-template-columns: repeat(4, minmax(136px, 1fr));
+    /* grid-template-rows: repeat(2, minmax(136px, 171px)); */
+    grid-template-columns: repeat(4, minmax(136px, 171px));
     grid-gap: 27px;
   }
   .photos__title {
@@ -207,8 +207,8 @@ export default {
 
 @media screen and (max-width: 880px) {
   .photos__cards {
-    grid-template-rows: repeat(2, minmax(120px, 1fr));
-    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    /* grid-template-rows: repeat(2, minmax(120px, 171px)); */
+    grid-template-columns: repeat(4, minmax(120px, 171px));
     margin: 0 auto;
   }
   .photos__content {
@@ -244,8 +244,8 @@ export default {
     margin: 50px 0;
   }
   .photos__cards {
-    grid-template-rows: repeat(4, minmax(140px, 1fr));
-    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    /* grid-template-rows: repeat(4, minmax(140px, 180px)); */
+    grid-template-columns: repeat(2, minmax(140px, 180px));
     grid-gap: 15px;
   }
 }

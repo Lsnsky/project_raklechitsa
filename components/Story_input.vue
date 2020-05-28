@@ -1,6 +1,5 @@
 <template>
   <section class="story-input">
-    <!-- <container class="container"> -->
     <div class="content">
       <container class="container">
         <div class="content__about">
@@ -49,7 +48,6 @@
         </div>
       </container>
     </div>
-    <!-- </container> -->
   </section>
 </template>
 <script>
