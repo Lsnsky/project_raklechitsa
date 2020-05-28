@@ -2,9 +2,7 @@
   <section class="photos">
     <container class="photos__container">
       <panel class="photos__panel-container">
-        <div class="photos__panel-text">
-          {{ secondPanelData.title }}
-        </div>
+        <div class="photos__panel-text">{{ secondPanelData.title }}</div>
         <div class="photos__panel-hashtag">{{ secondPanelData.hashtag }}</div>
       </panel>
       <div class="photos__content">
@@ -108,11 +106,10 @@ export default {
   width: 100%;
 }
 .photos__cards {
-  margin: 0 0 0 10px;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
-  /* grid-template-rows: repeat(2, minmax(171px, 195px)); */
   grid-template-columns: repeat(4, minmax(171px, 195px));
   grid-gap: 30px;
 }
@@ -150,7 +147,6 @@ export default {
     margin: 90px 0;
   }
   .photos__cards {
-    /* grid-template-rows: repeat(2, minmax(136px, 171px)); */
     grid-template-columns: repeat(4, minmax(136px, 171px));
     grid-gap: 27px;
   }
@@ -207,7 +203,6 @@ export default {
 
 @media screen and (max-width: 880px) {
   .photos__cards {
-    /* grid-template-rows: repeat(2, minmax(120px, 171px)); */
     grid-template-columns: repeat(4, minmax(120px, 171px));
     margin: 0 auto;
   }
@@ -244,7 +239,6 @@ export default {
     margin: 50px 0;
   }
   .photos__cards {
-    /* grid-template-rows: repeat(4, minmax(140px, 180px)); */
     grid-template-columns: repeat(2, minmax(140px, 180px));
     grid-gap: 15px;
   }
