@@ -50,6 +50,7 @@ export default {
       buttonsCount: 5,
       pageCount: 0,
       pages: [],
+      allPages: [],
     };
   },
   beforeMount() {
@@ -62,15 +63,10 @@ export default {
       }
     }
     this.pageCount = Math.ceil(this.totalItems / this.itemsPerPage);
-    if (this.buttonsCount >= this.pageCount) {
-      for (let i = 1; i <= this.pageCount; i++) {
-        this.pages.push(i);
-      }
-    } else {
-      for (let i = 1; i <= this.buttonsCount; i++) {
-        this.pages.push(i);
-      }
+    for (let i = 1; i <= this.pageCount; i++) {
+      this.allPages.push(i);
     }
+    this.pages = this.allPages.slice(0, this.buttonsCount);
   },
   computed: {
     itemsPerPage() {
@@ -118,46 +114,33 @@ export default {
     sliceButtons(item) {
       if (this.buttonsCount < this.pageCount) {
         if (item === 'first') {
-          this.pages.splice(0);
-          for (let i = 1; i <= this.buttonsCount; i++) {
-            this.pages.push(i);
-          }
+          this.pages = this.allPages.slice(0, this.buttonsCount);
           return;
         }
         if (item === 'last') {
-          this.pages.splice(0);
-          for (
-            let i = this.pageCount - this.buttonsCount + 1;
-            i <= this.pageCount;
-            i++
-          ) {
-            this.pages.push(i);
-          }
+          this.pages = this.allPages.slice(
+            this.pageCount - this.buttonsCount,
+            this.allPages.length
+          );
           return;
         }
         if (this.buttonsCount === 5) {
           if (this.active > 2 && this.active < this.pageCount - 1) {
-            this.pages.splice(0);
-            for (let i = this.active - 2; i <= this.active + 2; i++) {
-              this.pages.push(i);
-            }
+            this.pages = this.allPages.slice(this.active - 3, this.active + 2);
           }
+          return;
         }
         if (this.buttonsCount === 4) {
           if (this.active > 2 && this.active < this.pageCount) {
-            this.pages.splice(0);
-            for (let i = this.active - 2; i <= this.active + 1; i++) {
-              this.pages.push(i);
-            }
+            this.pages = this.allPages.slice(this.active - 3, this.active + 1);
           }
+          return;
         }
         if (this.buttonsCount === 3) {
           if (this.active > 1 && this.active < this.pageCount) {
-            this.pages.splice(0);
-            for (let i = this.active - 1; i <= this.active + 1; i++) {
-              this.pages.push(i);
-            }
+            this.pages = this.allPages.slice(this.active - 2, this.active + 1);
           }
+          return;
         }
       }
     },

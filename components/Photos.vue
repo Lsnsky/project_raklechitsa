@@ -248,9 +248,13 @@ export default {
     grid-gap: 15px;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .photos {
     margin: 50px 0;
+  }
+
+  .photos >>> .container {
+    padding: 0px 15px;
   }
   .photos__cards {
     grid-template-rows: repeat(4, 140px);
