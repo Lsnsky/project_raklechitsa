@@ -65,7 +65,6 @@ export default {
 </script>
 
 <style scoped>
-/* коммит */
 .photos {
   display: flex;
   margin: 100px 0;
