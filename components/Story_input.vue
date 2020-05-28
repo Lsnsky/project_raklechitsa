@@ -1,28 +1,24 @@
 <template>
   <section class="story-input">
-    <container>
-      <div class="content">
+    <!-- <container class="container"> -->
+    <div class="content">
+      <container class="container">
         <div class="content__about">
           <h2 class="content__about-title">{{ storyData.title }}</h2>
-          <p class="content__about-paragraph">
-            Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
-            поделиться своей историей неизлечимых привычек, навязчивых идей и
-            болезненных привязанностей.
-          </p>
-          <!-- <p class="content__about-paragraph" v-html="storyData.text"></p> Должно быть так -->
+          <p class="content__about-paragraph" v-html="storyData.text"></p>
         </div>
         <div class="content__columns">
           <div id="app" class="content__columns-description">
             <p
               @click="clickOn"
-              class="content__columns_link-1"
+              class="columns__link-1"
               :class="{ noActive: isActive, active: !isActive }"
             >
               {{ storyData.extraTexts[0].title }}
             </p>
             <p
               @click="clickOff"
-              class="content__columns_link-2"
+              class="columns__link-2"
               :class="{ active: isActive, noActive: !isActive }"
             >
               {{ storyData.extraTexts[1].title }}
@@ -30,18 +26,17 @@
           </div>
           <div class="content__columns-main-text">
             <div class="text-container">
-              <p v-if="!isActive" class="content__columns-text">
-                Заполнить подробную форму прямо на сайте и мы опубликуем вашу
-                историю после проверки. Пожалуйста, заполняйте все пункты
-                корректно, если вы испытаете какие-то сложности, воспользуйтесь
-                2-м вариантом.
-              </p>
-              <!-- <p v-if="!isActive" class="content__columns-text" v-html="storyData.extraTexts[0].text" ></p> Должно быть так-->
-              <p v-else-if="isActive" class="content__columns-text-2">
-                Оставить контакт (почту или номер телефона) и мы свяжемся с
-                вами, зададим вопросы, уточним детали вашей истории.
-              </p>
-              <!--  <p v-else-if="isActive" class="content__columns-text-2" v-html="storyData.extraTexts[1].text"></p> Должно быть тak -->
+              <p
+                v-if="!isActive"
+                class="content__columns-text"
+                v-html="storyData.extraTexts[0].text"
+              ></p>
+
+              <p
+                v-else-if="isActive"
+                class="content__columns-text-2"
+                v-html="storyData.extraTexts[1].text"
+              ></p>
             </div>
             <story-button
               @buttonClick="popupOpen"
@@ -52,8 +47,9 @@
             >
           </div>
         </div>
-      </div>
-    </container>
+      </container>
+    </div>
+    <!-- </container> -->
   </section>
 </template>
 <script>
@@ -96,12 +92,26 @@ export default {
 </script>
 
 <style scoped>
+.content__columns-text >>> p {
+  margin: 0;
+}
+.content__columns-text-2 >>> p {
+  margin: 0;
+}
+.content__about-paragraph >>> p {
+  margin: 0;
+}
 .story-input {
+  margin-bottom: 100px;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 100px;
   background-color: #f7f7f7;
-  padding: 0 60px;
+}
+.container {
+  display: flex;
 }
 .text-container {
   max-width: 640px;
@@ -122,6 +132,7 @@ export default {
 .content__about {
   display: flex;
   flex-direction: column;
+  margin-right: 60px;
 }
 .content__about-title {
   width: 413px;
@@ -153,7 +164,7 @@ export default {
   display: flex;
   margin-top: 204px;
 }
-.content__columns_link-1 {
+.columns__link-1 {
   width: 106px;
   font-style: normal;
   font-weight: 500;
@@ -161,15 +172,14 @@ export default {
   line-height: 22px;
   color: #000;
   margin-top: 0;
-  margin-bottom: 10px;
   cursor: pointer;
   display: block;
 }
-.content__columns_link-1:hover {
+.columns__link-1:hover {
   opacity: 0.7;
 }
 
-.content__columns_link-2 {
+.columns__link-2 {
   width: 108px;
   font-style: normal;
   font-weight: normal;
@@ -179,7 +189,7 @@ export default {
   color: #a2a2a2;
   cursor: pointer;
 }
-.content__columns_link-2:hover {
+.columns__link-2:hover {
   opacity: 0.7;
 }
 
@@ -211,9 +221,8 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .story-input {
-    padding: 50px;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
+    margin-bottom: 90px;
   }
 
   .content {
@@ -240,7 +249,7 @@ export default {
     max-width: 570px;
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1090px) {
   .content__about-title {
     font-size: 24px;
     line-height: 28px;
@@ -259,20 +268,25 @@ export default {
     line-height: 19px;
     margin-left: 30px;
   }
-  .content__columns_link-1 {
+  .columns__link-1 {
     font-size: 15px;
     line-height: 19px;
     width: 89px;
   }
-  .content__columns_link-2 {
+  .columns__link-2 {
     font-size: 15px;
     line-height: 19px;
     width: 90px;
   }
-
+  .story-input {
+    margin-bottom: 80px;
+  }
   .story-button {
     width: 230px;
     height: 46px;
+  }
+  .content__columns {
+    margin-top: 186px;
   }
 }
 @media screen and (max-width: 960px) {
@@ -291,11 +305,15 @@ export default {
     flex-direction: column;
     padding-bottom: 80px;
   }
-  .content__columns_link-1 {
+  .container {
+    flex-direction: column;
+    padding: 0;
+  }
+  .columns__link-1 {
     margin: 0 0 30px;
     margin-right: 30px;
   }
-  .content__columns_link-2 {
+  .columns__link-2 {
     margin: 0 0 30px;
   }
   .content__about-title {
@@ -339,7 +357,8 @@ export default {
     height: 40px;
   }
   .content {
-    padding: 0 15px 50px;
+    padding: 0;
+    padding-bottom: 50px;
   }
   .content__about {
     padding: 0;
@@ -359,14 +378,14 @@ export default {
     line-height: 16px;
     max-width: 295px;
   }
-  .content__columns_link-1 {
+  .columns__link-1 {
     width: 77px;
     font-size: 13px;
     line-height: 19px;
     margin: 0 0 20px;
     margin-right: 16px;
   }
-  .content__columns_link-2 {
+  .columns__link-2 {
     width: 78px;
     font-size: 13px;
     line-height: 19px;
