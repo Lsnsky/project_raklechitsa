@@ -4,21 +4,22 @@
       <h2 class="cards-story__title" @click="setCurrentPage">
         Истории неизлечимых привычек
       </h2>
-      <div class="cards-story__search">
+      <form class="cards-story__search" @submit.prevent="getSerch">
         <input-search
           class="cards-story__search-input"
           :bordered="true"
           v-model="search"
           placeholder="Введите имя"
+          @input="checkValidity"
         />
         <button-search
           color="purple"
           :disabled="!this.search.length > 0"
           class="cards-story__search-button"
-          @buttonClick="getSerch"
+          type="submit"
           >Поиск</button-search
         >
-      </div>
+      </form>
       <card-container :stories="this.currentStories" />
 
       <pagination @onPageChanged="setCurrentPage" />
@@ -43,6 +44,12 @@ export default {
     container: Container,
   },
   methods: {
+    checkValidity() {
+      if (this.search.length === 0) {
+        this.setCurrentPage();
+        console.log('refresh');
+      }
+    },
     getSerch() {
       this.$store.dispatch('storiesData/getSerch', this.search);
     },
