@@ -130,9 +130,8 @@ export default {
   height: 100%;
 }
 .video {
-  margin: 100px 0 74px;
+  padding: 100px 0 74px;
   display: flex;
-  padding: 0;
 }
 
 .video__container {
@@ -214,7 +213,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .video {
-    margin: 90px 0 64px;
+    padding: 90px 0 64px;
   }
 
   .video__title {
@@ -245,7 +244,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .video {
-    margin: 80px 0 54px;
+    padding: 80px 0 54px;
   }
   .video__title {
     font-size: 24px;
@@ -270,7 +269,7 @@ export default {
 
 @media screen and (max-width: 899px) {
   .video {
-    margin: 72px 0 44px;
+    padding: 72px 0 44px;
   }
 
   .video__container {
@@ -324,7 +323,7 @@ export default {
 
 @media screen and (max-width: 525px) {
   .video {
-    margin: 50px 0;
+    padding: 50px 0;
   }
 
   .video__title {

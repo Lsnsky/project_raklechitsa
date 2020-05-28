@@ -54,9 +54,10 @@ export default {
 
 <style scoped>
 .header {
-  padding: 18px 60px;
+  padding: 18px 0;
   margin: 0;
   border-bottom: 1px solid #e8e8e8;
+  display: flex;
 }
 
 .header__container {
@@ -106,7 +107,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .header {
-    padding: 18px 50px;
+    padding: 18px 0;
   }
 
   .header__title {
@@ -130,7 +131,6 @@ export default {
 
 @media screen and (max-width: 805px) {
   .header__container {
-    display: flex;
     flex-direction: column-reverse;
     position: relative;
   }
@@ -181,7 +181,7 @@ export default {
 
 @media screen and (max-width: 460px) {
   .header {
-    padding: 18px 15px 17px;
+    padding: 18px 0 17px;
   }
 
   .header__hider {
