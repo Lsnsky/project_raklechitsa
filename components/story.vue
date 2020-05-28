@@ -33,7 +33,7 @@
     </container>
   </article>
 
-  <!-- <div class="story__cards-container">
+  <div class="story__cards-container">
     <container>
       <nuxt-link
         class="story__cards-link"
@@ -47,8 +47,8 @@
         ></card-story>
       </nuxt-link>
     </container>
-  </div>  
-    <btnhistory class="story__button" /> -->
+  </div>
+  <btnhistory class="story__button" />
 </template>
 
 <script>
@@ -169,7 +169,6 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  /*padding-top: 100%;*/
   grid-row: span 2;
   background-color: #ededed;
 }
