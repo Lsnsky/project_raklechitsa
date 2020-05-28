@@ -99,7 +99,6 @@ export default {
       this.active = this.currentPage;
     },
     async scrollRight() {
-      console.log(this.active);
       if (this.active < this.pageCount) {
         await this.$store.commit('storiesData/setPage', this.active + 1);
         this.$emit('onPageChanged', this.active);
