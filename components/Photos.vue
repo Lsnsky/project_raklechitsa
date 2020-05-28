@@ -98,8 +98,7 @@ export default {
   max-width: 340px;
   width: 100%;
   margin-top: 32px;
-  margin-bottom: 0px;
-  margin-right: 110px;
+  margin-bottom: 0;
 }
 .photos__content {
   display: flex;
@@ -108,12 +107,11 @@ export default {
   width: 100%;
 }
 .photos__cards {
-  margin: 0 0 0 10px;
-  padding: 0;
+  max-width: 870px;
+  margin: 0;
   list-style: none;
   display: grid;
-  grid-template-rows: repeat(2, minmax(171px, 195px));
-  grid-template-columns: repeat(4, minmax(171px, 195px));
+  grid-template-columns: repeat(4, minmax(136px, 195px));
   grid-gap: 30px;
 }
 .photos__card-item {
@@ -149,8 +147,7 @@ export default {
     margin: 90px 0;
   }
   .photos__cards {
-    grid-template-rows: repeat(2, minmax(136px, 1fr));
-    grid-template-columns: repeat(4, minmax(136px, 1fr));
+    grid-template-columns: repeat(4, minmax(136px, 171px));
     grid-gap: 27px;
   }
   .photos__title {
@@ -173,6 +170,8 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .photos__cards {
+    max-width: 604px;
+    grid-template-columns: repeat(4, minmax(136px, 157px));
     grid-gap: 20px;
   }
   .photos__title {
@@ -184,7 +183,6 @@ export default {
     line-height: 16px;
     max-width: 260px;
     margin-top: 20px;
-    margin-right: 60px;
   }
   .photos__panel-text {
     font-size: 24px;
@@ -206,9 +204,10 @@ export default {
 
 @media screen and (max-width: 880px) {
   .photos__cards {
-    grid-template-rows: repeat(2, minmax(120px, 1fr));
-    grid-template-columns: repeat(4, minmax(120px, 1fr));
-    margin: 0 auto;
+    max-width: 100%;
+    grid-template-columns: repeat(4, minmax(120px, 185px));
+    margin: 0;
+    padding: 0;
   }
   .photos__content {
     flex-direction: column;
@@ -243,7 +242,6 @@ export default {
     margin: 50px 0;
   }
   .photos__cards {
-    grid-template-rows: repeat(4, minmax(140px, 1fr));
     grid-template-columns: repeat(2, minmax(140px, 1fr));
     grid-gap: 15px;
   }
@@ -257,10 +255,7 @@ export default {
     padding: 0px 15px;
   }
   .photos__cards {
-    grid-template-rows: repeat(4, 140px);
-    grid-template-columns: repeat(2, 140px);
     grid-gap: 10px;
-    margin: 0 auto;
   }
   .photos__panel-text {
     font-size: 16px;
