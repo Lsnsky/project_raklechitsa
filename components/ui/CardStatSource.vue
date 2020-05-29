@@ -1,5 +1,5 @@
 <template>
-  <div class="card__source">>{{ source }}</div>
+  <div class="card-source">>{{ source }}</div>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style scoped>
-.card__source {
+.card-source {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -25,7 +25,7 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-  .card__source {
+  .card-source {
     font-size: 10px;
     line-height: 14px;
     margin: 0px 10px 10px;
