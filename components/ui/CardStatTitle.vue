@@ -1,5 +1,5 @@
 <template>
-  <div class="card__title">
+  <div class="card-text">
     {{ title }}
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style scoped>
-.card__title {
+.card-text {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -26,7 +26,7 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-  .card__title {
+  .card-text {
     font-size: 10px;
     line-height: 14px;
   }

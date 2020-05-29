@@ -1,5 +1,5 @@
 <template>
-  <button class="button__down"></button>
+  <button class="button-down"></button>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {};
 </script>
 
 <style scoped>
-.button__down {
+.button-down {
   display: block;
   width: 36px;
   height: 12px;

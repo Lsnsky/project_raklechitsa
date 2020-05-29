@@ -1,6 +1,6 @@
 <template>
   <iframe
-    class="video__iframe"
+    class="video-iframe"
     :src="url"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style scoped>
-.video__iframe {
+.video-iframe {
   border: none;
   width: 100%;
   min-height: 450px;
@@ -26,31 +26,31 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .video__iframe {
+  .video-iframe {
     min-height: 400px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .video__iframe {
+  .video-iframe {
     min-height: 314px;
   }
 }
 
 @media screen and (max-width: 899px) {
-  .video__iframe {
+  .video-iframe {
     min-height: 300px;
   }
 }
 
 @media screen and (max-width: 525px) {
-  .video__iframe {
+  .video-iframe {
     min-height: 225px;
   }
 }
 
 @media screen and (max-width: 350px) {
-  .video__iframe {
+  .video-iframe {
     min-height: 150px;
   }
 }

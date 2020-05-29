@@ -1,5 +1,5 @@
 <template>
-  <div class="card__content">
+  <div class="card-content">
     {{ content }}
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style scoped>
-.card__content {
+.card-content {
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
@@ -26,14 +26,14 @@ export default {
 }
 
 @media screen and (max-width: 1166px) {
-  .card__content {
+  .card-content {
     font-size: 26px;
     line-height: 30px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .card__content {
+  .card-content {
     margin: 0px 10px 10px;
   }
 }
