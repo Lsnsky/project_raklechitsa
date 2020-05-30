@@ -24,7 +24,7 @@ export const actions = {
     const data = await this.$axios.$get(
       `https://www.instagram.com/raklechitsa/?__a=1`
     );
-    if (typeof data === !undefined) {
+    if (typeof data !== undefined) {
       const formatData = getPosts(data);
       await commit('setState', {
         name: 'photos',
