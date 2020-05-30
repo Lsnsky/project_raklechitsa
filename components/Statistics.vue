@@ -8,14 +8,14 @@
         <card-content :content="card.summary" />
         <card-source :source="card.source" />
       </div>
-      <div class="card" v-for="card in cardsWithComparedInfo" :key="card.id">
+      <div class="card" v-for="card in cardsWithFakeData" :key="card.id">
         <card-title :title="card.description" />
         <!-- в бар с двумя полосами пока не приходят все необходимые для отрисовки данные, указал пока числа, чтобы обозначить  -->
         <card-diagram
-          :valueEmpty="(card.valueEmpty = 5)"
-          :maxValueEmpty="(card.maxValueEmpty = 10)"
-          :valueFill="(card.valueFill = 2)"
-          :maxValueFill="(card.maxValueFill = 3)"
+          :valueEmpty="card.valueEmpty"
+          :maxValueEmpty="card.maxValueEmpty"
+          :valueFill="card.valueFill"
+          :maxValueFill="card.maxValueFill"
         />
         <card-content :content="card.summary" />
         <card-source :source="card.source" />
@@ -42,9 +42,14 @@ export default {
     cardsWithProgressBar() {
       return this.$store.getters['statisticsData/getStatistics'].slice(0, 2);
     },
-    cardsWithComparedInfo() {
-      return this.$store.getters['statisticsData/getStatistics'].slice(2);
+    // подключил обратно фейковые данные для отрисовки карточек с двойными графиками
+    cardsWithFakeData() {
+      return this.$store.getters['statisticsData/getFakeData'];
     },
+    // Обновление данных в карточках с двойными графиками через api пока отключил из за отсутствия необходимой информации для отрисовки двойных графиков
+    // cardsWithComparedInfo() {
+    //   return this.$store.getters['statisticsData/getStatistics'].slice(2);
+    // },
     statisticsData() {
       return this.$store.getters['blocks/getStatisticsBlock'];
     },
