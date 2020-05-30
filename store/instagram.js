@@ -24,11 +24,13 @@ export const actions = {
     const data = await this.$axios.$get(
       `https://www.instagram.com/raklechitsa/?__a=1`
     );
-    const formatData = getPosts(data);
-    await commit('setState', {
-      name: 'photos',
-      value: formatData,
-    });
+    if (typeof data.graphql === 'object') {
+      const formatData = getPosts(data);
+      await commit('setState', {
+        name: 'photos',
+        value: formatData,
+      });
+    }
   },
 };
 
