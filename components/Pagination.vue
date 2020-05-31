@@ -19,7 +19,8 @@
       :key="index"
       @click="setActive(index)"
       :class="[
-        'pagination__item pagination__item_type_page',
+        'pagination__item',
+        'pagination__item_type_page',
         { pagination__item_active: index === active },
       ]"
     >

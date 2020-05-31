@@ -6,7 +6,7 @@
           <img
             alt
             class="story__photo"
-            :src="`https://strapi.kruzhok.io${story.ImageUrl[0].url}`"
+            :src="`${baseUrl}${story.ImageUrl[0].url}`"
           />
         </div>
         <h2 class="story__title">
@@ -83,6 +83,7 @@ export default {
         'ноября',
         'декабря',
       ],
+      baseUrl: process.env.API_URL,
     };
   },
 };

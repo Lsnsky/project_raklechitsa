@@ -59,5 +59,6 @@ export default {
   },
   env: {
     API_URL: 'https://strapi.kruzhok.io',
+    INST_API_URL: 'https://www.instagram.com/raklechitsa/?__a=1',
   },
 };

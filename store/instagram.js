@@ -21,9 +21,7 @@ export const actions = {
         };
       });
     };
-    const data = await this.$axios.$get(
-      `https://www.instagram.com/raklechitsa/?__a=1`
-    );
+    const data = await this.$axios.$get(process.env.INST_API_URL);
     if (typeof data.graphql === 'object') {
       const formatData = getPosts(data);
       await commit('setState', {
