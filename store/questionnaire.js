@@ -99,8 +99,11 @@ export const mutations = {
   closeQuestionnaire(state) {
     return (state.isQuestionnaireOpened = false);
   },
-  resetQuestionnaire(state) {
+  resetId(state) {
     return (state.id = 0);
+  },
+  resetAnswers(state) {
+    return (state.answers = {});
   },
   previousId(state) {
     return (state.id = state.id === 0 ? 0 : state.id - 1);
@@ -129,7 +132,8 @@ export const actions = {
     await commit('closeQuestionnaire');
     if (getters.getId === 13) {
       await new Promise(resolve => setTimeout(resolve, 200));
-      await commit('resetQuestionnaire');
+      await commit('resetId');
+      await commit('resetAnswers');
     }
     return getters.getCurrentAnswer;
   },
