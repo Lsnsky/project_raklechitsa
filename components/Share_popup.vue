@@ -4,11 +4,11 @@
     titleText="Поделитесь"
     titlePosition="center"
     class="share"
-    @closeClick="toggleShare"
+    @closeClick="closeShare"
   >
     <div class="share__icon-container">
       <icon
-        v-for="network in this.socialNetworks"
+        v-for="network in getSharePopupData"
         :key="network.name"
         :network="network.name"
         :url="network.url"
@@ -26,71 +26,17 @@ export default {
     icon: Social_icon,
   },
   methods: {
-    toggleShare() {
-      this.$store.commit('share-popup/toggleSharePopup');
+    closeShare() {
+      this.$store.commit('share-popup/closeSharePopup');
     },
   },
   computed: {
     getShareState() {
       return this.$store.getters['share-popup/getSharePopupState'];
     },
-  },
-  mounted() {
-    console.log(window.location.href);
-    this.socialNetworks.forEach(element => {
-      if (element.name === 'facebook') {
-        element.url = `https://www.facebook.com/sharer.php?src=sp&u=${encodeURI(
-          window.location.href
-        )}&title=${document.querySelector('title').innerText}`;
-      }
-      if (element.name === 'twitter') {
-        element.url = `https://twitter.com/intent/tweet?text=${
-          document.querySelector('title').innerText
-        }&url=${encodeURI(window.location.href)}`;
-      }
-      if (element.name === 'vkontakte') {
-        element.url = `https://vk.com/share.php?url=${encodeURI(
-          window.location.href
-        )}&title=${document.querySelector('title').innerText}`;
-      }
-      if (element.name === 'odnoklasniki') {
-        element.url = `https://connect.ok.ru/offer?url=${encodeURI(
-          window.location.href
-        )}&amp;title=${document.querySelector('title').innerText}`;
-      }
-    });
-    console.log(this.socialNetworks);
-  },
-  data() {
-    return {
-      socialNetworks: [
-        {
-          name: 'facebook',
-          url: '',
-        },
-        {
-          name: 'twitter',
-          url: '',
-        },
-        {
-          name: 'vkontakte',
-          url: '',
-        },
-        {
-          name: 'odnoklasniki',
-          url: '',
-        },
-        {
-          name: 'instagram',
-          url: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          name: 'youtube',
-          url:
-            'https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F',
-        },
-      ],
-    };
+    getSharePopupData() {
+      return this.$store.getters['share-popup/getSharePopupData'];
+    },
   },
 };
 </script>

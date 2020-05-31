@@ -14,7 +14,7 @@
           &laquo;{{ story.title }}&raquo;
         </h2>
         <div class="story__data">
-          <button @click="toggleShare" class="story__share">
+          <button @click="openShare" class="story__share">
             Поделитесь &#8599;
           </button>
           <p class="story__date">{{ this.data }}</p>
@@ -23,7 +23,7 @@
       <section class="story__body" v-html="story.text"></section>
       <footer class="story__footer">
         <button
-          @click="toggleShare"
+          @click="openShare"
           class="link story__share story__share_local_footer"
         >
           Поделитесь этой статьей в своих социальных сетях &#8599;
@@ -44,8 +44,11 @@ export default {
     'card-container': CardContainer,
   },
   methods: {
-    toggleShare() {
-      this.$store.commit('share-popup/toggleSharePopup');
+    async openShare() {
+      await this.$store.dispatch(
+        'share-popup/openSharePopup',
+        document.querySelector('title').innerText
+      );
     },
   },
   computed: {

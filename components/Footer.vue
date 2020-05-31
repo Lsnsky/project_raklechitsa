@@ -23,7 +23,7 @@
               >Youtube</a
             >
           </p>
-          <button @click="toggleShare" class="footer__share">
+          <button @click="openShare" class="footer__share">
             Поделитесь &#8599;
           </button>
         </div>
@@ -57,8 +57,11 @@ export default {
     container: Container,
   },
   methods: {
-    toggleShare() {
-      this.$store.commit('share-popup/toggleSharePopup');
+    async openShare() {
+      await this.$store.dispatch(
+        'share-popup/openSharePopup',
+        document.querySelector('title').innerText
+      );
     },
   },
   computed: {

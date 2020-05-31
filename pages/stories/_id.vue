@@ -16,6 +16,16 @@ export default {
   async fetch({ store, params }) {
     await store.commit('storiesData/setId', params.id);
   },
+  computed: {
+    story() {
+      return this.$store.getters['storiesData/getCurrentStory'];
+    },
+  },
+  head() {
+    return {
+      title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
+    };
+  },
 };
 </script>
 
