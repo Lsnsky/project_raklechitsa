@@ -20,9 +20,16 @@
           >Поиск</button-search
         >
       </form>
+      <div class="cards-story__not-found" v-if="currentStories.length === 0">
+        <div class="cards-story__not-found-title">Ничего не найдено</div>
+        <div class="cards-story__not-found-description">Попробуйте еще раз</div>
+      </div>
       <card-container :stories="this.currentStories" />
 
-      <pagination @onPageChanged="setCurrentPage" />
+      <pagination
+        @onPageChanged="setCurrentPage"
+        v-if="currentStories.length !== 0"
+      />
     </container>
   </section>
 </template>
@@ -126,6 +133,31 @@ export default {
   width: 208px;
   height: 46px;
 }
+.cards-story__not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 40px auto 380px;
+  align-content: center;
+}
+.cards-story__not-found-title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 58px;
+  text-align: center;
+  color: #000000;
+  margin: 0 auto;
+}
+.cards-story__not-found-description {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #000000;
+  margin: 40px auto 0;
+}
 
 @media screen and (max-width: 768px) {
   .cards-story__title {
@@ -149,6 +181,10 @@ export default {
     width: calc(100% - 52px);
     margin: 0;
   }
+  .cards-story__not-found-title {
+    font-size: 24px;
+    line-height: 22px;
+  }
 }
 @media screen and (max-width: 320px) {
   .cards-story__title {
@@ -158,6 +194,18 @@ export default {
   }
   .cards-story__search {
     margin: 40px auto 30px;
+  }
+  .cards-story__not-found {
+    margin: 60px auto 280px;
+  }
+  .cards-story__not-found-title {
+    font-size: 24px;
+    line-height: 29px;
+  }
+  .cards-story__not-found-description {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 15px auto 0;
   }
 }
 </style>
