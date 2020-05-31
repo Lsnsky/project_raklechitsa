@@ -1,7 +1,7 @@
 {
     "name": "project_raklechitsa",
     "version": "1.0.0",
-    "description": "project raklechitsa for NKO",
+    "description": "Проект Фонда Хабенского. Истории людяй, победивших рак, но не свои привычки",
     "author": "happy three friends",
     "private": true,
     "scripts": {
@@ -11,9 +11,12 @@
         "generate": "nuxt generate"
     },
     "dependencies": {
-        "nuxt": "^2.0.0",
         "@nuxtjs/axios": "^5.3.6",
-        "@nuxtjs/pwa": "^3.0.0-0"
+        "@nuxtjs/pwa": "^3.0.0-0",
+        "nuxt": "^2.0.0",
+        "swiper": "^5.4.1",
+        "vue": "^2.6.11",
+        "vue-awesome-swiper": "^4.1.1"
     },
     "devDependencies": {
         "eslint-config-prettier": "^6.10.0",

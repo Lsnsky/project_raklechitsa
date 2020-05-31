@@ -1,68 +1,43 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        raklechitsa
-      </h1>
-      <h2 class="subtitle">
-        project raklechitsa for NKO
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <main>
+    <cover />
+    <main-video />
+    <stories />
+    <photos />
+    <story-input />
+    <statistics />
+    <cover-about />
+    <callback />
+  </main>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
+import Video from '@/components/Video';
+import Stories from '@/components/Stories';
+import Statistics from '@/components/Statistics';
+import Photos from '@/components/Photos';
+import Cover from '@/components/Cover';
+import Cover_about from '@/components/Cover_about';
+import Story_input from '@/components/Story_input';
+import Callback from '@/components/Callback';
 
 export default {
   components: {
-    Logo,
+    statistics: Statistics,
+    photos: Photos,
+    'main-video': Video,
+    stories: Stories,
+    cover: Cover,
+    'cover-about': Cover_about,
+    'story-input': Story_input,
+    callback: Callback,
   },
+
+  /*   async fetch({ store }) {
+    await store.dispatch('video/fetchVideos');
+    await store.dispatch('blocks/fetchBlocks');
+  }, */
 };
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
+<style scoped></style>
