@@ -1,6 +1,6 @@
 <template>
-  <a :href="href" class="photo-wrapper" target="_blank">
-    <img class="photo-wrapper__image" :src="src" />
+  <a :href="href" class="photo" target="_blank">
+    <img class="photo__image" :src="src" />
   </a>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style scoped>
-.photo-wrapper__image {
+.photo__image {
   width: 100%;
   height: 100%;
   background: #ededed;
@@ -22,10 +22,14 @@ export default {
   object-fit: cover;
   object-position: center;
 }
-.photo-wrapper {
+.photo {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
   display: block;
+  transition: transform 0.15s linear;
+}
+.photo:hover {
+  transform: scale(1.04);
 }
 </style>

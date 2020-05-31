@@ -29,6 +29,11 @@ export default {
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  transition: transform 0.2s linear;
+}
+
+.card:hover {
+  transform: scale(1.03);
 }
 
 .card__wrapper {
