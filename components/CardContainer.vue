@@ -7,7 +7,7 @@
       :to="`/stories/${card.id}`"
     >
       <card-story
-        :url="`https://strapi.kruzhok.io${card.ImageUrl[0].url}`"
+        :url="`${baseUrl}${card.ImageUrl[0].url}`"
         :history_title="card.author"
         :history_text="card.title"
       ></card-story>
@@ -24,6 +24,11 @@ export default {
   },
   components: {
     'card-story': CardStory,
+  },
+  data() {
+    return {
+      baseUrl: process.env.API_URL,
+    };
   },
 };
 </script>

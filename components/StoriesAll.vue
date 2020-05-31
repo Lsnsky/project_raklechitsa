@@ -47,6 +47,8 @@ export default {
     checkValidity() {
       if (this.search.length === 0) {
         this.setCurrentPage();
+      } else {
+        this.getSerch();
       }
     },
     getSerch() {

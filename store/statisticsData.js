@@ -2,7 +2,7 @@ export const state = () => ({
   statistics_api: [],
   cards: [
     {
-      id: '1',
+      id: '5',
       description:
         'На 28% выросла доля выявления заболеваний на ранней стадии за 10 лет.',
       image: '/images/__item-6.jpg',
@@ -14,7 +14,7 @@ export const state = () => ({
       maxValueFill: 260,
     },
     {
-      id: '2',
+      id: '6',
       description:
         'На 25% снизилась смертность в течение первого года после постановки диагноза.',
       image: '/images/__item-6.jpg',
