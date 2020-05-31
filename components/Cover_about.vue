@@ -171,7 +171,7 @@ export default {
 }
 .content__columns-text-2 {
   margin-top: 0;
-  padding-bottom: 188px;
+  padding-bottom: 170px;
 }
 .content__columns-text:last-child {
   margin-bottom: 0;
