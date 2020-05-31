@@ -220,7 +220,7 @@ export default {
     max-width: 570px;
   }
   .content__columns-text-2 {
-    padding-bottom: 200px;
+    padding-bottom: 182px;
   }
   .content__columns-text:last-child {
     padding-bottom: 90px;
@@ -260,7 +260,7 @@ export default {
     width: 129px;
   }
   .content__columns-text-2 {
-    padding-bottom: 175px;
+    padding-bottom: 140px;
   }
   .content__columns-text:last-child {
     padding-bottom: 80px;
