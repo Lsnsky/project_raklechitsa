@@ -27,7 +27,6 @@ export const state = () => ({
         'https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F',
     },
   ],
-  route: {},
 });
 
 export const mutations = {
@@ -42,35 +41,32 @@ export const mutations = {
       return item.name === name;
     }).url = url);
   },
-  setRouter(state, router) {
-    return (state.route = router);
-  },
 };
 export const actions = {
-  async openSharePopup({ commit, getters }, title) {
+  async openSharePopup({ commit, getters }, { title, url }) {
     await getters.getSharePopupData.forEach(element => {
       if (element.name === 'facebook') {
         commit('setLink', {
           name: 'facebook',
-          url: `https://www.facebook.com/sharer.php?src=sp&u=${process.env.SITE_URL}${getters.getRoute}&title=${title}`,
+          url: `https://www.facebook.com/sharer.php?src=sp&u=${url}&title=${title}`,
         });
       }
       if (element.name === 'twitter') {
         commit('setLink', {
           name: 'twitter',
-          url: `https://twitter.com/intent/tweet?text=${title}&url=${process.env.SITE_URL}${getters.getRoute}`,
+          url: `https://twitter.com/intent/tweet?text=${title}&url=${url}`,
         });
       }
       if (element.name === 'vkontakte') {
         commit('setLink', {
           name: 'vkontakte',
-          url: `https://vk.com/share.php?url=${process.env.SITE_URL}${getters.getRoute}&title=${title}`,
+          url: `https://vk.com/share.php?url=${url}&title=${title}`,
         });
       }
       if (element.name === 'odnoklasniki') {
         commit('setLink', {
           name: 'odnoklasniki',
-          url: `https://connect.ok.ru/offer?url=${process.env.SITE_URL}${getters.getRoute}&amp;title=${title}`,
+          url: `https://connect.ok.ru/offer?url=${url}&amp;title=${title}`,
         });
       }
     });

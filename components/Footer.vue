@@ -58,10 +58,10 @@ export default {
   },
   methods: {
     async openShare() {
-      await this.$store.dispatch(
-        'share-popup/openSharePopup',
-        document.querySelector('title').innerText
-      );
+      await this.$store.dispatch('share-popup/openSharePopup', {
+        title: document.querySelector('title').innerText,
+        url: encodeURI(window.location.href),
+      });
     },
   },
   computed: {
