@@ -13,6 +13,11 @@ export default {
     story: Story,
     'bottom-cards': BottomCards,
   },
+  validate({ params, store }) {
+    return store.getters['storiesData/getStoriesData'].some(item => {
+      return Number(item.id) === Number(params.id);
+    });
+  },
   async fetch({ store, params }) {
     await store.commit('storiesData/setId', params.id);
   },

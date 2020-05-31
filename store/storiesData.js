@@ -86,9 +86,6 @@ export const getters = {
   getStoriesData(state) {
     return state.stories;
   },
-  getStoriesAPI(state) {
-    return state.stories;
-  },
   getCurrentStory(state) {
     return state.stories.find(el => {
       return el.id === Number(state.id);
