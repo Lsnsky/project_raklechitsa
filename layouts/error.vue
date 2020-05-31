@@ -11,7 +11,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head() {
+    return {
+      title: `Страница не найдена`,
+    };
+  },
+};
 </script>
 
 <style scoped>
