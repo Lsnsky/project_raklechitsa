@@ -8,33 +8,10 @@
   >
     <div class="share__icon-container">
       <icon
-        network="facebook"
-        url="
-          https://www.facebook.com/sharer.php?src=sp&u=https%3A%2F%2Fraklechitsa.ru%2F&title=РАКЛЕЧИТСЯ.РФ%20—%20истории%20людей%2C%20победивших%20рак%2C%20но%20не%20свои%20привычки&utm_source=share2\
-        "
-      />
-      <icon
-        network="twitter"
-        url="
-          https://twitter.com/intent/tweet?text=РАКЛЕЧИТСЯ.РФ%20—%20истории%20людей%2C%20победивших%20рак%2C%20но%20не%20свои%20привычки&url=https%3A%2F%2Fraklechitsa.ru%2F&utm_source=share2
-        "
-      />
-      <icon
-        network="vkontakte"
-        url="
-          https://vk.com/share.php?url=https%3A%2F%2Fraklechitsa.ru%2F&title=РАКЛЕЧИТСЯ.РФ%20—%20истории%20людей%2C%20победивших%20рак%2C%20но%20не%20свои%20привычки&utm_source=share2
-        "
-      />
-      <icon
-        network="odnoklasniki"
-        url="
-          https://connect.ok.ru/offer?url=https%3A%2F%2Fraklechitsa.ru%2F&title=РАКЛЕЧИТСЯ.РФ%20—%20истории%20людей%2C%20победивших%20рак%2C%20но%20не%20свои%20привычки&utm_source=share2
-        "
-      />
-      <icon network="instagram" url="https://www.instagram.com/raklechitsa/" />
-      <icon
-        network="youtube"
-        url="https://www.youtube.com/results?search_query=%23этонелечится"
+        v-for="network in this.socialNetworks"
+        :key="network.name"
+        :network="network.name"
+        :url="network.url"
       />
     </div>
   </popup>
@@ -57,6 +34,63 @@ export default {
     getShareState() {
       return this.$store.getters['share-popup/getSharePopupState'];
     },
+  },
+  mounted() {
+    console.log(window.location.href);
+    this.socialNetworks.forEach(element => {
+      if (element.name === 'facebook') {
+        element.url = `https://www.facebook.com/sharer.php?src=sp&u=${encodeURI(
+          window.location.href
+        )}&title=${document.querySelector('title').innerText}`;
+      }
+      if (element.name === 'twitter') {
+        element.url = `https://twitter.com/intent/tweet?text=${
+          document.querySelector('title').innerText
+        }&url=${encodeURI(window.location.href)}`;
+      }
+      if (element.name === 'vkontakte') {
+        element.url = `https://vk.com/share.php?url=${encodeURI(
+          window.location.href
+        )}&title=${document.querySelector('title').innerText}`;
+      }
+      if (element.name === 'odnoklasniki') {
+        element.url = `https://connect.ok.ru/offer?url=${encodeURI(
+          window.location.href
+        )}&amp;title=${document.querySelector('title').innerText}`;
+      }
+    });
+    console.log(this.socialNetworks);
+  },
+  data() {
+    return {
+      socialNetworks: [
+        {
+          name: 'facebook',
+          url: '',
+        },
+        {
+          name: 'twitter',
+          url: '',
+        },
+        {
+          name: 'vkontakte',
+          url: '',
+        },
+        {
+          name: 'odnoklasniki',
+          url: '',
+        },
+        {
+          name: 'instagram',
+          url: 'https://www.instagram.com/raklechitsa/',
+        },
+        {
+          name: 'youtube',
+          url:
+            'https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F',
+        },
+      ],
+    };
   },
 };
 </script>
