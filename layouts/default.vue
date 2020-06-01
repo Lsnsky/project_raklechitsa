@@ -3,7 +3,8 @@
     @keydown.esc="closeAll"
     :class="[
       {
-        body_noscroll: getCallbackState,
+        body__noscroll_type_callback: getCallbackState,
+        body__noscroll_type_quest: getQuestionnaireState,
       },
     ]"
   >
@@ -38,6 +39,9 @@ export default {
     getCallbackState() {
       return this.$store.getters['callback/getCallbackState'];
     },
+    getQuestionnaireState() {
+      return this.$store.getters['questionnaire/getQuestionnaireState'];
+    },
   },
   async middleware({ store }) {
     await store.dispatch('video/fetchVideos');
@@ -69,19 +73,33 @@ body {
 }
 
 @media screen and (max-height: 728px) and (min-width: 1280px) {
-  .body_noscroll {
+  .body__noscroll_type_callback {
     overflow: hidden;
     height: 100vh;
   }
 }
 @media screen and (max-height: 710px) and (max-width: 1280px) and (min-width: 600px) {
-  .body_noscroll {
+  .body__noscroll_type_callback {
     overflow: hidden;
     height: 100vh;
   }
 }
 @media screen and (max-height: 698px) and (max-width: 600px) {
-  .body_noscroll {
+  .body__noscroll_type_callback {
+    overflow: hidden;
+    height: 100vh;
+  }
+}
+
+@media screen and (max-height: 520px) and (min-width: 1280px) {
+  .body__noscroll_type_quest {
+    overflow: hidden;
+    height: 100vh;
+  }
+}
+
+@media screen and (max-height: 604px) and (max-width: 1280px) {
+  .body__noscroll_type_quest {
     overflow: hidden;
     height: 100vh;
   }
