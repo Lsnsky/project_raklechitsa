@@ -402,4 +402,18 @@ export default {
     left: calc(50% - 100px);
   }
 }
+
+@media screen and (max-height: 520px) and (min-width: 1280px) {
+  .questionnaire /deep/ .popup__container {
+    overflow: auto;
+    height: 100%;
+  }
+}
+
+@media screen and (max-height: 604px) and (max-width: 1280px) {
+  .questionnaire /deep/ .popup__container {
+    overflow: auto;
+    height: 100%;
+  }
+}
 </style>
