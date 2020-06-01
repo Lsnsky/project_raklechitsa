@@ -9,6 +9,7 @@
     @formSubmit="nextQuestion"
     formName="Questionnaire"
     :noValidate="false"
+    :closeButton="this.id !== 13"
   >
     <p v-if="id < 13" class="questionnaire__question">
       <question class="questionnaire__mainquestion">
@@ -334,8 +335,11 @@ export default {
     line-height: 19px;
   }
   .questionnaire__politica {
-    bottom: 40px;
-    left: 325px;
+    bottom: -59px;
+    left: 0;
+    max-width: 100%;
+    padding: 25px 40px;
+    background-color: #ededed;
   }
 }
 
@@ -376,7 +380,6 @@ export default {
     font-size: 13px;
     line-height: 16px;
     width: 100%;
-    margin: 0 15px;
   }
 
   .questionnaire__question {
@@ -389,8 +392,14 @@ export default {
   }
 
   .questionnaire__politica {
-    bottom: 65px;
-    left: 15px;
+    bottom: -60px;
+    padding: 17px 15px;
+    left: 0;
+    font-size: 11px;
+    line-height: 13px;
+  }
+  .questionnaire__further_step_last {
+    left: calc(50% - 100px);
   }
 }
 </style>

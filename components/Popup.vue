@@ -19,6 +19,7 @@
       </h2>
       <slot></slot>
       <button
+        v-if="closeButton"
         type="button"
         class="popup__close"
         @click="$emit('closeClick')"
@@ -49,6 +50,7 @@ export default {
     isItForm: { type: Boolean, default: false },
     formName: { type: String },
     noValidate: { type: Boolean, default: true },
+    closeButton: { type: Boolean, default: true },
   },
   components: {
     overlay: Overlay,

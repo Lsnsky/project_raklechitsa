@@ -1,7 +1,7 @@
 <template>
   <section class="cards-story">
     <container class="card-story__container">
-      <h2 class="cards-story__title" @click="setCurrentPage">
+      <h2 class="cards-story__title">
         Истории неизлечимых привычек
       </h2>
       <form class="cards-story__search" @submit.prevent="getSerch">
