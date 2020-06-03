@@ -24,7 +24,7 @@
       <footer class="story__footer">
         <button
           @click="openShare"
-          class="link story__share story__share_local_footer"
+          class="story__share story__share_local_footer"
         >
           Поделитесь этой статьей в своих социальных сетях &#8599;
         </button>
