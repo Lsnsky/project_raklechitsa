@@ -2,9 +2,7 @@
   <section class="photos">
     <container class="photos__container">
       <panel class="photos__panel-container">
-        <div class="photos__panel-text">
-          {{ secondPanelData.title }}
-        </div>
+        <div class="photos__panel-text">{{ secondPanelData.title }}</div>
         <div class="photos__panel-hashtag">{{ secondPanelData.hashtag }}</div>
       </panel>
       <div class="photos__content">
@@ -107,11 +105,19 @@ export default {
   width: 100%;
 }
 .photos__cards {
+<<<<<<< HEAD
   max-width: 870px;
   margin: 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, minmax(136px, 195px));
+=======
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(171px, 195px));
+>>>>>>> dev
   grid-gap: 30px;
 }
 .photos__card-item {
@@ -119,6 +125,7 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .photos__panel-container {
   width: 100%;
   height: 129px;
@@ -170,8 +177,12 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .photos__cards {
+<<<<<<< HEAD
     max-width: 604px;
     grid-template-columns: repeat(4, minmax(136px, 157px));
+=======
+    grid-template-columns: repeat(4, minmax(120px, 136px));
+>>>>>>> dev
     grid-gap: 20px;
   }
   .photos__title {
@@ -204,10 +215,15 @@ export default {
 
 @media screen and (max-width: 880px) {
   .photos__cards {
+<<<<<<< HEAD
     max-width: 100%;
     grid-template-columns: repeat(4, minmax(120px, 185px));
     margin: 0;
     padding: 0;
+=======
+    grid-template-columns: repeat(4, minmax(120px, 171px));
+    margin: 0 auto;
+>>>>>>> dev
   }
   .photos__content {
     flex-direction: column;
@@ -242,7 +258,11 @@ export default {
     margin: 50px 0;
   }
   .photos__cards {
+<<<<<<< HEAD
     grid-template-columns: repeat(2, minmax(140px, 1fr));
+=======
+    grid-template-columns: repeat(2, minmax(140px, 250px));
+>>>>>>> dev
     grid-gap: 15px;
   }
 }
@@ -255,6 +275,10 @@ export default {
     padding: 0px 15px;
   }
   .photos__cards {
+<<<<<<< HEAD
+=======
+    grid-template-columns: repeat(2, minmax(140px, 250px));
+>>>>>>> dev
     grid-gap: 10px;
   }
   .photos__panel-text {

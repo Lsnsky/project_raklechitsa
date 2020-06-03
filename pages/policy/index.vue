@@ -10,6 +10,11 @@ export default {
   components: {
     policy: Policy,
   },
+  head() {
+    return {
+      title: `Политика конфиденциальности`,
+    };
+  },
 };
 </script>
 

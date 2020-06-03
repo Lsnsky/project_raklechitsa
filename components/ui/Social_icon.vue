@@ -8,7 +8,14 @@
 
 <script>
 export default {
-  props: ['network', 'url'],
+  props: {
+    network: {
+      type: String,
+    },
+    url: {
+      type: String,
+    },
+  },
 };
 </script>
 

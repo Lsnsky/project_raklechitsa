@@ -4,7 +4,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'РАКЛЕЧИТСЯ.РФ - истории людей, победивших рак, но не свои привычки',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -59,5 +59,6 @@ export default {
   },
   env: {
     API_URL: 'https://strapi.kruzhok.io',
+    INST_API_URL: 'https://www.instagram.com/raklechitsa/?__a=1',
   },
 };

@@ -171,7 +171,7 @@ export default {
 }
 .content__columns-text-2 {
   margin-top: 0;
-  padding-bottom: 188px;
+  padding-bottom: 170px;
 }
 .content__columns-text:last-child {
   margin-bottom: 0;
@@ -220,7 +220,7 @@ export default {
     max-width: 570px;
   }
   .content__columns-text-2 {
-    padding-bottom: 200px;
+    padding-bottom: 182px;
   }
   .content__columns-text:last-child {
     padding-bottom: 90px;
@@ -260,7 +260,7 @@ export default {
     width: 129px;
   }
   .content__columns-text-2 {
-    padding-bottom: 175px;
+    padding-bottom: 141px;
   }
   .content__columns-text:last-child {
     padding-bottom: 80px;
@@ -317,6 +317,9 @@ export default {
     max-width: 380px;
     margin-bottom: 0;
   }
+  .content__columns-text-2 {
+    padding-bottom: 179px;
+  }
 }
 @media screen and (max-width: 512px) {
   .cover-about {
@@ -368,7 +371,7 @@ export default {
     line-height: 19px;
   }
   .content__columns-text-2 {
-    padding-bottom: 202px;
+    padding-bottom: 187px;
     max-width: 295px;
   }
   .content__columns-text:last-child {

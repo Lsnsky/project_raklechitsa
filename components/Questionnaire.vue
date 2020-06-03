@@ -8,50 +8,64 @@
     :isItForm="true"
     @formSubmit="nextQuestion"
     formName="Questionnaire"
+    :noValidate="false"
+    :closeButton="this.id !== 13"
   >
     <p v-if="id < 13" class="questionnaire__question">
-      <question class="questionnaire__mainquestion">{{
-        question.mainQest
-      }}</question
-      ><span class="questionnaire__subquestion">{{ question.qest }}</span>
+      <question class="questionnaire__mainquestion">
+        {{ question.mainQest }}
+      </question>
+      <span class="questionnaire__subquestion">{{ question.qest }}</span>
     </p>
     <main-input
-      v-if="id < 13"
+      v-if="id < 13 && id !== 11"
+      required="required"
       placeholder="Напишите тут"
-      type="text"
-      :hasData="hasData()"
+      :type="id === 12 ? 'email' : 'text'"
+      :hasData="this.validity"
       v-model="answer"
       :bordered="false"
       class="questionnaire__input"
+      @input="checkValidity"
     />
+    <main-input
+      v-if="id === 11"
+      required="required"
+      pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
+      placeholder="Напишите тут"
+      :type="id === 12 ? 'email' : 'text'"
+      :hasData="this.validity"
+      v-model="answer"
+      :bordered="false"
+      class="questionnaire__input"
+      @input="checkValidity"
+    />
+    <p class="questionnaire__error-massage">{{ this.error }}</p>
     <main-button
       v-if="id < 13"
       class="questionnaire__back"
       color="none"
       :disabled="this.id === 0"
       @buttonClick="previousQuestion"
+      >Назад</main-button
     >
-      Назад
-    </main-button>
     <main-button
       v-if="this.id < 13"
       class="questionnaire__further"
       color="purple"
       type="submit"
-      :disabled="!hasData()"
+      :disabled="!this.validity"
+      >{{ buttonNext() }}</main-button
     >
-      {{ buttonNext() }}
-    </main-button>
     <main-button
       v-else
       class="questionnaire__further questionnaire__further_step_last"
       color="purple"
       :disabled="false"
       @buttonClick="closeQuestionnaire"
+      >Закрыть</main-button
     >
-      Закрыть
-    </main-button>
-    <policy v-if="id === 12" class="questionnaire__politica"> </policy>
+    <policy v-if="id === 12" class="questionnaire__politica"></policy>
   </popup>
 </template>
 
@@ -73,9 +87,6 @@ export default {
     buttonNext() {
       return this.id < 12 ? 'Далее' : 'Отправить';
     },
-    hasData() {
-      return !(this.answer.length === 0);
-    },
     title() {
       return this.id === 13
         ? 'Спасибо что приняли участие!'
@@ -84,13 +95,16 @@ export default {
     position() {
       return this.id === 13 ? 'center' : 'left';
     },
-    previousQuestion() {
-      this.$store.dispatch('questionnaire/previousQuestion').then(item => {
-        this.answer = item || '';
-      });
+    async previousQuestion() {
+      await this.$store
+        .dispatch('questionnaire/previousQuestion')
+        .then(item => {
+          this.answer = item || '';
+        });
+      this.setDefault();
     },
-    nextQuestion() {
-      this.$store
+    async nextQuestion() {
+      await this.$store
         .dispatch('questionnaire/nextQuestion', this.answer)
         .then(item => {
           this.answer = item || '';
@@ -98,11 +112,30 @@ export default {
       if (this.id === 12) {
         console.log(this.getAnswers);
       }
+
+      this.setDefault();
     },
-    closeQuestionnaire() {
-      this.$store.dispatch('questionnaire/closeQuestionnaire').then(item => {
-        this.answer = item || '';
-      });
+    async closeQuestionnaire() {
+      await this.$store
+        .dispatch('questionnaire/closeQuestionnaire')
+        .then(item => {
+          this.answer = item || '';
+        });
+      this.setDefault();
+    },
+    setDefault() {
+      if (this.answer) {
+        this.validity = true;
+        this.error = '';
+      } else {
+        this.validity = false;
+        this.error = '';
+      }
+    },
+    checkValidity() {
+      const input = document.forms.Questionnaire.querySelector('input');
+      this.validity = input.validity.valid;
+      this.error = input.validationMessage;
     },
   },
 
@@ -126,12 +159,30 @@ export default {
   data() {
     return {
       answer: this.getCurrentAnswer || '',
+      error: '',
+      validity: false,
     };
+  },
+  mounted() {
+    this.validity = document.forms.Questionnaire.querySelector(
+      'input'
+    ).validity.valid;
   },
 };
 </script>
 
 <style scoped>
+.questionnaire__error-massage {
+  margin: 0 40px;
+  width: calc(100% - 80px);
+  color: red;
+  position: absolute;
+  font-size: 14px;
+  max-height: 35px;
+  overflow: hidden;
+  top: 315px;
+  left: 0;
+}
 .questionnaire /deep/ .popup__container {
   width: 920px;
   height: 600px;
@@ -231,6 +282,10 @@ export default {
     line-height: 22px;
   }
 
+  .questionnaire__error-massage {
+    top: 270px;
+  }
+
   .questionnaire__further {
     width: 200px;
     height: 48px;
@@ -264,6 +319,9 @@ export default {
     font-size: 15px;
     line-height: 19px;
   }
+  .questionnaire__error-massage {
+    top: 270px;
+  }
 
   .questionnaire__further {
     height: 46px;
@@ -277,12 +335,15 @@ export default {
     line-height: 19px;
   }
   .questionnaire__politica {
-    bottom: 40px;
-    left: 325px;
+    bottom: -59px;
+    left: 0;
+    max-width: 100%;
+    padding: 25px 40px;
+    background-color: #ededed;
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 600px) {
   .questionnaire /deep/ .popup__container {
     width: 290px;
     height: 520px;
@@ -295,7 +356,12 @@ export default {
     width: calc(100% - 30px);
     margin: 0 15px;
   }
-
+  .questionnaire__error-massage {
+    width: calc(100% - 30px);
+    margin: 0 15px;
+    font-size: 9px;
+    top: 285px;
+  }
   .questionnaire__further {
     height: 40px;
     width: 206;
@@ -314,7 +380,6 @@ export default {
     font-size: 13px;
     line-height: 16px;
     width: 100%;
-    margin: 0 15px;
   }
 
   .questionnaire__question {
@@ -327,8 +392,28 @@ export default {
   }
 
   .questionnaire__politica {
-    bottom: 65px;
-    left: 15px;
+    bottom: -60px;
+    padding: 17px 15px;
+    left: 0;
+    font-size: 11px;
+    line-height: 13px;
+  }
+  .questionnaire__further_step_last {
+    left: calc(50% - 100px);
+  }
+}
+
+@media screen and (max-height: 520px) and (min-width: 1280px) {
+  .questionnaire /deep/ .popup__container {
+    overflow: auto;
+    height: 100%;
+  }
+}
+
+@media screen and (max-height: 604px) and (max-width: 1280px) {
+  .questionnaire /deep/ .popup__container {
+    overflow: auto;
+    height: 100%;
   }
 }
 </style>

@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <nuxt-link to="/stories" class="cards-history-link" href="#"
-      >Больше статей</nuxt-link
-    >
-  </div>
+  <nuxt-link to="/stories" class="cards-history-link" href="#"
+    >Больше статей</nuxt-link
+  >
 </template>
 
 <script>
@@ -25,8 +23,11 @@ export default {};
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  font-family: Inter;
   font-style: normal;
+  transition: all linear 0.1s;
+}
+.cards-history-link:hover {
+  background-color: #f8f8f8;
 }
 @media screen and (max-width: 320px) {
   .cards-history-link {

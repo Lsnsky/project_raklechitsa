@@ -1,17 +1,21 @@
 <template>
-  <div>
-    <div class="card__title">{{ title }}</div>
+  <div class="card-text">
+    {{ title }}
   </div>
 </template>
 
 <script>
 export default {
-  props: ['title'],
+  props: {
+    title: {
+      type: String,
+    },
+  },
 };
 </script>
 
 <style scoped>
-.card__title {
+.card-text {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -22,7 +26,7 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-  .card__title {
+  .card-text {
     font-size: 10px;
     line-height: 14px;
   }

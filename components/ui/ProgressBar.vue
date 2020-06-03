@@ -6,7 +6,16 @@
 
 <script>
 export default {
-  props: ['value', 'maxValue'],
+  props: {
+    value: {
+      type: Number,
+      default: 0,
+    },
+    maxValue: {
+      type: Number,
+      default: 0,
+    },
+  },
   computed: {
     style() {
       return `width: ${(this.value / this.maxValue) * 100}%;`;

@@ -25,6 +25,9 @@ export const mutations = {
   saveAnswers(state, answers) {
     return (state.answers = answers);
   },
+  closeCallback(state) {
+    return (state.callbackOpened = false);
+  },
 };
 
 export const getters = {

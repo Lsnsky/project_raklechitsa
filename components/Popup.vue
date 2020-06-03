@@ -12,13 +12,14 @@
       class="popup__container"
       @submit.prevent="$emit('formSubmit')"
       :name="formName"
-      novalidate
+      :novalidate="noValidate"
     >
       <h2 :class="`popup__title popup__title_position_${titlePosition}`">
         {{ titleText }}
       </h2>
       <slot></slot>
       <button
+        v-if="closeButton"
         type="button"
         class="popup__close"
         @click="$emit('closeClick')"
@@ -48,6 +49,8 @@ export default {
     titlePosition: { type: String, default: 'left' },
     isItForm: { type: Boolean, default: false },
     formName: { type: String },
+    noValidate: { type: Boolean, default: true },
+    closeButton: { type: Boolean, default: true },
   },
   components: {
     overlay: Overlay,
@@ -58,7 +61,7 @@ export default {
 <style scoped>
 .popup {
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
   width: 100vw;

@@ -19,7 +19,8 @@
       :key="index"
       @click="setActive(index)"
       :class="[
-        'pagination__item pagination__item_type_page',
+        'pagination__item',
+        'pagination__item_type_page',
         { pagination__item_active: index === active },
       ]"
     >
@@ -67,6 +68,7 @@ export default {
       this.allPages.push(i);
     }
     this.pages = this.allPages.slice(0, this.buttonsCount);
+    this.active = this.currentPage;
   },
   computed: {
     itemsPerPage() {
@@ -75,40 +77,42 @@ export default {
     totalItems() {
       return this.$store.getters['storiesData/getTotalItems'];
     },
+    currentPage() {
+      return this.$store.getters['storiesData/getCurrentPage'];
+    },
   },
   methods: {
     async setActive(index) {
-      this.active = index;
       await this.$store.commit('storiesData/setPage', index);
       this.$emit('onPageChanged', index);
+      this.active = this.currentPage;
     },
     async first() {
-      this.active = 1;
       await this.$store.commit('storiesData/setPage', 1);
       this.$emit('onPageChanged', 1);
       this.sliceButtons('first');
+      this.active = this.currentPage;
     },
     async last() {
-      this.active = this.pageCount;
       await this.$store.commit('storiesData/setPage', this.pageCount);
       this.$emit('onPageChanged', this.pageCount);
       this.sliceButtons('last');
+      this.active = this.currentPage;
     },
     async scrollRight() {
       if (this.active < this.pageCount) {
-        this.active = this.active + 1;
-
-        await this.$store.commit('storiesData/setPage', this.active);
+        await this.$store.commit('storiesData/setPage', this.active + 1);
         this.$emit('onPageChanged', this.active);
         this.sliceButtons();
+        this.active = this.currentPage;
       }
     },
     async scrollLeft() {
       if (this.active !== 1) {
-        this.active = this.active - 1;
-        await this.$store.commit('storiesData/setPage', this.active);
+        await this.$store.commit('storiesData/setPage', this.active - 1);
         this.$emit('onPageChanged', this.active);
         this.sliceButtons();
+        this.active = this.currentPage;
       }
     },
     sliceButtons(item) {
