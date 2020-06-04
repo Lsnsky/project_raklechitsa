@@ -12,9 +12,9 @@
     :closeButton="this.id !== 13"
   >
     <p v-if="id < 13" class="questionnaire__question">
-      <question class="questionnaire__mainquestion">
-        {{ question.mainQest }}
-      </question>
+      <question class="questionnaire__mainquestion">{{
+        question.mainQest
+      }}</question>
       <span class="questionnaire__subquestion">{{ question.qest }}</span>
     </p>
     <main-input
@@ -208,10 +208,6 @@ export default {
   height: 52px;
 }
 
-/* .questionnaire__further:hover {
-  opacity: 0.9;
-} */
-
 .questionnaire__further_step_last {
   left: calc(50% - 100px);
 }
@@ -311,16 +307,12 @@ export default {
 @media screen and (max-width: 900px) {
   .questionnaire /deep/ .popup__container {
     width: 580px;
-    height: 520px;
   }
 
   .questionnaire__input {
     top: 230px;
     font-size: 15px;
     line-height: 19px;
-  }
-  .questionnaire__error-massage {
-    top: 270px;
   }
 
   .questionnaire__further {
@@ -346,13 +338,10 @@ export default {
 @media screen and (max-width: 600px) {
   .questionnaire /deep/ .popup__container {
     width: 290px;
-    height: 520px;
   }
 
   .questionnaire__input {
     top: 245px;
-    font-size: 15px;
-    line-height: 19px;
     width: calc(100% - 30px);
     margin: 0 15px;
   }
@@ -397,9 +386,6 @@ export default {
     left: 0;
     font-size: 11px;
     line-height: 13px;
-  }
-  .questionnaire__further_step_last {
-    left: calc(50% - 100px);
   }
 }
 

@@ -9,9 +9,9 @@
     @formSubmit="saveAnswers"
     formName="Callback"
   >
-    <question class="callback__main-quest">{{
-      getQuestions[0].quest
-    }}</question>
+    <question class="callback__main-quest">
+      {{ getQuestions[0].quest }}
+    </question>
     <question class="callback__quest">{{ getQuestions[1].quest }}</question>
     <div class="callback__input-wrapper">
       <main-input
@@ -29,9 +29,9 @@
     </div>
     <div class="callback__container">
       <div class="callback__wrapper">
-        <question class="callback__small-quest">{{
-          getQuestions[2].quest
-        }}</question>
+        <question class="callback__small-quest">
+          {{ getQuestions[2].quest }}
+        </question>
         <div class="callback__input-wrapper">
           <main-input
             class="callback__small-input"
@@ -51,9 +51,9 @@
         </div>
       </div>
       <div class="callback__wrapper">
-        <question class="callback__small-quest">{{
-          getQuestions[3].quest
-        }}</question>
+        <question class="callback__small-quest">
+          {{ getQuestions[3].quest }}
+        </question>
         <div class="callback__input-wrapper">
           <main-input
             class="callback__small-input"
@@ -95,10 +95,9 @@
         color="purple"
         :disabled="hasInvalidInput()"
         type="submit"
+        >Отправить</main-button
       >
-        Отправить
-      </main-button>
-      <policy class="callback__policy"> </policy>
+      <policy class="callback__policy"></policy>
     </div>
   </popup>
 </template>
@@ -344,13 +343,8 @@ export default {
     margin: 0 15px 20px;
   }
   .callback__error-massage {
-    font-size: 10px;
-    line-height: 10px;
     top: 31px;
     left: 15px;
-  }
-  .callback__error-massage_input_small {
-    left: 0;
   }
 }
 

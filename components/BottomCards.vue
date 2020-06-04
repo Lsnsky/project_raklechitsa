@@ -63,14 +63,12 @@ export default {
 @media screen and (max-width: 768px) {
   .button {
     margin: 40px auto 80px;
-    height: 50px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .button {
     margin: 40px auto 50px;
-    height: 50px;
   }
 }
 </style>

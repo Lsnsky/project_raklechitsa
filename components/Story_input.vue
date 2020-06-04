@@ -103,7 +103,6 @@ export default {
   margin-bottom: 100px;
   padding: 0;
   margin: 0;
-  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   background-color: #f7f7f7;
@@ -219,7 +218,6 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .story-input {
-    padding: 0;
     margin-bottom: 90px;
   }
 
@@ -251,8 +249,6 @@ export default {
   .content__about-title {
     font-size: 24px;
     line-height: 28px;
-    margin-bottom: 30px;
-    margin-right: 49px;
     width: 288px;
   }
   .content__about-paragraph {
@@ -279,10 +275,6 @@ export default {
   .story-input {
     margin-bottom: 80px;
   }
-  .story-button {
-    width: 230px;
-    height: 46px;
-  }
   .content__columns {
     margin-top: 186px;
   }
@@ -308,8 +300,7 @@ export default {
     padding: 0;
   }
   .columns__link-1 {
-    margin: 0 0 30px;
-    margin-right: 30px;
+    margin: 0 30px 30px 0;
   }
   .columns__link-2 {
     margin: 0 0 30px;
@@ -340,14 +331,9 @@ export default {
   .content__columns-text-2 {
     margin-bottom: 88px;
   }
-  .content__about-paragraph {
-    padding-bottom: 0;
-  }
 }
 @media screen and (max-width: 512px) {
   .story-input {
-    margin: 0;
-    padding: 0;
     margin-bottom: 50px;
   }
   .story-button {
@@ -372,21 +358,16 @@ export default {
   }
   .content__about-paragraph {
     margin: 0 auto 40px;
-    font-size: 13px;
-    line-height: 16px;
     max-width: 295px;
   }
   .columns__link-1 {
     width: 77px;
     font-size: 13px;
-    line-height: 19px;
-    margin: 0 0 20px;
-    margin-right: 16px;
+    margin: 0 16px 20px 0;
   }
   .columns__link-2 {
     width: 78px;
     font-size: 13px;
-    line-height: 19px;
     margin: 0 0 20px;
   }
   .content__columns-text {

@@ -2,9 +2,7 @@
   <footer class="footer">
     <container class="footer__container">
       <div class="footer__wrapper">
-        <h3 class="footer__title">
-          {{ footerData.title }}
-        </h3>
+        <h3 class="footer__title">{{ footerData.title }}</h3>
         <main-menu class="footer__menu" />
         <div class="footer__vertical-wrapper">
           <p class="footer__we-in">
@@ -33,14 +31,13 @@
           <div class="footer__copyright-slot" v-html="footerData.text"></div>
           <p class="footer__copyright">&nbsp;{{ this.date }}</p>
         </div>
-        <p class=" footer__copyright footer__copyright_position_right">
+        <p class="footer__copyright footer__copyright_position_right">
           Сделано студентами
           <a
             href="https://praktikum.yandex.ru/"
             target="_blank"
             class="footer__copyryght-link"
-          >
-            Яндекс Практикум</a
+            >Яндекс Практикум</a
           >
         </p>
       </div>
@@ -199,22 +196,18 @@ export default {
 
   .footer__copyright {
     font-size: 16px;
-    line-height: 18px;
   }
 
   .footer__copyright-wrapper >>> .footer__copyright {
     font-size: 16px;
-    line-height: 18px;
   }
 
   .footer__we-in {
     font-size: 16px;
-    line-height: 24px;
   }
 
   .footer__share {
     font-size: 16px;
-    line-height: 24px;
     margin: 42px 0 0;
   }
 
@@ -236,7 +229,7 @@ export default {
   }
 
   .footer__share {
-    margin: 29px 0 0 0px;
+    margin: 29px 0 0px;
   }
 }
 
@@ -269,10 +262,6 @@ export default {
 }
 
 @media screen and (max-width: 715px) {
-  .footer {
-    padding: 50px 0;
-  }
-
   .footer__wrapper {
     flex-direction: column;
   }
@@ -294,12 +283,10 @@ export default {
 
   .footer__copyright {
     font-size: 13px;
-    line-height: 18px;
   }
 
   .footer__copyright-wrapper >>> .footer__copyright {
     font-size: 13px;
-    line-height: 18px;
   }
 
   .footer__we-in {
