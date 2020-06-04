@@ -18,7 +18,7 @@
       <span class="questionnaire__subquestion">{{ question.qest }}</span>
     </p>
     <main-input
-      v-if="id < 13 && id !== 11"
+      v-if="id < 11"
       required="required"
       placeholder="Напишите тут"
       :type="id === 12 ? 'email' : 'text'"
@@ -33,7 +33,19 @@
       required="required"
       pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
       placeholder="Напишите тут"
-      :type="id === 12 ? 'email' : 'text'"
+      type="text"
+      :hasData="this.validity"
+      v-model="answer"
+      :bordered="false"
+      class="questionnaire__input"
+      @input="checkValidity"
+    />
+    <main-input
+      v-if="id === 12"
+      required="required"
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+      placeholder="Напишите тут"
+      type="email"
       :hasData="this.validity"
       v-model="answer"
       :bordered="false"
@@ -109,10 +121,6 @@ export default {
         .then(item => {
           this.answer = item || '';
         });
-      if (this.id === 12) {
-        console.log(this.getAnswers);
-      }
-
       this.setDefault();
     },
     async closeQuestionnaire() {

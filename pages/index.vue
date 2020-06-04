@@ -33,10 +33,9 @@ export default {
     callback: Callback,
   },
 
-  /*   async fetch({ store }) {
-    await store.dispatch('video/fetchVideos');
-    await store.dispatch('blocks/fetchBlocks');
-  }, */
+  async beforeMount() {
+    await this.$store.dispatch('instagram/fetchPhotos');
+  },
 };
 </script>
 
