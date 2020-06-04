@@ -42,22 +42,12 @@ export default {
   .progress-bar {
     max-width: 229px;
     height: 36px;
-    background: #f4f4f4;
-  }
-  .progress-bar__fill {
-    height: 100%;
-    background: #613a93;
   }
 }
 @media screen and (max-width: 1166px) {
   .progress-bar {
     max-width: 188px;
     height: 28px;
-    background: #f4f4f4;
-  }
-  .progress-bar__fill {
-    height: 100%;
-    background: #613a93;
   }
 }
 @media screen and(max-width: 1024px) {
