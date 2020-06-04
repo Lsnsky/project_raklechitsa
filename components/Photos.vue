@@ -105,11 +105,11 @@ export default {
   width: 100%;
 }
 .photos__cards {
-  max-width: 870px;
   margin: 0;
+  padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, minmax(136px, 195px));
+  grid-template-columns: repeat(4, minmax(171px, 195px));
   grid-gap: 30px;
 }
 .photos__card-item {
@@ -160,7 +160,6 @@ export default {
   }
   .photos__panel-text {
     font-size: 28px;
-    line-height: 46px;
   }
   .photos__panel-hashtag {
     line-height: 40px;
@@ -169,8 +168,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .photos__cards {
-    max-width: 604px;
-    grid-template-columns: repeat(4, minmax(136px, 157px));
+    grid-template-columns: repeat(4, minmax(120px, 136px));
     grid-gap: 20px;
   }
   .photos__title {
@@ -203,10 +201,8 @@ export default {
 
 @media screen and (max-width: 880px) {
   .photos__cards {
-    max-width: 100%;
-    grid-template-columns: repeat(4, minmax(120px, 185px));
-    margin: 0;
-    padding: 0;
+    grid-template-columns: repeat(4, minmax(120px, 171px));
+    margin: 0 auto;
   }
   .photos__content {
     flex-direction: column;
@@ -241,15 +237,11 @@ export default {
     margin: 50px 0;
   }
   .photos__cards {
-    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    grid-template-columns: repeat(2, minmax(140px, 250px));
     grid-gap: 15px;
   }
 }
 @media screen and (max-width: 400px) {
-  .photos {
-    margin: 50px 0;
-  }
-
   .photos >>> .container {
     padding: 0px 15px;
   }

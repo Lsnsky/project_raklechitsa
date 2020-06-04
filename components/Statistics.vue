@@ -103,10 +103,8 @@ export default {
     max-width: 367px;
   }
   .cards__container {
-    display: grid;
     grid-template-rows: repeat(1, minmax(208px, 265px));
     grid-template-columns: repeat(4, minmax(208px, 265px));
-    grid-column-gap: 40px;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -119,7 +117,6 @@ export default {
     max-width: 288px;
   }
   .cards__container {
-    display: grid;
     grid-template-rows: repeat(1, minmax(160px, 208px));
     grid-template-columns: repeat(4, minmax(160px, 208px));
     grid-column-gap: 30px;
@@ -130,7 +127,6 @@ export default {
     padding: 0 40px;
   }
   .cards__container {
-    display: grid;
     grid-template-rows: repeat(1, 216px);
     grid-template-columns: repeat(4, 216px);
     grid-column-gap: 20px;
@@ -141,14 +137,6 @@ export default {
 @media screen and (max-width: 320px) {
   .cards {
     padding: 0 15px;
-  }
-  .cards__container {
-    display: grid;
-    grid-template-rows: repeat(1, 216px);
-    grid-template-columns: repeat(4, 216px);
-    grid-column-gap: 20px;
-    max-width: 100%;
-    overflow-x: scroll;
   }
 }
 </style>

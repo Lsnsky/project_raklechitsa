@@ -179,10 +179,6 @@ section >>> .story__span-accent {
   opacity: 0.8;
 }
 
-.story__photo_type_mobile {
-  display: none;
-}
-
 .story__date {
   margin: 0;
   font-size: 18px;

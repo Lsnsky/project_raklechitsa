@@ -2,9 +2,7 @@
   <section class="video">
     <container class="video__container">
       <div class="video__wrapper">
-        <h2 class="video__title">
-          {{ videoData.title }}
-        </h2>
+        <h2 class="video__title">{{ videoData.title }}</h2>
 
         <div class="video__subtitle-wrapper" v-html="videoData.text"></div>
         <div class="video__buttons">

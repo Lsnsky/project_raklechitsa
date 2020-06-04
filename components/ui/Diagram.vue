@@ -60,20 +60,16 @@ export default {
   .diagram {
     width: 229px;
     height: 36px;
-    margin: auto;
-    margin-bottom: 20px;
   }
   .diagram__empty {
     width: 229px;
     height: 18px;
-    background: #f4f4f4;
     margin: auto;
     margin-left: 0px;
   }
   .diagram__fill {
     width: 229px;
     height: 18px;
-    background: #613a93;
     margin-left: 0px;
   }
 }
@@ -81,21 +77,14 @@ export default {
   .diagram {
     width: 188px;
     height: 28px;
-    margin: auto;
-    margin-bottom: 20px;
   }
   .diagram__empty {
     width: 188px;
     height: 14px;
-    background: #f4f4f4;
-    margin: auto;
-    margin-left: 0px;
   }
   .diagram__fill {
     width: 188px;
     height: 14px;
-    background: #613a93;
-    margin-left: 0px;
   }
 }
 </style>

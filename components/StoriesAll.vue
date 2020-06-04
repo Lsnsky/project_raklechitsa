@@ -1,9 +1,7 @@
 <template>
   <section class="cards-story">
     <container class="card-story__container">
-      <h2 class="cards-story__title">
-        Истории неизлечимых привычек
-      </h2>
+      <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
       <form class="cards-story__search" @submit.prevent="getSerch">
         <input-search
           class="cards-story__search-input"
@@ -121,7 +119,6 @@ export default {
   width: 100%;
 }
 .cards-story__search-input {
-  /* background: #e5e5e5; */
   width: calc(100% - 228px);
   padding: 0 0 0 10px;
   margin: 0 20px 0 0;
@@ -199,12 +196,10 @@ export default {
     margin: 60px auto 280px;
   }
   .cards-story__not-found-title {
-    font-size: 24px;
     line-height: 29px;
   }
   .cards-story__not-found-description {
     font-size: 14px;
-    line-height: 20px;
     margin: 15px auto 0;
   }
 }

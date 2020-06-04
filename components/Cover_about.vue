@@ -193,10 +193,6 @@ export default {
   margin-top: 122px;
 }
 @media screen and (max-width: 1280px) {
-  .cover-about {
-    padding: 0;
-  }
-
   .cover-about__title {
     font-size: 58px;
     line-height: 70px;
@@ -235,7 +231,6 @@ export default {
   .content__about-title {
     font-size: 24px;
     line-height: 28px;
-    margin-bottom: 30px;
     width: 288px;
   }
   .content__about-paragraph {
@@ -311,7 +306,7 @@ export default {
   }
   .content__columns-main-text {
     max-width: 380px;
-    margin: 0 auto 0;
+    margin: 0 auto;
   }
   .content__about-paragraph {
     max-width: 380px;
@@ -324,7 +319,6 @@ export default {
 @media screen and (max-width: 512px) {
   .cover-about {
     margin: 0;
-    padding: 0;
   }
 
   .content {
@@ -344,8 +338,6 @@ export default {
   }
   .content__about-paragraph {
     margin: 0 auto 40px;
-    font-size: 13px;
-    line-height: 16px;
     max-width: 295px;
   }
 

@@ -9,9 +9,9 @@
     @formSubmit="saveAnswers"
     formName="Callback"
   >
-    <question class="callback__main-quest">{{
-      getQuestions[0].quest
-    }}</question>
+    <question class="callback__main-quest">
+      {{ getQuestions[0].quest }}
+    </question>
     <question class="callback__quest">{{ getQuestions[1].quest }}</question>
     <div class="callback__input-wrapper">
       <main-input
@@ -29,11 +29,12 @@
     </div>
     <div class="callback__container">
       <div class="callback__wrapper">
-        <question class="callback__small-quest">{{
-          getQuestions[2].quest
-        }}</question>
+        <question class="callback__small-quest">
+          {{ getQuestions[2].quest }}
+        </question>
         <div class="callback__input-wrapper">
           <main-input
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             class="callback__small-input"
             placeholder="pochta@example.com"
             type="email"
@@ -51,9 +52,9 @@
         </div>
       </div>
       <div class="callback__wrapper">
-        <question class="callback__small-quest">{{
-          getQuestions[3].quest
-        }}</question>
+        <question class="callback__small-quest">
+          {{ getQuestions[3].quest }}
+        </question>
         <div class="callback__input-wrapper">
           <main-input
             class="callback__small-input"
@@ -95,10 +96,9 @@
         color="purple"
         :disabled="hasInvalidInput()"
         type="submit"
+        >Отправить</main-button
       >
-        Отправить
-      </main-button>
-      <policy class="callback__policy"> </policy>
+      <policy class="callback__policy"></policy>
     </div>
   </popup>
 </template>
@@ -136,12 +136,11 @@ export default {
       this.$store.commit('callback/toggleCallback');
     },
     saveAnswers() {
-      this.$store.commit(
+      this.$store.dispatch(
         'callback/saveAnswers',
         Object.assign({}, this.answers)
       );
-      console.log(this.answers);
-      this.toggleCallback();
+      this.answers = {};
     },
   },
   computed: {
@@ -344,13 +343,8 @@ export default {
     margin: 0 15px 20px;
   }
   .callback__error-massage {
-    font-size: 10px;
-    line-height: 10px;
     top: 31px;
     left: 15px;
-  }
-  .callback__error-massage_input_small {
-    left: 0;
   }
 }
 

@@ -2,11 +2,9 @@
   <header class="header">
     <container class="header__container">
       <div class="header__title-wrapper">
-        <nuxt-link to="/" class="header__link"
-          ><h3 class="header__title">
-            {{ headerData.title }}
-          </h3></nuxt-link
-        >
+        <nuxt-link to="/" class="header__link">
+          <h3 class="header__title">{{ headerData.title }}</h3>
+        </nuxt-link>
         <button
           :class="`header__hider header__hider_${isMenuActive()}`"
           @click="menuToggle"
@@ -106,10 +104,6 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .header {
-    padding: 18px 0;
-  }
-
   .header__title {
     line-height: 18px;
   }
@@ -119,13 +113,6 @@ export default {
   .header__share-story {
     margin: -5px 0 0 42px;
     font-size: 16px;
-    line-height: 24px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .header__wrapper {
-    margin: 6px 11px 0 0;
   }
 }
 
@@ -195,8 +182,6 @@ export default {
   .header__wrapper {
     flex-direction: column;
     margin: 0 11px 17px 0;
-    border-bottom: 1px solid #efefef;
-    padding: 0 0 18px;
   }
   .header__menu /deep/ .menu {
     display: flex;
