@@ -4,9 +4,9 @@
       <panel class="card-story__panel">
         <div class="card-story__panel-text">
           {{ firstPanelData.title }}
-          <span class="card-story__panel-hashtag">{{
-            firstPanelData.hashtag
-          }}</span>
+          <span class="card-story__panel-hashtag">
+            {{ firstPanelData.hashtag }}
+          </span>
         </div>
       </panel>
       <h2 class="cards-story__title">{{ storiesData.title }}</h2>
@@ -142,13 +142,10 @@ export default {
   .card-story__panel-text {
     font-size: 24px;
     line-height: 40px;
-    text-align: center;
   }
 
   .card-story__panel-hashtag {
-    font-weight: bold;
     font-size: 32px;
-    line-height: 40px;
   }
   .cards-story__button {
     margin: 46px auto 0;
@@ -162,8 +159,6 @@ export default {
     max-width: 444px;
   }
   .card-story__panel-hashtag {
-    font-weight: bold;
-    font-size: 32px;
     line-height: 30px;
   }
   .cards-story__title {
@@ -178,17 +173,12 @@ export default {
     font-size: 16px;
     line-height: 18px;
     max-width: 220px;
-    text-align: center;
   }
   .card-story__panel-hashtag {
-    font-weight: bold;
     font-size: 22px;
-    line-height: 30px;
   }
   .cards-story__title {
     margin: 50px auto 40px;
-    max-width: 380px;
-    text-align: center;
     font-size: 18px;
     line-height: 21px;
     text-align: left;
