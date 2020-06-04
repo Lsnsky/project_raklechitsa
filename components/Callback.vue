@@ -34,6 +34,7 @@
         </question>
         <div class="callback__input-wrapper">
           <main-input
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             class="callback__small-input"
             placeholder="pochta@example.com"
             type="email"
@@ -135,12 +136,11 @@ export default {
       this.$store.commit('callback/toggleCallback');
     },
     saveAnswers() {
-      this.$store.commit(
+      this.$store.dispatch(
         'callback/saveAnswers',
         Object.assign({}, this.answers)
       );
-      console.log(this.answers);
-      this.toggleCallback();
+      this.answers = {};
     },
   },
   computed: {
