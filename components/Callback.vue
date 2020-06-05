@@ -100,6 +100,9 @@
       >
       <policy class="callback__policy"></policy>
     </div>
+    <p class="callback__form-error" v-if="hasInvalidInput() || this.postError">
+      {{ globalErrorMessage }}
+    </p>
   </popup>
 </template>
 
@@ -135,12 +138,33 @@ export default {
     toggleCallback() {
       this.$store.commit('callback/toggleCallback');
     },
-    saveAnswers() {
-      this.$store.dispatch(
-        'callback/saveAnswers',
-        Object.assign({}, this.answers)
+    setDefault() {
+      this.errors = [
+        'Введите имя.',
+        'Введите почту.',
+        'Введите номер телефона.',
+        'Введите контакты для связи и удобное время.',
+      ];
+      this.globalErrorMessage = 'Заполните все поля.';
+      Array.from(document.forms.Callback.querySelectorAll('input')).forEach(
+        (item, i) => {
+          this.validity[i] = false;
+        }
       );
-      this.answers = {};
+    },
+    saveAnswers() {
+      this.$store
+        .dispatch('callback/saveAnswers', Object.assign({}, this.answers))
+        .then(item => {
+          this.globalErrorMessage = item;
+          this.postError = false;
+          if (item) {
+            this.postError = true;
+          } else {
+            this.answers = {};
+            this.setDefault();
+          }
+        });
     },
   },
   computed: {
@@ -152,17 +176,15 @@ export default {
     },
   },
   mounted() {
-    Array.from(document.forms.Callback.querySelectorAll('input')).forEach(
-      (item, i) => {
-        this.validity[i] = item.validity.valid;
-      }
-    );
+    this.setDefault();
   },
   data() {
     return {
       answers: {},
       validity: [],
       errors: [],
+      globalErrorMessage: '',
+      postError: false,
     };
   },
 };
@@ -172,6 +194,18 @@ export default {
 .callback /deep/ .popup__container {
   display: flex;
   flex-direction: column;
+}
+
+.callback__form-error {
+  width: 100%;
+  margin: 0;
+  padding: 16px 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #ff0000;
+  background: #f0f0f0;
 }
 
 .callback__error-massage {
@@ -256,6 +290,12 @@ export default {
 @media screen and (max-width: 820px) {
   .callback /deep/ .popup__container {
     max-width: 580px;
+  }
+  .callback__form-error {
+    width: calc(100% - 50px);
+    font-size: 11px;
+    line-height: 13px;
+    padding: 18px 25px;
   }
 
   .callback__input {
@@ -348,20 +388,20 @@ export default {
   }
 }
 
-@media screen and (max-height: 728px) and (min-width: 1280px) {
+@media screen and (max-height: 778px) and (min-width: 1280px) {
   .callback /deep/ .popup__container {
     overflow: auto;
     height: 100%;
   }
 }
 
-@media screen and (max-height: 710px) and (max-width: 1280px) and (min-width: 600px) {
+@media screen and (max-height: 760px) and (max-width: 1280px) and (min-width: 600px) {
   .callback /deep/ .popup__container {
     overflow: auto;
     height: 100%;
   }
 }
-@media screen and (max-height: 698px) and (max-width: 600px) {
+@media screen and (max-height: 748px) and (max-width: 600px) {
   .callback /deep/ .popup__container {
     overflow: auto;
     height: 100%;

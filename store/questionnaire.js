@@ -117,28 +117,35 @@ export const mutations = {
 };
 
 export const actions = {
-  async previousQuestion({ commit, getters }) {
-    await commit('previousId');
-    return getters.getCurrentAnswer;
-  },
   async nextQuestion({ commit, getters }, answer) {
     await commit('saveAnswer', answer);
-    if (getters.getId === 12) {
-      console.log(getters.getAnswers);
+    if (getters.getId > 11) {
+      const errors = {
+        'Member Exists':
+          'Ошибка отправки данных, данный email уже используется, попробуйте ввести другой.',
+        'Invalid Resource':
+          'Ошибка отправки данных, пожалуйста, проверьте корректность введенных данных.',
+      };
+      let errorMessage =
+        'Ошибка отправки данных, пожалуйста, попробуйте еще раз.';
       await this.$axios
         .post(`${process.env.API_URL}/forms/stories`, getters.getAnswers)
         .then(() => {
           commit('nextId');
           commit('resetAnswers');
-          console.log('ok');
+          errorMessage = '';
         })
         .catch(error => {
-          console.log(error.response);
+          if (typeof error.response !== 'undefined') {
+            errorMessage = errors[error.response.data.title];
+          } else {
+          }
         });
+      return errorMessage;
     } else {
       await commit('nextId');
-      return getters.getCurrentAnswer;
     }
+    return;
   },
   async closeQuestionnaire({ commit, getters }) {
     await commit('closeQuestionnaire');

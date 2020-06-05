@@ -81,7 +81,4 @@ export const getters = {
   getSharePopupData(state) {
     return state.socialNetworks;
   },
-  getRoute(state) {
-    return state.route;
-  },
 };
