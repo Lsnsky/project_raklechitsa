@@ -32,16 +32,33 @@ export const mutations = {
 
 export const actions = {
   async saveAnswers({ commit }, answers) {
+    const errors = {
+      'Member Exists':
+        'Ошибка отправки данных, данный email уже используется, попробуйте ввести другой.',
+      'Invalid Resource':
+        'Ошибка отправки данных, пожалуйста, проверьте корректность введенных данных.',
+    };
+    let errorMessage =
+      'Ошибка отправки данных, пожалуйста, попробуйте еще раз.';
     console.log(answers);
     await this.$axios
       .post(`${process.env.API_URL}/forms/contacts`, answers)
       .then(() => {
         commit('toggleCallback');
         console.log('ok');
+        errorMessage = '';
       })
       .catch(error => {
         console.log(error.response);
+        console.log(error.response);
+        console.log(typeof error.response === 'undefined');
+        if (typeof error.response !== 'undefined') {
+          errorMessage = errors[error.response.data.title];
+        } else {
+        }
       });
+    console.log(errorMessage);
+    return errorMessage;
   },
 };
 
