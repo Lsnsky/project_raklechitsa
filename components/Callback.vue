@@ -96,6 +96,7 @@
         color="purple"
         :disabled="hasInvalidInput()"
         type="submit"
+        @buttonClick="saveAnswers"
         >Отправить</main-button
       >
       <policy class="callback__policy"></policy>
