@@ -8,7 +8,7 @@
       },
     ]"
     :disabled="disabled"
-    @click="$emit('buttonClick')"
+    @click.prevent="$emit('buttonClick')"
     :type="type"
   >
     <slot></slot>

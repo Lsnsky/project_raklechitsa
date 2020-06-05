@@ -8,7 +8,7 @@
     :isItForm="true"
     @formSubmit="nextQuestion"
     formName="Questionnaire"
-    :noValidate="false"
+    :noValidate="true"
     :closeButton="this.id !== 13"
   >
     <p v-if="id < 13" class="questionnaire__question">
@@ -57,6 +57,7 @@
       v-if="id < 13"
       class="questionnaire__back"
       color="none"
+      type="button"
       :disabled="this.id === 0"
       @buttonClick="previousQuestion"
       >Назад</main-button
@@ -67,8 +68,10 @@
       color="purple"
       type="submit"
       :disabled="!this.validity"
+      @buttonClick="nextQuestion"
       >{{ buttonNext() }}</main-button
     >
+
     <main-button
       v-else
       class="questionnaire__further questionnaire__further_step_last"
@@ -77,7 +80,18 @@
       @buttonClick="closeQuestionnaire"
       >Закрыть</main-button
     >
-    <policy v-if="id === 12" class="questionnaire__politica"></policy>
+    <p class="qusetionnaire__global-error" v-if="this.errorMessage">
+      {{ this.errorMessage }}
+    </p>
+    <policy
+      v-if="id === 12"
+      :class="[
+        'questionnaire__politica',
+        {
+          questionnaire__politica_lower: this.errorMessage,
+        },
+      ]"
+    ></policy>
   </popup>
 </template>
 
@@ -108,19 +122,25 @@ export default {
       return this.id === 13 ? 'center' : 'left';
     },
     async previousQuestion() {
-      await this.$store
-        .dispatch('questionnaire/previousQuestion')
-        .then(item => {
-          this.answer = item || '';
-        });
+      await this.$store.commit('questionnaire/previousId');
+      this.answer = this.getCurrentAnswer || '';
       this.setDefault();
+      this.errorMessage = '';
     },
     async nextQuestion() {
+      let notError = true;
+      if (this.id === 12) {
+        notError = false;
+      }
       await this.$store
         .dispatch('questionnaire/nextQuestion', this.answer)
         .then(item => {
-          this.answer = item || '';
+          this.errorMessage = item;
+          if (notError) {
+            this.answer = this.getCurrentAnswer || '';
+          }
         });
+
       this.setDefault();
     },
     async closeQuestionnaire() {
@@ -169,6 +189,7 @@ export default {
       answer: this.getCurrentAnswer || '',
       error: '',
       validity: false,
+      errorMessage: '',
     };
   },
   mounted() {
@@ -194,6 +215,21 @@ export default {
 .questionnaire /deep/ .popup__container {
   width: 920px;
   height: 600px;
+}
+
+.qusetionnaire__global-error {
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 16px 25px;
+  width: calc(100% - 50px);
+  color: #ff0000;
+  background: #f0f0f0;
+  position: absolute;
+  bottom: -48px;
+  left: 0;
 }
 
 .questionnaire__politica {
@@ -277,6 +313,7 @@ export default {
   .questionnaire /deep/ .popup__container {
     width: 800px;
     height: 520px;
+    min-height: 520px;
   }
 
   .questionnaire__input {
@@ -334,12 +371,21 @@ export default {
     font-size: 15px;
     line-height: 19px;
   }
+
+  .qusetionnaire__global-error {
+    bottom: -44px;
+    font-size: 11px;
+    line-height: 13px;
+  }
   .questionnaire__politica {
     bottom: -59px;
     left: 0;
     max-width: 100%;
     padding: 25px 40px;
     background-color: #ededed;
+  }
+  .questionnaire__politica_lower {
+    bottom: -127px;
   }
 }
 
@@ -395,6 +441,17 @@ export default {
     font-size: 11px;
     line-height: 13px;
   }
+  .qusetionnaire__global-error {
+    bottom: -45px;
+    font-size: 11px;
+    line-height: 13px;
+    width: calc(100% - 30px);
+    padding: 12px 15px;
+  }
+
+  .questionnaire__politica_lower {
+    bottom: -104px;
+  }
 }
 
 @media screen and (max-height: 520px) and (min-width: 1280px) {
@@ -404,9 +461,15 @@ export default {
   }
 }
 
-@media screen and (max-height: 604px) and (max-width: 1280px) {
+@media screen and (max-height: 654px) and (max-width: 1280px) {
   .questionnaire /deep/ .popup__container {
-    overflow: auto;
+    overflow: scroll;
+    height: 100%;
+  }
+}
+@media screen and (max-height: 704px) and (max-width: 900px) {
+  .questionnaire /deep/ .popup__container {
+    overflow: scroll;
     height: 100%;
   }
 }

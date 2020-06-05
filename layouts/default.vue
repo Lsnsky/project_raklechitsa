@@ -97,7 +97,14 @@ body {
   }
 }
 
-@media screen and (max-height: 604px) and (max-width: 1280px) {
+@media screen and (max-height: 654px) and (max-width: 1280px) {
+  .body__noscroll_type_quest {
+    overflow: hidden;
+    height: 100vh;
+  }
+}
+
+@media screen and (max-height: 704px) and (max-width: 900px) {
   .body__noscroll_type_quest {
     overflow: hidden;
     height: 100vh;

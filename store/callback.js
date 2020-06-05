@@ -15,16 +15,12 @@ export const state = () => ({
       key: 'preferred',
     },
   ],
-  answers: {},
 });
 
 export const mutations = {
   toggleCallback(state) {
     return (state.callbackOpened = !state.callbackOpened);
   },
-  /*   saveAnswers(state, answers) {
-    return (state.answers = answers);
-  }, */
   closeCallback(state) {
     return (state.callbackOpened = false);
   },
@@ -40,18 +36,13 @@ export const actions = {
     };
     let errorMessage =
       'Ошибка отправки данных, пожалуйста, попробуйте еще раз.';
-    console.log(answers);
     await this.$axios
       .post(`${process.env.API_URL}/forms/contacts`, answers)
       .then(() => {
         commit('toggleCallback');
-        console.log('ok');
         errorMessage = '';
       })
       .catch(error => {
-        console.log(error.response);
-        console.log(error.response);
-        console.log(typeof error.response === 'undefined');
         if (typeof error.response !== 'undefined') {
           errorMessage = errors[error.response.data.title];
         } else {
