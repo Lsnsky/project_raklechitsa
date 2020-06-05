@@ -120,7 +120,6 @@ export const actions = {
   async nextQuestion({ commit, getters }, answer) {
     await commit('saveAnswer', answer);
     if (getters.getId > 11) {
-      console.log(getters.getAnswers);
       const errors = {
         'Member Exists':
           'Ошибка отправки данных, данный email уже используется, попробуйте ввести другой.',
@@ -134,16 +133,13 @@ export const actions = {
         .then(() => {
           commit('nextId');
           commit('resetAnswers');
-          console.log('ok');
           errorMessage = '';
         })
         .catch(error => {
-          console.log(error.response);
           if (typeof error.response !== 'undefined') {
             errorMessage = errors[error.response.data.title];
           } else {
           }
-          console.log(getters.getCurrentAnswer);
         });
       return errorMessage;
     } else {

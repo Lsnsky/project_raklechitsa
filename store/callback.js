@@ -48,7 +48,6 @@ export const actions = {
         } else {
         }
       });
-    console.log(errorMessage);
     return errorMessage;
   },
 };
