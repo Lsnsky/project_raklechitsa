@@ -324,6 +324,7 @@ export default {
   .content__about-paragraph {
     max-width: 380px;
     margin-bottom: 0;
+    padding-bottom: 0;
   }
   .content__columns-text {
     margin-bottom: 50px;
