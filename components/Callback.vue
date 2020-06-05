@@ -26,6 +26,9 @@
         @input="checkValidity(0)"
       />
       <p class="callback__error-massage">{{ this.errors[0] }}</p>
+      <!-- Решили вынести валидационные ошибки под инпуты,
+      чтобы сохранить плэйсхолдеры, для более ясного понимания пользователем
+      формата вводимых данных -->
     </div>
     <div class="callback__container">
       <div class="callback__wrapper">
