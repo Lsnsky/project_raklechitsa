@@ -21,7 +21,11 @@
             v-for="photo in instagram"
             :key="photo.id"
           >
-            <photo :href="photo.url" :src="photo.display_url" />
+            <photo
+              :href="photo.url"
+              :src="photo.display_url"
+              :alt="photo.accessibility_caption"
+            />
           </li>
         </ul>
       </div>
