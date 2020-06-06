@@ -26,17 +26,9 @@ export default {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
   },
-  // head() {
-  //   return {
-  //     title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
-  //   };
-  // },
   data() {
     return {
       metas: {
-        // title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
-        // description: `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.`,
-        og_image: 'надо поставить картинку автора ',
         keywords: 'РАКЛЕЧИТСЯ.РФ, раклечится, этонелечится',
       },
     };
@@ -73,7 +65,8 @@ export default {
           {
             hid: 'og:image',
             property: 'og:image',
-            content: this.metas.og_image || '',
+            content:
+              `${process.env.API_URL}${this.story.ImageUrl[0].url}` || '',
           },
         ],
       };

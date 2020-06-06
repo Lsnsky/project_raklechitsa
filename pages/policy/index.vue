@@ -20,11 +20,6 @@ export default {
       },
     };
   },
-  // head() {
-  //   return {
-  //     title: `Политика конфиденциальности`,
-  //   };
-  // },
   head() {
     if (this.metas) {
       return {

@@ -1,7 +1,12 @@
 <template>
   <section class="cover" ref="section">
     <h2 class="cover__title">{{ coverData.hashtag }}</h2>
-    <main-button :disabled="false" color="none" class="cover__main-button">
+    <main-button
+      :disabled="false"
+      color="none"
+      class="cover__main-button"
+      @buttonClick="QuestionnaireOpen"
+    >
       Рассказать историю</main-button
     >
     <div class="cover__button">
@@ -30,15 +35,21 @@ export default {
         block: 'start',
       });
     },
+    QuestionnaireOpen() {
+      this.$store.commit('questionnaire/openQuestionnaire');
+    },
   },
 };
 </script>
 
 <style scoped>
+.cover__button-down {
+  transition: transform 0.5s ease-in-out;
+}
 .cover__button-down:hover {
   cursor: pointer;
   transform: scale(1.2);
-  transition: transform 0.7s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 .cover {
   min-height: calc(100vh - 76px);
@@ -77,6 +88,12 @@ export default {
   font-weight: 500;
   font-size: 24px;
   line-height: 36px;
+  transition: all linear 0.3s;
+}
+.cover__main-button:hover {
+  background-color: #fff;
+  color: #613a93;
+  transition: all linear 0.3s;
 }
 @media screen and (max-width: 1280px) {
   .cover {
