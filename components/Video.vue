@@ -7,11 +7,13 @@
         <div class="video__subtitle-wrapper" v-html="videoData.text"></div>
         <div class="video__buttons">
           <button-switch
+            class="video__button"
             position="left"
             :disabled="getLeftStatus"
             @buttonClick="back"
           />
           <button-switch
+            class="video__button"
             position="right"
             @buttonClick="further"
             :disabled="getRightStatus"
