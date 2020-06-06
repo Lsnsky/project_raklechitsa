@@ -80,13 +80,11 @@ export const actions = {
               return true;
             }
           }
-          return index === i
-            ? false
-            : item === randomStories[i] ||
-                item ===
-                  getters.getStoriesData.find(el => {
-                    return el.id === Number(getters.getId);
-                  });
+          console.log(Number(item.id) === Number(getters.getId));
+          if (getters.getId && Number(item.id) === Number(getters.getId)) {
+            return true;
+          }
+          return index === i ? false : item === randomStories[i];
         })
       );
     }
