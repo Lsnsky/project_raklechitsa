@@ -49,8 +49,6 @@ export default {
 }
 .cover__button-down:hover {
   cursor: pointer;
-  transform: scale(1.2);
-  transition: transform 0.5s ease-in-out;
 }
 @keyframes radial-pulse {
   0% {
