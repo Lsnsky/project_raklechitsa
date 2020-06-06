@@ -142,6 +142,8 @@ export default {
     },
     toggleCallback() {
       this.$store.commit('callback/toggleCallback');
+      this.answers = {};
+      this.setDefault();
     },
     setDefault() {
       this.errors = [

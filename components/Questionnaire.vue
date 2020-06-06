@@ -144,11 +144,9 @@ export default {
       this.setDefault();
     },
     async closeQuestionnaire() {
-      await this.$store
-        .dispatch('questionnaire/closeQuestionnaire')
-        .then(item => {
-          this.answer = item || '';
-        });
+      await this.$store.dispatch('questionnaire/closeQuestionnaire');
+      this.answer = '';
+      this.errorMessage = '';
       this.setDefault();
     },
     setDefault() {
