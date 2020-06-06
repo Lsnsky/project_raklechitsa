@@ -131,6 +131,7 @@ export default {
 .content {
   display: flex;
   padding-bottom: 100px;
+  margin-bottom: 100px;
 }
 .content__about {
   display: flex;
