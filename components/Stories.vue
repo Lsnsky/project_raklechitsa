@@ -34,21 +34,27 @@ export default {
   async beforeMount() {
     if (process.browser) {
       if (window.innerWidth > 1000) {
-        await this.$store.dispatch('storiesData/setRandomStories', 8);
+        await this.$store.dispatch('storiesData/setRandomStories', {
+          count: 8,
+          noSelebrity: true,
+        });
       }
       if (window.innerWidth <= 1000) {
-        await this.$store.dispatch('storiesData/setRandomStories', 9);
+        await this.$store.dispatch('storiesData/setRandomStories', {
+          count: 9,
+          noSelebrity: true,
+        });
         this.count = 9;
       }
       if (window.innerWidth <= 500) {
-        await this.$store.dispatch('storiesData/setRandomStories', 6);
+        await this.$store.dispatch('storiesData/setRandomStories', {
+          count: 6,
+          noSelebrity: true,
+        });
         this.count = 6;
       }
     }
-    await this.$store.dispatch(
-      'storiesData/setMainStories',
-      this.mainStoriesIds
-    );
+    await this.$store.dispatch('storiesData/setMainStories');
   },
   computed: {
     storiesData() {
@@ -63,11 +69,6 @@ export default {
     mainStories() {
       return this.$store.getters['storiesData/getMainStories'];
     },
-  },
-  data() {
-    return {
-      mainStoriesIds: [5, 6, 7, 8],
-    };
   },
 };
 </script>

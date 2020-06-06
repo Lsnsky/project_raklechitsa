@@ -100,9 +100,6 @@ export default {
     currentStories() {
       return this.$store.getters['storiesData/getPageStories'];
     },
-    /*     clearText() {
-     return getComputedStyle(document.querySelector('.cards-story__clear-button')).backgroundImage ? '' : 'Очистить'
-    } */
   },
 };
 </script>
