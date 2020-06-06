@@ -45,11 +45,24 @@ export default {
 <style scoped>
 .cover__button-down {
   transition: transform 0.5s ease-in-out;
+  animation: radial-pulse 1.5s infinite;
 }
 .cover__button-down:hover {
   cursor: pointer;
   transform: scale(1.2);
   transition: transform 0.5s ease-in-out;
+}
+@keyframes radial-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .cover {
   min-height: calc(100vh - 76px);
