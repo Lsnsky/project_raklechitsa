@@ -251,7 +251,7 @@ export default {
 }
 
 .questionnaire__further_step_last {
-  left: calc(50% - 100px);
+  left: calc(50% - 105px);
 }
 
 .questionnaire__back {
@@ -449,6 +449,9 @@ export default {
 
   .questionnaire__politica_lower {
     bottom: -104px;
+  }
+  .questionnaire__further_step_last {
+    left: calc(50% - 100px);
   }
 }
 
