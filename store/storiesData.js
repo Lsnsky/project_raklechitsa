@@ -65,7 +65,7 @@ export const actions = {
       value: currentStories,
     });
   },
-  async setRandomStories({ commit, getters }, count) {
+  async setRandomStories({ commit, getters }, { count, noSelebrity }) {
     let randomStories = [];
     for (let i = 0; i < count; i++) {
       do {
@@ -75,6 +75,11 @@ export const actions = {
           ];
       } while (
         randomStories.some((item, index) => {
+          if (noSelebrity) {
+            if (item.celebrity) {
+              return true;
+            }
+          }
           return index === i
             ? false
             : item === randomStories[i] ||
@@ -90,14 +95,12 @@ export const actions = {
       value: randomStories,
     });
   },
-  async setMainStories({ commit, getters }, ids) {
+  async setMainStories({ commit, getters }) {
     let stories = [];
-    ids.forEach(id => {
-      stories.push(
-        getters.getStoriesData.find(el => {
-          return el.id === Number(id);
-        })
-      );
+    getters.getStoriesData.forEach(item => {
+      if (item.celebrity) {
+        stories.push(item);
+      }
     });
     commit('setState', {
       name: 'mainStories',

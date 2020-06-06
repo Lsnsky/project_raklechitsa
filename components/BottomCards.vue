@@ -25,13 +25,22 @@ export default {
   async beforeMount() {
     if (process.browser) {
       if (window.innerWidth > 1000) {
-        await this.$store.dispatch('storiesData/setRandomStories', 4);
+        await this.$store.dispatch('storiesData/setRandomStories', {
+          count: 4,
+          noSelebrity: false,
+        });
       }
       if (window.innerWidth <= 1000) {
-        await this.$store.dispatch('storiesData/setRandomStories', 3);
+        await this.$store.dispatch('storiesData/setRandomStories', {
+          count: 3,
+          noSelebrity: false,
+        });
       }
       if (window.innerWidth <= 500) {
-        await this.$store.dispatch('storiesData/setRandomStories', 2);
+        await this.$store.dispatch('storiesData/setRandomStories', {
+          count: 2,
+          noSelebrity: false,
+        });
       }
     }
   },
