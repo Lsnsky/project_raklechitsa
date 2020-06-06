@@ -10,6 +10,7 @@
             class="content__about-button-1"
             :disabled="false"
             color="none"
+            @buttonClick="QuestionnaireOpen"
           >
             Рассказать историю</main-button
           >
@@ -47,6 +48,7 @@
               class="content__about-button-2"
               :disabled="false"
               color="none"
+              @buttonClick="QuestionnaireOpen"
             >
               Рассказать историю</main-button
             >
@@ -76,6 +78,9 @@ export default {
     },
     clickOff() {
       this.isActive = true;
+    },
+    QuestionnaireOpen() {
+      this.$store.commit('questionnaire/openQuestionnaire');
     },
   },
   computed: {
