@@ -52,7 +52,6 @@ export default {
   animation: radial-pulse 1.5s 1;
   transform: scale(1.2);
   transition: 0.5s ease-in-out;
-  /* animation-play-state:paused; */
 }
 @keyframes radial-pulse {
   0% {
