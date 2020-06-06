@@ -100,9 +100,9 @@ export default {
   margin: 0;
 }
 .story-input {
-  margin-bottom: 100px;
   padding: 0;
   margin: 0;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   background-color: #f7f7f7;
