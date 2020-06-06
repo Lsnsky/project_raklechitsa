@@ -44,7 +44,7 @@ export default {
 }
 
 .button_color_purple {
-  background-color: #714dbd;
+  background-color: #613a93;
 }
 
 .button_color_none {

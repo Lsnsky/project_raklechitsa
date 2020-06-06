@@ -12,9 +12,15 @@
       </div>
       <div :class="`header__wrapper header__wrapper_${isMenuActive()}`">
         <main-menu class="header__menu" />
-        <button class="header__share-story" @click="QuestionnaireOpen">
+        <main-button
+          class="header__share-story"
+          color="purple"
+          type="button"
+          :disabled="false"
+          @buttonClick="QuestionnaireOpen"
+        >
           Рассказать историю
-        </button>
+        </main-button>
       </div>
     </container>
   </header>
@@ -23,10 +29,12 @@
 <script>
 import Menu from '@/components/ui/Menu';
 import Container from '@/components/ui/Container';
+import Button from '@/components/ui/Button';
 export default {
   components: {
     'main-menu': Menu,
     container: Container,
+    'main-button': Button,
   },
   methods: {
     QuestionnaireOpen() {
@@ -85,18 +93,10 @@ export default {
 }
 
 .header__share-story {
-  border: none;
-  background-color: #fff;
-  outline: none;
-  padding: 0;
+  padding: 12px 34px;
   margin: -8px 0 0 40px;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 24px;
-  text-align: right;
-  color: #121212;
-  cursor: pointer;
   transition: all linear 0.1s;
+  line-height: 20px;
 }
 
 .header__share-story:hover {
@@ -112,11 +112,18 @@ export default {
   }
   .header__share-story {
     margin: -5px 0 0 42px;
-    font-size: 16px;
+    padding: 11px 31px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .header__share-story {
+    padding: 10px 30px;
+    font-size: 15px;
+    line-height: 18px;
   }
 }
 
-@media screen and (max-width: 805px) {
+@media screen and (max-width: 835px) {
   .header__container {
     flex-direction: column-reverse;
     position: relative;
@@ -138,6 +145,7 @@ export default {
 
   .header__share-story {
     margin: 0 0 0 32px;
+    padding: 9px 25px;
   }
 
   .header__title-wrapper {
@@ -166,7 +174,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 480px) {
   .header {
     padding: 18px 0 17px;
   }
@@ -182,6 +190,7 @@ export default {
   .header__wrapper {
     flex-direction: column;
     margin: 0 11px 17px 0;
+    align-items: flex-start;
   }
   .header__menu /deep/ .menu {
     display: flex;
@@ -200,9 +209,9 @@ export default {
   }
   .header__share-story {
     margin: 18px 0 0;
-    text-align: left;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 8px 17px;
   }
 }
 </style>

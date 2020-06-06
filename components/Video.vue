@@ -205,8 +205,8 @@ export default {
 
 .video__buttons {
   margin: auto 0 26px;
-  background: #fbfbfb;
   max-width: 80px;
+  background: #613a93;
   display: flex;
 }
 
@@ -294,7 +294,7 @@ export default {
   .video__small-button {
     display: block;
     position: absolute;
-    background-color: #fbfbfb;
+    background-color: #613a93;
   }
 
   .video__small-button_position_left {
@@ -320,7 +320,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 525px) {
+@media screen and (max-width: 650px) {
   .video {
     padding: 50px 0;
   }
