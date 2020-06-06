@@ -80,7 +80,6 @@ export const actions = {
               return true;
             }
           }
-          console.log(Number(item.id) === Number(getters.getId));
           if (getters.getId && Number(item.id) === Number(getters.getId)) {
             return true;
           }
