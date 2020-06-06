@@ -26,10 +26,58 @@ export default {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
   },
-  head() {
+  // head() {
+  //   return {
+  //     title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
+  //   };
+  // },
+  data() {
     return {
-      title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
+      metas: {
+        // title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
+        // description: `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.`,
+        og_image: 'надо поставить картинку автора ',
+        keywords: 'РАКЛЕЧИТСЯ.РФ, раклечится, этонелечится',
+      },
     };
+  },
+  head() {
+    if (this.metas) {
+      return {
+        title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content:
+              `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.` ||
+              '',
+          },
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: this.metas.keywords || '',
+          },
+          {
+            hid: 'og:title',
+            property: 'og:title',
+            content: `${this.story.author} - РАКЛЕЧИТСЯ.РФ` || '',
+          },
+          {
+            hid: 'og:description',
+            property: 'og:description',
+            content:
+              `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.` ||
+              '',
+          },
+          {
+            hid: 'og:image',
+            property: 'og:image',
+            content: this.metas.og_image || '',
+          },
+        ],
+      };
+    }
   },
 };
 </script>
