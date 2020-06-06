@@ -10,12 +10,20 @@
           placeholder="Введите имя"
           @input="checkValidity"
         />
-        <button-search
+        <main-button
+          color="none"
+          :disabled="false"
+          class="cards-story__clear-button"
+          type="reset"
+          @buttonClick="clearInput"
+          >Очистить</main-button
+        >
+        <main-button
           color="purple"
           :disabled="!this.search.length > 0"
           class="cards-story__search-button"
           type="submit"
-          >Поиск</button-search
+          >Поиск</main-button
         >
       </form>
       <div class="cards-story__not-found" v-if="currentStories.length === 0">
@@ -43,12 +51,20 @@ export default {
   components: {
     'card-story': CardStory,
     'input-search': mainInput,
-    'button-search': Button,
+    'main-button': Button,
     pagination: Pagination,
     'card-container': CardContainer,
     container: Container,
   },
   methods: {
+    clearInput() {
+      this.search = '';
+      this.setCurrentPage();
+      console.log(
+        getComputedStyle(document.querySelector('.cards-story__clear-button'))
+          .backgroundImage
+      );
+    },
     checkValidity() {
       if (this.search.length === 0) {
         this.setCurrentPage();
@@ -75,6 +91,7 @@ export default {
   data() {
     return {
       search: '',
+      clear: 'Очистить',
     };
   },
   computed: {
@@ -87,11 +104,22 @@ export default {
     currentStories() {
       return this.$store.getters['storiesData/getPageStories'];
     },
+    /*     clearText() {
+     return getComputedStyle(document.querySelector('.cards-story__clear-button')).backgroundImage ? '' : 'Очистить'
+    } */
   },
 };
 </script>
 
 <style scoped>
+.cards-story__clear-button {
+  position: absolute;
+  top: 0;
+  right: 228px;
+  padding: 14px 20px;
+  color: #666666;
+  background-color: rgba(255, 255, 255, 0);
+}
 .cards-story {
   display: flex;
 }
@@ -117,6 +145,7 @@ export default {
   align-content: center;
   margin: 60px auto 70px;
   width: 100%;
+  position: relative;
 }
 .cards-story__search-input {
   width: calc(100% - 228px);
@@ -155,7 +184,12 @@ export default {
   color: #000000;
   margin: 40px auto 0;
 }
-
+@media screen and (max-width: 1024px) {
+  .cards-story__clear-button {
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
 @media screen and (max-width: 768px) {
   .cards-story__title {
     font-size: 24px;
@@ -166,6 +200,18 @@ export default {
   }
   .cards-story__search {
     margin: 50px auto 60px;
+  }
+  .cards-story__clear-button {
+    position: absolute;
+    top: 12px;
+    right: 240px;
+    padding: 0;
+    height: 20px;
+    width: 20px;
+    font-size: 0;
+    background-image: url('/images/hider-open.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 @media screen and (max-width: 550px) {
@@ -181,6 +227,10 @@ export default {
   .cards-story__not-found-title {
     font-size: 24px;
     line-height: 22px;
+  }
+  .cards-story__clear-button {
+    top: 12px;
+    right: 63px;
   }
 }
 @media screen and (max-width: 320px) {
