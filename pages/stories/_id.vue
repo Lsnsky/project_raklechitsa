@@ -34,9 +34,9 @@ export default {
   data() {
     return {
       metas: {
-        title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
-        description: `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.`,
-        og_image: '?????git',
+        // title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
+        // description: `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.`,
+        og_image: 'надо поставить картинку автора ',
         keywords: 'РАКЛЕЧИТСЯ.РФ, раклечится, этонелечится',
       },
     };
@@ -44,12 +44,14 @@ export default {
   head() {
     if (this.metas) {
       return {
-        title: this.metas.title,
+        title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
         meta: [
           {
             hid: 'description',
             name: 'description',
-            content: this.metas.description || '',
+            content:
+              `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.` ||
+              '',
           },
           {
             hid: 'keywords',
@@ -59,12 +61,14 @@ export default {
           {
             hid: 'og:title',
             property: 'og:title',
-            content: this.metas.title || '',
+            content: `${this.story.author} - РАКЛЕЧИТСЯ.РФ` || '',
           },
           {
             hid: 'og:description',
             property: 'og:description',
-            content: this.metas.description || '',
+            content:
+              `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.` ||
+              '',
           },
           {
             hid: 'og:image',
