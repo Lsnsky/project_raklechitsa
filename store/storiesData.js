@@ -75,7 +75,13 @@ export const actions = {
           ];
       } while (
         randomStories.some((item, index) => {
-          return index === i ? false : item === randomStories[i];
+          return index === i
+            ? false
+            : item === randomStories[i] ||
+                item ===
+                  getters.getStoriesData.find(el => {
+                    return el.id === Number(getters.getId);
+                  });
         })
       );
     }
@@ -126,5 +132,8 @@ export const getters = {
   },
   getMainStories(state) {
     return state.mainStories;
+  },
+  getId(state) {
+    return state.id;
   },
 };

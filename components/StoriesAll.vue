@@ -60,10 +60,6 @@ export default {
     clearInput() {
       this.search = '';
       this.setCurrentPage();
-      console.log(
-        getComputedStyle(document.querySelector('.cards-story__clear-button'))
-          .backgroundImage
-      );
     },
     checkValidity() {
       if (this.search.length === 0) {
