@@ -6,6 +6,13 @@
         <div class="content__about">
           <h3 class="content__about-title">{{ aboutData.title }}</h3>
           <div class="content__about-paragraph" v-html="aboutData.text"></div>
+          <main-button
+            class="content__about-button-1"
+            :disabled="false"
+            color="none"
+          >
+            Рассказать историю</main-button
+          >
         </div>
         <div class="content__columns">
           <div id="app" class="content__columns-description">
@@ -36,6 +43,13 @@
               class="content__columns-text-2"
               v-html="aboutData.extraTexts[1].text"
             ></p>
+            <main-button
+              class="content__about-button-2"
+              :disabled="false"
+              color="none"
+            >
+              Рассказать историю</main-button
+            >
           </div>
         </div>
       </container>
@@ -44,10 +58,12 @@
 </template>
 
 <script>
+import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
 export default {
   components: {
     container: Container,
+    'main-button': Button,
   },
   data() {
     return {
@@ -171,11 +187,10 @@ export default {
 }
 .content__columns-text-2 {
   margin-top: 0;
-  padding-bottom: 170px;
+  margin-bottom: 188px;
 }
-.content__columns-text:last-child {
-  margin-bottom: 0;
-  padding-bottom: 100px;
+.content__columns-text {
+  margin-bottom: 100px;
 }
 .active {
   color: #fff;
@@ -191,6 +206,17 @@ export default {
 }
 .buttonPosition {
   margin-top: 122px;
+}
+.content__about-button-1 {
+  width: 218px;
+  height: 44px;
+  margin-top: 32px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+.content__about-button-2 {
+  display: none;
 }
 @media screen and (max-width: 1280px) {
   .cover-about__title {
@@ -216,10 +242,15 @@ export default {
     max-width: 570px;
   }
   .content__columns-text-2 {
-    padding-bottom: 182px;
+    margin-bottom: 210px;
   }
   .content__columns-text:last-child {
-    padding-bottom: 90px;
+    margin-bottom: 90px;
+  }
+  .content__about-button-1 {
+    width: 211px;
+    height: 42px;
+    margin-top: 30px;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -255,10 +286,17 @@ export default {
     width: 129px;
   }
   .content__columns-text-2 {
-    padding-bottom: 141px;
+    margin-bottom: 156px;
   }
-  .content__columns-text:last-child {
-    padding-bottom: 80px;
+  .content__columns-text {
+    margin-bottom: 80px;
+  }
+  .content__about-button-1 {
+    width: 201px;
+    height: 38px;
+    margin-top: 30px;
+    font-size: 15px;
+    line-height: 18px;
   }
 }
 @media screen and (max-width: 984px) {
@@ -286,7 +324,6 @@ export default {
     margin: 0 0 30px;
     margin-right: 30px;
     padding-bottom: 6px;
-    /* border-bottom: #fff 1px solid; */
   }
   .columns__link-2 {
     margin: 0 0 30px;
@@ -308,19 +345,47 @@ export default {
     max-width: 380px;
     margin: 0 auto;
   }
+
   .content__about-paragraph {
     max-width: 380px;
     margin-bottom: 0;
   }
   .content__columns-text-2 {
-    padding-bottom: 179px;
+    padding-bottom: 114px;
+    margin-bottom: 0;
+  }
+  .content__columns-text {
+    margin-bottom: 0;
+  }
+  .content__about-button-1 {
+    display: none;
+  }
+  .content__about-button-2 {
+    display: flex;
+    margin: 80px auto 80px;
+    width: 200px;
+    height: 38px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media screen and (max-width: 512px) {
   .cover-about {
     margin: 0;
   }
-
+  .content__about-button-2 {
+    margin: 50px auto 50px;
+    width: 146px;
+    height: 31px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    justify-content: center;
+    align-items: center;
+  }
   .content {
     padding: 0 15px 0;
   }
@@ -363,7 +428,7 @@ export default {
     line-height: 19px;
   }
   .content__columns-text-2 {
-    padding-bottom: 187px;
+    padding-bottom: 152px;
     max-width: 295px;
   }
   .content__columns-text:last-child {
