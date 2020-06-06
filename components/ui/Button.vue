@@ -1,11 +1,12 @@
 <template>
   <button
     :class="[
-      'button',
-      `button_color_${color}`,
       {
         button_disabled: disabled,
+        button: !header,
+        buttonHeder: header,
       },
+      `button_color_${color}`,
     ]"
     :disabled="disabled"
     @click.prevent="$emit('buttonClick')"
@@ -21,6 +22,7 @@ export default {
     color: { type: String, default: 'none' },
     disabled: { type: Boolean, default: true },
     type: { type: String, default: 'button' },
+    header: { type: Boolean, default: false },
   },
 };
 </script>
@@ -33,6 +35,15 @@ export default {
   font-weight: normal;
   font-size: 16px;
   line-height: 19px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all linear 0.1s;
+}
+.buttonHeder {
+  border: none;
+  outline: none;
+  font-weight: normal;
   text-align: center;
   color: #fff;
   cursor: pointer;

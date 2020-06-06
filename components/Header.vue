@@ -18,6 +18,7 @@
           type="button"
           :disabled="false"
           @buttonClick="QuestionnaireOpen"
+          :header="true"
         >
           Рассказать историю
         </main-button>
@@ -93,14 +94,19 @@ export default {
 }
 
 .header__share-story {
-  padding: 12px 34px;
+  width: 218px;
+  height: 44px;
   margin: -8px 0 0 40px;
-  transition: all linear 0.1s;
+  transition: all linear 0.3s;
   line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .header__share-story:hover {
-  opacity: 0.8;
+  background-color: #fff;
+  color: #613a93;
+  border: 1px solid #613a93;
 }
 
 @media screen and (max-width: 1280px) {
@@ -112,12 +118,14 @@ export default {
   }
   .header__share-story {
     margin: -5px 0 0 42px;
-    padding: 11px 31px;
+    width: 211px;
+    height: 42px;
   }
 }
 @media screen and (max-width: 1024px) {
   .header__share-story {
-    padding: 10px 30px;
+    width: 201px;
+    height: 38px;
     font-size: 15px;
     line-height: 18px;
   }
@@ -145,7 +153,8 @@ export default {
 
   .header__share-story {
     margin: 0 0 0 32px;
-    padding: 9px 25px;
+    width: 200px;
+    height: 38px;
   }
 
   .header__title-wrapper {
@@ -211,7 +220,8 @@ export default {
     margin: 18px 0 0;
     font-size: 12px;
     line-height: 15px;
-    padding: 8px 17px;
+    width: 146px;
+    height: 31px;
   }
 }
 </style>
