@@ -124,7 +124,7 @@ export default {
 }
 
 .story-button:hover {
-  background-color: #fff;
+  background-color: #f7f7f7;
   color: #613a93;
   border: 1px solid #613a93;
 }
