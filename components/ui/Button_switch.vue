@@ -1,10 +1,11 @@
 <template>
   <button
     :class="[
-      `button button_position_${position}`,
+      `button`,
       {
         button_type_inactive: disabled,
       },
+      `button_position_${position}`,
     ]"
     :disabled="disabled"
     @click="$emit('buttonClick')"
@@ -32,8 +33,8 @@ export default {
 }
 
 .button_type_inactive {
-  opacity: 0.5;
   cursor: not-allowed;
+  background: center no-repeat url('/images/button-switch_inactive.svg');
 }
 
 .button_position_left {

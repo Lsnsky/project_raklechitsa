@@ -5,6 +5,7 @@ export const state = () => ({
   itemsPerPage: 16,
   pageStories: [],
   randomStories: [],
+  mainStories: [],
 });
 
 export const mutations = {
@@ -17,14 +18,8 @@ export const mutations = {
   setPage(state, page) {
     return (state.currentPage = page);
   },
-  setPageStories(state, stories) {
-    return (state.pageStories = stories);
-  },
   setItemsPerPage(state, items) {
     return (state.itemsPerPage = items);
-  },
-  setRandomStories(state, stories) {
-    return (state.randomStories = stories);
   },
 };
 export const actions = {
@@ -53,7 +48,10 @@ export const actions = {
         currentStories.push(getters.getStoriesData[i]);
       }
     }
-    await commit('setPageStories', currentStories);
+    commit('setState', {
+      name: 'pageStories',
+      value: currentStories,
+    });
   },
   async getSerch({ commit, getters }, search) {
     let currentStories = [];
@@ -62,7 +60,10 @@ export const actions = {
         currentStories.push(el);
       }
     });
-    await commit('setPageStories', currentStories);
+    commit('setState', {
+      name: 'pageStories',
+      value: currentStories,
+    });
   },
   async setRandomStories({ commit, getters }, count) {
     let randomStories = [];
@@ -74,11 +75,34 @@ export const actions = {
           ];
       } while (
         randomStories.some((item, index) => {
-          return index === i ? false : item === randomStories[i];
+          return index === i
+            ? false
+            : item === randomStories[i] ||
+                item ===
+                  getters.getStoriesData.find(el => {
+                    return el.id === Number(getters.getId);
+                  });
         })
       );
     }
-    await commit('setRandomStories', randomStories);
+    commit('setState', {
+      name: 'randomStories',
+      value: randomStories,
+    });
+  },
+  async setMainStories({ commit, getters }, ids) {
+    let stories = [];
+    ids.forEach(id => {
+      stories.push(
+        getters.getStoriesData.find(el => {
+          return el.id === Number(id);
+        })
+      );
+    });
+    commit('setState', {
+      name: 'mainStories',
+      value: stories,
+    });
   },
 };
 
@@ -105,5 +129,11 @@ export const getters = {
   },
   getRandomStories(state) {
     return state.randomStories;
+  },
+  getMainStories(state) {
+    return state.mainStories;
+  },
+  getId(state) {
+    return state.id;
   },
 };
