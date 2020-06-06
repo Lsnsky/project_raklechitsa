@@ -120,7 +120,13 @@ export default {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  transition: all linear 0.1s;
+  transition: all linear 0.3s;
+}
+
+.story-button:hover {
+  background-color: #fff;
+  color: #613a93;
+  border: 1px solid #613a93;
 }
 .content {
   display: flex;

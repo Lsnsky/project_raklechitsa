@@ -219,9 +219,23 @@ export default {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
+  transition: all linear 0.3s;
 }
+.content__about-button-1:hover {
+  background-color: #613a93;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
 .content__about-button-2 {
   display: none;
+  transition: all linear 0.3s;
+}
+
+.content__about-button-2:hover {
+  background-color: #613a93;
+  color: #fff;
+  border: 1px solid #fff;
 }
 @media screen and (max-width: 1280px) {
   .cover-about__title {
