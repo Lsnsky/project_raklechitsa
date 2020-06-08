@@ -7,7 +7,7 @@
           <h3 class="content__about-title">{{ aboutData.title }}</h3>
           <div class="content__about-paragraph" v-html="aboutData.text"></div>
           <main-button
-            class="content__about-button-1"
+            class="content__about-button_type_active"
             :disabled="false"
             color="none"
             @buttonClick="QuestionnaireOpen"
@@ -19,14 +19,14 @@
           <div id="app" class="content__columns-description">
             <p
               @click="clickOn"
-              class="columns__link-1"
+              class="columns__link_type_active"
               :class="{ noActive: isActive, active: !isActive }"
             >
               {{ aboutData.extraTexts[0].title }}
             </p>
             <p
               @click="clickOff"
-              class="columns__link-2"
+              class="columns__link_type_inactive"
               :class="{ active: isActive, noActive: !isActive }"
             >
               {{ aboutData.extraTexts[1].title }}
@@ -41,11 +41,11 @@
 
             <p
               v-else-if="isActive"
-              class="content__columns-text-2"
+              class="content__columns-text_type_inactive"
               v-html="aboutData.extraTexts[1].text"
             ></p>
             <main-button
-              class="content__about-button-2"
+              class="content__about-button_type_inactive"
               :disabled="false"
               color="none"
               @buttonClick="QuestionnaireOpen"
@@ -95,7 +95,7 @@ export default {
 .content__columns-text >>> p {
   margin: 0;
 }
-.content__columns-text-2 >>> p {
+.content__columns-text_type_inactive >>> p {
   margin: 0;
 }
 .content__about-paragraph >>> p {
@@ -157,7 +157,7 @@ export default {
   display: flex;
   margin-top: 68px;
 }
-.columns__link-1 {
+.columns__link_type_active {
   width: 112px;
   font-style: normal;
   font-weight: 500;
@@ -168,7 +168,7 @@ export default {
   margin-bottom: 10px;
   cursor: pointer;
 }
-.columns__link-2 {
+.columns__link_type_inactive {
   width: 155px;
   font-style: normal;
   font-weight: normal;
@@ -190,7 +190,7 @@ export default {
 .content__columns-text {
   margin-top: 0;
 }
-.content__columns-text-2 {
+.content__columns-text_type_inactive {
   margin-top: 0;
   margin-bottom: 188px;
 }
@@ -200,10 +200,10 @@ export default {
 .active {
   color: #fff;
 }
-.columns__link-2:hover {
+.columns__link_type_inactive:hover {
   opacity: 0.7;
 }
-.columns__link-1:hover {
+.columns__link_type_active:hover {
   opacity: 0.7;
 }
 .noActive {
@@ -212,7 +212,7 @@ export default {
 .buttonPosition {
   margin-top: 122px;
 }
-.content__about-button-1 {
+.content__about-button_type_active {
   width: 218px;
   height: 44px;
   margin-top: 32px;
@@ -221,18 +221,18 @@ export default {
   line-height: 24px;
   transition: all linear 0.3s;
 }
-.content__about-button-1:hover {
+.content__about-button_type_active:hover {
   background-color: #613a93;
   color: #fff;
   border: 1px solid #fff;
 }
 
-.content__about-button-2 {
+.content__about-button_type_inactive {
   display: none;
   transition: all linear 0.3s;
 }
 
-.content__about-button-2:hover {
+.content__about-button_type_inactive:hover {
   background-color: #613a93;
   color: #fff;
   border: 1px solid #fff;
@@ -260,13 +260,13 @@ export default {
   .content__columns-main-text {
     max-width: 570px;
   }
-  .content__columns-text-2 {
-    margin-bottom: 210px;
+  .content__columns-text_type_inactive {
+    margin-bottom: 188px;
   }
   .content__columns-text:last-child {
     margin-bottom: 90px;
   }
-  .content__about-button-1 {
+  .content__about-button_type_active {
     width: 211px;
     height: 42px;
     margin-top: 30px;
@@ -294,23 +294,23 @@ export default {
     line-height: 19px;
     margin-left: 30px;
   }
-  .columns__link-1 {
+  .columns__link_type_active {
     font-size: 15px;
     line-height: 19px;
     width: 93px;
   }
-  .columns__link-2 {
+  .columns__link_type_inactive {
     font-size: 15px;
     line-height: 19px;
     width: 129px;
   }
-  .content__columns-text-2 {
+  .content__columns-text_type_inactive {
     margin-bottom: 156px;
   }
   .content__columns-text {
     margin-bottom: 80px;
   }
-  .content__about-button-1 {
+  .content__about-button_type_active {
     width: 201px;
     height: 38px;
     margin-top: 30px;
@@ -339,12 +339,12 @@ export default {
   .content {
     flex-direction: column;
   }
-  .columns__link-1 {
+  .columns__link_type_active {
     margin: 0 0 30px;
     margin-right: 30px;
     padding-bottom: 6px;
   }
-  .columns__link-2 {
+  .columns__link_type_inactive {
     margin: 0 0 30px;
     padding-bottom: 6px;
   }
@@ -369,17 +369,17 @@ export default {
     max-width: 380px;
     margin-bottom: 0;
   }
-  .content__columns-text-2 {
-    padding-bottom: 114px;
+  .content__columns-text_type_inactive {
+    padding-bottom: 95px;
     margin-bottom: 0;
   }
   .content__columns-text {
     margin-bottom: 0;
   }
-  .content__about-button-1 {
+  .content__about-button_type_active {
     display: none;
   }
-  .content__about-button-2 {
+  .content__about-button_type_inactive {
     display: flex;
     margin: 80px auto 80px;
     width: 200px;
@@ -395,7 +395,7 @@ export default {
   .cover-about {
     margin: 0;
   }
-  .content__about-button-2 {
+  .content__about-button_type_inactive {
     margin: 50px auto 50px;
     width: 146px;
     height: 31px;
@@ -425,7 +425,7 @@ export default {
     max-width: 295px;
   }
 
-  .columns__link-1 {
+  .columns__link_type_active {
     width: 81px;
     font-size: 13px;
     line-height: 19px;
@@ -433,7 +433,7 @@ export default {
     margin-right: 16px;
     padding-bottom: 4px;
   }
-  .columns__link-2 {
+  .columns__link_type_inactive {
     width: 113px;
     font-size: 13px;
     line-height: 19px;
@@ -446,7 +446,7 @@ export default {
     font-size: 15px;
     line-height: 19px;
   }
-  .content__columns-text-2 {
+  .content__columns-text_type_inactive {
     padding-bottom: 152px;
     max-width: 295px;
   }
