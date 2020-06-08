@@ -18,7 +18,7 @@ export default {};
   font-size: 14px;
   line-height: 17px;
   max-width: 378px;
-  color: #666666;
+  color: #666;
   margin: 0;
 }
 

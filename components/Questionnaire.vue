@@ -19,7 +19,7 @@
     </p>
     <main-input
       v-if="id < 11"
-      required="required"
+      :required="true"
       placeholder="Напишите тут"
       :type="id === 12 ? 'email' : 'text'"
       :hasData="this.validity"
@@ -30,7 +30,7 @@
     />
     <main-input
       v-if="id === 11"
-      required="required"
+      :required="true"
       pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
       placeholder="Напишите тут"
       type="text"
@@ -42,7 +42,7 @@
     />
     <main-input
       v-if="id === 12"
-      required="required"
+      :required="true"
       pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
       placeholder="Напишите тут"
       type="email"
@@ -202,7 +202,7 @@ export default {
 .questionnaire__error-massage {
   margin: 0 40px;
   width: calc(100% - 80px);
-  color: red;
+  color: #f00;
   position: absolute;
   font-size: 14px;
   max-height: 35px;
@@ -223,7 +223,7 @@ export default {
   margin: 0;
   padding: 16px 25px;
   width: calc(100% - 50px);
-  color: #ff0000;
+  color: #f00;
   background: #f0f0f0;
   position: absolute;
   bottom: -48px;

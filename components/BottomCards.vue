@@ -27,19 +27,19 @@ export default {
       if (window.innerWidth > 1000) {
         await this.$store.dispatch('storiesData/setRandomStories', {
           count: 4,
-          noSelebrity: false,
+          noCelebrity: false,
         });
       }
       if (window.innerWidth <= 1000) {
         await this.$store.dispatch('storiesData/setRandomStories', {
           count: 3,
-          noSelebrity: false,
+          noCelebrity: false,
         });
       }
       if (window.innerWidth <= 500) {
         await this.$store.dispatch('storiesData/setRandomStories', {
           count: 2,
-          noSelebrity: false,
+          noCelebrity: false,
         });
       }
     }

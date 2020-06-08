@@ -12,7 +12,7 @@ export default {};
 .cards-history-link {
   display: block;
   text-decoration: none;
-  color: #000000;
+  color: #000;
   font-size: 16px;
   line-height: 20px;
   display: flex;

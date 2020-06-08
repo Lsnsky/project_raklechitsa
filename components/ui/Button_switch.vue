@@ -4,8 +4,9 @@
       `button`,
       {
         button_type_inactive: disabled,
+        button_position_left: left,
       },
-      `button_position_${position}`,
+      ,
     ]"
     :disabled="disabled"
     @click="$emit('buttonClick')"
@@ -15,7 +16,7 @@
 <script>
 export default {
   props: {
-    position: { type: String, required: true },
+    left: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
   },
 };

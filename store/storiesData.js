@@ -65,7 +65,7 @@ export const actions = {
       value: currentStories,
     });
   },
-  async setRandomStories({ commit, getters }, { count, noSelebrity }) {
+  async setRandomStories({ commit, getters }, { count, noCelebrity }) {
     let randomStories = [];
     for (let i = 0; i < count; i++) {
       do {
@@ -75,7 +75,7 @@ export const actions = {
           ];
       } while (
         randomStories.some((item, index) => {
-          if (noSelebrity) {
+          if (noCelebrity) {
             if (item.celebrity) {
               return true;
             }

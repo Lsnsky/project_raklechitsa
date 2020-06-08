@@ -215,7 +215,7 @@ section >>> .story__paragraph {
   width: 100%;
   padding: 30px 0;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: #fff;
   justify-content: center;
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;

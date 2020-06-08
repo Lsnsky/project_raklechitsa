@@ -36,20 +36,20 @@ export default {
       if (window.innerWidth > 1000) {
         await this.$store.dispatch('storiesData/setRandomStories', {
           count: 8,
-          noSelebrity: true,
+          noCelebrity: true,
         });
       }
       if (window.innerWidth <= 1000) {
         await this.$store.dispatch('storiesData/setRandomStories', {
           count: 9,
-          noSelebrity: true,
+          noCelebrity: true,
         });
         this.count = 9;
       }
       if (window.innerWidth <= 500) {
         await this.$store.dispatch('storiesData/setRandomStories', {
           count: 6,
-          noSelebrity: true,
+          noCelebrity: true,
         });
         this.count = 6;
       }
@@ -101,7 +101,7 @@ export default {
   font-size: 30px;
   line-height: 46px;
   text-align: center;
-  color: #ffffff;
+  color: #fff;
 }
 
 .card-story__panel-hashtag {
@@ -111,7 +111,7 @@ export default {
   font-size: 34px;
   line-height: 40px;
   text-align: center;
-  color: #ffffff;
+  color: #fff;
 }
 
 .cards-story__title {
