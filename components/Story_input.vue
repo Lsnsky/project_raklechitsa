@@ -10,14 +10,14 @@
           <div id="app" class="content__columns-description">
             <p
               @click="clickOn"
-              class="columns__link-1"
+              class="columns__link_type_active"
               :class="{ noActive: isActive, active: !isActive }"
             >
               {{ storyData.extraTexts[0].title }}
             </p>
             <p
               @click="clickOff"
-              class="columns__link-2"
+              class="columns__link_type_inactive"
               :class="{ active: isActive, noActive: !isActive }"
             >
               {{ storyData.extraTexts[1].title }}
@@ -33,7 +33,7 @@
 
               <p
                 v-else-if="isActive"
-                class="content__columns-text-2"
+                class="content__columns-text_type_inactive"
                 v-html="storyData.extraTexts[1].text"
               ></p>
             </div>
@@ -93,7 +93,7 @@ export default {
 .content__columns-text >>> p {
   margin: 0;
 }
-.content__columns-text-2 >>> p {
+.content__columns-text_type_inactive >>> p {
   margin: 0;
 }
 .content__about-paragraph >>> p {
@@ -167,7 +167,7 @@ export default {
   display: flex;
   margin-top: 204px;
 }
-.columns__link-1 {
+.columns__link_type_active {
   width: 106px;
   font-style: normal;
   font-weight: 500;
@@ -178,11 +178,11 @@ export default {
   cursor: pointer;
   display: block;
 }
-.columns__link-1:hover {
+.columns__link_type_active:hover {
   opacity: 0.7;
 }
 
-.columns__link-2 {
+.columns__link_type_inactive {
   width: 108px;
   font-style: normal;
   font-weight: normal;
@@ -192,7 +192,7 @@ export default {
   color: #a2a2a2;
   cursor: pointer;
 }
-.columns__link-2:hover {
+.columns__link_type_inactive:hover {
   opacity: 0.7;
 }
 
@@ -211,7 +211,7 @@ export default {
 .content__columns-text {
   margin: 0;
 }
-.content__columns-text-2 {
+.content__columns-text_type_inactive {
   margin: 0;
 }
 
@@ -268,12 +268,12 @@ export default {
     line-height: 19px;
     margin-left: 30px;
   }
-  .columns__link-1 {
+  .columns__link_type_active {
     font-size: 15px;
     line-height: 19px;
     width: 89px;
   }
-  .columns__link-2 {
+  .columns__link_type_inactive {
     font-size: 15px;
     line-height: 19px;
     width: 90px;
@@ -305,10 +305,10 @@ export default {
     flex-direction: column;
     padding: 0;
   }
-  .columns__link-1 {
+  .columns__link_type_active {
     margin: 0 30px 30px 0;
   }
-  .columns__link-2 {
+  .columns__link_type_inactive {
     margin: 0 0 30px;
   }
   .content__about-title {
@@ -335,7 +335,7 @@ export default {
   .content__columns-text {
     margin-bottom: 50px;
   }
-  .content__columns-text-2 {
+  .content__columns-text_type_inactive {
     margin-bottom: 88px;
   }
 }
@@ -367,12 +367,12 @@ export default {
     margin: 0 auto 40px;
     max-width: 295px;
   }
-  .columns__link-1 {
+  .columns__link_type_active {
     width: 77px;
     font-size: 13px;
     margin: 0 16px 20px 0;
   }
-  .columns__link-2 {
+  .columns__link_type_inactive {
     width: 78px;
     font-size: 13px;
     margin: 0 0 20px;
@@ -383,7 +383,7 @@ export default {
     line-height: 19px;
     margin-bottom: 30px;
   }
-  .content__columns-text-2 {
+  .content__columns-text_type_inactive {
     max-width: 295px;
     font-size: 15px;
     line-height: 19px;
