@@ -24,7 +24,7 @@
       <footer class="story__footer">
         <button
           @click="openShare"
-          class="link story__share story__share_local_footer"
+          class="story__share story__share_local_footer"
         >
           Поделитесь этой статьей в своих социальных сетях &#8599;
         </button>
@@ -179,10 +179,6 @@ section >>> .story__span-accent {
   opacity: 0.8;
 }
 
-.story__photo_type_mobile {
-  display: none;
-}
-
 .story__date {
   margin: 0;
   font-size: 18px;
@@ -219,7 +215,7 @@ section >>> .story__paragraph {
   width: 100%;
   padding: 30px 0;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: #fff;
   justify-content: center;
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;

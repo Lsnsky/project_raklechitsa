@@ -12,14 +12,13 @@ export default {};
 .cards-history-link {
   display: block;
   text-decoration: none;
-  color: #000000;
+  color: #000;
   font-size: 16px;
   line-height: 20px;
   display: flex;
   background-color: #fbfbfb;
 
   height: 100%;
-  /* padding: 31px 0; */
   justify-content: center;
   align-items: center;
   margin: 0 auto;

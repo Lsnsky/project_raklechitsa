@@ -10,14 +10,14 @@
           <div id="app" class="content__columns-description">
             <p
               @click="clickOn"
-              class="columns__link-1"
+              class="columns__link_type_active"
               :class="{ noActive: isActive, active: !isActive }"
             >
               {{ storyData.extraTexts[0].title }}
             </p>
             <p
               @click="clickOff"
-              class="columns__link-2"
+              class="columns__link_type_inactive"
               :class="{ active: isActive, noActive: !isActive }"
             >
               {{ storyData.extraTexts[1].title }}
@@ -33,7 +33,7 @@
 
               <p
                 v-else-if="isActive"
-                class="content__columns-text-2"
+                class="content__columns-text_type_inactive"
                 v-html="storyData.extraTexts[1].text"
               ></p>
             </div>
@@ -93,14 +93,13 @@ export default {
 .content__columns-text >>> p {
   margin: 0;
 }
-.content__columns-text-2 >>> p {
+.content__columns-text_type_inactive >>> p {
   margin: 0;
 }
 .content__about-paragraph >>> p {
   margin: 0;
 }
 .story-input {
-  margin-bottom: 100px;
   padding: 0;
   margin: 0;
   margin-bottom: 100px;
@@ -121,7 +120,13 @@ export default {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  transition: all linear 0.1s;
+  transition: all linear 0.3s;
+}
+
+.story-button:hover {
+  background-color: #f7f7f7;
+  color: #613a93;
+  border: 1px solid #613a93;
 }
 .content {
   display: flex;
@@ -162,7 +167,7 @@ export default {
   display: flex;
   margin-top: 204px;
 }
-.columns__link-1 {
+.columns__link_type_active {
   width: 106px;
   font-style: normal;
   font-weight: 500;
@@ -173,11 +178,11 @@ export default {
   cursor: pointer;
   display: block;
 }
-.columns__link-1:hover {
+.columns__link_type_active:hover {
   opacity: 0.7;
 }
 
-.columns__link-2 {
+.columns__link_type_inactive {
   width: 108px;
   font-style: normal;
   font-weight: normal;
@@ -187,7 +192,7 @@ export default {
   color: #a2a2a2;
   cursor: pointer;
 }
-.columns__link-2:hover {
+.columns__link_type_inactive:hover {
   opacity: 0.7;
 }
 
@@ -206,7 +211,7 @@ export default {
 .content__columns-text {
   margin: 0;
 }
-.content__columns-text-2 {
+.content__columns-text_type_inactive {
   margin: 0;
 }
 
@@ -219,7 +224,6 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .story-input {
-    padding: 0;
     margin-bottom: 90px;
   }
 
@@ -251,8 +255,6 @@ export default {
   .content__about-title {
     font-size: 24px;
     line-height: 28px;
-    margin-bottom: 30px;
-    margin-right: 49px;
     width: 288px;
   }
   .content__about-paragraph {
@@ -266,22 +268,18 @@ export default {
     line-height: 19px;
     margin-left: 30px;
   }
-  .columns__link-1 {
+  .columns__link_type_active {
     font-size: 15px;
     line-height: 19px;
     width: 89px;
   }
-  .columns__link-2 {
+  .columns__link_type_inactive {
     font-size: 15px;
     line-height: 19px;
     width: 90px;
   }
   .story-input {
     margin-bottom: 80px;
-  }
-  .story-button {
-    width: 230px;
-    height: 46px;
   }
   .content__columns {
     margin-top: 186px;
@@ -307,11 +305,10 @@ export default {
     flex-direction: column;
     padding: 0;
   }
-  .columns__link-1 {
-    margin: 0 0 30px;
-    margin-right: 30px;
+  .columns__link_type_active {
+    margin: 0 30px 30px 0;
   }
-  .columns__link-2 {
+  .columns__link_type_inactive {
     margin: 0 0 30px;
   }
   .content__about-title {
@@ -333,21 +330,17 @@ export default {
   .content__about-paragraph {
     max-width: 380px;
     margin-bottom: 0;
+    padding-bottom: 0;
   }
   .content__columns-text {
     margin-bottom: 50px;
   }
-  .content__columns-text-2 {
+  .content__columns-text_type_inactive {
     margin-bottom: 88px;
-  }
-  .content__about-paragraph {
-    padding-bottom: 0;
   }
 }
 @media screen and (max-width: 512px) {
   .story-input {
-    margin: 0;
-    padding: 0;
     margin-bottom: 50px;
   }
   .story-button {
@@ -372,21 +365,16 @@ export default {
   }
   .content__about-paragraph {
     margin: 0 auto 40px;
-    font-size: 13px;
-    line-height: 16px;
     max-width: 295px;
   }
-  .columns__link-1 {
+  .columns__link_type_active {
     width: 77px;
     font-size: 13px;
-    line-height: 19px;
-    margin: 0 0 20px;
-    margin-right: 16px;
+    margin: 0 16px 20px 0;
   }
-  .columns__link-2 {
+  .columns__link_type_inactive {
     width: 78px;
     font-size: 13px;
-    line-height: 19px;
     margin: 0 0 20px;
   }
   .content__columns-text {
@@ -395,7 +383,7 @@ export default {
     line-height: 19px;
     margin-bottom: 30px;
   }
-  .content__columns-text-2 {
+  .content__columns-text_type_inactive {
     max-width: 295px;
     font-size: 15px;
     line-height: 19px;

@@ -9,9 +9,9 @@
     @formSubmit="saveAnswers"
     formName="Callback"
   >
-    <question class="callback__main-quest">{{
-      getQuestions[0].quest
-    }}</question>
+    <question class="callback__main-quest">
+      {{ getQuestions[0].quest }}
+    </question>
     <question class="callback__quest">{{ getQuestions[1].quest }}</question>
     <div class="callback__input-wrapper">
       <main-input
@@ -26,14 +26,19 @@
         @input="checkValidity(0)"
       />
       <p class="callback__error-massage">{{ this.errors[0] }}</p>
+      <!-- Решили вынести валидационные ошибки под инпуты,
+      чтобы сохранить плэйсхолдеры, для более ясного понимания пользователем
+      формата вводимых данных, а также для возможности отображения
+      ошибок формата вводимых данных -->
     </div>
     <div class="callback__container">
       <div class="callback__wrapper">
-        <question class="callback__small-quest">{{
-          getQuestions[2].quest
-        }}</question>
+        <question class="callback__small-quest">
+          {{ getQuestions[2].quest }}
+        </question>
         <div class="callback__input-wrapper">
           <main-input
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             class="callback__small-input"
             placeholder="pochta@example.com"
             type="email"
@@ -51,9 +56,9 @@
         </div>
       </div>
       <div class="callback__wrapper">
-        <question class="callback__small-quest">{{
-          getQuestions[3].quest
-        }}</question>
+        <question class="callback__small-quest">
+          {{ getQuestions[3].quest }}
+        </question>
         <div class="callback__input-wrapper">
           <main-input
             class="callback__small-input"
@@ -95,11 +100,14 @@
         color="purple"
         :disabled="hasInvalidInput()"
         type="submit"
+        @buttonClick="saveAnswers"
+        >Отправить</main-button
       >
-        Отправить
-      </main-button>
-      <policy class="callback__policy"> </policy>
+      <policy class="callback__policy"></policy>
     </div>
+    <p class="callback__form-error" v-if="hasInvalidInput() || this.postError">
+      {{ globalErrorMessage }}
+    </p>
   </popup>
 </template>
 
@@ -134,14 +142,37 @@ export default {
     },
     toggleCallback() {
       this.$store.commit('callback/toggleCallback');
+      this.answers = {};
+      this.postError = false;
+      this.setDefault();
+    },
+    setDefault() {
+      this.errors = [
+        'Введите имя.',
+        'Введите почту.',
+        'Введите номер телефона.',
+        'Введите контакты для связи и удобное время.',
+      ];
+      this.globalErrorMessage = 'Заполните все поля.';
+      Array.from(document.forms.Callback.querySelectorAll('input')).forEach(
+        (item, i) => {
+          this.validity[i] = false;
+        }
+      );
     },
     saveAnswers() {
-      this.$store.commit(
-        'callback/saveAnswers',
-        Object.assign({}, this.answers)
-      );
-      console.log(this.answers);
-      this.toggleCallback();
+      this.$store
+        .dispatch('callback/saveAnswers', Object.assign({}, this.answers))
+        .then(item => {
+          this.globalErrorMessage = item;
+          this.postError = false;
+          if (item) {
+            this.postError = true;
+          } else {
+            this.answers = {};
+            this.setDefault();
+          }
+        });
     },
   },
   computed: {
@@ -153,17 +184,15 @@ export default {
     },
   },
   mounted() {
-    Array.from(document.forms.Callback.querySelectorAll('input')).forEach(
-      (item, i) => {
-        this.validity[i] = item.validity.valid;
-      }
-    );
+    this.setDefault();
   },
   data() {
     return {
       answers: {},
       validity: [],
       errors: [],
+      globalErrorMessage: '',
+      postError: false,
     };
   },
 };
@@ -175,9 +204,21 @@ export default {
   flex-direction: column;
 }
 
+.callback__form-error {
+  width: 100%;
+  margin: 0;
+  padding: 16px 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #f00;
+  background: #f0f0f0;
+}
+
 .callback__error-massage {
   margin: 0;
-  color: red;
+  color: #f00;
   position: absolute;
   top: 42px;
   left: 40px;
@@ -257,6 +298,12 @@ export default {
 @media screen and (max-width: 820px) {
   .callback /deep/ .popup__container {
     max-width: 580px;
+  }
+  .callback__form-error {
+    width: calc(100% - 50px);
+    font-size: 11px;
+    line-height: 13px;
+    padding: 18px 25px;
   }
 
   .callback__input {
@@ -344,30 +391,25 @@ export default {
     margin: 0 15px 20px;
   }
   .callback__error-massage {
-    font-size: 10px;
-    line-height: 10px;
     top: 31px;
     left: 15px;
   }
-  .callback__error-massage_input_small {
-    left: 0;
-  }
 }
 
-@media screen and (max-height: 728px) and (min-width: 1280px) {
+@media screen and (max-height: 778px) and (min-width: 1280px) {
   .callback /deep/ .popup__container {
     overflow: auto;
     height: 100%;
   }
 }
 
-@media screen and (max-height: 710px) and (max-width: 1280px) and (min-width: 600px) {
+@media screen and (max-height: 760px) and (max-width: 1280px) and (min-width: 600px) {
   .callback /deep/ .popup__container {
     overflow: auto;
     height: 100%;
   }
 }
-@media screen and (max-height: 698px) and (max-width: 600px) {
+@media screen and (max-height: 748px) and (max-width: 600px) {
   .callback /deep/ .popup__container {
     overflow: auto;
     height: 100%;

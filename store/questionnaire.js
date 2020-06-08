@@ -7,27 +7,27 @@ export const state = () => ({
       id: '1',
       mainQest: 'Как вас зовут?',
       qest: '',
-      key: 'name',
+      key: 'full_name',
     },
     {
       id: '2',
       mainQest: 'Было ли у вас онкологическое заболевание?',
       qest:
         'Если да – расскажите, пожалуйста, кратко, какой диагноз и текущий статус. Если нет — приглашаем Вас поделиться своей историей неизлечимых привычек в Инстаграм с хештегами #раклечится и #этонелечится',
-      key: 'cancerStory',
+      key: 'story',
     },
     {
       id: '3',
       mainQest: 'Какие занятия приносят Вам наибольшее удовольствие?',
       qest:
         'Расскажите о ваших неизлечимых привычках, чего Вы боитесь или без чего не можете жить.',
-      key: 'pleasureActivities',
+      key: 'pleas_act',
     },
     {
       id: '4',
       mainQest: 'На что, кроме семьи, быта и работы, Вы тратите свое время?',
       qest: '',
-      key: 'commonActivities',
+      key: 'common_act',
     },
     {
       id: '5',
@@ -48,20 +48,20 @@ export const state = () => ({
       mainQest:
         'Существуют ли какие-то ритуалы/действия, которые Вы совершаете регулярно?',
       qest: 'Кроме необходимых, таких, как чистка зубов.',
-      key: 'regularActivities',
+      key: 'reg_act',
     },
     {
       id: '8',
       mainQest:
         'Если вам выдался свободный день/вечер в одиночестве, чем вы займетесь?',
       qest: '',
-      key: 'aloneActivities',
+      key: 'alone_act',
     },
     {
       id: '9',
       mainQest: 'Что Вас успокаивает/умиротворяет лучше всего?',
       qest: '',
-      key: 'calmDownActivities',
+      key: 'calm_act',
     },
     {
       id: '10',
@@ -74,7 +74,7 @@ export const state = () => ({
       id: '11',
       mainQest: 'Как вы обычно проводите выходные?',
       qest: '',
-      key: 'weekend',
+      key: 'weekends',
     },
     {
       id: '12',
@@ -117,23 +117,41 @@ export const mutations = {
 };
 
 export const actions = {
-  async previousQuestion({ commit, getters }) {
-    await commit('previousId');
-    return getters.getCurrentAnswer;
-  },
   async nextQuestion({ commit, getters }, answer) {
     await commit('saveAnswer', answer);
-    commit('nextId');
-    if (getters.getId < 13) {
-      return getters.getCurrentAnswer;
+    if (getters.getId > 11) {
+      const errors = {
+        'Member Exists':
+          'Ошибка отправки данных, данный email уже используется, попробуйте ввести другой.',
+        'Invalid Resource':
+          'Ошибка отправки данных, пожалуйста, проверьте корректность введенного email.',
+      };
+      let errorMessage =
+        'Ошибка отправки данных, пожалуйста, попробуйте еще раз.';
+      await this.$axios
+        .post(`${process.env.API_URL}/forms/stories`, getters.getAnswers)
+        .then(() => {
+          commit('nextId');
+          commit('resetAnswers');
+          errorMessage = '';
+        })
+        .catch(error => {
+          if (typeof error.response !== 'undefined') {
+            errorMessage = errors[error.response.data.title];
+          } else {
+          }
+        });
+      return errorMessage;
+    } else {
+      await commit('nextId');
     }
+    return;
   },
   async closeQuestionnaire({ commit, getters }) {
     await commit('closeQuestionnaire');
     if (getters.getId === 13) {
       await new Promise(resolve => setTimeout(resolve, 200));
       await commit('resetId');
-      await commit('resetAnswers');
     }
     return getters.getCurrentAnswer;
   },

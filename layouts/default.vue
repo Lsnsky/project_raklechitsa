@@ -48,7 +48,6 @@ export default {
     await store.dispatch('blocks/fetchBlocks');
     await store.dispatch('statisticsData/fetchStatistic');
     await store.dispatch('storiesData/fetchStories');
-    await store.dispatch('instagram/fetchPhotos');
   },
 };
 </script>
@@ -72,19 +71,19 @@ body {
   min-width: 320px;
 }
 
-@media screen and (max-height: 728px) and (min-width: 1280px) {
+@media screen and (max-height: 778px) and (min-width: 1280px) {
   .body__noscroll_type_callback {
     overflow: hidden;
     height: 100vh;
   }
 }
-@media screen and (max-height: 710px) and (max-width: 1280px) and (min-width: 600px) {
+@media screen and (max-height: 760px) and (max-width: 1280px) and (min-width: 600px) {
   .body__noscroll_type_callback {
     overflow: hidden;
     height: 100vh;
   }
 }
-@media screen and (max-height: 698px) and (max-width: 600px) {
+@media screen and (max-height: 748px) and (max-width: 600px) {
   .body__noscroll_type_callback {
     overflow: hidden;
     height: 100vh;
@@ -98,7 +97,14 @@ body {
   }
 }
 
-@media screen and (max-height: 604px) and (max-width: 1280px) {
+@media screen and (max-height: 654px) and (max-width: 1280px) {
+  .body__noscroll_type_quest {
+    overflow: hidden;
+    height: 100vh;
+  }
+}
+
+@media screen and (max-height: 704px) and (max-width: 900px) {
   .body__noscroll_type_quest {
     overflow: hidden;
     height: 100vh;

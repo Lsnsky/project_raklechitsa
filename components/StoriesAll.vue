@@ -1,9 +1,7 @@
 <template>
   <section class="cards-story">
     <container class="card-story__container">
-      <h2 class="cards-story__title">
-        Истории неизлечимых привычек
-      </h2>
+      <h2 class="cards-story__title">Истории неизлечимых привычек</h2>
       <form class="cards-story__search" @submit.prevent="getSerch">
         <input-search
           class="cards-story__search-input"
@@ -12,12 +10,20 @@
           placeholder="Введите имя"
           @input="checkValidity"
         />
-        <button-search
+        <main-button
+          color="none"
+          :disabled="false"
+          class="cards-story__clear-button"
+          type="reset"
+          @buttonClick="clearInput"
+          >Очистить</main-button
+        >
+        <main-button
           color="purple"
           :disabled="!this.search.length > 0"
           class="cards-story__search-button"
           type="submit"
-          >Поиск</button-search
+          >Поиск</main-button
         >
       </form>
       <div class="cards-story__not-found" v-if="currentStories.length === 0">
@@ -45,12 +51,16 @@ export default {
   components: {
     'card-story': CardStory,
     'input-search': mainInput,
-    'button-search': Button,
+    'main-button': Button,
     pagination: Pagination,
     'card-container': CardContainer,
     container: Container,
   },
   methods: {
+    clearInput() {
+      this.search = '';
+      this.setCurrentPage();
+    },
     checkValidity() {
       if (this.search.length === 0) {
         this.setCurrentPage();
@@ -77,6 +87,7 @@ export default {
   data() {
     return {
       search: '',
+      clear: 'Очистить',
     };
   },
   computed: {
@@ -94,6 +105,14 @@ export default {
 </script>
 
 <style scoped>
+.cards-story__clear-button {
+  position: absolute;
+  top: 0;
+  right: 228px;
+  padding: 14px 20px;
+  color: #666;
+  background-color: rgba(255, 255, 255, 0);
+}
 .cards-story {
   display: flex;
 }
@@ -119,9 +138,9 @@ export default {
   align-content: center;
   margin: 60px auto 70px;
   width: 100%;
+  position: relative;
 }
 .cards-story__search-input {
-  /* background: #e5e5e5; */
   width: calc(100% - 228px);
   padding: 0 0 0 10px;
   margin: 0 20px 0 0;
@@ -146,7 +165,7 @@ export default {
   font-size: 48px;
   line-height: 58px;
   text-align: center;
-  color: #000000;
+  color: #000;
   margin: 0 auto;
 }
 .cards-story__not-found-description {
@@ -155,10 +174,15 @@ export default {
   font-size: 16px;
   line-height: 20px;
   text-align: center;
-  color: #000000;
+  color: #000;
   margin: 40px auto 0;
 }
-
+@media screen and (max-width: 1024px) {
+  .cards-story__clear-button {
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
 @media screen and (max-width: 768px) {
   .cards-story__title {
     font-size: 24px;
@@ -169,6 +193,18 @@ export default {
   }
   .cards-story__search {
     margin: 50px auto 60px;
+  }
+  .cards-story__clear-button {
+    position: absolute;
+    top: 12px;
+    right: 240px;
+    padding: 0;
+    height: 20px;
+    width: 20px;
+    font-size: 0;
+    background-image: url('/images/hider-open.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 @media screen and (max-width: 550px) {
@@ -185,6 +221,10 @@ export default {
     font-size: 24px;
     line-height: 22px;
   }
+  .cards-story__clear-button {
+    top: 12px;
+    right: 63px;
+  }
 }
 @media screen and (max-width: 320px) {
   .cards-story__title {
@@ -199,12 +239,10 @@ export default {
     margin: 60px auto 280px;
   }
   .cards-story__not-found-title {
-    font-size: 24px;
     line-height: 29px;
   }
   .cards-story__not-found-description {
     font-size: 14px;
-    line-height: 20px;
     margin: 15px auto 0;
   }
 }

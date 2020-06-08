@@ -1,12 +1,16 @@
 <template>
   <a :href="href" class="photo" target="_blank">
-    <img class="photo__image" :src="src" />
+    <img class="photo__image" :src="src" :alt="alt" />
   </a>
 </template>
 
 <script>
 export default {
-  props: { href: { type: String }, src: { type: String } },
+  props: {
+    href: { type: String },
+    src: { type: String },
+    alt: { type: String, default: 'Фото из Instagram' },
+  },
 };
 </script>
 

@@ -25,13 +25,22 @@ export default {
   async beforeMount() {
     if (process.browser) {
       if (window.innerWidth > 1000) {
-        await this.$store.dispatch('storiesData/setRandomStories', 4);
+        await this.$store.dispatch('storiesData/setRandomStories', {
+          count: 4,
+          noCelebrity: false,
+        });
       }
       if (window.innerWidth <= 1000) {
-        await this.$store.dispatch('storiesData/setRandomStories', 3);
+        await this.$store.dispatch('storiesData/setRandomStories', {
+          count: 3,
+          noCelebrity: false,
+        });
       }
       if (window.innerWidth <= 500) {
-        await this.$store.dispatch('storiesData/setRandomStories', 2);
+        await this.$store.dispatch('storiesData/setRandomStories', {
+          count: 2,
+          noCelebrity: false,
+        });
       }
     }
   },
@@ -63,14 +72,12 @@ export default {
 @media screen and (max-width: 768px) {
   .button {
     margin: 40px auto 80px;
-    height: 50px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .button {
     margin: 40px auto 50px;
-    height: 50px;
   }
 }
 </style>

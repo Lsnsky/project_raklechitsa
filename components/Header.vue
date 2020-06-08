@@ -2,11 +2,9 @@
   <header class="header">
     <container class="header__container">
       <div class="header__title-wrapper">
-        <nuxt-link to="/" class="header__link"
-          ><h3 class="header__title">
-            {{ headerData.title }}
-          </h3></nuxt-link
-        >
+        <nuxt-link to="/" class="header__link">
+          <h3 class="header__title">{{ headerData.title }}</h3>
+        </nuxt-link>
         <button
           :class="`header__hider header__hider_${isMenuActive()}`"
           @click="menuToggle"
@@ -14,9 +12,16 @@
       </div>
       <div :class="`header__wrapper header__wrapper_${isMenuActive()}`">
         <main-menu class="header__menu" />
-        <button class="header__share-story" @click="QuestionnaireOpen">
+        <main-button
+          class="header__share-story"
+          color="purple"
+          type="button"
+          :disabled="false"
+          @buttonClick="QuestionnaireOpen"
+          :header="true"
+        >
           Рассказать историю
-        </button>
+        </main-button>
       </div>
     </container>
   </header>
@@ -25,10 +30,12 @@
 <script>
 import Menu from '@/components/ui/Menu';
 import Container from '@/components/ui/Container';
+import Button from '@/components/ui/Button';
 export default {
   components: {
     'main-menu': Menu,
     container: Container,
+    'main-button': Button,
   },
   methods: {
     QuestionnaireOpen() {
@@ -87,29 +94,22 @@ export default {
 }
 
 .header__share-story {
-  border: none;
-  background-color: #fff;
-  outline: none;
-  padding: 0;
+  width: 218px;
+  height: 44px;
   margin: -8px 0 0 40px;
-  font-weight: normal;
-  font-size: 18px;
+  transition: all linear 0.3s;
+  line-height: 20px;
+  font-size: 16px;
   line-height: 24px;
-  text-align: right;
-  color: #121212;
-  cursor: pointer;
-  transition: all linear 0.1s;
 }
 
 .header__share-story:hover {
-  opacity: 0.8;
+  background-color: #fff;
+  color: #613a93;
+  border: 1px solid #613a93;
 }
 
 @media screen and (max-width: 1280px) {
-  .header {
-    padding: 18px 0;
-  }
-
   .header__title {
     line-height: 18px;
   }
@@ -118,18 +118,20 @@ export default {
   }
   .header__share-story {
     margin: -5px 0 0 42px;
-    font-size: 16px;
-    line-height: 24px;
+    width: 211px;
+    height: 42px;
   }
 }
-
 @media screen and (max-width: 1024px) {
-  .header__wrapper {
-    margin: 6px 11px 0 0;
+  .header__share-story {
+    width: 201px;
+    height: 38px;
+    font-size: 15px;
+    line-height: 18px;
   }
 }
 
-@media screen and (max-width: 805px) {
+@media screen and (max-width: 835px) {
   .header__container {
     flex-direction: column-reverse;
     position: relative;
@@ -151,6 +153,8 @@ export default {
 
   .header__share-story {
     margin: 0 0 0 32px;
+    width: 200px;
+    height: 38px;
   }
 
   .header__title-wrapper {
@@ -179,7 +183,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 480px) {
   .header {
     padding: 18px 0 17px;
   }
@@ -195,8 +199,7 @@ export default {
   .header__wrapper {
     flex-direction: column;
     margin: 0 11px 17px 0;
-    border-bottom: 1px solid #efefef;
-    padding: 0 0 18px;
+    align-items: flex-start;
   }
   .header__menu /deep/ .menu {
     display: flex;
@@ -215,9 +218,10 @@ export default {
   }
   .header__share-story {
     margin: 18px 0 0;
-    text-align: left;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 12px;
+    line-height: 15px;
+    width: 146px;
+    height: 31px;
   }
 }
 </style>

@@ -1,6 +1,14 @@
 <template>
   <section class="cover" ref="section">
     <h2 class="cover__title">{{ coverData.hashtag }}</h2>
+    <main-button
+      :disabled="false"
+      color="none"
+      class="cover__main-button"
+      @buttonClick="QuestionnaireOpen"
+    >
+      Рассказать историю</main-button
+    >
     <div class="cover__button">
       <a @click.prevent="scroll"> <button-down class="cover__button-down"/></a>
     </div>
@@ -8,10 +16,12 @@
 </template>
 
 <script>
+import Button from '@/components/ui/Button';
 import Button_down from '@/components/ui/Button_down';
 export default {
   components: {
     'button-down': Button_down,
+    'main-button': Button,
   },
   computed: {
     coverData() {
@@ -25,15 +35,34 @@ export default {
         block: 'start',
       });
     },
+    QuestionnaireOpen() {
+      this.$store.commit('questionnaire/openQuestionnaire');
+    },
   },
 };
 </script>
 
 <style scoped>
+.cover__button-down {
+  transition: all 1.5s ease-in-out;
+  animation: radial-pulse 1.5s infinite;
+}
 .cover__button-down:hover {
   cursor: pointer;
   transform: scale(1.2);
-  transition: transform 0.7s ease-in-out;
+  animation-play-state: paused;
+}
+@keyframes radial-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .cover {
   min-height: calc(100vh - 76px);
@@ -44,18 +73,40 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
+  flex-direction: column;
 }
 .cover__title {
   color: #fff;
   font-style: normal;
   font-weight: 800;
   font-size: 92px;
+  margin-bottom: 0;
 }
 .cover__button {
   width: 36px;
   height: 12px;
   position: absolute;
   bottom: 40px;
+  transition: 0.7s ease;
+}
+.cover__main-button {
+  width: 334px;
+  height: 60px;
+  margin-top: 30px;
+  color: #fff;
+  border: #fff 2px solid;
+  background-color: #613a93;
+  box-sizing: border-box;
+  border-radius: 60px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  transition: all linear 0.3s;
+}
+.cover__main-button:hover {
+  background-color: #fff;
+  color: #613a93;
+  transition: all linear 0.3s;
 }
 @media screen and (max-width: 1280px) {
   .cover {
@@ -64,23 +115,42 @@ export default {
   .cover__title {
     font-size: 78px;
   }
+  .cover__main-button {
+    width: 314px;
+    height: 58px;
+    font-size: 22px;
+  }
 }
-
+@media screen and (max-width: 1024px) {
+  .cover__main-button {
+    width: 294px;
+    height: 56px;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+}
 @media screen and (max-width: 899px) {
   .cover__title {
     font-size: 64px;
   }
-
-  @media screen and (max-width: 530px) {
-    .cover {
-      min-height: calc(100vh - 64px);
-    }
-    .cover__title {
-      font-size: 36px;
-    }
-    .cover__button {
-      bottom: 30px;
-    }
+  .cover__main-button {
+    margin-top: 30px;
+  }
+}
+@media screen and (max-width: 530px) {
+  .cover {
+    min-height: calc(100vh - 64px);
+  }
+  .cover__title {
+    font-size: 36px;
+  }
+  .cover__button {
+    bottom: 30px;
+  }
+  .cover__main-button {
+    width: 224px;
+    height: 44px;
+    margin-top: 18px;
   }
 }
 </style>

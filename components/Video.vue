@@ -2,19 +2,18 @@
   <section class="video">
     <container class="video__container">
       <div class="video__wrapper">
-        <h2 class="video__title">
-          {{ videoData.title }}
-        </h2>
+        <h2 class="video__title">{{ videoData.title }}</h2>
 
         <div class="video__subtitle-wrapper" v-html="videoData.text"></div>
         <div class="video__buttons">
           <button-switch
-            position="left"
+            class="video__button"
+            :left="true"
             :disabled="getLeftStatus"
             @buttonClick="back"
           />
           <button-switch
-            position="right"
+            class="video__button"
             @buttonClick="further"
             :disabled="getRightStatus"
           />
@@ -23,13 +22,12 @@
       <div class="video__wrapper">
         <button-switch
           class="video__small-button video__small-button_position_left"
-          position="left"
+          :left="true"
           @buttonClick="back"
           :disabled="getLeftStatus"
         />
         <button-switch
           class="video__small-button video__small-button_position_right"
-          position="right"
           @buttonClick="further"
           :disabled="getRightStatus"
         />
@@ -173,7 +171,7 @@ export default {
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
-  color: #666666;
+  color: #666;
   max-width: 345px;
   margin: 0;
 }
@@ -187,7 +185,7 @@ export default {
 .video__more {
   font-size: 12px;
   line-height: 16px;
-  color: #666666;
+  color: #666;
   margin: 10px 0 0;
 }
 
@@ -207,8 +205,8 @@ export default {
 
 .video__buttons {
   margin: auto 0 26px;
-  background: #fbfbfb;
   max-width: 80px;
+  background: #613a93;
   display: flex;
 }
 
@@ -296,7 +294,7 @@ export default {
   .video__small-button {
     display: block;
     position: absolute;
-    background-color: #fbfbfb;
+    background-color: #613a93;
   }
 
   .video__small-button_position_left {
@@ -322,7 +320,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 525px) {
+@media screen and (max-width: 650px) {
   .video {
     padding: 50px 0;
   }

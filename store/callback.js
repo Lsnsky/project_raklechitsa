@@ -6,7 +6,7 @@ export const state = () => ({
         'Мы свяжемся с вами в течение недели, чтобы задать вопросы о вашей истории и разместить ее на сайте.',
       key: '',
     },
-    { quest: 'Как вас зовут?', key: 'fullName' },
+    { quest: 'Как вас зовут?', key: 'full_name' },
     { quest: 'Электронная почта', key: 'email' },
     { quest: 'Телефон', key: 'phone' },
     {
@@ -15,18 +15,40 @@ export const state = () => ({
       key: 'preferred',
     },
   ],
-  answers: {},
 });
 
 export const mutations = {
   toggleCallback(state) {
     return (state.callbackOpened = !state.callbackOpened);
   },
-  saveAnswers(state, answers) {
-    return (state.answers = answers);
-  },
   closeCallback(state) {
     return (state.callbackOpened = false);
+  },
+};
+
+export const actions = {
+  async saveAnswers({ commit }, answers) {
+    const errors = {
+      'Member Exists':
+        'Ошибка отправки данных, данный email уже используется, попробуйте ввести другой.',
+      'Invalid Resource':
+        'Ошибка отправки данных, пожалуйста, проверьте корректность введенного email.',
+    };
+    let errorMessage =
+      'Ошибка отправки данных, пожалуйста, попробуйте еще раз.';
+    await this.$axios
+      .post(`${process.env.API_URL}/forms/contacts`, answers)
+      .then(() => {
+        commit('toggleCallback');
+        errorMessage = '';
+      })
+      .catch(error => {
+        if (typeof error.response !== 'undefined') {
+          errorMessage = errors[error.response.data.title];
+        } else {
+        }
+      });
+    return errorMessage;
   },
 };
 

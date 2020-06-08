@@ -8,18 +8,18 @@
     :isItForm="true"
     @formSubmit="nextQuestion"
     formName="Questionnaire"
-    :noValidate="false"
+    :noValidate="true"
     :closeButton="this.id !== 13"
   >
     <p v-if="id < 13" class="questionnaire__question">
-      <question class="questionnaire__mainquestion">
-        {{ question.mainQest }}
-      </question>
+      <question class="questionnaire__mainquestion">{{
+        question.mainQest
+      }}</question>
       <span class="questionnaire__subquestion">{{ question.qest }}</span>
     </p>
     <main-input
-      v-if="id < 13 && id !== 11"
-      required="required"
+      v-if="id < 11"
+      :required="true"
       placeholder="Напишите тут"
       :type="id === 12 ? 'email' : 'text'"
       :hasData="this.validity"
@@ -30,10 +30,22 @@
     />
     <main-input
       v-if="id === 11"
-      required="required"
+      :required="true"
       pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
       placeholder="Напишите тут"
-      :type="id === 12 ? 'email' : 'text'"
+      type="text"
+      :hasData="this.validity"
+      v-model="answer"
+      :bordered="false"
+      class="questionnaire__input"
+      @input="checkValidity"
+    />
+    <main-input
+      v-if="id === 12"
+      :required="true"
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+      placeholder="Напишите тут"
+      type="email"
       :hasData="this.validity"
       v-model="answer"
       :bordered="false"
@@ -45,6 +57,7 @@
       v-if="id < 13"
       class="questionnaire__back"
       color="none"
+      type="button"
       :disabled="this.id === 0"
       @buttonClick="previousQuestion"
       >Назад</main-button
@@ -55,8 +68,10 @@
       color="purple"
       type="submit"
       :disabled="!this.validity"
+      @buttonClick="nextQuestion"
       >{{ buttonNext() }}</main-button
     >
+
     <main-button
       v-else
       class="questionnaire__further questionnaire__further_step_last"
@@ -65,7 +80,18 @@
       @buttonClick="closeQuestionnaire"
       >Закрыть</main-button
     >
-    <policy v-if="id === 12" class="questionnaire__politica"></policy>
+    <p class="qusetionnaire__global-error" v-if="this.errorMessage">
+      {{ this.errorMessage }}
+    </p>
+    <policy
+      v-if="id === 12"
+      :class="[
+        'questionnaire__politica',
+        {
+          questionnaire__politica_lower: this.errorMessage,
+        },
+      ]"
+    ></policy>
   </popup>
 </template>
 
@@ -96,31 +122,31 @@ export default {
       return this.id === 13 ? 'center' : 'left';
     },
     async previousQuestion() {
-      await this.$store
-        .dispatch('questionnaire/previousQuestion')
-        .then(item => {
-          this.answer = item || '';
-        });
+      await this.$store.commit('questionnaire/previousId');
+      this.answer = this.getCurrentAnswer || '';
       this.setDefault();
+      this.errorMessage = '';
     },
     async nextQuestion() {
+      let notError = true;
+      if (this.id === 12) {
+        notError = false;
+      }
       await this.$store
         .dispatch('questionnaire/nextQuestion', this.answer)
         .then(item => {
-          this.answer = item || '';
+          this.errorMessage = item;
+          if (notError) {
+            this.answer = this.getCurrentAnswer || '';
+          }
         });
-      if (this.id === 12) {
-        console.log(this.getAnswers);
-      }
 
       this.setDefault();
     },
     async closeQuestionnaire() {
-      await this.$store
-        .dispatch('questionnaire/closeQuestionnaire')
-        .then(item => {
-          this.answer = item || '';
-        });
+      await this.$store.dispatch('questionnaire/closeQuestionnaire');
+      this.answer = '';
+      this.errorMessage = '';
       this.setDefault();
     },
     setDefault() {
@@ -161,6 +187,7 @@ export default {
       answer: this.getCurrentAnswer || '',
       error: '',
       validity: false,
+      errorMessage: '',
     };
   },
   mounted() {
@@ -175,7 +202,7 @@ export default {
 .questionnaire__error-massage {
   margin: 0 40px;
   width: calc(100% - 80px);
-  color: red;
+  color: #f00;
   position: absolute;
   font-size: 14px;
   max-height: 35px;
@@ -186,6 +213,21 @@ export default {
 .questionnaire /deep/ .popup__container {
   width: 920px;
   height: 600px;
+}
+
+.qusetionnaire__global-error {
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 16px 25px;
+  width: calc(100% - 50px);
+  color: #f00;
+  background: #f0f0f0;
+  position: absolute;
+  bottom: -48px;
+  left: 0;
 }
 
 .questionnaire__politica {
@@ -208,12 +250,8 @@ export default {
   height: 52px;
 }
 
-/* .questionnaire__further:hover {
-  opacity: 0.9;
-} */
-
 .questionnaire__further_step_last {
-  left: calc(50% - 100px);
+  left: calc(50% - 105px);
 }
 
 .questionnaire__back {
@@ -273,6 +311,7 @@ export default {
   .questionnaire /deep/ .popup__container {
     width: 800px;
     height: 520px;
+    min-height: 520px;
   }
 
   .questionnaire__input {
@@ -311,16 +350,12 @@ export default {
 @media screen and (max-width: 900px) {
   .questionnaire /deep/ .popup__container {
     width: 580px;
-    height: 520px;
   }
 
   .questionnaire__input {
     top: 230px;
     font-size: 15px;
     line-height: 19px;
-  }
-  .questionnaire__error-massage {
-    top: 270px;
   }
 
   .questionnaire__further {
@@ -334,6 +369,12 @@ export default {
     font-size: 15px;
     line-height: 19px;
   }
+
+  .qusetionnaire__global-error {
+    bottom: -44px;
+    font-size: 11px;
+    line-height: 13px;
+  }
   .questionnaire__politica {
     bottom: -59px;
     left: 0;
@@ -341,18 +382,18 @@ export default {
     padding: 25px 40px;
     background-color: #ededed;
   }
+  .questionnaire__politica_lower {
+    bottom: -127px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .questionnaire /deep/ .popup__container {
     width: 290px;
-    height: 520px;
   }
 
   .questionnaire__input {
     top: 245px;
-    font-size: 15px;
-    line-height: 19px;
     width: calc(100% - 30px);
     margin: 0 15px;
   }
@@ -398,6 +439,17 @@ export default {
     font-size: 11px;
     line-height: 13px;
   }
+  .qusetionnaire__global-error {
+    bottom: -45px;
+    font-size: 11px;
+    line-height: 13px;
+    width: calc(100% - 30px);
+    padding: 12px 15px;
+  }
+
+  .questionnaire__politica_lower {
+    bottom: -104px;
+  }
   .questionnaire__further_step_last {
     left: calc(50% - 100px);
   }
@@ -410,9 +462,15 @@ export default {
   }
 }
 
-@media screen and (max-height: 604px) and (max-width: 1280px) {
+@media screen and (max-height: 654px) and (max-width: 1280px) {
   .questionnaire /deep/ .popup__container {
-    overflow: auto;
+    overflow: scroll;
+    height: 100%;
+  }
+}
+@media screen and (max-height: 704px) and (max-width: 900px) {
+  .questionnaire /deep/ .popup__container {
+    overflow: scroll;
     height: 100%;
   }
 }

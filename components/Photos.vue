@@ -21,7 +21,11 @@
             v-for="photo in instagram"
             :key="photo.id"
           >
-            <photo :href="photo.url" :src="photo.display_url" />
+            <photo
+              :href="photo.url"
+              :src="photo.display_url"
+              :alt="photo.accessibility_caption"
+            />
           </li>
         </ul>
       </div>
@@ -96,8 +100,7 @@ export default {
   max-width: 340px;
   width: 100%;
   margin-top: 32px;
-  margin-bottom: 0px;
-  margin-right: 110px;
+  margin-bottom: 0;
 }
 .photos__content {
   display: flex;
@@ -161,7 +164,6 @@ export default {
   }
   .photos__panel-text {
     font-size: 28px;
-    line-height: 46px;
   }
   .photos__panel-hashtag {
     line-height: 40px;
@@ -182,7 +184,6 @@ export default {
     line-height: 16px;
     max-width: 260px;
     margin-top: 20px;
-    margin-right: 60px;
   }
   .photos__panel-text {
     font-size: 24px;
@@ -245,17 +246,11 @@ export default {
   }
 }
 @media screen and (max-width: 400px) {
-  .photos {
-    margin: 50px 0;
-  }
-
   .photos >>> .container {
     padding: 0px 15px;
   }
   .photos__cards {
-    grid-template-columns: repeat(2, minmax(140px, 250px));
     grid-gap: 10px;
-    margin: 0 auto;
   }
   .photos__panel-text {
     font-size: 16px;

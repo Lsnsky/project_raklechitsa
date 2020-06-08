@@ -26,10 +26,51 @@ export default {
       return this.$store.getters['storiesData/getCurrentStory'];
     },
   },
-  head() {
+  data() {
     return {
-      title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
+      metas: {
+        keywords: 'РАКЛЕЧИТСЯ.РФ, раклечится, этонелечится',
+      },
     };
+  },
+  head() {
+    if (this.metas) {
+      return {
+        title: `${this.story.author} - РАКЛЕЧИТСЯ.РФ`,
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content:
+              `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.` ||
+              '',
+          },
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: this.metas.keywords || '',
+          },
+          {
+            hid: 'og:title',
+            property: 'og:title',
+            content: `${this.story.author} - РАКЛЕЧИТСЯ.РФ` || '',
+          },
+          {
+            hid: 'og:description',
+            property: 'og:description',
+            content:
+              `${this.story.author}. РАКЛЕЧИТСЯ.РФ — проект Фонда Хабенского.` ||
+              '',
+          },
+          {
+            hid: 'og:image',
+            property: 'og:image',
+            content:
+              `${process.env.API_URL}${this.story.ImageUrl[0].url}` || '',
+          },
+        ],
+      };
+    }
   },
 };
 </script>

@@ -64,14 +64,12 @@ export default {
 @media screen and (max-width: 760px) {
   .cards-container {
     grid-template-columns: repeat(2, minmax(200px, 1fr));
-    grid-column-gap: 20px;
     grid-row-gap: 30px;
   }
 }
 @media screen and (max-width: 500px) {
   .cards-container {
     grid-template-columns: repeat(1, minmax(200px, 1fr));
-    grid-row-gap: 30px;
   }
 }
 </style>

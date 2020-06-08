@@ -73,7 +73,6 @@ export default {
 @media screen and (max-width: 1024px) {
   .card__title {
     font-size: 18px;
-    line-height: 22px;
     margin: 16px 0 0;
   }
 
