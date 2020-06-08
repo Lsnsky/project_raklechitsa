@@ -8,13 +8,12 @@
         <div class="video__buttons">
           <button-switch
             class="video__button"
-            position="left"
+            :left="true"
             :disabled="getLeftStatus"
             @buttonClick="back"
           />
           <button-switch
             class="video__button"
-            position="right"
             @buttonClick="further"
             :disabled="getRightStatus"
           />
@@ -23,13 +22,12 @@
       <div class="video__wrapper">
         <button-switch
           class="video__small-button video__small-button_position_left"
-          position="left"
+          :left="true"
           @buttonClick="back"
           :disabled="getLeftStatus"
         />
         <button-switch
           class="video__small-button video__small-button_position_right"
-          position="right"
           @buttonClick="further"
           :disabled="getRightStatus"
         />
@@ -173,7 +171,7 @@ export default {
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
-  color: #666666;
+  color: #666;
   max-width: 345px;
   margin: 0;
 }
@@ -187,7 +185,7 @@ export default {
 .video__more {
   font-size: 12px;
   line-height: 16px;
-  color: #666666;
+  color: #666;
   margin: 10px 0 0;
 }
 

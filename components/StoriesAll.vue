@@ -110,7 +110,7 @@ export default {
   top: 0;
   right: 228px;
   padding: 14px 20px;
-  color: #666666;
+  color: #666;
   background-color: rgba(255, 255, 255, 0);
 }
 .cards-story {
@@ -165,7 +165,7 @@ export default {
   font-size: 48px;
   line-height: 58px;
   text-align: center;
-  color: #000000;
+  color: #000;
   margin: 0 auto;
 }
 .cards-story__not-found-description {
@@ -174,7 +174,7 @@ export default {
   font-size: 16px;
   line-height: 20px;
   text-align: center;
-  color: #000000;
+  color: #000;
   margin: 40px auto 0;
 }
 @media screen and (max-width: 1024px) {

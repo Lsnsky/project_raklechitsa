@@ -212,13 +212,13 @@ export default {
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: #ff0000;
+  color: #f00;
   background: #f0f0f0;
 }
 
 .callback__error-massage {
   margin: 0;
-  color: red;
+  color: #f00;
   position: absolute;
   top: 42px;
   left: 40px;

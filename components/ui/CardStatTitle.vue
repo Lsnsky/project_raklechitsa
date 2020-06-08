@@ -21,7 +21,7 @@ export default {
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
-  color: #000000;
+  color: #000;
   margin: 20px 20px 0px;
 }
 
